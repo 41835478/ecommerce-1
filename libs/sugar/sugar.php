@@ -10,12 +10,12 @@ class iSugar
 
   public static function init()
   {
-    self::$settings = array("location" => 'http://localhost/planetcrm/soap.php',
-                            "uri"      => 'http://localhost/planetcrm/',
+    self::$settings = array("location" => 'http://office.mqplanet.com/planetcrm2/soap.php',
+                            "uri"      => 'http://office.mqplanet.com/planetcrm2/',
                             "trace" => 1);
 
     self::$auth = array("user_name" => 'galya',
-                        "password" => MD5('gnewstyle'),
+                        "password" => MD5('abc123'),
                         "version" => '.01');
 
     self::$soap         = new SoapClient(NULL, self::$settings);
