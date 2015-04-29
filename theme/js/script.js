@@ -15,8 +15,8 @@ $(document).ready(function(){
     var serBuilder="";
   $('#logout').click(function(){logout()});
   $('#setting').click(function(){getSetting()});
-  $('#contacts').live('click',function(){getContacts()});
-  $('#members').live('click',function(){getMembers()});
+  //$('#contacts').live('click',function(){getContacts()});
+  //$('#members').live('click',function(){getMembers()});
   $('#add_contact').live('click',function(){addContact()});
   $('#add_user').live('click',function(){addUser()});
   $('#add_license').live('click',function(){addLicense()});

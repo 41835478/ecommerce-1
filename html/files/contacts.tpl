@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 {if count($contacts)}
  <div class="header_form2" >   
@@ -105,3 +106,4 @@
     </div>
 </div>
 {/if}
+{include file='footer.tpl'}

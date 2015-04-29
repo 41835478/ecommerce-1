@@ -6,6 +6,7 @@ $session = new Session();
 $smarty  = new Smarty(); 
 
 $cmd                  = $fwork->requestVar('cmd');
+
 $smarty->compile_dir = 'html'.DS.'compiled';
 $smarty->cache_dir    = 'html'.DS.'cache';
 $smarty->template_dir = 'html'.DS.'files';
@@ -62,7 +63,7 @@ if(!empty($cmd)){
 /********************************
     Contacts List
  ********************************/
-   elseif($cmd == 'getContacts'){
+   elseif($cmd == 'contacts'){
     $smarty->assign('sub', 'account');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $contacts =  $fwork->getContacts($result['account_id']);
@@ -230,7 +231,7 @@ elseif($cmd =='saveLicense') {
   /********************************
     Get Users List
  ********************************/  
-  elseif($cmd == 'getMembers'){
+  elseif($cmd == 'members'){
     $smarty->assign('sub', 'account');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $members =  $fwork->getMembers($result['account_id']);

@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 {if count($members)}
 <div class="header_form2">   
