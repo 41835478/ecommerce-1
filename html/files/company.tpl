@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 
 <div class="header_form2" style="height:260px">   
@@ -86,3 +87,4 @@
        <input  type="button" id="saveLicenseDetalis" value="Edit" class="EditButton"/></li>
     </div>
 </div>
+{include file='footer.tpl'}

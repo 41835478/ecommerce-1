@@ -9,7 +9,7 @@
              {$sub = $v.sub}
              <ul>
                {foreach from=$sub key=x item=y}
-          	       <li><a href="#" id="{$y.id}">{$y.display}</a></li>
+          	       <li><a href="?cmd={$y.id}" id="{$y.id}">{$y.display}</a></li>
                {/foreach}
              </ul> 
            {/if}

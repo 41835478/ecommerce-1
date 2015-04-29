@@ -23,7 +23,7 @@ $(document).ready(function(){
   $('#servers').live('click',function(){getServers()});
   $('#webhosts').live('click',function(){getWebhosts()});
   $('#domains').live('click',function(){getDomains()});
-  $('#company').live('click',function(){getCompany()});
+  //$('#company').live('click',function(){getCompany()});
   $('#products').live('click',function(){getProducts()});
   $('#open-cases').live('click',function(){getOpenCases()});
   $('#invoices').live('click',function(){getInvoices()});

@@ -244,7 +244,7 @@ elseif($cmd =='saveLicense') {
   /********************************
     get Company
  ********************************/
-  elseif($cmd == 'getCompany'){
+  elseif($cmd == 'company'){
     $smarty->assign('sub', 'account');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $info = $fwork->getAccountDetails($result['account_id']);
