@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 <div class="header_form2" >
     <div class="form_head">
@@ -111,3 +112,4 @@
     </div>
 
 </div>
+{include file='footer.tpl'}

@@ -75,7 +75,7 @@ if(!empty($cmd)){
   /********************************
     Add Contact Form
  ********************************/
-  elseif($cmd == 'addContact'){
+  elseif($cmd == 'add_contact'){
     $smarty->assign('sub', 'account');
     $smarty->display('add_contact.tpl');
     exit();
@@ -84,7 +84,7 @@ if(!empty($cmd)){
   /********************************
     Add Contact Form
  ********************************/
-  elseif($cmd == 'addUser'){
+  elseif($cmd == 'add_user'){
     $smarty->assign('sub', 'account');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $contacts =  $fwork->getContacts($result['account_id']);
@@ -103,7 +103,7 @@ if(!empty($cmd)){
    /********************************
     Add Contact List
  ********************************/
-  elseif($cmd == 'addLicense'){
+  elseif($cmd == 'add_license'){
     $smarty->assign('sub', 'account');
     $type  = $fwork->getFields("mqp_license","type");
     $smarty->assign('type',$type);
@@ -302,7 +302,7 @@ elseif($cmd =='saveLicense') {
   /**************************************
   Get Servers List
   ************************************/
-  elseif($cmd == 'getServers'){
+  elseif($cmd == 'servers'){
     $smarty->assign('sub', 'hosting');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $servers= $fwork->getServers($result['account_id']);    
@@ -359,7 +359,7 @@ elseif($cmd =='saveLicense') {
   /**************************************
     Get Web Hosts List
   ************************************/
-   elseif($cmd == 'getWebhosts'){
+   elseif($cmd == 'webhosts'){
     $smarty->assign('sub', 'hosting');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $webhosts= $fwork->getWebHosts($result['account_id']);    
@@ -373,7 +373,7 @@ elseif($cmd =='saveLicense') {
  /**************************************
     Get Domain List
   ************************************/
-  elseif($cmd == 'getDomains'){
+  elseif($cmd == 'domains'){
     $smarty->assign('sub', 'hosting');    
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $domains= $fwork->getDomains($result['account_id']);    
@@ -549,7 +549,7 @@ elseif($cmd =='saveLicense') {
   /********************************
     Products List
  ********************************/
-   elseif($cmd == 'getProducts'){
+   elseif($cmd == 'products'){
     $smarty->assign('sub', 'products');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $products =  $fwork->getProducts($result['account_id']);
@@ -564,7 +564,7 @@ elseif($cmd =='saveLicense') {
   /********************************
     Open Cases List
  ********************************/
-   elseif($cmd == 'getOpenCases'){
+   elseif($cmd == 'open-cases'){
     $smarty->assign('sub', 'support');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $cases =  $fwork->getOpenCases($result['account_id']);
@@ -578,7 +578,7 @@ elseif($cmd =='saveLicense') {
     /********************************
     Open Cases List
  ********************************/
-   elseif($cmd == 'getInvoices'){
+   elseif($cmd == 'invoices'){
     $smarty->assign('sub', 'account');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $invoices =  $fwork->getInvoices($result['account_id']);
@@ -621,7 +621,7 @@ elseif($cmd =='saveLicense') {
  /********************************
      Find Articles
  ********************************/
-  elseif($cmd == 'findArticles'){
+  elseif($cmd == 'find_articles'){
    $offset = $fwork->requestVar('offset');
    $finedArt = $fwork->requestVar('find_articles');
    $smarty->assign('sub', 'documents');
@@ -652,7 +652,7 @@ elseif($cmd =='saveLicense') {
     $smarty->display('invoice_payments.tpl');
     exit();
  }
- elseif($cmd == 'getdashboard'){
+ elseif($cmd == 'dashboard'){
     $documents =  $fwork->getDocuments('news',0);
     //var_dump("sdsda",$documents);
     $smarty->assign('news', $documents);

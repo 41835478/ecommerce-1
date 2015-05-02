@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 <div class="add_account">
    <div class="new_account">
@@ -127,3 +128,4 @@
 </div>
 </div>
 </div>
+{include file='footer.tpl'}

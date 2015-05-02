@@ -1,4 +1,7 @@
- <div class="tab-pane active" id="MQPlanet">
+ 
+{include file='header.tpl'}
+<div class="tab-pane active" id="MQPlanet">
+
   {if count($news)}
   {foreach from=$news item=new}
   <div class="news-item">
@@ -10,4 +13,6 @@
   </div>
   {/foreach}
   {/if}
+
  </div>
+{include file='footer.tpl'}

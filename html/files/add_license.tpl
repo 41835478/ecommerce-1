@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 <div class="header_form" style="height:110px;display:block">   
     <div class="form_head">
@@ -32,3 +33,4 @@
     
     
 </div>
+{include file='footer.tpl'}

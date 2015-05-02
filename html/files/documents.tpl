@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 
  <div class="find">
@@ -36,6 +37,6 @@
             {/if}
          </div>
     {/if}
-
+{include file='footer.tpl'}
 
 

@@ -147,7 +147,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data
                 } else {
                     if (!$_template->compiled->exists || ($_template->smarty->force_compile && !$_template->compiled->isCompiled)) {
                         $_template->compileTemplateSource();
-                        $code = file_get_contents($_template->compiled->filepath);
+                         $code = file_get_contents($_template->compiled->filepath);
                         eval("?>" . $code);
                         unset($code);
                         $_template->compiled->loaded = true;

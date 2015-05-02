@@ -17,17 +17,17 @@ $(document).ready(function(){
   $('#setting').click(function(){getSetting()});
   //$('#contacts').live('click',function(){getContacts()});
   //$('#members').live('click',function(){getMembers()});
-  $('#add_contact').live('click',function(){addContact()});
-  $('#add_user').live('click',function(){addUser()});
-  $('#add_license').live('click',function(){addLicense()});
-  $('#servers').live('click',function(){getServers()});
-  $('#webhosts').live('click',function(){getWebhosts()});
-  $('#domains').live('click',function(){getDomains()});
+ // $('#add_contact').live('click',function(){addContact()});
+  //$('#add_user').live('click',function(){addUser()});
+  //$('#add_license').live('click',function(){addLicense()});
+  //$('#servers').live('click',function(){getServers()});
+  //$('#webhosts').live('click',function(){getWebhosts()});
+  //$('#domains').live('click',function(){getDomains()});
   //$('#company').live('click',function(){getCompany()});
-  $('#products').live('click',function(){getProducts()});
-  $('#open-cases').live('click',function(){getOpenCases()});
-  $('#invoices').live('click',function(){getInvoices()});
-  $('#dashboard').live('click',function(){getDashboard()});
+  //$('#products').live('click',function(){getProducts()});
+  //$('#open-cases').live('click',function(){getOpenCases()});
+  //$('#invoices').live('click',function(){getInvoices()});
+ // $('#dashboard').live('click',function(){getDashboard()});
   
   $('#articles').live('click',function(){getDocuments('articles');});
   $('#news').live('click',function(){getDocuments('news')});
@@ -44,7 +44,7 @@ $(document).ready(function(){
     $('.header_form_Invoice').css({'height':'30px'});    
     $('#triangle-down').fadeIn(10);
   });
-  $('#find_articles').live('click',function(){findArticles();});
+  //$('#find_articles').live('click',function(){findArticles();});
   $('#saveContactDetalis').live('click',function(){saveContactDetails();});
   $('#saveUserDetalis').live('click',function(){saveUserDetails()});
   $('#saveLicenseDetalis').live('click',function(){saveLicenseDetails()});    
