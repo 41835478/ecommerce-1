@@ -14,6 +14,9 @@ $smarty->template_dir = 'html'.DS.'files';
 $smarty->assign('URL', URL);
 $smarty->assign('menu', $menu);
 global $menu;
+if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
+$smarty->display('login.tpl');}
+
 if(!empty($cmd)){
 
 /********************************
@@ -41,6 +44,7 @@ if(!empty($cmd)){
  ********************************/
   elseif($cmd == 'logout'){
     $session->delete(SESS_ACTIVE_CLIENT_ID);
+              header('Location: index.php');
   }
   
  /********************************
@@ -55,7 +59,6 @@ if(!empty($cmd)){
     $smarty->assign('contact',$contact);
     $smarty->assign('member',$member);
     $smarty->assign('level',$level);
-    
     $smarty->display('settings.tpl');
     exit(); 
   }

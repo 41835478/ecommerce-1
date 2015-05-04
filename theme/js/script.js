@@ -13,7 +13,7 @@ $.ajax({
 
 $(document).ready(function(){
     var serBuilder="";
-  $('#logout').click(function(){logout()});
+  //$('#logout').click(function(){logout()});
   $('#setting').click(function(){getSetting()});
   //$('#contacts').live('click',function(){getContacts()});
   //$('#members').live('click',function(){getMembers()});

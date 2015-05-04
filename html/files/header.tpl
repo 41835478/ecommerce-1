@@ -20,7 +20,7 @@
         <ul>
            <li><i class="icon-wel"></i>Welcome <span>{$client_name}</span></li>
            <li><i class="icon-setting"></i><a href="#" id="setting">Settings</a></li>
-           <li><i class="icon-logout"></i><a href="#" id="logout">Logout</a></li>
+           <li><i class="icon-logout"></i><a href="?cmd=logout" id="logout">Logout</a></li>
         </ul>
      </div>
     </div> 
