@@ -13,12 +13,12 @@ $smarty->template_dir = 'html'.DS.'files';
 
 $smarty->assign('URL', URL);
 $smarty->assign('menu', $menu);
-global $menu;
-if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
-$smarty->display('login.tpl');}
+
+
 
 if(!empty($cmd)){
-
+if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
+$smarty->display('main.tpl');}
 /********************************
     Check Login
  ********************************/
@@ -50,7 +50,7 @@ if(!empty($cmd)){
  /********************************
     Desplay Settings
  ********************************/
-  elseif($cmd == 'getSetting'){
+  elseif($cmd == 'setting'){
     
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $contact = $fwork->getContactDetails($result['contact_id']);

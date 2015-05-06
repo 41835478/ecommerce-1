@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 {include file='submenu.tpl'}
 <div class="formxx">
 <div class="personal_detalis">
@@ -171,3 +172,4 @@
                <input type="submit" value="Save" id="saveContactDetalis" />
     </div>
 </div>
+{include file='footer.tpl'}
