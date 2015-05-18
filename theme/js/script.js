@@ -580,8 +580,11 @@ function saveContactDetails() {
             document.getElementById('cont_country').innerHTML = Contact_country;
             document.getElementById('cont_Email').innerHTML = Contact_Email;
             getContacts();
-
-        },
+            
+      window.location.href="?cmd=contacts";
+        }
+        ,
+        
         error: function (errors) {
             modalText(INTERNAL_ERROR);
         }
@@ -878,6 +881,7 @@ function saveNewExistingUser() {
                 '&city=' + Contact_city + '&country=' + Contact_country + '&email=' + Contact_Email + '&position=' + Contact_Position,
         success: function (data) {
             modalText(data);
+             
         },
         error: function (errors) {
             modalText(INTERNAL_ERROR);
