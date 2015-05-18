@@ -50,7 +50,11 @@
           <ul>
             <li>{$license.name}</li>
             <li>{$type.{$license.type}}</li>
-            <li style="float:right"><a href="#" style="width:10px;height:10px" id="edit_contact" onclick="fillLicense('{$license.id}')"><div class="foot_icon2" style="float:left;"></div><div class="dele_cont" style="margin-left:5px;float:left"></div></a></li>
+            <li style="float:right"><a href="#" style="width:10px;height:10px" 
+        id="edit_contact" onclick="fillLicense('{$license.id}')"><div class="foot_icon2"
+        style="float:left;"></div></a><a href="#" style="width:10px;height:10px" 
+        id="del_contact" onclick="fillLicense('{$license.id}')"><div class="dele_cont" style="margin-left:5px;float:left">
+</div></a></li>
           </ul>
     </div>
     {/foreach}

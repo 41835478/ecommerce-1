@@ -112,7 +112,7 @@ ul.sf-navbar .current ul ul{top:-999em}
     border-bottom: 1px dotted #C6C6C6;
     margin-top: -20px;
     float:left;
-    width: 630px;
+    width: 700px;
     
     }
     
@@ -684,7 +684,7 @@ width :250px;
     height: 387px;
     margin-right: 10px;
     margin-top: 10px;
-    width: 630px;
+    width: 700px;
     
 }
 .header_form1{
@@ -694,7 +694,7 @@ width :250px;
     height: 387px;
     margin-right: 10px;
     margin-top: 10px;
-    width: 630px;
+    width: 700px;
     display:none;
     
 }
@@ -704,7 +704,7 @@ width :250px;
     float: right;
     margin-right: 10px;
     margin-top: 10px;
-    width: 630px;  
+    width: 700px;  
 }
 
 .header_form4{
@@ -713,7 +713,7 @@ width :250px;
     float: right;
     margin-right: 10px;
     margin-top: 10px;
-    width: 630px;  
+    width: 700px;  
 }
 .header_form_Invoice{
     background: none repeat scroll 0 0 #FFFFFF;
@@ -721,7 +721,7 @@ width :250px;
     float: right;
     margin-right: 10px;
     margin-top: 10px;
-    width: 630px;      
+    width: 700px;      
     overflow: hidden;
     height: 30px;
 }
@@ -731,7 +731,7 @@ width :250px;
     float: right;
     margin-right: 10px;
     margin-top: 10px;
-    width: 630px;      
+    width: 700px;      
 }
 
 .head_close{
@@ -1043,14 +1043,14 @@ background: #f3fbfe;
     border: 1px solid #C6C6C6;
     float:right;
     margin-right: 10px;
-    width: 630px;
+    width: 700px;
     margin-top: 10px;    
 }
 .new_account2{
     border-bottom: 1px solid #C6C6C6;
     height: 400px;
     float:right;
-    width: 630px;
+    width: 700px;
     margin-top: 30px; 
     display: none;
 }
@@ -1090,7 +1090,7 @@ background: #f3fbfe;
    border-bottom: 1px solid #C0C0C0;
     float: left;
     height: 64px;
-    width: 630px;
+    width: 700px;
 }
 .ded_img{
 
@@ -1179,16 +1179,16 @@ background: #f3fbfe;
 .tool_info{
     float: left;
 
-    width: 630px;
+    width: 700px;
 }
 .tool_sli1{  
     height: 228px;
-    width: 630px;  
+    width: 700px;  
 }
 .tool_sli2{
      display: none; 
     height: 228px;
-    width: 630px;  
+    width: 700px;  
 
 }
 .tool_sli2 span{
@@ -1211,13 +1211,13 @@ background: #f3fbfe;
 }
 .tool_sli3{
     height: 300px;
-    width: 630px;
+    width: 700px;
     display: none; 
     color: #7D7D7D;
 }
 .tool_sli4{
     height: 400px;
-    width: 630px;  
+    width: 700px;  
  display: none; 
     background: green;
 }
@@ -1438,7 +1438,7 @@ background: #f3fbfe;
     border-bottom: 1px solid #FFFFFF;
     height: 30px;
     margin-top: 30px;
-    width: 630px;
+    width: 700px;
 }
 
 .License_ul_title ul li{
@@ -1451,7 +1451,7 @@ background: #f3fbfe;
 .License_Info{
     height: 30px;
     margin-top: 5px;
-    width: 630px;
+    width: 700px;
 }
 .License_Info ul li{
     float: left;
@@ -1596,7 +1596,7 @@ width:500px;
 .documents_form{
     float: right;
     margin-top: 10px;
-    width: 630px;
+    width: 700px;
     line-height: 17px !important;
   
 }

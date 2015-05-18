@@ -609,8 +609,12 @@ function saveLicenseDetails()
     $.ajax({
         url: 'index.php?cmd=saveLicense&license_name=' + License_Name + '&license_type=' + License_Type
                 + '&license_id=' + License_ID,
+        
         success: function (data) {
+            if(License_ID > 0)
             window.location.reload();
+        else
+            window.location.href="?cmd=company";
             modalText(data);
             //  getCompany();
 
