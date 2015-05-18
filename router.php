@@ -18,7 +18,7 @@ $smarty->assign('menu', $menu);
 
 if(!empty($cmd)){
 if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
-$smarty->display('main.tpl');}
+$smarty->display('login.tpl');}
 /********************************
     Check Login
  ********************************/

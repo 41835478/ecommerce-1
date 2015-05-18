@@ -78,7 +78,7 @@ ul.sf-navbar .current ul ul{top:-999em}
 .login-wrapper .input-append .add-on,.login-wrapper .input-prepend .add-on{color:#000}
 .login-wrapper .form-horizontal .control-group{margin-bottom:14px}
 #login-result{text-align:center;font-weight:bold;font-size:11px}
-.main-inner{margin-top:12px}
+.main-inner{margin-top:12px;min-height: 400px}
 .col1{width:250px;float:left}
 .col2{width:650px;float:left;margin-left:-5px ;}
 .request-buttons a{background:url(../images/big-btns-bg.gif) repeat-x;height:45px;border:1px solid #c0c0c0;display:block;line-height:45px;margin-bottom:3px;padding:0 13px;color:#080808;font-size:15px}
@@ -809,7 +809,7 @@ width :250px;
     border-bottom: 1px solid #C6C6C6;
     float: left;
     height: 30px;
-    width: 630px;
+    width: 700px;
    
 }
 
@@ -1013,13 +1013,13 @@ ul li{
     border-bottom: 1px solid #FFFFFF;
     height: 30px;
     margin-top: 30px;
-    width: 630px;
+    width: 700px;
 }
 .pers_body{
 
     border-bottom: 1px solid silver;
     height: 30px;
-    width: 630px;   
+    width: 700px;   
 }
 .pers_body ul{
     float: left;

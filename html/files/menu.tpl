@@ -4,7 +4,7 @@
    <ul>
      {foreach from=$menu key=k item=v}
         <li>
-           <a href="#" id="{$v.id}" >{$v.display}</a>
+           <a href="?cmd={$v.id}" id="{$v.id}" >{$v.display}</a>
            {if $v.sub}
              {$sub = $v.sub}
              <ul>

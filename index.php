@@ -25,4 +25,6 @@ $smarty->assign('products', $products);
 $smarty->assign('domains', $fwork->getLookupServers());
 $smarty->assign('menu',$menu);
 $smarty->display('main.tpl');
+
+
 ?>

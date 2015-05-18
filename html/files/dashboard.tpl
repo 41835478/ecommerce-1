@@ -1,5 +1,4 @@
- 
-{include file='header.tpl'}
+ {include file='header.tpl'}
 <div class="tab-pane active" id="MQPlanet">
 
   {if count($news)}

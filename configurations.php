@@ -1,4 +1,4 @@
-<?php
+  <?php
 $database = array('default' => array('host'     => 'localhost',
                                      'user'     => 'root',
                                      'password' => 'root',
