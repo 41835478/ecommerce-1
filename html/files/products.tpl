@@ -25,6 +25,9 @@
                 Renewal
             </li>
             <li style="width:60px">
+                Date
+            </li>
+            <li style="width:60px">
                 Custom
             </li>
             <li style="width:50px">
@@ -46,6 +49,9 @@
             </li>
             <li style="width:60px">
                 {if $product.renewal==0} False {else} True {/if}
+            </li>
+            <li style="width:60px">
+                {$product.purchasing_date} 
             </li>
             <li style="width:60px">
                 {if $product.custom==0} Standard {else} Custom {/if}

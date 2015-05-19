@@ -570,6 +570,7 @@ function saveContactDetails() {
                 '&city=' + Contact_city + '&country=' + Contact_country + '&email=' + Contact_Email + '&position=' + Contact_Position +
                 '&id=' + Contact_ID,
         success: function (data) {
+            window.location.href="?cmd=contacts";
             modalText(data);
             document.getElementById('cont_first_name').innerHTML = Contact_firstName;
             document.getElementById('cont_Last_name').innerHTML = Contact_lastName;
@@ -579,11 +580,11 @@ function saveContactDetails() {
             document.getElementById('cont_City').innerHTML = Contact_city;
             document.getElementById('cont_country').innerHTML = Contact_country;
             document.getElementById('cont_Email').innerHTML = Contact_Email;
-            getContacts();
+          
+           
             
-      window.location.href="?cmd=contacts";
-        }
-        ,
+
+        },
         
         error: function (errors) {
             modalText(INTERNAL_ERROR);

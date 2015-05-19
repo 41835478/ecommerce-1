@@ -552,7 +552,7 @@ elseif($cmd =='saveLicense') {
   /********************************
     Products List
  ********************************/
-   elseif($cmd == 'products'){
+   elseif($cmd == 'products'){    
     $smarty->assign('sub', 'products');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $products =  $fwork->getProducts($result['account_id']);
@@ -560,6 +560,7 @@ elseif($cmd =='saveLicense') {
     echo count($products);
     $smarty->assign('products', $products);
     $smarty->assign('productType', $productType);  
+    $smarty->assign('productDate', $productDate); 
     $smarty->display('products.tpl');
     exit();
   }
