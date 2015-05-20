@@ -18,7 +18,8 @@ $smarty->assign('menu', $menu);
 
 if(!empty($cmd)){
 if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
-$smarty->display('login.tpl');}
+
+    header ("location:index.php");}
 /********************************
     Check Login
  ********************************/
@@ -28,6 +29,7 @@ $smarty->display('login.tpl');}
     $result   = $fwork->checkLogin($login, $password);
     
     if(!empty($result)) {
+        
         $account  = $fwork->getAccountDetails($result['account_id']);
         $result['account_name'] = $account['name'];
         $session->write(SESS_ACTIVE_CLIENT_ID, $result);
@@ -552,12 +554,14 @@ elseif($cmd =='saveLicense') {
   /********************************
     Products List
  ********************************/
-   elseif($cmd == 'products'){    
+   elseif($cmd == 'products'){  
+       
     $smarty->assign('sub', 'products');
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $products =  $fwork->getProducts($result['account_id']);
     $productType  = $fwork->getFields("mqp_products","type");
     echo count($products);
+    
     $smarty->assign('products', $products);
     $smarty->assign('productType', $productType);  
     $smarty->display('products.tpl');

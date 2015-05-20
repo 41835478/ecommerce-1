@@ -14,7 +14,7 @@
         <ul>
             <li><span>Company Name</span><p>{$info.name}</p></li>
             <li><span>Address:</span><p>{$info.billing_address_street} - {$info.billing_address_state} - {$info.billing_address_postalcode}</p><p>{$info.billing_address_city} - {$info.billing_address_country}</p></li>
-            <li><div class="map_icon"></div><p style="margin-top:20px">View on map</p></li>
+         
         </ul>
     </div>
     <div class="comp_info2">
