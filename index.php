@@ -28,4 +28,6 @@ $smarty->assign('menu',$menu);
 $smarty->display('main.tpl');
 
 
+
+
 ?>

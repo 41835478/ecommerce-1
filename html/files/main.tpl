@@ -30,11 +30,7 @@
 
      </ul>
      
-          <div style="text-align:right;margin-top:10px">
-        <a href="javascript:void(window.open('http://www.mqplanet.com/support/chat.php','','width=590,height=610,left=0,top=0,resizable=yes,menubar=no,location=no,status=yes,scrollbars=yes'))">
-        <img src="http://www.mqplanet.com/support/image.php?id=04&amp;type=inlay" width="158" height="45" border="0" alt="MQ Planet Live Help" />
-        </a>
-    </div>
+    
     <div id="livezilla_tracking" style="display:none"></div>
     <script type="text/javascript">
         var script = document.createElement("script");
@@ -54,10 +50,17 @@
 
 
   {if $client_id == ''}{include file='login.tpl'}
+<<<<<<< HEAD
       {elseif !isset($active_sub_menu)}
           {header("location:?cmd=dashboard")}
   {else}
   
+=======
+      
+
+      {else}
+    
+>>>>>>> 42eeca9818fd6fa59113c4a01695b9206a855956
    <div class="overflow main-inner wrapper">
  
      <div class="col3"> </div> 
