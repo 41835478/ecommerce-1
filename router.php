@@ -560,7 +560,6 @@ elseif($cmd =='saveLicense') {
     echo count($products);
     $smarty->assign('products', $products);
     $smarty->assign('productType', $productType);  
-    $smarty->assign('productDate', $productDate); 
     $smarty->display('products.tpl');
     exit();
   }

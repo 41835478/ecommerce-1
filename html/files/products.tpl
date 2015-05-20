@@ -50,14 +50,14 @@
             <li style="width:60px">
                 {if $product.renewal==0} False {else} True {/if}
             </li>
-            <li style="width:60px">
+            <li style="width:62px">
                 {$product.purchasing_date} 
             </li>
             <li style="width:60px">
                 {if $product.custom==0} Standard {else} Custom {/if}
             </li>
             <li style="width:50px">
-                <a href="#" style="width:10px;height:10px" id="edit_server" onclick="fillServer('{$server.id}')"><div class="foot_icon2" style="margin-left:45px;float:left"></div></a>
+                <a href="#" style="width:10px;height:10px" id="edit_server" onclick="fillServer('{$server.id}')"><div class="foot_icon2" style="margin-left:18px;float:left"></div></a>
             </li>
         </ul>
     </div>
