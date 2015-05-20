@@ -24,6 +24,7 @@ $smarty->assign('client_name', $cid['account_name']);
 $smarty->assign('products', $products);
 $smarty->assign('domains', $fwork->getLookupServers());
 $smarty->assign('menu',$menu);
+
 $smarty->display('main.tpl');
 
 

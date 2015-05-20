@@ -1999,3 +1999,50 @@ function readUrl(selectr) {
 }
 
 
+/*_________________________________________________________________________show_hide_menu*/
+      
+function set_active_menu(active_menu_id){
+    
+       $(".sub_menu_account_ul").hide();
+    $(".set_menu #"+active_menu_id).css({"font-size":"20px"});
+    var ul_node=$(".set_menu #"+active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
+    
+    ul_node.show(500);
+}//set_active_menu(active_menu_id)
+
+
+$(document).ready(function(){
+       
+       var menu_down=false;
+       $(".main_menu_title_li").click(function(){
+           var li_node=$(this);
+           
+       $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").hide(500);
+           if(menu_down==true){li_node.find(".sub_menu_account_ul").hide(500);}else{li_node.find(".sub_menu_account_ul").show(500);}
+         
+         });
+
+       
+    
+});//ready
+
+
+/*_________________________________getProductsPeriod*/
+function getProductsPeriod(product_id){
+
+    $.ajax({
+        datatype:"post",
+        url: 'index.php?cmd=getproductsperiod',
+        data:{
+            "product_id":product_id
+        },
+        success: function (return_data) {
+              alert(return_data);
+        },
+        error: function (errors) {
+            alert("error , please try again later");
+        }
+    });
+    
+}//getProductsPeriod
+/*______________________________END___getProductsPeriod*/

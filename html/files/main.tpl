@@ -54,6 +54,8 @@
 
 
   {if $client_id == ''}{include file='login.tpl'}
+      {elseif !isset($active_sub_menu)}
+          {header("location:?cmd=dashboard")}
   {else}
   
    <div class="overflow main-inner wrapper">

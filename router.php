@@ -15,10 +15,10 @@ $smarty->assign('URL', URL);
 $smarty->assign('menu', $menu);
 
 
-
 if(!empty($cmd)){
 if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
-$smarty->display('login.tpl');}
+header('location:index.php');//$smarty->display('login.tpl');
+}
 /********************************
     Check Login
  ********************************/
@@ -59,6 +59,7 @@ $smarty->display('login.tpl');}
     $smarty->assign('contact',$contact);
     $smarty->assign('member',$member);
     $smarty->assign('level',$level);
+    $smarty->assign('active_sub_menu','setting');
     $smarty->display('settings.tpl');
     exit(); 
   }
@@ -72,6 +73,7 @@ $smarty->display('login.tpl');}
     $contacts =  $fwork->getContacts($result['account_id']);
     $smarty->assign('contact_id',$result['contact_id']);
     $smarty->assign('contacts', $contacts); 
+    $smarty->assign('active_sub_menu','contacts');
     $smarty->display('contacts.tpl');
     exit();
   }
@@ -80,6 +82,7 @@ $smarty->display('login.tpl');}
  ********************************/
   elseif($cmd == 'add_contact'){
     $smarty->assign('sub', 'account');
+    $smarty->assign('active_sub_menu','add_contact');
     $smarty->display('add_contact.tpl');
     exit();
   } 
@@ -99,6 +102,7 @@ $smarty->display('login.tpl');}
     }
     $smarty->assign('contacts', $contacts2); 
     $smarty->assign('sub', 'account');
+    $smarty->assign('active_sub_menu','add_user');
     $smarty->display('add_user.tpl');
     exit();
   } 
@@ -110,6 +114,7 @@ $smarty->display('login.tpl');}
     $smarty->assign('sub', 'account');
     $type  = $fwork->getFields("mqp_license","type");
     $smarty->assign('type',$type);
+    $smarty->assign('active_sub_menu','add_license');
     $smarty->display('add_license.tpl');
     exit();
   } 
@@ -241,6 +246,7 @@ elseif($cmd =='saveLicense') {
     $level  = $fwork->getFields("mqp_members","level");
     $smarty->assign('level',$level);
     $smarty->assign('members', $members);
+    $smarty->assign('active_sub_menu','members');
     $smarty->display('members.tpl');
     exit();
   }
@@ -257,6 +263,7 @@ elseif($cmd =='saveLicense') {
     $smarty->assign('info', $info);
     $smarty->assign('licenses', $licenses);
     $smarty->assign('type',$type);
+    $smarty->assign('active_sub_menu','company');
     $smarty->display('company.tpl');
     exit();
   }
@@ -265,6 +272,8 @@ elseif($cmd =='saveLicense') {
     Forget password
  ********************************/
   elseif($cmd == 'forget-password'){
+      
+    $smarty->assign('active_sub_menu','forget_password');
     $smarty->display('forget_password.tpl');
     exit();
   }
@@ -312,6 +321,8 @@ elseif($cmd =='saveLicense') {
     $servertypes  = $fwork->getFields("mqp_servers","server_type");
     $smarty->assign('servers',$servers);
     $smarty->assign('servertypes',$servertypes);
+    
+    $smarty->assign('active_sub_menu','servers');
     $smarty->display('servers.tpl');
     exit();
   }
@@ -369,6 +380,7 @@ elseif($cmd =='saveLicense') {
     $plans  = $fwork->getFields("mqp_webhost","host_plan");
     $smarty->assign('webhosts',$webhosts);
     $smarty->assign('plans',$plans);
+    $smarty->assign('active_sub_menu','webhosts');
    $smarty->display('webhosts.tpl');
    exit();
   }
@@ -383,6 +395,7 @@ elseif($cmd =='saveLicense') {
     $registerars  = $fwork->getFields("mqp_domains","registerar");
     $smarty->assign('domains',$domains);
     $smarty->assign('registerars',$registerars);
+    $smarty->assign('active_sub_menu','domains');
     $smarty->display('domains.tpl');
     exit();
   }
@@ -560,6 +573,7 @@ elseif($cmd =='saveLicense') {
     echo count($products);
     $smarty->assign('products', $products);
     $smarty->assign('productType', $productType);  
+    $smarty->assign('active_sub_menu','products');
     $smarty->display('products.tpl');
     exit();
   }
@@ -574,6 +588,7 @@ elseif($cmd =='saveLicense') {
     $status  = $fwork->getFields("Cases","status");
     $smarty->assign('cases', $cases);
     $smarty->assign('status', $status);  
+    $smarty->assign('active_sub_menu','open-cases');
     $smarty->display('open_cases.tpl');
     exit();
   }
@@ -586,6 +601,7 @@ elseif($cmd =='saveLicense') {
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $invoices =  $fwork->getInvoices($result['account_id']);
     $smarty->assign('invoices', $invoices);  
+    $smarty->assign('active_sub_menu','invoices');
     $smarty->display('invoices.tpl');
     exit();
   }
@@ -604,6 +620,7 @@ elseif($cmd =='saveLicense') {
     $smarty->assign('documents', $documents);
     $smarty->assign('type', $type);
     $smarty->assign('offset', $offset); 
+    $smarty->assign('active_sub_menu','getDocuments');
     if($offset==0)
         $smarty->display('documents.tpl');
     else
@@ -617,6 +634,7 @@ elseif($cmd =='saveLicense') {
     $smarty->assign('sub', 'documents');
     $document =  $fwork->getDocument($document_id);
     $smarty->assign('document', $document);
+    $smarty->assign('active_sub_menu','getDocument');
     $smarty->display('document.tpl');
     exit();
   }   
@@ -632,6 +650,7 @@ elseif($cmd =='saveLicense') {
    $smarty->assign('finedArt', $finedArt);
    $smarty->assign('offset', $offset);
    $smarty->assign('documents', $documents);
+    $smarty->assign('active_sub_menu','find_articles');
    if($offset==0)
         $smarty->display('documents.tpl');
    else
@@ -644,6 +663,7 @@ elseif($cmd =='saveLicense') {
     $invoice_id = $fwork->requestVar('id');
     $info = $fwork->getInvoiceDetails($invoice_id);
     $smarty->assign('info', $info);
+    $smarty->assign('active_sub_menu','getInvoiceDetails');
     $smarty->display('invoice_details.tpl');
     exit();
  }
@@ -652,6 +672,7 @@ elseif($cmd =='saveLicense') {
     $invoice_id = $fwork->requestVar('id');
     $payments= $fwork->getInvoicePayments($invoice_id);
     $smarty->assign('payments', $payments);
+    $smarty->assign('active_sub_menu','getInvoicePayments');
     $smarty->display('invoice_payments.tpl');
     exit();
  }
@@ -659,10 +680,10 @@ elseif($cmd =='saveLicense') {
     $documents =  $fwork->getDocuments('news',0);
     //var_dump("sdsda",$documents);
     $smarty->assign('news', $documents);
+    $smarty->assign('active_sub_menu','dashboard');
     $smarty->display('dashboard.tpl');
     exit();
   }
-
   
   
   
@@ -688,36 +709,42 @@ elseif($cmd =='saveLicense') {
     $result   = $fwork->getFullarticle($id);
   
     $smarty->assign('article', $result);
+    $smarty->assign('active_sub_menu','displayArticle');
     $smarty->display('article.tpl');
     exit();
   }
 
   
   elseif($cmd == 'openRequestServer'){
+    $smarty->assign('active_sub_menu','openRequestServer');
     $smarty->display('request_server.tpl');
     exit();
   }
   
   elseif($cmd == 'openRequestProduct'){
     $smarty->assign('products', $products);
+    $smarty->assign('active_sub_menu','openRequestProduct');
     $smarty->display('request-product.tpl');
     exit();
   }
   
     elseif($cmd == 'openRequestDomain'){
     $smarty->assign('domains', $fwork->getLookupServers());
+    $smarty->assign('active_sub_menu','openRequestDomain');
     $smarty->display('Request_Domain.tpl');
     exit();
   }
   
   elseif($cmd == 'openTicket'){
     $smarty->assign('domains', $fwork->getLookupServers());
+    $smarty->assign('active_sub_menu','openTicket');
     $smarty->display('request_ticket.tpl');
     exit();
   }
   
     elseif($cmd == 'openRequestHost'){
     $smarty->assign('domains', $fwork->getLookupServers());
+    $smarty->assign('active_sub_menu','openRequestHost');
     $smarty->display('request_host.tpl');
     exit();
   }
@@ -726,6 +753,7 @@ elseif($cmd =='saveLicense') {
   elseif($cmd == 'getsupportinfo'){
     $tickets  = $fwork->getTicketsInfo($session->read(SESS_ACTIVE_CLIENT_ID));
     $smarty->assign('tickets', $tickets);
+    $smarty->assign('active_sub_menu','getsupportinfo');
     $smarty->display('support.tpl');
     exit();
   }
@@ -743,6 +771,7 @@ elseif($cmd =='saveLicense') {
 
     $smarty->assign('info', $info);
     $smarty->assign('expire', $expire);
+    $smarty->assign('active_sub_menu','getredirectsinfo');
     $smarty->display('redirects.tpl');
     exit();
   }
@@ -766,6 +795,7 @@ elseif($cmd =='saveLicense') {
 
     $smarty->assign('paid', $paid);
     $smarty->assign('unpaid', $unpaid);
+    $smarty->assign('active_sub_menu','getinvoicesinfo');
     $smarty->display('invoices.tpl');
     exit();
   }
@@ -885,6 +915,15 @@ elseif($cmd =='saveLicense') {
     $title = $fwork->requestVar('title');
     $body  = $fwork->requestVar('body');
     $fwork->addNewTicket($session->read(SESS_ACTIVE_CLIENT_ID), $title, $body);
+    exit();
+  }
+    
+  elseif($cmd == 'getproductsperiod'){
+     
+     $product_id  = $fwork->requestVar('product_id'); 
+    $result = $fwork->getProductsPeriod($product_id);
+    var_dump($result);
+    
     exit();
   }
     

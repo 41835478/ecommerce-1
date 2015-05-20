@@ -33,7 +33,7 @@
         </ul>
     </div>
     {foreach from=$products item=product}
-    <div class="pers_body">
+    <div class="pers_body" onClick="getProductsPeriod('{$product.id}');">
         <ul>
             <li style="width:150px">
                 {$product.name}
