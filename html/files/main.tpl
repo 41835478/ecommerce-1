@@ -50,6 +50,7 @@
 
 
   {if $client_id == ''}{include file='login.tpl'}
+      {elseif  !$cmd }{header ("location:index.php?cmd=dashboard")}
       
 
       {else}
