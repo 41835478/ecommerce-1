@@ -50,17 +50,11 @@
 
 
   {if $client_id == ''}{include file='login.tpl'}
-<<<<<<< HEAD
+
       {elseif !isset($active_sub_menu)}
           {header("location:?cmd=dashboard")}
   {else}
-  
-=======
-      
 
-      {else}
-    
->>>>>>> 42eeca9818fd6fa59113c4a01695b9206a855956
    <div class="overflow main-inner wrapper">
  
      <div class="col3"> </div> 

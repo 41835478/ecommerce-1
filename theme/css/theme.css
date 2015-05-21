@@ -598,7 +598,6 @@ width :250px;
     
 }
 .cont_title{
-    width: 120px;
     height: 20px;
    margin-left: 10px;
     margin-top: 3px;
@@ -1775,3 +1774,130 @@ width:500px;
 display:block;
 }*/
 
+  #period_table_div{
+      background: none repeat scroll 0 0 #FFFFFF;
+                    border:1px solid #C6C6C6; 
+                    float: right;
+                    margin:15px 10px;
+                    display: none;
+  }
+  #pers_body_all_div{clear: both;}
+   #period_table_div .pers_title{background-color: #E7E7E7;}
+   .period_loading_span{
+   background-image: url(../images/loading.gif);
+   background-repeat: none;
+   background-size: 20px 20px;
+   display: inline-block;
+   width: 20px;
+   height:20px;
+   margin:0px;
+   
+   
+   
+   }
+   .expiry_button,.renew_button{
+       padding:0px;
+       width:60px;
+       margin:0px;
+       border-width: 1px;
+       font-size:12px;
+       text-align: center;
+   }
+   .expiry_button{color:#C54F27;}
+   
+   .renew_button{color:#125F90;}
+   
+  .table_all_div .pers_body ul li {
+  display: block;
+  float: left;
+  margin-left: 0px;
+  width: auto;
+  font-size: 12px;
+}
+/*______________________________________table*/
+.table_all_div{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #C6C6C6;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 700px;  
+}
+
+.table_head_div{
+    background: none repeat scroll 0 0 #FAFAFA;
+    border-bottom: 1px solid #C6C6C6;
+    float: left;
+    height: 30px;
+    width: 700px;
+   
+}
+
+.table_head_div .top_table_icon_div{
+    float:left;
+    width: 35px;
+    height: 30px;
+    border-right: 1px solid #c6c6c6;
+  
+    
+}
+.table_head_div .top_table_icon{
+    float: left;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 7px;
+    width: 35px;
+      background:url(../images/arrow-ico.gif);
+    background-repeat:no-repeat;  
+}
+
+.table_head_div  .table_head_label{
+    height: 20px;
+   margin-left: 10px;
+    margin-top: 3px;
+    float:left;
+    
+}
+
+.close_table_x_a{
+    
+    width: 20px;
+    height: 20px;
+    float: right;
+}
+.close_table_x_a span{
+    background-image:url(../images/close.gif);
+    background-repeat:no-repeat;
+    float: right;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 7px;
+    width: 20px;
+}
+.main_table{
+    width:100%;
+    
+}
+.main_table th{
+   background-color: #E7E7E7;
+   text-align: left;
+   padding:5px;
+    
+}
+
+.main_table tbody tr{
+    
+    border-bottom:1px solid #C0C0C0;
+    
+}
+.main_table tbody tr:hover td{
+    background: #f3fbfe;
+    
+}
+
+
+.main_table tbody td{
+    padding: 2px;
+    
+}
+/*____________________________________END__table*/

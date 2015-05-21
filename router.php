@@ -17,13 +17,10 @@ $smarty->assign('menu', $menu);
 
 if(!empty($cmd)){
 if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
-<<<<<<< HEAD
+
 header('location:index.php');//$smarty->display('login.tpl');
 }
-=======
 
-    header ("location:index.php");}
->>>>>>> 42eeca9818fd6fa59113c4a01695b9206a855956
 /********************************
     Check Login
  ********************************/
@@ -577,7 +574,7 @@ elseif($cmd =='saveLicense') {
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $products =  $fwork->getProducts($result['account_id']);
     $productType  = $fwork->getFields("mqp_products","type");
-    echo count($products);
+   
     
     $smarty->assign('products', $products);
     $smarty->assign('productType', $productType);  
@@ -930,12 +927,23 @@ elseif($cmd =='saveLicense') {
      
      $product_id  = $fwork->requestVar('product_id'); 
     $result = $fwork->getProductsPeriod($product_id);
-    var_dump($result);
+    
+    
+    $smarty->assign('result',$result);
+    $smarty->display('product_period.tpl');
     
     exit();
-  }
-    
-  
-  
+  } elseif ($cmd == 'sendrenewalemail') {
+        $result = $session->read(SESS_ACTIVE_CLIENT_ID);
+        $product_id = $fwork->requestVar('product_id');
+        $body = 'Dear Mr.galya <br> please I want to renew the product id ' . $product_id;
+        if ($fwork->sendEmail('Order renew', $result['account_name'], 'members@mqplanet.com', $body)) {
+            echo 'success';
+        }//seuccess send email
+        else {
+            echo 'error';
+        }//error
+        exit;
+    }//sendrenewalemail
 }
 ?>

@@ -2029,21 +2029,62 @@ $(document).ready(function(){
 
 
 /*_________________________________getProductsPeriod*/
-function getProductsPeriod(product_id){
 
+var get_products_period_status=false;
+function mycp_ajax(ajax_data){
+     
+    var page_url='index.php?cmd=getproductsperiod';
+    if(ajax_data.hasOwnProperty('url')){page_url=ajax_data.url;}
+    
+    
+    if (get_products_period_status == true) {
+        return false;
+    }
+    get_products_period_status = true;
+    ajax_data.show_container_node.find(".period_loading_span").show();
+    $(ajax_data.show_container_node).show(100);
+    ajax_data.wait_container.html('<tr><td colspan="4"><span class="period_loading_span"></span></td></tr>');
+   
     $.ajax({
         datatype:"post",
-        url: 'index.php?cmd=getproductsperiod',
-        data:{
-            "product_id":product_id
-        },
+        url: page_url,
+        data:ajax_data.sent_data
+        ,
         success: function (return_data) {
-              alert(return_data);
+              ajax_data.return_data_place.html(return_data);
+              $(ajax_data.show_container_node).show(100);
+              
         },
         error: function (errors) {
-            alert("error , please try again later");
+             ajax_data.return_data_place.html("error , please try again later");
+        },complete:function(){
+            $(".period_loading_span").hide();
+       get_products_period_status = false;
         }
     });
     
-}//getProductsPeriod
+}//mycp_ajax
+
+function getProductsPeriod(product_id){
+var ajax_data={
+    show_container_node:$('#period_table_div'),
+    wait_container:$("#pers_body_all_div"),
+     sent_data:{"product_id":product_id},
+    return_data_place:$('#pers_body_all_div')
+}
+mycp_ajax(ajax_data);
+}//function getProductsPeriod
+
+
+function sendrenewalemail(product_id,button_node){
+var ajax_data={
+    url:'index.php?cmd=sendrenewalemail',
+    show_container_node:button_node,
+    wait_container:button_node,
+    sent_data:{"product_id":product_id},
+    return_data_place:button_node
+}
+mycp_ajax(ajax_data);
+}//function getProductsPeriod
+
 /*______________________________END___getProductsPeriod*/
