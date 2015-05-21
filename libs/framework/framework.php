@@ -381,9 +381,33 @@ class Framework{
       
     }
    // var_dump($result);
-    
     return $result;
   } 
+ 
+  
+    public function getProductsPeriod($id)
+  {
+    $result = array();
+    $sugar = new iSugar();echo $id;
+    $result = $sugar->getDataList('mqp_prperiod','mqp_products',$id);
+   return $result;
+    $i=0;
+    foreach($result as $domain) {
+        $res = array();
+        $result2 = $sugar->getDataList('mqp_domains','mqp_dperiod',$domain['id']);
+        foreach($result2 as $row)
+          $res[] =$row['end_date']; 
+        
+        array_multisort($res,SORT_DESC,$result2);
+        //var_dump($result2);
+        $result[$i]['start_date'] = $result2[0]['start_date'];
+        $result[$i]['end_date'] = $result2[0]['end_date'];
+        $i++;
+      
+    }
+    return $result;
+  }
+  
   
   public function getOpenCases($id)
   {

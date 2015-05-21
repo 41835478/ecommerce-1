@@ -1055,7 +1055,7 @@ background: #f3fbfe;
     display: none;
 }
 #add_contact{
-    background-image:url(../images/addAcoount.gif);
+  //url(../images/addAcoount.gif);
     background-repeat:no-repeat;
     float: left;
     height: 20px;
@@ -1066,11 +1066,11 @@ background: #f3fbfe;
 .new_account input[type="text"]{
     width: 150px;
 }
-#sub_menu_account{
+.sub_menu_account{
     float: left;
     height: 50px;
 }
-#sub_menu_account a{
+.sub_menu_account a{
     margin-left: 40px;
 }
 #hov_cont{
@@ -1078,7 +1078,7 @@ background: #f3fbfe;
 
 
 }
-#sub_menu_account ul li a{
+.sub_menu_account ul li a{
     width:100px;
     height: 30px;
     margin-left: 10px;
@@ -1144,7 +1144,7 @@ background: #f3fbfe;
     display: none;
 }
 .ded_img1{
-    background-image: url("../images/Nn1_03.gif");
+   // background-image: url("../images/Nn1_03.gif");
     background-repeat: no-repeat;
     height: 45px;
     margin-left: 13px;
@@ -1152,7 +1152,7 @@ background: #f3fbfe;
     width: 75px;
 }
 .ded_img2{
-    background-image: url("../images/Nn2_03.gif");
+  //  background-image: url("../images/Nn2_03.gif");
     background-repeat: no-repeat;
     height: 45px;
     margin-left: 29px;
@@ -1160,7 +1160,7 @@ background: #f3fbfe;
     width: 75px;
 }
 .ded_img3{
-    background-image: url("../images/NMM_03.gif");
+   // background-image: url("../images/NMM_03.gif");
     background-repeat: no-repeat;
     height: 45px;
     margin-left: 18px;
@@ -1168,7 +1168,7 @@ background: #f3fbfe;
     width: 75px;
 }
 .ded_img4{
-    background-image: url("../images/NMMMMM_03.gif");
+ //   background-image: url("../images/NMMMMM_03.gif");
     background-repeat: no-repeat;
     height: 45px;
     margin-left: 25px;
@@ -1231,7 +1231,7 @@ background: #f3fbfe;
     width: 550px;
 }
 .re_img{
-    background-image: url("../images/reboot_03.gif");
+ //   background-image: url("../images/reboot_03.gif");
     background-repeat: no-repeat;
     height: 75px;
     margin-left: 11px;
@@ -1353,7 +1353,7 @@ background: #f3fbfe;
 
 
 .ftp_back_msg_img{
-    background-image: url("../images/ftp-backup_03.gif");
+   // background-image: url("../images/ftp-backup_03.gif");
     background-repeat: no-repeat;
     float: left;
     height: 75px;
@@ -1668,7 +1668,7 @@ width:500px;
 } 
     
 #add_license{
-    background-image: url("../images/license.gif");
+//    background-image: url("../images/license.gif");
     background-repeat: no-repeat;
     float: left;
     height: 20px;
@@ -1677,7 +1677,7 @@ width:500px;
     width: 100px;
 }    
 #add_user{
-    background-image: url("../images/addAcoount.gif");
+   // background-image: url("../images/addAcoount.gif");
     background-repeat: no-repeat;
     float: left;
     height: 20px;
@@ -1762,4 +1762,16 @@ width:500px;
     text-align: center;
     width: 1120px;  
     
-}    
+}   
+
+
+.main_menu_title_li a,.main_menu_title_li div{ height: 50px !important;margin: 0px !important; }
+.main_menu_title_li a{  height: 37px !important;padding-top: 13px;  }
+
+.sub_menu_account_ul a{ width: 100% !important;}
+/*
+.sub_menu_account_ul{ display:none;}
+.main_menu_title_li:hover .sub_menu_account_ul{
+display:block;
+}*/
+

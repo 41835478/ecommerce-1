@@ -1,3 +1,4 @@
+{include file='header.tpl'}
 <div class="after_logo"><div class="logo"></div></div>
  <div class="curved-tl curved-tr login-title">Reset your password</div>
     <div class="form-horizontal">
@@ -33,3 +34,4 @@
     
         <div id="result_frgt" style="font-size:18px; color:RED"></div>
     </div>
+ {include file='footer.tpl'}

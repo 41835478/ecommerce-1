@@ -125,10 +125,10 @@ $menu= array('dashboard' => array(
                                                         )
                                               )
                                    ),
-                                   'phoneredirection' => array (
-                                              'display' => 'Phone Redirection',
+                                 /*  'phoneredirection' => array (
+                                             'display' => 'Phone Redirection',
                                               'id'      => 'redirection-info-get',
-                                   )
+                                   )*/
                                    
                         )
               
