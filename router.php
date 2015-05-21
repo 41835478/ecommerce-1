@@ -277,6 +277,7 @@ elseif($cmd =='saveLicense') {
   elseif($cmd == 'forget-password'){
       
     $smarty->assign('active_sub_menu','forget_password');
+
     $smarty->display('forget_password.tpl');
     exit();
   }
@@ -287,7 +288,7 @@ elseif($cmd =='saveLicense') {
   elseif($cmd == 'send-forget-password'){
    $email = $fwork->requestVar('email');
     
-    // validate email in server side 
+    //validate email in server side 
    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     echo 1;
     exit();
@@ -945,5 +946,19 @@ elseif($cmd =='saveLicense') {
         }//error
         exit;
     }//sendrenewalemail
+}
+function SendMail(){
+     $mail = new PHPMailer();
+    $mail->IsSMTP();
+    $mail->Host = $smtp['default']['host'];
+    $mail->SMTPAuth = true;
+    $mail->Port     = $smtp['default']['port'];
+    $mail->Username = $smtp['default']['user'];
+    $mail->Password = $smtp['default']['password'];
+    $mail->SetFrom('members@mqplanet.com','Administrator');
+    $mail->Subject = $subject;
+    $mail->MsgHTML($body);
+    $mail->AddAddress($result['email1']);
+    return $mail->Send();
 }
 ?>

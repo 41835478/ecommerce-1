@@ -119,10 +119,10 @@ $(document).ready(function () {
         $(".header_form4").fadeOut();
     });
 
-    $('#forget-password').live('click', function () {
+   /* $('#forget-password').live('click', function () {
         forgetPassword();
         $('#banners').hide();
-    });
+    });*/
     $('#send_forget_password').live('click', function () {
         sendForgetPassword();
     });
@@ -2063,6 +2063,7 @@ function mycp_ajax(ajax_data){
         }
     });
     
+
 }//mycp_ajax
 
 function getProductsPeriod(product_id){
@@ -2085,6 +2086,4 @@ var ajax_data={
     return_data_place:button_node
 }
 mycp_ajax(ajax_data);
-}//function getProductsPeriod
-
-/*______________________________END___getProductsPeriod*/
+}
