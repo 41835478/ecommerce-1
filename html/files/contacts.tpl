@@ -24,9 +24,9 @@
             <li>{if $contact.email1} {$contact.email1} {else} N/A {/if}</li>
             <li>{if $contact.phone_work} {$contact.phone_work} {else} N/A {/if}</li>
             {if $contact.id!=$contact_id}
-            <li><a href="#" style="width:10px;height:10px" id="edit_contact" onclick="fillContact('{$contact.id}')"><i class="fa fa-plus fa-3"></i></a><i class="fa fa-trash fa-3"></i></li>
+            <li><a href="#" style="width:10px;height:10px" id="edit_contact" onclick="fillContact('{$contact.id}')"><div class="foot_icon2" style="margin-left:55px;float:left"></div></a><div class="dele_cont"></div></li>
             {else}
-            <li><div  style="margin-left:55px;float:left"><i class="fa fa-trash fa-3"></i></div></li>
+            <li><div class="dele_cont" style="margin-left:55px;float:left"></div></li>
             {/if}
         </ul>
     </div>

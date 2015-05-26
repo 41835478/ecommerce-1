@@ -1,7 +1,6 @@
 {include file='header.tpl'}
 {include file='submenu.tpl'}
 
-
 <div class="header_form2" style="height:260px">   
     <div class="form_head">
         <div class="cont_icon">
@@ -52,8 +51,10 @@
             <li>{$license.name}</li>
             <li>{$type.{$license.type}}</li>
             <li style="float:right"><a href="#" style="width:10px;height:10px" 
-        id="edit_contact" onclick="fillLicense('{$license.id}')"><i class="fa fa-plus fa-3"></i></a><a href="#" style="width:10px;height:10px" 
-        id="del_contact" onclick="fillLicense('{$license.id}')">  <i class="fa fa-trash fa-3"></i></a></li>
+        id="edit_contact" onclick="fillLicense('{$license.id}')"><div class="foot_icon2"
+        style="float:left;"></div></a><a href="#" style="width:10px;height:10px" 
+        id="del_contact" onclick="fillLicense('{$license.id}')"><div class="dele_cont" style="margin-left:5px;float:left">
+</div></a></li>
           </ul>
     </div>
     {/foreach}
