@@ -5,6 +5,9 @@
   <link href="{$URL}/theme/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
   <link href="{$URL}/theme/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link href="{$URL}/theme/css/theme.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+   
   <script type="text/javascript" src="{$URL}/theme/js/jquery.js"></script>
   <script type="text/javascript" src="{$URL}/theme/js/bootstrap.js"></script>
   <script type="text/javascript" src="{$URL}/theme/js/hoverIntent.js"></script>

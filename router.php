@@ -947,18 +947,5 @@ elseif($cmd =='saveLicense') {
         exit;
     }//sendrenewalemail
 }
-function SendMail(){
-     $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->Host = $smtp['default']['host'];
-    $mail->SMTPAuth = true;
-    $mail->Port     = $smtp['default']['port'];
-    $mail->Username = $smtp['default']['user'];
-    $mail->Password = $smtp['default']['password'];
-    $mail->SetFrom('members@mqplanet.com','Administrator');
-    $mail->Subject = $subject;
-    $mail->MsgHTML($body);
-    $mail->AddAddress($result['email1']);
-    return $mail->Send();
-}
+
 ?>
