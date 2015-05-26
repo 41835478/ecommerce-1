@@ -232,7 +232,11 @@ elseif($cmd =='saveLicense') {
     }
     
     $result = $fwork->saveLicense($license,$newRecord);
+  
+    /*________________________old responed*
     if($result->number==0) 
+    /*_____________________END___old responed*/
+     if($result == true) 
       echo "Success";
     else
       echo "Error";
@@ -652,7 +656,7 @@ elseif($cmd =='saveLicense') {
    $offset = $fwork->requestVar('offset');
    $finedArt = $fwork->requestVar('find_articles');
    $smarty->assign('sub', 'documents');
-   $documents =  $fwork->findArticles($finedArt,$offset);
+   $documents =  $fwork->findArticles("manuals",$offset);
    $smarty->assign('finedArt', $finedArt);
    $smarty->assign('offset', $offset);
    $smarty->assign('documents', $documents);
@@ -661,6 +665,17 @@ elseif($cmd =='saveLicense') {
         $smarty->display('documents.tpl');
    else
         $smarty->display('moreNews.tpl');
+  exit();
+  }
+   
+ /********************************
+     Find Articles
+ ********************************/
+  elseif($cmd == 'news'){
+
+   $smarty->assign('sub', 'documents');
+    $smarty->assign('active_sub_menu','news');
+        $smarty->display('news.tpl');
   exit();
   }
   
@@ -922,18 +937,6 @@ elseif($cmd =='saveLicense') {
     $body  = $fwork->requestVar('body');
     $fwork->addNewTicket($session->read(SESS_ACTIVE_CLIENT_ID), $title, $body);
     exit();
-  }
-    
-  elseif($cmd == 'getproductsperiod'){
-     
-     $product_id  = $fwork->requestVar('product_id'); 
-    $result = $fwork->getProductsPeriod($product_id);
-    
-    
-    $smarty->assign('result',$result);
-    $smarty->display('product_period.tpl');
-    
-    exit();
   } elseif ($cmd == 'sendrenewalemail') {
         $result = $session->read(SESS_ACTIVE_CLIENT_ID);
         $product_id = $fwork->requestVar('product_id');
@@ -946,19 +949,28 @@ elseif($cmd =='saveLicense') {
         }//error
         exit;
     }//sendrenewalemail
-}
-function SendMail(){
-     $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->Host = $smtp['default']['host'];
-    $mail->SMTPAuth = true;
-    $mail->Port     = $smtp['default']['port'];
-    $mail->Username = $smtp['default']['user'];
-    $mail->Password = $smtp['default']['password'];
-    $mail->SetFrom('members@mqplanet.com','Administrator');
-    $mail->Subject = $subject;
-    $mail->MsgHTML($body);
-    $mail->AddAddress($result['email1']);
-    return $mail->Send();
+    
+  elseif($cmd == 'getproductsperiod'){
+     
+     $product_id  = $fwork->requestVar('product_id'); 
+    $result = $fwork->getProductsPeriod($product_id);
+    
+    
+    $smarty->assign('result',$result);
+    $smarty->display('product_period.tpl');
+    
+    exit();
+  }
+  elseif($cmd == 'getperiodinvoice'){
+     
+     $product_id  = $fwork->requestVar('product_id'); 
+    $result = $fwork->getPeriodInvoice($product_id);
+    
+    
+    $smarty->assign('result',$result);
+    $smarty->display('product_period.tpl');
+    
+    exit();
+  }
 }
 ?>

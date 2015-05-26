@@ -10,8 +10,9 @@
        {if $sub==$k}
           {$sub1=$v.sub}
           {foreach from=$sub1 key=x item=y} 
+       {if $y.sub}
              <li class="main_menu_title_li"><div class="menu_li"></div><a >{$y.display}</a>
-             {if $y.sub}
+             
              <ul class="sub_menu_account_ul">
               {$sub2=$y.sub}
               <li class="sub_menu_account"><a href="?cmd={$y.id}" id="{$y.id}"> {$y.display}</a></li>
@@ -19,7 +20,15 @@
                   <li class="sub_menu_account"><a id="{$b.id}" href="?cmd={$b.id}">{$b.display}</a></li>
               {/foreach}
               </ul></li>
-             {/if}
+             
+             {else}
+                 <li class="main_menu_title_li">
+                     <div class="menu_li"></div>
+                     <a href="?cmd={$y.id}" id="{$y.id}">{$y.display}</a>
+             
+             </li>
+                 
+           {/if}
           {/foreach} 
        {/if}
      {/foreach}

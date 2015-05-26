@@ -615,6 +615,11 @@ function saveLicenseDetails()
                 + '&license_id=' + License_ID,
         
         success: function (data) {
+            if(data.trim()=='Success') 
+                alert("a notification email has been sent to the admin ");
+            else
+                alert('something wrong , please try again later');
+            
             if(License_ID > 0)
             window.location.reload();
         else
@@ -2007,8 +2012,8 @@ function set_active_menu(active_menu_id){
        $(".sub_menu_account_ul").hide();
     $(".set_menu #"+active_menu_id).css({"font-size":"20px"});
     var ul_node=$(".set_menu #"+active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
+    if(ul_node.length == 1)ul_node.show(500);
     
-    ul_node.show(500);
 }//set_active_menu(active_menu_id)
 
 
@@ -2043,7 +2048,8 @@ function mycp_ajax(ajax_data){
     get_products_period_status = true;
     ajax_data.show_container_node.find(".period_loading_span").show();
     $(ajax_data.show_container_node).show(100);
-    ajax_data.wait_container.html('<tr><td colspan="4"><span class="period_loading_span"></span></td></tr>');
+   // ajax_data.wait_container.html('<tr><td colspan="4"><span class="period_loading_span"></span></td></tr>');
+   ajax_data.wait_container.html('<span class="period_loading_span"></span>');
    
     $.ajax({
         datatype:"post",
@@ -2081,9 +2087,32 @@ function sendrenewalemail(product_id,button_node){
 var ajax_data={
     url:'index.php?cmd=sendrenewalemail',
     show_container_node:button_node,
-    wait_container:button_node,
+    wait_container:$('#wait_send_renew_email_div'),
     sent_data:{"product_id":product_id},
     return_data_place:button_node
 }
 mycp_ajax(ajax_data);
 }
+function getProductDetails(product_id, type) {
+    if (type == 'expired') {
+        
+        $('#expired_details_div').show();
+        $('#valid_details_div').hide();
+        $('#ded_img3').attr('onclick','alert("you have to renew your maintenance contract first");return false;');
+        $('#send_renew_button').attr('onClick', "sendrenewalemail('" + product_id + "',$(this));");
+        $('#send_renew_button').text("Renew");
+        
+    }//if expired
+    else {
+        
+        $('#expired_details_div').hide();
+        $('#valid_details_div').show();
+        
+    }//if valid
+$('.ded_img2').click();
+    $("#product_details_all_div").show(500);
+}//getProductDetails(product_id, type)
+
+$(document).ready(function(){
+$('.ded_img2').click();
+});//ready

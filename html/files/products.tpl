@@ -183,9 +183,9 @@ Root password
                     <td>{if $product.version==""} N/A {else} $product.version{/if}</td>
                     <td>
                         {if $product.renewal==0} 
-                            <button class="renew_button" onclick="sendrenewalemail('{$product.id}',$(this))" > Renew</button>
+                            <button class="renew_button" onclick="getProductDetails('{$product.id}','valid');" > Valid</button>
                         {else} 
-                            <button class="expiry_button"  >expiry </button>
+                            <button class="expiry_button"  onclick="getProductDetails('{$product.id}','expired');" >Expired </button>
                         {/if}
                     </td>
                     <td>{$product.purchasing_date} </td>
@@ -208,7 +208,7 @@ Root password
             <div class="top_table_icon"></div>
         </div>
         <div class="table_head_label">
-            Products Renewal<span class="period_loading_span"></span>
+            maintenance Period<span class="period_loading_span"></span>
         </div>
         <a  class="close_table_x_a" onclick="$('#period_table_div').hide(100);"><span ></span></a>
     </div>
@@ -216,9 +216,13 @@ Root password
     <table class="main_table"  >
         <thead>
             <tr>
-                <th >Plan</th>
+                <th >Name</th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+                <th>Description</th>
+                <!--<th >Deleted</th>-->
                 <th>Start Date</th>
-                <th>Expire Date</th>
+                <th>End Date</th>
                 <th>Price</th>
             </tr>
 
@@ -228,5 +232,61 @@ Root password
     </table>
 </div><!-- #period_table_div -->
 
+
+
+
+<div class="header_form details_tabs_all_div" id="product_details_all_div"   >
+ <input type="hidden" id="selectedServer" />   
+    <div class="form_head">
+        <div class="cont_icon">
+            <div class="icon_back"></div>
+        </div>
+        <div class="cont_title">Tools<div id="wait_send_renew_email_div"></div></div>
+       <a href="#"><div class="head_close2"></div></a>
+    </div>
+    <div class="tool_head">
+        <a  id="ded_img2"><div class="ded_img"><div class="ded_img2">details<br><i class="fa fa-file-o"></i></div></div></a><div class="ded_select2" ></div>
+        <a  id="ded_img3"><div class="ded_img"><div class="ded_img3">download<br><i class="fa fa-download"></i></div></div></a><div class="ded_select3"></div>
+       <!-- <a  id="ded_img4"><div class="ded_img"><div class="ded_img4"></div></div></a><div class="ded_select4"></div> -->
+    </div>
+ 
+ <div class="tool_info">
+
+    <div class="tool_sli2"> 
+        <div id="expired_details_div">
+            <span>maintenance contract expired </span>
+           
+            <div class="reboot_msg">
+                <i class="fa fa-refresh"></i>
+                <span2>Warning! your maintenance contract expired ,you have to renew your maintenance contract to get full support and last product's  version   . </span2>
+            </div>
+            <span1 id="confirmMessage" style='display: none;' >A renewall email has been sent to the admin successfully</span1>
+            <br />
+            <button type="button" id="send_renew_button" value="Renew" style="margin-top:10px;" >Renew</button>
+            
+        </div><!-- #expired_details_div -->   
+
+        <div id="valid_details_div">
+            <span>Valid contract  </span>
+            <div class="valid_msg_div">
+                <i class="fa fa-file-text-o"></i>
+                <span >Your contract valid till  <b id="valid_date_b"></b> date . </span >
+            </div>
+         
+       </div><!-- #valid_details_div -->
+
+    </div>
+     
+     
+    <div class="tool_sli3">
+   we will get the files from database 
+    </div>
+   
+     
+     <!--<div class="tool_sli4">
+    <div id="BandWidth" ></div>
+    </div>-->
+ </div>
+ </div>
 
 {include file='footer.tpl'}

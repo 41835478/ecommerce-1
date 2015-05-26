@@ -1,13 +1,6 @@
 {include file='header.tpl'}
 {include file='submenu.tpl'}
 
- <div class="find">
-    <span>Find news</span>
-    <input type="text" placeholder="Enter title, line ,date" id="search_articles" value="{$finedArt}"/>
-    <input type="button" value="Find" id="find_articles"/>
-    <div class="search_about"></div>
- </div>
-
  <div class="documents_form">
   {foreach from=$documents item=document}  
       <div class="news-item{$document.id}" style="height: 180px;;margin-bottom: 10px;overflow: hidden; float:left">
@@ -24,7 +17,7 @@
   {/foreach} 
  </div>
 
- 
+
 {$countDoc=count($documents)}
     {if $countDoc == 0} 
          <div style="color:red"> Your search did not match any news. </div> 

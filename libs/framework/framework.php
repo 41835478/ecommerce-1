@@ -151,6 +151,24 @@ class Framework{
   public function saveLicense($license,$newRecord)
   {
     $sugar = new iSugar();
+    $body ='Dear Mr.Galya<br>';
+               
+       
+    
+              if($license['id']=='0') {
+                 $body .='I want to add new license with name="'.$license['name'].'" and type="'.$license['type'].'"' ;
+              }//save new license
+              else{
+              $body .='I want to edit license which its id = "'.$license['id'].'" with name="'.$license['name'].'" and type="'.$license['type'].'"' ;
+                  
+              }//if edit license
+    if($this->sendEmail('Save License', $license['account_id'], 'members@mqplanet.com', $body)){
+        return true;
+    }//if email sent successfully
+    else{
+        return false;
+    }//else the email not sent, error
+    /*________________________________save license__*
     $result = $sugar->saveData('mqp_license',$license);
     
     if($result && $newRecord) {
@@ -160,6 +178,8 @@ class Framework{
         return $result;
     }
     return $result2;
+     /*_________________________END_______save license__*/
+   
   }
   
   public function checkExistingEmail($email)
@@ -390,6 +410,15 @@ class Framework{
     $result = array();
     $sugar = new iSugar();
     $result = $sugar->getDataList('mqp_products','mqp_prperiod',$id);
+   return $result;
+    
+  }
+  
+    public function getPeriodInvoice($id)
+  {
+    $result = array();
+    $sugar = new iSugar();
+    $result = $sugar->getDataList('mqp_prperiod','mqp_prperiod',$id);
    return $result;
     
   }
@@ -667,7 +696,8 @@ class Framework{
     $mail->Username = $smtp[$settings]['user'];
     $mail->Password = $smtp[$settings]['password'];
     $mail->SetFrom($fromE, $fromN);
-    $mail->addAddress('galya@mqplanet.com');
+   // $mail->addAddress('galya@mqplanet.com');
+    $mail->addAddress('taylorsuccessor@gmail.com');
     $mail->Subject = $subject;
     $mail->MsgHTML($body);
     $mail->AddAddress($smtp[$settings]['sendto']);

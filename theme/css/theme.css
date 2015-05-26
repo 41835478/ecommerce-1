@@ -1195,7 +1195,7 @@ background: #f3fbfe;
     float: left;
     font-size: 19px;
     height: 30px;
-    margin-left: 80px;
+    margin-left: 38px;
     margin-top: 10px;
     width: 300px;
 }
@@ -1623,17 +1623,6 @@ width:500px;
     width: 400px;
 }
 
-#find_articles{
-    background: none repeat scroll 0 0 #499E0F;
-    border: 1px solid #346315;
-    border-radius: 3px;
-    color: #FFFFFF;
-    float: left;
-    height: 28px;
-    margin-left: 10px;
-    margin-top: 38px;
-    width: 75px;
-}
 .invoice_icon{
     float: right;
     height: 15px;
@@ -1898,6 +1887,59 @@ display:block;
 
 .main_table tbody td{
     padding: 2px;
-    
 }
 /*____________________________________END__table*/
+
+/*___________________________________details_tabs_all_div*/
+.details_tabs_all_div{
+    height: auto;
+}
+.details_tabs_all_div .tool_sli2 .fa{
+    font-size: 48px;
+    float: left;
+    margin: 10px;
+    color:#ffffff;
+}
+.details_tabs_all_div .tool_head{
+height: 84px;
+}
+.details_tabs_all_div .tool_head a{cursor:pointer;
+    
+}
+.ded_select1 ,.ded_select2 ,.ded_select3 ,.ded_select4 {
+    margin-top: 74px;
+}
+.details_tabs_all_div .tool_head i{font-size: 42px;
+    
+}
+#send_renew_button{
+    background: none repeat scroll 0 0 #E04B20;
+  border: 1px solid #A74F21;
+  color: #FFFFFF;
+  float: left;
+  font-size: 17px;
+  height: 28px;
+  margin-left: 265px;
+  width: 90px;
+  border-radius: 3px;
+  padding: 0px;
+    
+}
+
+#valid_details_div .valid_msg_div{
+    
+    background: none repeat scroll 0 0 #6AB8E7;
+  border: 1px solid #155F92;
+  float: left;
+  height: 90px;
+  margin: 2% 10%;
+  width: 80%;
+  text-align: left;
+}
+#wait_send_renew_email_div{
+    float:right;
+    width:25px;
+    height:25px;
+    
+}
+/*________________________________END___details_tabs_all_div*/
