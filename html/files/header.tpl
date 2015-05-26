@@ -5,7 +5,13 @@
   <link href="{$URL}/theme/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
   <link href="{$URL}/theme/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <link href="{$URL}/theme/css/theme.css" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+=======
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+   
+>>>>>>> 3ef92b5964aec5e702fdb319fad956b040af6f67
   <script type="text/javascript" src="{$URL}/theme/js/jquery.js"></script>
   <script type="text/javascript" src="{$URL}/theme/js/bootstrap.js"></script>
   <script type="text/javascript" src="{$URL}/theme/js/hoverIntent.js"></script>

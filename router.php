@@ -949,6 +949,7 @@ elseif($cmd =='saveLicense') {
         }//error
         exit;
     }//sendrenewalemail
+<<<<<<< HEAD
     
   elseif($cmd == 'getproductsperiod'){
      
@@ -973,4 +974,8 @@ elseif($cmd =='saveLicense') {
     exit();
   }
 }
+=======
+}
+
+>>>>>>> 3ef92b5964aec5e702fdb319fad956b040af6f67
 ?>
