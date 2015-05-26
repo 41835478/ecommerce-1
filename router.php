@@ -972,5 +972,15 @@ elseif($cmd =='saveLicense') {
     
     exit();
   }
+  elseif($cmd == 'getLastContractDate'){
+     
+     $product_id  = $fwork->requestVar('product_id'); 
+     
+    echo json_encode($fwork->getLastContractDate($product_id));
+    
+    
+    
+    exit();
+  }
 }
 ?>

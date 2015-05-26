@@ -409,8 +409,43 @@ class Framework{
   {
     $result = array();
     $sugar = new iSugar();
+    
+   // $result = $sugar->getDataList('Accounts','mqp_products',$id);
     $result = $sugar->getDataList('mqp_products','mqp_prperiod',$id);
    return $result;
+    
+  }
+  
+    public function getLastContractDate($id)
+  {
+    $result = array();
+    $sugar = new iSugar();
+    
+     $query = "mqp_products.id='$id'";
+    $product_date = $sugar->getData('mqp_products',$query);
+    
+    $purchasing_date=$product_date["purchasing_date"];
+   
+    
+     
+    $period_date_array = $sugar->getDataList('mqp_products','mqp_prperiod',$id);
+    
+    $period_date=0;
+    foreach ($period_date_array as $one_date){
+        
+    $period_date=($one_date["end_date"] > $period_date)? $one_date["end_date"]:$period_date;
+    }
+    
+    $valid_date=0;
+  if($period_date > $purchasing_date ){
+      $valid_date= date('Y-m-d', strtotime($period_date .' +1 year'));
+   
+  }else{
+      $valid_date= date('Y-m-d', strtotime($purchasing_date .' +1 year'));
+   
+  }//$period_date > $purchasing_date
+  return $valid_date;
+  
     
   }
   

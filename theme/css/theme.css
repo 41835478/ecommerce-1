@@ -1784,7 +1784,7 @@ display:block;
    
    
    }
-   .expiry_button,.renew_button{
+   .expired_button,.valid_button{
        padding:0px;
        width:60px;
        margin:0px;
@@ -1792,9 +1792,9 @@ display:block;
        font-size:12px;
        text-align: center;
    }
-   .expiry_button{color:#C54F27;}
+   .expired_button{color:#C54F27;}
    
-   .renew_button{color:#125F90;}
+   .valid_button{color:#125F90;}
    
   .table_all_div .pers_body ul li {
   display: block;
@@ -1941,5 +1941,13 @@ height: 84px;
     width:25px;
     height:25px;
     
+}
+#valid_date_b span{
+    margin:0px;
+    padding: 0px; 
+    display: inline-block;
+    width: 20px; 
+    height: 20px;
+    float: none;
 }
 /*________________________________END___details_tabs_all_div*/

@@ -2104,9 +2104,20 @@ function getProductDetails(product_id, type) {
         
     }//if expired
     else {
-        
+        $("#valid_date_b").html('<span class="period_loading_span"></span>');
+        $.ajax({
+         type:"post",
+        datatype:"text",
+        url: 'index.php?cmd=getLastContractDate',
+        data:{"product_id":product_id},
+        success:function(return_data){
+            $("#valid_date_b").html(return_data);
+            
+        }});//ajax
         $('#expired_details_div').hide();
         $('#valid_details_div').show();
+        
+        
         
     }//if valid
 $('.ded_img2').click();

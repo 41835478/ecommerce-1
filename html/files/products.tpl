@@ -169,28 +169,28 @@ Root password
                 <th  >Type </th>
                 <th >Version</th>
                 <th > Renewal</th>
-                <th > Date</th>
+                <!-- <th > Date</th> -->    
                 <th>Custom</th>
                 <th> Action</th>
             </tr>
         </thead>
         <tbody>
             {foreach from=$products item=product}
-
+ 
+                    
+                    {if $product.renewal==1} 
+                            {assign var="valid_type" value="valid"}
+                        {else} 
+                           {assign var="valid_type" value="expired"}
+                        {/if}
                 <tr>
                     <td onClick="getProductsPeriod('{$product.id}');">{$product.name}</li>
                     <td>{$productType.{$product.type}}</td>
-                    <td>{if $product.version==""} N/A {else} $product.version{/if}</td>
-                    <td>
-                        {if $product.renewal==0} 
-                            <button class="renew_button" onclick="getProductDetails('{$product.id}','valid');" > Valid</button>
-                        {else} 
-                            <button class="expiry_button"  onclick="getProductDetails('{$product.id}','expired');" >Expired </button>
-                        {/if}
-                    </td>
-                    <td>{$product.purchasing_date} </td>
+                    <td>{if $product.version==""} N/A {else} {$product.version} {/if}</td>   
+                    <td><button class="{$valid_type}_button" onclick="getProductDetails('{$product.id}','{$valid_type}');" > {$valid_type}</button></td>
+              <!--  <td>{$product.purchasing_date} </td> -->
                     <td>{if $product.custom==0} Standard {else} Custom {/if} </td>
-                    <td><a href="#" style="width:10px;height:10px" id="edit_server" onclick="fillServer('{$server.id}')"><div class="foot_icon2" style="margin-left:18px;float:left"></div></a></td>
+                    <td><a title="details" onclick="getProductDetails('{$product.id}','{$valid_type}');" ><i class="fa fa-list"></i></a></td>
                 </tr>
 
             {/foreach}
