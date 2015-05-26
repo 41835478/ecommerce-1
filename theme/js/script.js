@@ -1377,7 +1377,7 @@ function moreDocument(offset) {
     var decuType = $('#dectCategory').text();
     loadingDialog();
     $.ajax({
-        url: 'index.php?cmd=getDocuments&type=' + decuType + '&offset=' + offset,
+        url: 'index.php?cmd=getDocumentsAjax&type=' + decuType + '&offset=' + offset,
         success: function (data) {
             $('#moreDoc' + offset).html(data);
             closeDialog();
@@ -1435,13 +1435,13 @@ function finedMoreDocument(offset) {
 /*************************
  Get Document BY ID
  *************************/
-function getDocument(id) {
+function getDocument(id,read_more_node) {
     loadingDialog();
 
     $.ajax({
-        url: 'index.php?cmd=getDocument&id=' + id,
+        url: 'index.php?cmd=getDocumentBody&id=' + id,
         success: function (data) {
-            $('.col3').html(data);
+            read_more_node.parent().find(".full_document_div").html(data);
             closeDialog();
         },
         error: function (errors) {

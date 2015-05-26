@@ -163,7 +163,7 @@ $menu= array('dashboard' => array(
                           'sub'     => array(
                                    'articles' => array(
                                              'display' =>'Articles',
-                                             'id'     => 'find_articles'
+                                             'id'     => 'articles'
                                    ),
                                    'manuals' => array(
                                              'display' =>'Manuals',

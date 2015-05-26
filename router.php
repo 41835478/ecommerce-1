@@ -637,9 +637,11 @@ elseif($cmd =='saveLicense') {
         $smarty->display('moreNews.tpl');
     exit();
     
+    
+    
   }
   
-   elseif($cmd == 'getDocument'){
+   elseif($cmd == 'getDocumentBody'){
     $document_id = $fwork->requestVar('id');
     $smarty->assign('sub', 'documents');
     $document =  $fwork->getDocument($document_id);
@@ -650,17 +652,18 @@ elseif($cmd =='saveLicense') {
   }   
  
  /********************************
-     Find Articles
+      Articles
  ********************************/
-  elseif($cmd == 'find_articles'){
+  elseif($cmd == 'articles' || $cmd == 'manuals' || $cmd == 'faqs'){
    $offset = $fwork->requestVar('offset');
    $finedArt = $fwork->requestVar('find_articles');
+   
    $smarty->assign('sub', 'documents');
-   $documents =  $fwork->findArticles("manuals",$offset);
+   $documents =  $fwork->findArticles($cmd,$offset);
    $smarty->assign('finedArt', $finedArt);
    $smarty->assign('offset', $offset);
    $smarty->assign('documents', $documents);
-    $smarty->assign('active_sub_menu','find_articles');
+    $smarty->assign('active_sub_menu',$cmd);
    if($offset==0)
         $smarty->display('documents.tpl');
    else

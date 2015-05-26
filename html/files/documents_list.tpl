@@ -1,5 +1,3 @@
-{include file='header.tpl'}
-{include file='submenu.tpl'}
 
  <div class="documents_form">
   {foreach from=$documents item=document}  
@@ -32,21 +30,7 @@
             {/if}
          </div>
     {/if}
-    
-      <div id="loading-div" class="modal hide fade">
-   <div class="modal-body">
-    <h5 class="alert alert-info">Processing, Please wait...</h5>
-   </div>
-  </div>
-    
-    
-     <div class="overflow main-inner wrapper" >
- 
-     <div class="col3"> </div> 
-     <!-- <div id="main"></div> -->
-    
-    <div class="col2"></div>
-</div> 
-{include file='footer.tpl'}
+
+
 
 
