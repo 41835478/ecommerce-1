@@ -1053,15 +1053,7 @@ background: #f3fbfe;
     margin-top: 30px; 
     display: none;
 }
-#add_contact{
-  //url(../images/addAcoount.gif);
-    background-repeat:no-repeat;
-    float: left;
-    height: 20px;
-    margin-top: 18px;
-    width: 100px;
-    padding-left: 20px;
-}
+
 .new_account input[type="text"]{
     width: 150px;
 }
@@ -1653,53 +1645,9 @@ width:500px;
 #triangle-up:hover {
     border-bottom: 10px solid black;     
 } 
-    
-#add_license{
-//    background-image: url("../images/license.gif");
-    background-repeat: no-repeat;
-    float: left;
-    height: 20px;
-    margin-top: 18px;
-    padding-left: 20px;
-    width: 100px;
-}    
-#add_user{
-   // background-image: url("../images/addAcoount.gif");
-    background-repeat: no-repeat;
-    float: left;
-    height: 20px;
-    margin-top: 18px;
-    padding-left: 20px;
-    width: 100px;
-}    
-#add_webhost{
-    background-image: url("../images/host.gif");
-    background-repeat: no-repeat;
-    float: left;
-    height: 20px;
-    margin-top: 18px;
-    padding-left: 20px;
-    width: 100px;    
-}   
+        
 
-#add_domain{
-    background-image: url("../images/domain.gif");
-    background-repeat: no-repeat;
-    float: left;
-    height: 20px;
-    margin-top: 18px;
-    padding-left: 20px;
-    width: 100px;      
-}  
-#add_server{
-     background-image: url("../images/Hosting-services.gif");
-    background-repeat: no-repeat;
-    float: left;
-    height: 20px;
-    margin-top: 18px;
-    padding-left: 20px;
-    width: 100px;     
-}  
+
 #AccLable{
     background: none repeat scroll 0 0 #FFFFFF;
     border: 0 none;
@@ -1753,7 +1701,7 @@ width:500px;
 
 
 .main_menu_title_li a,.main_menu_title_li div{ height: 50px !important;margin: 0px !important; }
-.main_menu_title_li a{  height: 37px !important;padding-top: 13px;  }
+.main_menu_title_li a{  height: 37px !important;padding-top: 13px; padding-left: 20px;  }
 
 .sub_menu_account_ul a{ width: 100% !important;}
 /*
@@ -1885,14 +1833,15 @@ display:block;
     color:#000000;
     font-size: 18px !important;
 }
-.fa-trash,.fa-edit{
+.fa-trash,.fa-edit,.fa-list{
     color:#333;
     font-size: 18px !important;
     float:right;
     margin-right: 5px;
 }
-.fa-trash:hover,.fa-edit:hover{
+.fa-trash:hover,.fa-edit:hover,.fa-list:hover{
    color:#105C8E;
+cursor:pointer;
 }
 /*____________________________________END__table*/
 

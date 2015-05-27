@@ -2010,7 +2010,7 @@ function readUrl(selectr) {
 function set_active_menu(active_menu_id){
     
        $(".sub_menu_account_ul").hide();
-    $(".set_menu #"+active_menu_id).css({"font-size":"20px"});
+    $(".set_menu #"+active_menu_id).css({"color":"#C5543B"});
     var ul_node=$(".set_menu #"+active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
     if(ul_node.length == 1)ul_node.show(500);
     
@@ -2141,6 +2141,7 @@ $('.ded_img2').click();
 
 $(document).ready(function(){
 $('.ded_img2').click();
+
 $('#product_download_a').click(function(){
     if($("#wait_dowloal_link_div").html() != ''){
         alert('please wait to get download link'); 

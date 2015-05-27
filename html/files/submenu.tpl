@@ -15,9 +15,9 @@
              
              <ul class="sub_menu_account_ul">
               {$sub2=$y.sub}
-              <li class="sub_menu_account"><a href="?cmd={$y.id}" id="{$y.id}"> {$y.display}</a></li>
+              <li class="sub_menu_account"><a href="?cmd={$y.id}" id="{$y.id}">{$y.display}</a></li>
               {foreach from=$sub2 key=a item=b}
-                  <li class="sub_menu_account"><a id="{$b.id}" href="?cmd={$b.id}">{$b.display}</a></li>
+              <li class="sub_menu_account"><a href="?cmd={$b.id}" id="{$b.id}">{$b.display}</a></li>
               {/foreach}
               </ul></li>
              
