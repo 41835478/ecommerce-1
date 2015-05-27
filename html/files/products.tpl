@@ -280,7 +280,14 @@ Root password
      
      
     <div class="tool_sli3">
-   we will get the files from database 
+        <div id="wait_dowloal_link_div"></div>
+        <div id="product_download_all_div">
+        <a id="product_download_a" href="">
+            <i class="fa fa-cube"></i>
+            <br>
+            download
+        </a>
+        </div>
     </div>
    
      

@@ -427,9 +427,8 @@ class Framework {
             $invoice = $sugar->getDataList('mqp_prperiod', 'mqp_invoices', $last_period_id);
             
 
- $document = $sugar->getDataList('mqp_products', 'documents', $id);
- var_dump($id);
- var_dump($document);
+ $document = $sugar->getDataList('mqp_products', 'Documents', $id);
+
         return ['valid_date' => $valid_date,
             'invoice_id' => $invoice_id,
             'remaining' => $remaining,

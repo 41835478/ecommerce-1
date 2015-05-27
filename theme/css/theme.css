@@ -1209,7 +1209,6 @@ background: #f3fbfe;
     width: 400px;
 }
 .tool_sli3{
-    height: 300px;
     width: 700px;
     display: none; 
     color: #7D7D7D;
@@ -1959,5 +1958,22 @@ height: 84px;
     color:#0000ff;
     font-weight: bold;
     
+}
+#product_download_all_div{
+    
+    text-align: center;
+}
+
+#product_download_a{
+    margin:auto;
+    font-size: 28px;
+    width: 100%;
+    color:#F7933A;
+    
+}
+
+#product_download_a i{
+    font-size: 68px;
+    color:#105D8F;
 }
 /*________________________________END___details_tabs_all_div*/

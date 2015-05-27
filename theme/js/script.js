@@ -2104,17 +2104,18 @@ function getProductDetails(product_id, type) {
         
     }//if expired
     else {
-        $("#valid_date_b").html('<span class="period_loading_span"></span>');
+        $("#valid_date_b,#wait_dowloal_link_div").html('<span class="period_loading_span"></span>');
         $.ajax({
         type:"post",
-        dataType:"text",
+        dataType:"json",
         url: 'index.php?cmd=getLastContractDate',
         data:{"product_id":product_id},
-        success:function(return_data){alert(return_data);
+        success:function(return_data){
             $("#valid_date_b").html(return_data.valid_date);
             
             
-            $("#valid_date_b").parent().append(' <a href="http://office.mqplanet.com/planetcrm2/index.php?entryPoint=download&id='+ return_data.document_id +'&type=Documents" >down load</a>');
+            $("#product_download_a").attr('href',' http://office.mqplanet.com/planetcrm2/index.php?entryPoint=download&id='+ return_data.document_id +'&type=Documents');
+$("#wait_dowloal_link_div").html('');
 
             if(return_data.invoice_id != 0){
                 $("#remaining_invoice_div").html('you have un paid <a href="?cmd=invoices&invoices_id='+ return_data.invoice_id +'" >invoice( '+ return_data.invoice_id +' )</a> and you have to pay the remaining ='+ return_data.remaining +' $');
@@ -2135,4 +2136,10 @@ $('.ded_img2').click();
 
 $(document).ready(function(){
 $('.ded_img2').click();
+$('#product_download_a').click(function(){
+    if($("#wait_dowloal_link_div").html() != ''){
+        alert('please wait to get download link'); 
+        return false;
+    }
+});//click #product_download_a
 });//ready
