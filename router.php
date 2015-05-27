@@ -611,6 +611,7 @@ elseif($cmd =='saveLicense') {
     $result = $session->read(SESS_ACTIVE_CLIENT_ID);
     $invoices =  $fwork->getInvoices($result['account_id']);
     $smarty->assign('invoices', $invoices);  
+  
     $smarty->assign('active_sub_menu','invoices');
     $smarty->display('invoices.tpl');
     exit();

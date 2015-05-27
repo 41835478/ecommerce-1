@@ -1,4 +1,4 @@
-
+{$offset=$offset+2}
  <div class="documents_form">
   {foreach from=$documents item=document}  
       <div class="news-item{$document.id}" style="margin-bottom: 10px;overflow: hidden; float:left">

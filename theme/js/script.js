@@ -2107,14 +2107,15 @@ function getProductDetails(product_id, type) {
         $("#valid_date_b").html('<span class="period_loading_span"></span>');
         $.ajax({
         type:"post",
-        dataType:"json",
+        dataType:"text",
         url: 'index.php?cmd=getLastContractDate',
         data:{"product_id":product_id},
-        success:function(return_data){
+        success:function(return_data){alert(return_data);
             $("#valid_date_b").html(return_data.valid_date);
             
             
-            
+            $("#valid_date_b").parent().append(' <a href="http://office.mqplanet.com/planetcrm2/index.php?entryPoint=download&id='+ return_data.document_id +'&type=Documents" >down load</a>');
+
             if(return_data.invoice_id != 0){
                 $("#remaining_invoice_div").html('you have un paid <a href="?cmd=invoices&invoices_id='+ return_data.invoice_id +'" >invoice( '+ return_data.invoice_id +' )</a> and you have to pay the remaining ='+ return_data.remaining +' $');
             }else{

@@ -15,7 +15,7 @@
   
  </head>
  <body>
- {if $client_id != ''}
+    {if $client_id != ''}
   <div class="header overflow">
   
     <div class="wrapper overflow">
