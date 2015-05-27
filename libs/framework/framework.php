@@ -97,7 +97,9 @@ class Framework {
         $result = $sugar->getData('Contacts', $query);
         return $result;
     }
-
+public function deleteContact($contact_id){
+    
+}//deleteContact
     public function checkDuplicateUsername($name) {
         if (empty($name))
             return;

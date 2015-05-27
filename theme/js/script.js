@@ -2060,12 +2060,17 @@ function mycp_ajax(ajax_data){
               ajax_data.return_data_place.html(return_data);
               $(ajax_data.show_container_node).show(100);
               
+              if(ajax_data.hasOwnProperty('success_function')){
+                  ajax_data.success_function(return_data);
+              }
         },
         error: function (errors) {
              ajax_data.return_data_place.html("error , please try again later");
         },complete:function(){
             $(".period_loading_span").hide();
        get_products_period_status = false;
+        closeDialog();
+    
         }
     });
     
@@ -2143,3 +2148,28 @@ $('#product_download_a').click(function(){
     }
 });//click #product_download_a
 });//ready
+
+/*____________________________________________________contact_page*/
+function delete_contact(contact_id,button_node){
+    if(!confirm('Are you sure that you want delete this contact')){return false;}
+  
+  $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
+   
+    loadingDialog();
+ 
+    var ajax_data={
+    url:'index.php?cmd=delete_contact',
+    show_container_node:$('#loading-div'),
+    wait_container:$('#loading-div h5 .wait_span'),
+    sent_data:{"contact_id":contact_id},
+    return_data_place:$('#loading-div h5'),
+    success_function:function(return_data){
+        if(return_data.trim()=="success"){
+            button_node.parent().parent().parent().hide(500);
+        }
+    }
+    
+}
+mycp_ajax(ajax_data);
+}//delete_contact(contact_id){}
+/*_______________________________________________END_____contact_page*/

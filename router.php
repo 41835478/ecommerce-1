@@ -80,6 +80,11 @@ header('location:index.php');//$smarty->display('login.tpl');
     $smarty->display('contacts.tpl');
     exit();
   }
+  elseif($cmd == 'delete_contact'){
+$contact_id   = $fwork->requestVar('contact_id');  
+echo $fwork->deleteContact($contact_id);
+      exit();
+  }//delete_contact
   /********************************
     Add Contact Form
  ********************************/

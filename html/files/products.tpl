@@ -184,10 +184,10 @@ Root password
                            {assign var="valid_type" value="expired"}
                         {/if}
                 <tr>
-                    <td onClick="getProductsPeriod('{$product.id}');">{$product.name}</li>
+                    <td onClick="/*getProductsPeriod('{$product.id}');*/">{$product.name}</li>
                     <td>{$productType.{$product.type}}</td>
                     <td>{if $product.version==""} N/A {else} {$product.version} {/if}</td>   
-                    <td><button class="{$valid_type}_button" onclick="getProductDetails('{$product.id}','{$valid_type}');" > {$valid_type}</button></td>
+                    <td><label class="{$valid_type}_label" onclick="/*getProductDetails('{$product.id}','{$valid_type}');*/" > {$valid_type}</label></td>
               <!--  <td>{$product.purchasing_date} </td> -->
                     <td>{if $product.custom==0} Standard {else} Custom {/if} </td>
                     <td><a title="details" onclick="getProductDetails('{$product.id}','{$valid_type}');" ><i class="fa fa-list"></i></a></td>
@@ -201,7 +201,7 @@ Root password
 
 
 
-
+<!--
 <div class=" table_all_div"  id="period_table_div"  >
     <div class="table_head_div">
         <div class="top_table_icon_div">
@@ -220,7 +220,7 @@ Root password
                 <th>Date Created</th>
                 <th>Date Modified</th>
                 <th>Description</th>
-                <!--<th >Deleted</th>-->
+                <th >Deleted</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Price</th>

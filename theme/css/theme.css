@@ -1783,17 +1783,10 @@ display:block;
    
    
    }
-   .expired_button,.valid_button{
-       padding:0px;
-       width:60px;
-       margin:0px;
-       border-width: 1px;
-       font-size:12px;
-       text-align: center;
-   }
-   .expired_button{color:#C54F27;}
+  
+   .expired_label{color:#C54F27;}
    
-   .valid_button{color:#125F90;}
+   .valid_label{color:#125F90;}
    
   .table_all_div .pers_body ul li {
   display: block;
@@ -1887,6 +1880,20 @@ display:block;
 .main_table tbody td{
     padding: 2px;
 }
+
+.fa-trash,.fa-edit{
+    color:#000000;
+    font-size: 18px !important;
+}
+.fa-trash,.fa-edit{
+    color:#333;
+    font-size: 18px !important;
+    float:right;
+    margin-right: 5px;
+}
+.fa-trash:hover,.fa-edit:hover{
+   color:#105C8E;
+}
 /*____________________________________END__table*/
 
 /*___________________________________details_tabs_all_div*/
@@ -1977,3 +1984,5 @@ height: 84px;
     color:#105D8F;
 }
 /*________________________________END___details_tabs_all_div*/
+/*___________________________________contact_page*/
+.wait_span{ }

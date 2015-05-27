@@ -24,9 +24,9 @@
             <li>{if $contact.email1} {$contact.email1} {else} N/A {/if}</li>
             <li>{if $contact.phone_work} {$contact.phone_work} {else} N/A {/if}</li>
             {if $contact.id!=$contact_id}
-            <li><a href="#" style="width:10px;height:10px" id="edit_contact" onclick="fillContact('{$contact.id}')"><div class="foot_icon2" style="margin-left:55px;float:left"></div></a><div class="dele_cont"></div></li>
+            <li><a href="#" style="width:10px;height:10px" id="edit_contact" onclick="fillContact('{$contact.id}')"><i class="fa fa-edit"></i></a></a><a onclick="delete_contact('{$contact.id}',$(this));return false;" class="delete_contact_a"><i class="fa fa-trash"></i></a></li>
             {else}
-            <li><div class="dele_cont" style="margin-left:55px;float:left"></div></li>
+            <li><a  onclick="delete_contact('{$contact.id}',$(this));return false;" class="delete_contact_a"><i class="fa fa-trash"></i></a></li>
             {/if}
         </ul>
     </div>
@@ -106,4 +106,11 @@
     </div>
 </div>
 {/if}
+
+
+<div id="loading-div" class="modal hide fade">
+    <div class="modal-body">
+        <h5 class="alert alert-info">Processing, Please wait...<div class="wait_span"></div></h5>
+    </div>
+</div>
 {include file='footer.tpl'}
