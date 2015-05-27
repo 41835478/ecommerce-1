@@ -421,30 +421,47 @@ class Framework{
     $result = array();
     $sugar = new iSugar();
     
-     $query = "mqp_products.id='$id'";
+    $query = "mqp_products.id='$id'";
     $product_date = $sugar->getData('mqp_products',$query);
-    
     $purchasing_date=$product_date["purchasing_date"];
-   
+  
     
-     
     $period_date_array = $sugar->getDataList('mqp_products','mqp_prperiod',$id);
     
-    $period_date=0;
+    $end_period_date=0;
+    $start_period_date=0;
+    $last_period_id=0;
     foreach ($period_date_array as $one_date){
-        
-    $period_date=($one_date["end_date"] > $period_date)? $one_date["end_date"]:$period_date;
+        if($one_date["end_date"] > $end_period_date){
+            $end_period_date=$one_date["end_date"];
+            $start_period_date=$one_date["start_date"];
+            $last_period_id=$one_date["id"];
+        }
     }
     
     $valid_date=0;
-  if($period_date > $purchasing_date ){
-      $valid_date= date('Y-m-d', strtotime($period_date .' +1 year'));
-   
+    $remaining=0;
+    $invoice_id=0;
+  if($end_period_date > $purchasing_date ){
+      
+      
+  $invoice=$sugar->getDataList('mqp_prperiod','mqp_invoices',$last_period_id);
+  
+  $remaining= $invoice[0]["remaining"];
+      if($remaining> 0 ){
+          
+          $valid_date= $start_period_date ;
+        $invoice_id= $invoice[0]['name'] ;  
+      }else{
+          $valid_date= $end_period_date ;
+      }//$remaining> 0
   }else{
       $valid_date= date('Y-m-d', strtotime($purchasing_date .' +1 year'));
    
   }//$period_date > $purchasing_date
-  return $valid_date;
+  return ['valid_date'=>$valid_date,
+          'invoice_id'=>$invoice_id,
+          'remaining'=> $remaining];
   
     
   }

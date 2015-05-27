@@ -166,8 +166,8 @@ Root password
         <thead>
             <tr>
                 <th>Product Name </th>
-                <th  >Type </th>
-                <th >Version</th>
+                <th >Type </th>
+                <th >Latest Version</th>
                 <th > Renewal</th>
                 <!-- <th > Date</th> -->    
                 <th>Custom</th>
@@ -270,7 +270,8 @@ Root password
             <span>Valid contract  </span>
             <div class="valid_msg_div">
                 <i class="fa fa-file-text-o"></i>
-                <span >Your contract valid till  <b id="valid_date_b"></b> date . </span >
+               Your contract valid till  <b id="valid_date_b"></b> date . 
+               <div id="remaining_invoice_div"></div>
             </div>
          
        </div><!-- #valid_details_div -->

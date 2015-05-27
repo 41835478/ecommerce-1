@@ -2106,12 +2106,20 @@ function getProductDetails(product_id, type) {
     else {
         $("#valid_date_b").html('<span class="period_loading_span"></span>');
         $.ajax({
-         type:"post",
-        datatype:"text",
+        type:"post",
+        dataType:"json",
         url: 'index.php?cmd=getLastContractDate',
         data:{"product_id":product_id},
         success:function(return_data){
-            $("#valid_date_b").html(return_data);
+            $("#valid_date_b").html(return_data.valid_date);
+            
+            
+            
+            if(return_data.invoice_id != 0){
+                $("#remaining_invoice_div").html('you have un paid <a href="?cmd=invoices&invoices_id='+ return_data.invoice_id +'" >invoice( '+ return_data.invoice_id +' )</a> and you have to pay the remaining ='+ return_data.remaining +' $');
+            }else{
+                 $("#remaining_invoice_div").html('');
+            }
             
         }});//ajax
         $('#expired_details_div').hide();
