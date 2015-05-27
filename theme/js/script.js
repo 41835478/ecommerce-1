@@ -28,7 +28,7 @@ $(document).ready(function () {
     //$('#open-cases').live('click',function(){getOpenCases()});
     //$('#invoices').live('click',function(){getInvoices()});
     // $('#dashboard').live('click',function(){getDashboard()});
-
+/*
     $('#articles').live('click', function () {
         getDocuments('articles');
     });
@@ -41,7 +41,7 @@ $(document).ready(function () {
     $('#manuals').live('click', function () {
         getDocuments('manuals')
     });
-
+*/
     $('#triangle-down').live('click', function () {
         $('#triangle-down').fadeOut(10);
         $('.header_form_Invoice').css({'height': 'auto'});

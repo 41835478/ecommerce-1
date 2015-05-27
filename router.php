@@ -622,7 +622,7 @@ elseif($cmd =='saveLicense') {
  /********************************
     Documents List
  ********************************/
-   elseif($cmd == 'getDocuments'){
+   elseif($cmd == 'getDocumentsAjax'){
     $offset = $fwork->requestVar('offset');
     $type = $fwork->requestVar('type');  
     $smarty->assign('sub', 'documents');
@@ -631,10 +631,9 @@ elseif($cmd =='saveLicense') {
     $smarty->assign('type', $type);
     $smarty->assign('offset', $offset); 
     $smarty->assign('active_sub_menu','getDocuments');
-    if($offset==0)
-        $smarty->display('documents.tpl');
-    else
-        $smarty->display('moreNews.tpl');
+    
+    $smarty->display('documents_list.tpl');
+    
     exit();
     
     

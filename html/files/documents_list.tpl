@@ -24,9 +24,9 @@
     {else}
          <div  id="moreDoc2" >
             {if $finedArt == ""}
-             <a href="#"><div  class='moreDoc2' onclick="moreDocument(2)">more document</div></a>
+             <a href="#"><div  class='moreDoc2' onclick="moreDocument({$offset})">more document </div></a>
             {else}
-             <a href="#"><div  class='finedMoreDoc2' onclick="finedMoreDocument(2)">Fined More Document</div></a>
+             <a href="#"><div  class='finedMoreDoc2' onclick="finedMoreDocument({$offset})">Fined More Document</div></a>
             {/if}
          </div>
     {/if}

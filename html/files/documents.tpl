@@ -39,14 +39,8 @@
    </div>
   </div>
     
+   
     
-     <div class="overflow main-inner wrapper" >
- 
-     <div class="col3"> </div> 
-     <!-- <div id="main"></div> -->
-    
-    <div class="col2"></div>
-</div> 
 {include file='footer.tpl'}
 
 
