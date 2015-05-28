@@ -2009,10 +2009,18 @@ function readUrl(selectr) {
       
 function set_active_menu(active_menu_id){
     
-       $(".sub_menu_account_ul").hide();
-    $(".set_menu #"+active_menu_id).css({"color":"#C5543B"});
+     $(".sub_menu_account_ul").hide();
+     var a_node=$(".set_menu #"+active_menu_id);
+    a_node.css({"color":"#C5543B"});
+    a_node.parent().css({"backgroundColor":"#F0f0f0"});
+    
     var ul_node=$(".set_menu #"+active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
-    if(ul_node.length == 1)ul_node.show(500);
+    if(ul_node.length == 1){
+        ul_node.show(500);
+    ul_node.parent().find("i").attr("class","fa fa-minus-square-o");
+    }else{
+        $(".set_menu #"+active_menu_id).find("i").attr("class","fa fa-minus-square-o");
+    }
     
 }//set_active_menu(active_menu_id)
 
@@ -2022,8 +2030,10 @@ $(document).ready(function(){
        var menu_down=false;
        $(".main_menu_title_li").click(function(){
            var li_node=$(this);
-           
+           li_node.find("i").attr("class","fa fa-minus-square-o");
        $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").hide(500);
+       $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").parent().find("i").attr("class","fa fa-plus-square-o");
+       
            if(menu_down==true){li_node.find(".sub_menu_account_ul").hide(500);}else{li_node.find(".sub_menu_account_ul").show(500);}
          
          });
@@ -2174,3 +2184,28 @@ function delete_contact(contact_id,button_node){
 mycp_ajax(ajax_data);
 }//delete_contact(contact_id){}
 /*_______________________________________________END_____contact_page*/
+
+/*_______________________________________________________company_page___*/
+function cancel_License(license_id){
+     if(!confirm('Are you sure that you want delete this contact')){return false;}
+  
+  $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
+   
+    loadingDialog();
+ 
+    var ajax_data={
+    url:'index.php?cmd=delete_contact',
+    show_container_node:$('#loading-div'),
+    wait_container:$('#loading-div h5 .wait_span'),
+    sent_data:{"license_id":license_id},
+    return_data_place:$('#loading-div h5'),
+    success_function:function(return_data){
+        if(return_data.trim()=="success"){
+            button_node.parent().parent().parent().hide(500);
+        }
+    }
+    
+}
+mycp_ajax(ajax_data);
+}//cancel_License('{$license.id}')
+/*_____________________________________________________END__company_page___*/

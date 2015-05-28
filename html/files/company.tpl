@@ -50,11 +50,14 @@
           <ul>
             <li>{$license.name}</li>
             <li>{$type.{$license.type}}</li>
-            <li style="float:right"><a href="#" style="width:10px;height:10px" 
-        id="edit_contact" onclick="fillLicense('{$license.id}')"><div class="foot_icon2"
-        style="float:left;"></div></a><a href="#" style="width:10px;height:10px" 
-        id="del_contact" onclick="fillLicense('{$license.id}')"><div class="dele_cont" style="margin-left:5px;float:left">
-</div></a></li>
+            <li style="float:right">
+                
+                <a href="#LicenseName" style="width:10px;height:10px" 
+        id="edit_contact" onclick="fillLicense('{$license.id}')"><i class="fa fa-edit"></i></a>
+        
+        <a href="#"  id="del_contact" onclick="cancel_License('{$license.id}');return false;"><i class="fa fa-trash"></i></a>
+            
+            </li>
           </ul>
     </div>
     {/foreach}
@@ -89,6 +92,13 @@
     <div class="License_Edit1">
     <input type="hidden" id="LicenseID" />
        <input  type="button" id="saveLicenseDetalis" value="Edit" class="EditButton"/></li>
+    </div>
+</div>
+             
+             
+<div id="loading-div" class="modal hide fade">
+    <div class="modal-body">
+        <h5 class="alert alert-info">Processing, Please wait...<div class="wait_span"></div></h5>
     </div>
 </div>
 {include file='footer.tpl'}

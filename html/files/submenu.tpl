@@ -11,7 +11,7 @@
           {$sub1=$v.sub}
           {foreach from=$sub1 key=x item=y} 
        {if $y.sub}
-             <li class="main_menu_title_li"><div class="menu_li"></div><a >{$y.display}</a>
+          <li class="main_menu_title_li"><div class="menu_li"></div><a ><i class="fa fa-plus-square-o"></i>  {$y.display}</a>
              
              <ul class="sub_menu_account_ul">
               {$sub2=$y.sub}
@@ -24,7 +24,7 @@
              {else}
                  <li class="main_menu_title_li">
                      <div class="menu_li"></div>
-                     <a href="?cmd={$y.id}" id="{$y.id}">{$y.display}</a>
+                     <a href="?cmd={$y.id}" id="{$y.id}"><i class="fa fa-plus-square-o"></i>  {$y.display}</a>
              
              </li>
                  

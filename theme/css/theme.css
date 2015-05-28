@@ -1704,6 +1704,7 @@ width:500px;
 .main_menu_title_li a{  height: 37px !important;padding-top: 13px; padding-left: 20px;  }
 
 .sub_menu_account_ul a{ width: 100% !important;}
+.main_menu_title_li i{ margin-right: 5px;}
 /*
 .sub_menu_account_ul{ display:none;}
 .main_menu_title_li:hover .sub_menu_account_ul{
