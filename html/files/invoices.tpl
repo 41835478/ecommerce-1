@@ -25,7 +25,7 @@
             <li style="width:110px">{$invoice.total|doubleval}</li>
             <li style="width:110px">{$invoice.paid|doubleval}</li>
             <li style="width:110px">{$invoice.remaining|doubleval}</li>
-            <li style="width:110px"><a href="#" style="width:10px;height:10px" onclick="getInvoiceDetails('{$invoice.id}')"><div class="foot_icon9" style="margin-left:45px;float:left"></div></a><a href="#" style="width:10px;height:10px" onclick="getInvoicePayments('{$invoice.id}')"><div class="foot_icon8" style="margin-left:4px;float:left"></div></a></li>
+            <li style="width:110px"><a   title="invoice details" style="width:10px;height:10px" onclick="getInvoiceDetails('{$invoice.id}')"><i class="fa fa-list-alt"></i></a><a    title="invoice payment"style="width:10px;height:10px" onclick="getInvoicePayments('{$invoice.id}')"><i class="fa fa-credit-card"></i></a></li>
         </ul>
     </div>
     {/if}
@@ -38,7 +38,7 @@
             <div class="icon_back"></div>
         </div>
         <div class="cont_title">Paid Invoices List</div>
-            <a href="#">
+            <a href="#triangle-up">
                 <div class="invoice_icon">
                 <div id="triangle-down"></div>
                 <div id="triangle-up"></div>
@@ -62,7 +62,7 @@
             <li style="width:110px">{$invoice.total|doubleval}</li>
             <li style="width:110px">{$invoice.paid|doubleval}</li>
             <li style="width:110px">{$invoice.remaining|doubleval}</li>
-            <li style="width:110px"><a href="#" style="width:10px;height:10px" onclick="getInvoiceDetails('{$invoice.id}')"><div class="foot_icon2" style="margin-left:45px;float:left"></div></a><a href="#" style="width:10px;height:10px" onclick="getInvoicePayments('{$invoice.id}')"><div class="foot_icon2" style="margin-left:4px;float:left"></div></a></li>
+            <li style="width:110px"><a  style="width:10px;height:10px" title="invoice details" onclick="getInvoiceDetails('{$invoice.id}')"><i class="fa fa-list-alt"></i></a><a  title="invoice payment" style="width:10px;height:10px" onclick="getInvoicePayments('{$invoice.id}')"><i class="fa fa-credit-card"></i></a></li>
         </ul>
     </div>
     {/if}

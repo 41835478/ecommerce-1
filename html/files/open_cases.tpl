@@ -20,7 +20,7 @@
         <ul>
             <li style="width:210px">{$case.name}</li>
             <li style="width:110px">{$status.{$case.status}}</li>
-            <li style="width:110px"><div class="foot_icon2" style="margin-left:45px;float:left"></div></li>
+            <li style="width:110px"></li>
         </ul>
     </div>
     {/foreach}

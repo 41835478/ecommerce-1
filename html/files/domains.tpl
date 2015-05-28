@@ -25,7 +25,7 @@
             <li style="width:110px">{$registerars.{$domain.registerar}}</li>
             <li style="width:110px">{$domain.start_date}</li>
             <li style="width:110px">{$domain.end_date}</li>
-            <li style="width:110px"><div class="foot_icon2" style="margin-left:40px;float:left"><div class="dele_cont" style="margin-left: 20px;margin-top: 0;float:left"></div></div></li>
+            <li style="width:110px"><i class="fa fa-close"></i></li>
         </ul>
     </div>
     {/foreach}

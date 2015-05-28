@@ -28,20 +28,20 @@ $(document).ready(function () {
     //$('#open-cases').live('click',function(){getOpenCases()});
     //$('#invoices').live('click',function(){getInvoices()});
     // $('#dashboard').live('click',function(){getDashboard()});
-/*
-    $('#articles').live('click', function () {
-        getDocuments('articles');
-    });
-    $('#news').live('click', function () {
-        getDocuments('news')
-    });
-    $('#faqs').live('click', function () {
-        getDocuments('faqs')
-    });
-    $('#manuals').live('click', function () {
-        getDocuments('manuals')
-    });
-*/
+    /*
+     $('#articles').live('click', function () {
+     getDocuments('articles');
+     });
+     $('#news').live('click', function () {
+     getDocuments('news')
+     });
+     $('#faqs').live('click', function () {
+     getDocuments('faqs')
+     });
+     $('#manuals').live('click', function () {
+     getDocuments('manuals')
+     });
+     */
     $('#triangle-down').live('click', function () {
         $('#triangle-down').fadeOut(10);
         $('.header_form_Invoice').css({'height': 'auto'});
@@ -119,10 +119,10 @@ $(document).ready(function () {
         $(".header_form4").fadeOut();
     });
 
-   /* $('#forget-password').live('click', function () {
-        forgetPassword();
-        $('#banners').hide();
-    });*/
+    /* $('#forget-password').live('click', function () {
+     forgetPassword();
+     $('#banners').hide();
+     });*/
     $('#send_forget_password').live('click', function () {
         sendForgetPassword();
     });
@@ -570,7 +570,7 @@ function saveContactDetails() {
                 '&city=' + Contact_city + '&country=' + Contact_country + '&email=' + Contact_Email + '&position=' + Contact_Position +
                 '&id=' + Contact_ID,
         success: function (data) {
-            window.location.href="?cmd=contacts";
+            window.location.href = "?cmd=contacts";
             modalText(data);
             document.getElementById('cont_first_name').innerHTML = Contact_firstName;
             document.getElementById('cont_Last_name').innerHTML = Contact_lastName;
@@ -580,12 +580,11 @@ function saveContactDetails() {
             document.getElementById('cont_City').innerHTML = Contact_city;
             document.getElementById('cont_country').innerHTML = Contact_country;
             document.getElementById('cont_Email').innerHTML = Contact_Email;
-          
-           
-            
+
+
+
 
         },
-        
         error: function (errors) {
             modalText(INTERNAL_ERROR);
         }
@@ -613,17 +612,16 @@ function saveLicenseDetails()
     $.ajax({
         url: 'index.php?cmd=saveLicense&license_name=' + License_Name + '&license_type=' + License_Type
                 + '&license_id=' + License_ID,
-        
         success: function (data) {
-            if(data.trim()=='Success') 
+            if (data.trim() == 'Success')
                 alert("a notification email has been sent to the admin ");
             else
                 alert('something wrong , please try again later');
-            
-            if(License_ID > 0)
-            window.location.reload();
-        else
-            window.location.href="?cmd=company";
+
+            if (License_ID > 0)
+                window.location.reload();
+            else
+                window.location.href = "?cmd=company";
             modalText(data);
             //  getCompany();
 
@@ -887,7 +885,7 @@ function saveNewExistingUser() {
                 '&city=' + Contact_city + '&country=' + Contact_country + '&email=' + Contact_Email + '&position=' + Contact_Position,
         success: function (data) {
             modalText(data);
-             
+
         },
         error: function (errors) {
             modalText(INTERNAL_ERROR);
@@ -1435,7 +1433,7 @@ function finedMoreDocument(offset) {
 /*************************
  Get Document BY ID
  *************************/
-function getDocument(id,read_more_node) {
+function getDocument(id, read_more_node) {
     loadingDialog();
 
     $.ajax({
@@ -2006,206 +2004,216 @@ function readUrl(selectr) {
 
 
 /*_________________________________________________________________________show_hide_menu*/
-      
-function set_active_menu(active_menu_id){
-    
-     $(".sub_menu_account_ul").hide();
-     var a_node=$(".set_menu #"+active_menu_id);
-    a_node.css({"color":"#C5543B"});
-    a_node.parent().css({"backgroundColor":"#F0f0f0"});
-    
-    var ul_node=$(".set_menu #"+active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
-    if(ul_node.length == 1){
+
+function set_active_menu(active_menu_id) {
+
+    $(".sub_menu_account_ul").hide();
+    var a_node = $(".set_menu #" + active_menu_id);
+    a_node.css({"color": "#C5543B"});
+    a_node.parent().css({"backgroundColor": "#F0f0f0"});
+
+    var ul_node = $(".set_menu #" + active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
+    if (ul_node.length == 1) {
         ul_node.show(500);
-    ul_node.parent().find("i").attr("class","fa fa-minus-square-o");
-    }else{
-        $(".set_menu #"+active_menu_id).find("i").attr("class","fa fa-minus-square-o");
+        ul_node.parent().find("i").attr("class", "fa fa-minus-square-o");
+    } else {
+        $(".set_menu #" + active_menu_id).find("i").attr("class", "fa fa-minus-square-o");
     }
-    
+
 }//set_active_menu(active_menu_id)
 
 
-$(document).ready(function(){
-       
-       var menu_down=false;
-       $(".main_menu_title_li").click(function(){
-           var li_node=$(this);
-           li_node.find("i").attr("class","fa fa-minus-square-o");
-       $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").hide(500);
-       $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").parent().find("i").attr("class","fa fa-plus-square-o");
-       
-           if(menu_down==true){li_node.find(".sub_menu_account_ul").hide(500);}else{li_node.find(".sub_menu_account_ul").show(500);}
-         
-         });
+$(document).ready(function () {
 
-       
-    
+    var menu_down = false;
+    $(".main_menu_title_li").click(function () {
+        var li_node = $(this);
+        li_node.find("i").attr("class", "fa fa-minus-square-o");
+        $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").hide(500);
+        $(".main_menu_title_li").not(this).find(".sub_menu_account_ul").parent().find("i").attr("class", "fa fa-plus-square-o");
+
+        if (menu_down == true) {
+            li_node.find(".sub_menu_account_ul").hide(500);
+        } else {
+            li_node.find(".sub_menu_account_ul").show(500);
+        }
+
+    });
+
+
+
 });//ready
 
 
 /*_________________________________getProductsPeriod*/
 
-var get_products_period_status=false;
-function mycp_ajax(ajax_data){
-     
-    var page_url='index.php?cmd=getproductsperiod';
-    if(ajax_data.hasOwnProperty('url')){page_url=ajax_data.url;}
-    
-    
+var get_products_period_status = false;
+function mycp_ajax(ajax_data) {
+
+    var page_url = 'index.php?cmd=getproductsperiod';
+    if (ajax_data.hasOwnProperty('url')) {
+        page_url = ajax_data.url;
+    }
+
+
     if (get_products_period_status == true) {
         return false;
     }
     get_products_period_status = true;
     ajax_data.show_container_node.find(".period_loading_span").show();
     $(ajax_data.show_container_node).show(100);
-   // ajax_data.wait_container.html('<tr><td colspan="4"><span class="period_loading_span"></span></td></tr>');
-   ajax_data.wait_container.html('<span class="period_loading_span"></span>');
-   
+    // ajax_data.wait_container.html('<tr><td colspan="4"><span class="period_loading_span"></span></td></tr>');
+    ajax_data.wait_container.html('<span class="period_loading_span"></span>');
+
     $.ajax({
-        datatype:"post",
+        datatype: "post",
         url: page_url,
-        data:ajax_data.sent_data
+        data: ajax_data.sent_data
         ,
         success: function (return_data) {
-              ajax_data.return_data_place.html(return_data);
-              $(ajax_data.show_container_node).show(100);
-              
-              if(ajax_data.hasOwnProperty('success_function')){
-                  ajax_data.success_function(return_data);
-              }
+            ajax_data.return_data_place.html(return_data);
+            $(ajax_data.show_container_node).show(100);
+
+            if (ajax_data.hasOwnProperty('success_function')) {
+                ajax_data.success_function(return_data);
+            }
         },
         error: function (errors) {
-             ajax_data.return_data_place.html("error , please try again later");
-        },complete:function(){
+            ajax_data.return_data_place.html("error , please try again later");
+        }, complete: function () {
             $(".period_loading_span").hide();
-       get_products_period_status = false;
-        closeDialog();
-    
+            get_products_period_status = false;
+            closeDialog();
+
         }
     });
-    
+
 
 }//mycp_ajax
 
-function getProductsPeriod(product_id){
-var ajax_data={
-    show_container_node:$('#period_table_div'),
-    wait_container:$("#pers_body_all_div"),
-     sent_data:{"product_id":product_id},
-    return_data_place:$('#pers_body_all_div')
-}
-mycp_ajax(ajax_data);
+function getProductsPeriod(product_id) {
+    var ajax_data = {
+        show_container_node: $('#period_table_div'),
+        wait_container: $("#pers_body_all_div"),
+        sent_data: {"product_id": product_id},
+        return_data_place: $('#pers_body_all_div')
+    }
+    mycp_ajax(ajax_data);
 }//function getProductsPeriod
 
 
-function sendrenewalemail(product_id,button_node){
-var ajax_data={
-    url:'index.php?cmd=sendrenewalemail',
-    show_container_node:button_node,
-    wait_container:$('#wait_send_renew_email_div'),
-    sent_data:{"product_id":product_id},
-    return_data_place:button_node
-}
-mycp_ajax(ajax_data);
+function sendrenewalemail(product_id, button_node) {
+    var ajax_data = {
+        url: 'index.php?cmd=sendrenewalemail',
+        show_container_node: button_node,
+        wait_container: $('#wait_send_renew_email_div'),
+        sent_data: {"product_id": product_id},
+        return_data_place: button_node
+    }
+    mycp_ajax(ajax_data);
 }
 function getProductDetails(product_id, type) {
     if (type == 'expired') {
-        
+
         $('#expired_details_div').show();
         $('#valid_details_div').hide();
-        $('#ded_img3').attr('onclick','alert("you have to renew your maintenance contract first");return false;');
+        $('#ded_img3').attr('onclick', 'alert("you have to renew your maintenance contract first");return false;');
         $('#send_renew_button').attr('onClick', "sendrenewalemail('" + product_id + "',$(this));");
         $('#send_renew_button').text("Renew");
-        
+
     }//if expired
     else {
         $("#valid_date_b,#wait_dowloal_link_div").html('<span class="period_loading_span"></span>');
         $.ajax({
-        type:"post",
-        dataType:"json",
-        url: 'index.php?cmd=getLastContractDate',
-        data:{"product_id":product_id},
-        success:function(return_data){
-            $("#valid_date_b").html(return_data.valid_date);
-            
-            
-            $("#product_download_a").attr('href',' http://office.mqplanet.com/planetcrm2/index.php?entryPoint=download&id='+ return_data.document_id +'&type=Documents');
-$("#wait_dowloal_link_div").html('');
+            type: "post",
+            dataType: "json",
+            url: 'index.php?cmd=getLastContractDate',
+            data: {"product_id": product_id},
+            success: function (return_data) {
+                $("#valid_date_b").html(return_data.valid_date);
 
-            if(return_data.invoice_id != 0){
-                $("#remaining_invoice_div").html('you have un paid <a href="?cmd=invoices&invoices_id='+ return_data.invoice_id +'" >invoice( '+ return_data.invoice_id +' )</a> and you have to pay the remaining ='+ return_data.remaining +' $');
-            }else{
-                 $("#remaining_invoice_div").html('');
-            }
-            
-        }});//ajax
+
+                $("#product_download_a").attr('href', ' http://office.mqplanet.com/planetcrm2/index.php?entryPoint=download&id=' + return_data.document_id + '&type=Documents');
+                $("#wait_dowloal_link_div").html('');
+
+                if (return_data.invoice_id != 0) {
+                    $("#remaining_invoice_div").html('you have un paid <a href="?cmd=invoices&invoices_id=' + return_data.invoice_id + '" >invoice( ' + return_data.invoice_id + ' )</a> and you have to pay the remaining =' + return_data.remaining + ' $');
+                } else {
+                    $("#remaining_invoice_div").html('');
+                }
+
+            }});//ajax
         $('#expired_details_div').hide();
         $('#valid_details_div').show();
-        
-        
-        
+
+
+
     }//if valid
-$('.ded_img2').click();
+    $('.ded_img2').click();
     $("#product_details_all_div").show(500);
 }//getProductDetails(product_id, type)
 
-$(document).ready(function(){
-$('.ded_img2').click();
+$(document).ready(function () {
+    $('.ded_img2').click();
 
-$('#product_download_a').click(function(){
-    if($("#wait_dowloal_link_div").html() != ''){
-        alert('please wait to get download link'); 
-        return false;
-    }
-});//click #product_download_a
+    $('#product_download_a').click(function () {
+        if ($("#wait_dowloal_link_div").html() != '') {
+            alert('please wait to get download link');
+            return false;
+        }
+    });//click #product_download_a
 });//ready
 
 /*____________________________________________________contact_page*/
-function delete_contact(contact_id,button_node){
-    if(!confirm('Are you sure that you want delete this contact')){return false;}
-  
-  $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
-   
-    loadingDialog();
- 
-    var ajax_data={
-    url:'index.php?cmd=delete_contact',
-    show_container_node:$('#loading-div'),
-    wait_container:$('#loading-div h5 .wait_span'),
-    sent_data:{"contact_id":contact_id},
-    return_data_place:$('#loading-div h5'),
-    success_function:function(return_data){
-        if(return_data.trim()=="success"){
-            button_node.parent().parent().parent().hide(500);
-        }
+function delete_contact(contact_id, button_node) {
+    if (!confirm('Are you sure that you want delete this contact')) {
+        return false;
     }
-    
-}
-mycp_ajax(ajax_data);
+
+    $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
+
+    loadingDialog();
+
+    var ajax_data = {
+        url: 'index.php?cmd=delete_contact',
+        show_container_node: $('#loading-div'),
+        wait_container: $('#loading-div h5 .wait_span'),
+        sent_data: {"contact_id": contact_id},
+        return_data_place: $('#loading-div h5'),
+        success_function: function (return_data) {
+            if (return_data.trim() == "success") {
+                button_node.parent().parent().parent().hide(500);
+            }
+        }
+
+    }
+    mycp_ajax(ajax_data);
 }//delete_contact(contact_id){}
 /*_______________________________________________END_____contact_page*/
 
 /*_______________________________________________________company_page___*/
-function cancel_License(license_id){
-     if(!confirm('Are you sure that you want delete this contact')){return false;}
-  
-  $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
-   
-    loadingDialog();
- 
-    var ajax_data={
-    url:'index.php?cmd=delete_contact',
-    show_container_node:$('#loading-div'),
-    wait_container:$('#loading-div h5 .wait_span'),
-    sent_data:{"license_id":license_id},
-    return_data_place:$('#loading-div h5'),
-    success_function:function(return_data){
-        if(return_data.trim()=="success"){
-            button_node.parent().parent().parent().hide(500);
-        }
+function cancel_License(license_id) {
+    if (!confirm('Are you sure that you want delete this contact')) {
+        return false;
     }
-    
-}
-mycp_ajax(ajax_data);
+
+    $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
+
+    loadingDialog();
+
+    var ajax_data = {
+        url: 'index.php?cmd=delete_contact',
+        show_container_node: $('#loading-div'),
+        wait_container: $('#loading-div h5 .wait_span'),
+        sent_data: {"license_id": license_id},
+        return_data_place: $('#loading-div h5'),
+        success_function: function (return_data) {
+            if (return_data.trim() == "success") {
+                button_node.parent().parent().parent().hide(500);
+            }
+        }
+
+    }
+    mycp_ajax(ajax_data);
 }//cancel_License('{$license.id}')
 /*_____________________________________________________END__company_page___*/

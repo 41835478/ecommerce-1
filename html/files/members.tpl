@@ -23,18 +23,17 @@
             <li>{if $member.name} {$member.name} {else} N/A {/if}</li>
             <li>{if $member.level} {$level.{$member.level}} {else} N/A {/if}</li>
             {if $member.level!='admin'}
-            <li><a href="#" style="width:10px;height:10px" id="Edit_ContInfo" onclick="fillMember('{$member.id}')"><div class="foot_icon2" style="margin-left:55px;float:left"></div></a><div class="dele_cont"></div></li>
+            <li><a href="#AccLevel" style="width:10px;height:10px" id="Edit_ContInfo" onclick="fillMember('{$member.id}')"><i class="fa fa-edit"></i></a></li>
             {else}
-            <li><div class="dele_cont" style="margin-left:55px;float:left"></div></li>
+            <li></li>
             {/if}
         </ul>
     </div>
 {/foreach}       
     
 </div>
-</div>
 
-<div class="header_form1" style="height:180px">
+<div class="header_form1" style="height:180px;">
     <div class="form_head">
         <div class="cont_icon">
             <div class="icon_back"></div>
@@ -77,4 +76,6 @@
     </div>
     
 </div>
+    </div>
+
 {/if}

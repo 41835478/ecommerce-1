@@ -25,7 +25,7 @@
             <li style="width:110px">{$plans.{$webhost.host_plan}}</li>
             <li style="width:110px">{$webhost.start_date}</li>
             <li style="width:110px">{$webhost.end_date}</li>
-            <li style="width:110px"><div class="foot_icon2" style="margin-left:40px;float:left"></div><div class="dele_cont" style="margin-left:5px;float:left"></div></li>
+            <li style="width:110px"><i class="fa fa-close"></i></li>
         </ul>
     </div>
     {/foreach}

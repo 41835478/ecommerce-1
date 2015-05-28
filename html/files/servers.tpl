@@ -25,13 +25,13 @@
             <li style="width:110px">{$servertypes.{$server.server_type}}</li>
             <li style="width:110px">{$server.start_date}</li>
             <li style="width:110px">{$server.end_date}</li>
-            <li style="width:110px"><a href="#" style="width:10px;height:10px" id="edit_server" onclick="fillServer('{$server.id}')"><div class="foot_icon2" style="margin-left:40px;float:left"></div><div class="dele_cont" style="margin-left:5px;float:left"></div></a></li>
+            <li style="width:110px"><a  style="width:10px;height:10px" id="edit_server" onclick="fillServer('{$server.id}')"><i class="fa fa-list"></i></a></li>
         </ul>
     </div>
     {/foreach}
 </div> 
 
- <div class="header_form" >
+ <div class="header_form details_tabs_all_div" >
  <input type="hidden" id="selectedServer" />   
     <div class="form_head">
         <div class="cont_icon">
@@ -41,10 +41,10 @@
        <a href="#"><div class="head_close2"></div></a>
     </div>
     <div class="tool_head">
-        <a href="#" id="ded_img1"><div class="ded_img"><div class="ded_img1"></div></div></a><div class="ded_select1"></div>
-        <a href="#" id="ded_img2"><div class="ded_img"><div class="ded_img2"></div></div></a><div class="ded_select2" ></div>
-        <a href="#" id="ded_img3"><div class="ded_img"><div class="ded_img3"></div></div></a><div class="ded_select3"></div>
-        <a href="#" id="ded_img4"><div class="ded_img"><div class="ded_img4"></div></div></a><div class="ded_select4"></div>
+        <a   id="ded_img1"><div class="ded_img"><div class="ded_img1">Details<br><i class="fa fa-file-o"></i></div></div></a><div class="ded_select1"></div>
+        <a   id="ded_img2"><div class="ded_img"><div class="ded_img2">Reboot<br><i class="fa fa-refresh"></i></div></div></a><div class="ded_select2" ></div>
+      <!--  <a   id="ded_img3"><div class="ded_img"><div class="ded_img3"></div></div></a><div class="ded_select3"></div>
+        <a   id="ded_img4"><div class="ded_img"><div class="ded_img4"></div></div></a><div class="ded_select4"></div> -->
     </div>
  
  <div class="tool_info">
@@ -59,6 +59,8 @@
     <br />
     <input type="button" id="ServerReboot" value="Reboot" style="margin-top:10px" />
     </div>
+     
+     <!--
     <div class="tool_sli3">
     <div class="ftp_back_haed">
         <ul style="color:black;">
@@ -94,9 +96,13 @@
     </div>
     </div>
     </div>
+    
+     
     <div class="tool_sli4">
     <div id="BandWidth" ></div>
     </div>
+      -->
+      
     <div class="tool_sli1">
     <div class="Compnents">
           <div id="serverComponent" ></div>

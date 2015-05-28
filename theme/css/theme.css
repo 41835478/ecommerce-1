@@ -1097,7 +1097,7 @@ background: #f3fbfe;
     border-right: 5px solid rgba(0, 0, 0, 0);
     float: left;
     height: 0;
-    margin-left: -54px;
+    margin-left: -70px;
     margin-top: 54px;
     width: 0;
 }
@@ -1834,13 +1834,13 @@ display:block;
     color:#000000;
     font-size: 18px !important;
 }
-.fa-trash,.fa-edit,.fa-list{
+.fa-trash,.fa-edit,.fa-list,.fa-list-alt,.fa-credit-card,.fa-close{
     color:#333;
     font-size: 18px !important;
     float:right;
     margin-right: 5px;
 }
-.fa-trash:hover,.fa-edit:hover,.fa-list:hover{
+.fa-trash:hover,.fa-edit:hover,.fa-list:hover,.fa-list-alt:hover,.fa-credit-card:hover,.fa-close:hover{
    color:#105C8E;
 cursor:pointer;
 }
