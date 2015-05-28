@@ -842,7 +842,7 @@ public function deleteContact($contact_id){
         $token = uniqid();
         return $token;
     }
-
+    
 }
 
 ?>

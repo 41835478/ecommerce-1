@@ -990,5 +990,21 @@ elseif($cmd =='saveLicense') {
     
     exit();
   }
+  elseif($cmd == 'sendCancelEmail'){
+     
+     $service_name  = $fwork->requestVar('service_name'); 
+     $service_id  = $fwork->requestVar('service_id'); 
+      $result = $session->read(SESS_ACTIVE_CLIENT_ID);
+      
+        $body = 'Dear MQ Planet <br> please I want to cancel the service ('.$service_name.') <br> id= ' . $service_id.'<br>';
+        if ($fwork->sendEmail('Cancel service '.$service_name , $result['account_name'], 'members@mqplanet.com', $body)) {
+            echo 'success';
+        }//seuccess send email
+        else {
+            echo 'error';
+        }//error
+        exit;
+    
+  }
 }
 ?>

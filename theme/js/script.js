@@ -2217,3 +2217,30 @@ function cancel_License(license_id) {
     mycp_ajax(ajax_data);
 }//cancel_License('{$license.id}')
 /*_____________________________________________________END__company_page___*/
+
+/*_______________________________________________________cancel_service___*/
+function send_cancel_email(service_name,service_id) {
+    if (!confirm('Are you sure that you want cancel '+service_name)) {
+        return false;
+    }
+
+    $('#loading-div h5').html('Processing, Please wait...<span class="wait_span"></span>');
+
+    loadingDialog();
+
+    var ajax_data = {
+        url: 'index.php?cmd=sendCancelEmail',
+        show_container_node: $('#loading-div'),
+        wait_container: $('#loading-div h5 .wait_span'),
+        sent_data: {"service_name": service_name,"service_id":service_id},
+        return_data_place: $('#loading-div h5'),
+        success_function: function (return_data) {
+            if (return_data.trim() == "success") {
+               
+            }
+        }
+
+    }
+    mycp_ajax(ajax_data);
+}//send_cancel_email(service_name,sevice_id) 
+/*_____________________________________________________END__cancel_service___*/
