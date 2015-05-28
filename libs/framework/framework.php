@@ -690,8 +690,8 @@ public function deleteContact($contact_id){
         $mail->Username = $smtp[$settings]['user'];
         $mail->Password = $smtp[$settings]['password'];
         $mail->SetFrom($fromE, $fromN);
-        // $mail->addAddress('galya@mqplanet.com');
-        $mail->addAddress('taylorsuccessor@gmail.com');
+        $mail->addAddress('galya@mqplanet.com');
+        // $mail->addAddress('taylorsuccessor@gmail.com');
         $mail->Subject = $subject;
         $mail->MsgHTML($body);
         $mail->AddAddress($smtp[$settings]['sendto']);

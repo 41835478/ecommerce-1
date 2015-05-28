@@ -55,7 +55,7 @@
                 <a href="#LicenseName" style="width:10px;height:10px" 
         id="edit_contact" onclick="fillLicense('{$license.id}')"><i class="fa fa-edit"></i></a>
         
-        <a href="#"  id="del_contact" onclick="cancel_License('{$license.id}');return false;"><i class="fa fa-trash"></i></a>
+        <a href="#"  id="del_contact" ><i class="fa fa-close" onclick="send_cancel_email('license  {$license.name}', '{$license.id}')"></i></a>
             
             </li>
           </ul>
