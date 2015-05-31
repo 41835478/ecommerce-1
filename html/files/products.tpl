@@ -247,7 +247,7 @@ Root password
     <div class="tool_head">
         <a  id="ded_img2"><div class="ded_img"><div class="ded_img2">details<br><i class="fa fa-file-o"></i></div></div></a><div class="ded_select2" ></div>
         <a  id="ded_img3"><div class="ded_img"><div class="ded_img3">download<br><i class="fa fa-download"></i></div></div></a><div class="ded_select3"></div>
-       <!-- <a  id="ded_img4"><div class="ded_img"><div class="ded_img4"></div></div></a><div class="ded_select4"></div> -->
+      <a  id="ded_img4"><div class="ded_img"><div class="ded_img4">licenses<br><i class="fa fa-certificate"></i></div></div></a><div class="ded_select4"></div>
     </div>
  
  <div class="tool_info">
@@ -291,9 +291,34 @@ Root password
     </div>
    
      
-     <!--<div class="tool_sli4">
-    <div id="BandWidth" ></div>
-    </div>-->
+    <div class="tool_sli4">
+    
+        
+        <div class="header_form2" style="margin:0px;border:0px;">   
+    <div class="form_head">
+        <div class="cont_icon">
+            <div class="icon_back"></div>
+        </div>
+        <div class="cont_title">Licenses List</div>
+      
+    </div>
+    <div class="License_ul_title">
+        <ul>
+            <li >License Name</li>
+            <li>License Type</li>
+            
+        </ul>
+    </div>
+
+    <div id="licenses_rows_all_div" >
+
+
+    </div>
+</div>
+        
+        
+        
+    </div><!-- licenses tab -->
  </div>
  </div>
 

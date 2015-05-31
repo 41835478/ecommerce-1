@@ -219,7 +219,7 @@ $(document).ready(function () {
         $(".tool_sli1").fadeOut();
         $(".tool_sli3").fadeOut();
         $(".tool_sli2").fadeOut();
-        getServerBandwidth($('#selectedServer').val());
+       // getServerBandwidth($('#selectedServer').val());
     });
     $('.ded_img3').live('click', function () {
         $(".ded_select3").css({"display": "block"});
@@ -1141,7 +1141,7 @@ function getDomains() {
 
 /*************************
  Get Server bandwidth
- *************************/
+ *************************
 function getServerBandwidth(id)
 {
     loadingDialog();
@@ -2112,7 +2112,11 @@ function sendrenewalemail(product_id, button_node) {
     }
     mycp_ajax(ajax_data);
 }
-function getProductDetails(product_id, type) {
+function getProductDetails(product_id, type) { 
+    
+    $("#product_download_a").attr('href', '#');
+    $("#remaining_invoice_div").html('');
+     $("#licenses_rows_all_div").html('');
     if (type == 'expired') {
 
         $('#expired_details_div').show();
@@ -2123,13 +2127,13 @@ function getProductDetails(product_id, type) {
 
     }//if expired
     else {
-        $("#valid_date_b,#wait_dowloal_link_div").html('<span class="period_loading_span"></span>');
+        $("#valid_date_b,#wait_dowloal_link_div,#licenses_rows_all_div").html('<span class="period_loading_span"></span>');
         $.ajax({
             type: "post",
             dataType: "json",
             url: 'index.php?cmd=getLastContractDate',
             data: {"product_id": product_id},
-            success: function (return_data) {
+            success: function (return_data) {console.log(return_data);
                 $("#valid_date_b").html(return_data.valid_date);
 
 
@@ -2141,7 +2145,24 @@ function getProductDetails(product_id, type) {
                 } else {
                     $("#remaining_invoice_div").html('');
                 }
+                /*________________license___*/
+                var license_rows = '';
+                if ( return_data.licenses.length >0) {
+                    
 
+
+for (var i=0;i<return_data.licenses.length ;i++) {
+   
+                        license_rows += '<div class="License_Info"> <ul>' +
+                                '<li>' + return_data.licenses[i].name + '</li>' +
+                                '<li>' + return_data.licenses[i].type + '</li>' +
+                                '</ul></div>';
+                    }//for each license
+                }
+                $("#licenses_rows_all_div").html((license_rows !='')? license_rows:'no license for this product');
+
+                /*________________license___*/
+                
             }});//ajax
         $('#expired_details_div').hide();
         $('#valid_details_div').show();
@@ -2237,7 +2258,7 @@ function send_cancel_email(service_name,service_id) {
         success_function: function (return_data) {
             if (return_data.trim() == "success") {
                
-            }
+            }{}
         }
 
     }

@@ -430,11 +430,13 @@ public function deleteContact($contact_id){
             
 
  $document = $sugar->getDataList('mqp_products', 'Documents', $id);
+ $licenses = $sugar->getDataList('mqp_products', 'mqp_license', $id);
 
         return ['valid_date' => $valid_date,
             'invoice_id' => $invoice_id,
             'remaining' => $remaining,
-            'document_id'=>$document[0]["id"]
+            'document_id'=>$document[0]["id"],
+            'licenses'=>$licenses
                 ];
     }
 

@@ -1206,10 +1206,9 @@ background: #f3fbfe;
     color: #7D7D7D;
 }
 .tool_sli4{
-    height: 400px;
+    height: auto;
     width: 700px;  
  display: none; 
-    background: green;
 }
 
 .reboot_msg{
