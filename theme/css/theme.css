@@ -1758,7 +1758,7 @@ display:block;
     border-bottom: 1px solid #C6C6C6;
     float: left;
     height: 30px;
-    width: 700px;
+    width: 100%;
    
 }
 
@@ -1933,5 +1933,186 @@ height: 84px;
     color:#105D8F;
 }
 /*________________________________END___details_tabs_all_div*/
-/*___________________________________contact_page*/
-.wait_span{ }
+
+
+/*_______________________________________________dashboard__*/
+
+#body_section{
+    
+}
+     
+#header_blank_div{
+    height:25px;
+    background-color: #FCFCFC;
+     border-bottom:1px solid #CECECE;
+}
+#inner_page_all_div{
+    width:80%;
+    margin:10px 10%;
+}
+#body_header_div{
+    
+}
+#welcome_table_all_div{
+    width:59%;
+    margin:0 1% 1% 0%;
+    height:200px;
+    float:left;
+    
+}
+
+#new_messages_label_table_all_div{
+    
+    width:38%;
+    margin:0 0% 1% 1%;
+    float:right;
+    
+}
+#new_messages_label_table_all_div .table_head_div{
+    
+    background-color: #ffffff !important;
+    border-bottom: none;
+}
+#new_messages_label_table_all_div .top_table_icon_div {
+ 
+    background-color: #EFEFEF;
+    background-image: linear-gradient(#EFEFEF,#ffffff);
+    
+}
+#new_messages_label_table_all_div .top_table_icon_div i{
+    color:#000000;
+    
+}
+#new_messages_label_table_all_div .table_head_label{
+    color:#000000;
+    width: 50px;
+    overflow: visible;
+    
+}
+#new_messages_icon_number_div{
+    float: right;
+    margin:3px;
+    background-color: #D04433;
+    color: #ffffff;
+    border:1px solid #B3321F;
+    padding: 3px;
+    position: relative;
+    margin-right: 7px;
+    width: 35px;
+    text-align: center;
+}
+
+#new_messages_icon_number_div i{
+    position: absolute;
+    bottom:-5px;
+    right:-5px;
+    color:#878984;
+    background-color:#fff;
+    border-radius: 1px;
+}
+
+
+#dashboard_all_div .top_table_icon_div{
+    background-color: #E6E6E6;
+    
+}
+#dashboard_all_div .table_head_div{
+background-color:#EFEFEF;
+}
+
+#account_summary_table_all_div{
+    
+    width:38%;
+    margin:0 0% 1% 1%;
+    float:right;
+    
+}
+
+.top_table_icon_div i{
+    font-size: 18px;
+    color:#7E7E7E;
+    margin:10px 0 0 10px;
+}
+.hr_div{
+    clear: both;
+    border-top:1px solid #E5E5E5;
+    border-bottom:1px solid #ffffff;
+    height: 0px;
+    width: 100%;
+    margin-top:5px;
+}
+#dashboard_all_div .table_head_div {
+    height: 35px;
+    color:#626262;
+    font-size: 14px;
+}
+#dashboard_all_div .top_table_icon_div{
+    height: 35px;
+    
+}
+#dashboard_all_div .table_head_label{
+    padding:5px;
+}
+
+#news_table_all_div{
+    width:100%;
+    margin:10px 0px;
+    
+}
+#news_table_all_div table tbody td{
+    border-bottom:#C6C6C6;
+    color:#4A4A4A;
+    padding:2%;
+    color:#494949;
+}
+
+.news_social_icons_div {
+    float:right;
+}
+.news_social_icons_div i{
+    
+    background-color: #A0A0A0;
+    color:#ffffff;
+    display: inline-block;
+    border-radius: 100%;
+    padding:3px;
+    width:13px;
+    height: 13px;
+    text-align: center;
+}
+.news_social_icons_div i:hover{
+    
+    background-color: #ffffff;
+    cursor:pointer;
+    color:#A0A0A0;
+}
+                                .news_date_span{ margin: 0px;margin:left:0px;}
+
+#news_table_all_div .news_title_h5{
+    clear: both;
+    border-bottom:#C6C6C6;
+    color:#000000;
+    font-weight: 500;
+}
+.scroll_table_div{
+  float:left;
+    height:500px;
+    overflow: auto;
+    width:100%;
+}
+#account_summary_table_all_div .scroll_table_div{
+    height: 115px
+}
+
+@media screen and (max-width: 550px) {
+   
+    
+#inner_page_all_div{
+    width:100%;
+    margin:10px 0px;
+} 
+#welcome_table_all_div,#new_messages_label_table_all_div,#account_summary_table_all_div{
+    width:100%;
+}
+}
+/*___________________________________END____________dashboard__*/
