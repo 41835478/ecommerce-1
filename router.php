@@ -627,7 +627,7 @@ elseif($cmd =='saveLicense') {
                 header("location:index.php?cmd=open-cases");
             }//if add case
             else{
-                $error_text='there is an error ,please try again later'.$account_array['account_id'];
+                $error_text='there is an error ,please try again later' ;
             }
         }//$save_button 
 
@@ -660,7 +660,7 @@ elseif($cmd =='saveLicense') {
         if ($result_count) {
 
             for ($i = 0; $i < $result_count; $i++) {
-                echo '<tr><td>' . $result[$i]["name"] . '</td><td>' . $result[$i]["description"] . '</td><td></td></tr>';
+                echo '<tr><th>' . $result[$i]["name"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
             }
         }//if inserted successfully
         else {
@@ -688,7 +688,7 @@ elseif($cmd =='saveLicense') {
         if ($result_count) {
 
             for ($i = 0; $i < $result_count; $i++) {
-                echo '<tr><td>' . $result[$i]["name"] . '</td><td>' . $result[$i]["description"] . '</td><td></td></tr>';
+                echo '<tr><th>' . $result[$i]["name"].$result[$i]["bug_number"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
             }
         }//if inserted successfully
         else {
@@ -796,9 +796,34 @@ elseif($cmd =='saveLicense') {
     exit();
  }
  elseif($cmd == 'dashboard'){
-    $documents =  $fwork->getDocuments('news',0);
-    //var_dump("sdsda",$documents);
-    $smarty->assign('news', $documents);
+    
+     /*_______remaining invoice */
+    $result = $session->read(SESS_ACTIVE_CLIENT_ID);
+    $invoices =  $fwork->getInvoices($result['account_id']);
+    
+    $remaining=0;
+    for($i=0;$i<count($invoices);$i++){
+         $remaining+=$invoices[$i]["remaining"];
+    }
+    $smarty->assign('remaining', $remaining);
+    
+     /*____END___remaining invoice */
+    
+    /*_________________________news*/
+    $documents =  $fwork->getDashboardNews('news',0);
+    $smarty->assign('documents', $documents);
+    /*_____________________END____news*/
+    
+    
+    /*_______________________open_case_*/
+    
+    $cases =  $fwork->getOpenCases($result['account_id']);
+    $cases_number=0;
+    for($i=0;$i<count($cases);$i++){
+         if($cases[$i]["status"]== 'New'){$cases_number++;}
+    }
+    $smarty->assign('cases_number', $cases_number);
+    /*_____________________END__open_case_*/
     $smarty->assign('active_sub_menu','dashboard');
     $smarty->display('dashboard.tpl');
     exit();

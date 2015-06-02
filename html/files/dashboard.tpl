@@ -24,14 +24,22 @@
                         <i class="fa fa-share"></i>
                     </div>
                     <div class="table_head_label">
-                        Welcome Message
+                      Control Panel
                     </div>
 
                 </div>
 
                 <table class="main_table"  >
                     <thead>
-                        
+                        <tr><td style="font-size:15px; font-weight: bold; padding: 1%; line-height: 30px;">
+                           
+                                We would like to welcome you, to your control area.<br>
+This area is delivers all the information regarding your renewals and software updates. <br>
+We place this tool in your hands to achieve a fast and effective connection between us.<br>
+
+                                
+                                
+                            </td></tr>
                     </thead>
                     <tbody>
 
@@ -43,18 +51,22 @@
             
             
             
-            <div class=" table_all_div" id="new_messages_label_table_all_div" >
+            <div class=" table_all_div" id="new_messages_label_table_all_div" onclick="window.location.href='index.php?cmd=open-cases';" >
                 <div class="table_head_div">
                     <div class="top_table_icon_div">
                         <i class="fa fa-refresh"></i>
                     </div>
                     <div class="table_head_label">
                         <div style="width:200px;">
-                        you have new messages
+                        {if $cases_number >0 }    
+                        you have {$cases_number} open cases
+                        {else}
+                            you have no open cases
+                        {/if}
                         </div>
                     </div>
                     <div id="new_messages_icon_number_div">
-                        3
+                        {$cases_number}
                         <i class="fa fa-envelope-o"></i>
                     </div><!-- #new_messages_icon_number_div -->
 
@@ -65,7 +77,7 @@
             
             
             
-            <div class=" table_all_div" id="account_summary_table_all_div" >
+            <div class=" table_all_div" id="account_summary_table_all_div" onclick="window.location.href='index.php?cmd=invoices'" >
                 <div class="table_head_div">
                     <div class="top_table_icon_div">
                         <i class="fa fa-share"></i>
@@ -75,50 +87,9 @@
                     </div>
 
                 </div>
-<div class="scroll_table_div">
-                <table class="main_table"  >
-                    <thead>
-                       
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                        <tr>
-                            <td>ss</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="scroll_table_div" style="font-size:18px; text-align: center; ">
+                
+    <br>The remaining  amount <br><br><b style="font-size:24px;">{$remaining}$ </b>
 
                 </div><!-- .scroll_table_div -->
                 
@@ -148,7 +119,7 @@
                     </thead>
                     <tbody>
                         
-                        
+                        {foreach from=$documents item=document} 
                         <tr><td>
                                 <div class="news_social_icons_div" >
                                     <i class="fa fa-facebook-f"></i>
@@ -156,84 +127,16 @@
                                     <i class="fa fa-envelope"></i>
                                 </div><!--.news_social_icons_div -->
                                 
-                                <span class="news_date_span">Apr 5,2015</span>
-                                <h5 class="news_title_h5">This is the news title</h5>
+                                <span class="news_date_span">{$document.publish_date}</span>
+                                <h5 class="news_title_h5">{$document.name}</h5>
                                 <p class="one_news_shortcut_p">
-                                    Trading foreign exchange on margin carries a high level of risk, and may not be suitable for all investors. The high degree of leverage can work against you as well as for you.
-                                    
+                                    {$document.body|unescape:"htmlall"}
                                 </p>
                                 
                             </td></tr>
+                          {/foreach} 
                         
                         
-                        <tr><td>
-                                <div class="news_social_icons_div" >
-                                    <i class="fa fa-facebook-f"></i>
-                                    <i class="fa fa-twitter"></i>
-                                    <i class="fa fa-envelope"></i>
-                                    
-                                </div><!--.news_social_icons_div -->
-                                <span class="news_date_span">Apr 5,2015</span>
-                                <h5 class="news_title_h5">This is the news title</h5>
-                                <p class="one_news_shortcut_p">
-                                    Trading foreign exchange on margin carries a high level of risk, and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to invest in foreign exchange you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your investment and therefore you should not invest money that you cannot afford to lose. You may be liable for losses that exceed the amount of margin that you post. You should be aware of all the risks associated with foreign exchange trading, and seek advice from an independent financial 
-                                    
-                                </p>
-                                
-                            </td></tr>
-                        
-                        
-                        <tr><td>
-                                <div class="news_social_icons_div" >
-                                    <i class="fa fa-facebook-f"></i>
-                                    <i class="fa fa-twitter"></i>
-                                    <i class="fa fa-envelope"></i>
-                                </div><!--.news_social_icons_div -->
-                                
-                                <span class="news_date_span">Apr 5,2015</span>
-                                <h5 class="news_title_h5">This is the news title</h5>
-                                <p class="one_news_shortcut_p">
-                                    Trading foreign exchange on margin carries a high level of risk, and may not be suitable for all investors. The high degree of leverage can work against you as well as for you.
-                                    
-                                </p>
-                                
-                            </td></tr>
-                        
-                        
-                        
-                        <tr><td>
-                                <div class="news_social_icons_div" >
-                                    <i class="fa fa-facebook-f"></i>
-                                    <i class="fa fa-twitter"></i>
-                                    <i class="fa fa-envelope"></i>
-                                </div><!--.news_social_icons_div -->
-                                
-                                <span class="news_date_span">Apr 5,2015</span>
-                                <h5 class="news_title_h5">This is the news title</h5>
-                                <p class="one_news_shortcut_p">
-                                    Trading foreign exchange on margin carries a high level of risk, and may not be suitable for all investors. The high degree of leverage can work against you as well as for you.
-                                    
-                                </p>
-                                
-                            </td></tr>
-                        
-                        
-                        
-                        <tr><td>
-                                <div class="news_social_icons_div" >
-                                    <i class="fa fa-facebook-f"></i>
-                                    <i class="fa fa-twitter"></i>
-                                    <i class="fa fa-envelope"></i>
-                                </div><!--.news_social_icons_div -->
-                                
-                                <span class="news_date_span">Apr 5,2015</span>
-                                <h5 class="news_title_h5">This is the news title</h5>
-                                <p class="one_news_shortcut_p">
-                                    Trading foreign exchange on margin carries a high level of risk, and may not be suitable for all investors. The high degree of leverage can work against you as well as for you.
-                                    
-                                </p>
-                                
-                            </td></tr>
                     </tbody>
                 </table>
                 </div><!-- .scroll_table_div -->

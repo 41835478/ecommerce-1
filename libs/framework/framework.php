@@ -453,6 +453,10 @@ public function deleteContact($contact_id){
         $result = $sugar->getDataList('Accounts', 'Cases', $id);
         return $result;
     }
+    
+  
+    
+    
 
     public function add_case($subject, $description,$user_name,$user_id) {
        
@@ -494,6 +498,14 @@ public function deleteContact($contact_id){
         $sugar = new iSugar();
         $query = "category='$type'";
         $result = $sugar->getDataArray('mqp_docs', $query, 2, 'publish_date desc', $offset);
+        return $result;
+    }
+
+    public function getDashboardNews($type, $offset) {
+        $result = array();
+        $sugar = new iSugar();
+        $query = "category='$type'";
+        $result = $sugar->getDataArray('mqp_docs', $query, 4, 'publish_date desc', $offset);
         return $result;
     }
 
@@ -840,14 +852,15 @@ public function deleteContact($contact_id){
         
         $insert_data=[
             "name"=>$title,
+            "status"=>'New',
             "date_entered"=>$date,
             "date_modified"=>$date,
             "description"=>$body,
             "account_id"=>$cid
         ];
         $sugar = new iSugar();
-        $result = $sugar->saveData('Cases', $insert_data);
-        die(var_dump($result));
+        if($sugar->saveData('Cases', $insert_data)){
+        return true;}
         /*
         $db = new Database();
         $result = $db->query("INSERT INTO cases (id, name, date_entered, date_modified, modified_user_id, created_by,
