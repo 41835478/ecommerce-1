@@ -607,7 +607,97 @@ elseif($cmd =='saveLicense') {
     $smarty->display('open_cases.tpl');
     exit();
   }
+    
+  /********************************
+    new Cases  
+ ********************************/
+   elseif ($cmd == 'new-case') {
+        $save_button = $fwork->requestVar('add_case_button');
+        $error_text='';
+        if ($save_button == 'save') {
+
+            $subject = $fwork->requestVar('case_subject_input');
+            $description = $fwork->requestVar('case_description_textarea');
+            
+    $account_array = $session->read(SESS_ACTIVE_CLIENT_ID);
+    
+    
+            if($fwork->add_case($subject, $description,$account_array['account_name'],$account_array['account_id'])){
+                
+                header("location:index.php?cmd=open-cases");
+            }//if add case
+            else{
+                $error_text='there is an error ,please try again later'.$account_array['account_id'];
+            }
+        }//$save_button 
+
+        $smarty->assign('error_text', $error_text);
+        $smarty->assign('sub', 'support');
+        
+
+        $smarty->assign('active_sub_menu', 'new-case');
+        $smarty->display('new_case.tpl');
+
+
+        exit();
+    }
+    
+/********************************
+    comment on case
+ ********************************/
+       elseif($cmd == 'add_case_buge'){
+   
+    $description = $fwork->requestVar('description');
+    $case_id = $fwork->requestVar('case_id');
+    $result = $session->read(SESS_ACTIVE_CLIENT_ID);
+ 
+    
   
+     if($fwork->add_case_buge($case_id, $description,$result['account_name'],$result['account_id'])){
+       
+        $result = $fwork->get_case_buge($case_id);
+        $result_count = count($result);
+        if ($result_count) {
+
+            for ($i = 0; $i < $result_count; $i++) {
+                echo '<tr><td>' . $result[$i]["name"] . '</td><td>' . $result[$i]["description"] . '</td><td></td></tr>';
+            }
+        }//if inserted successfully
+        else {
+            echo '<tr><td colspan="2">no comments untill now</td></tr>';
+        }
+     }//if inserted successfully
+     else{
+         echo 'error';
+     }
+
+     
+    exit();
+  }
+  
+    
+/********************************
+    get_case_buge
+ ********************************/
+       elseif ($cmd == 'get_case_buge') {
+
+        $case_id = $fwork->requestVar('case_id');
+
+        $result = $fwork->get_case_buge($case_id);
+        $result_count = count($result);
+        if ($result_count) {
+
+            for ($i = 0; $i < $result_count; $i++) {
+                echo '<tr><td>' . $result[$i]["name"] . '</td><td>' . $result[$i]["description"] . '</td><td></td></tr>';
+            }
+        }//if inserted successfully
+        else {
+            echo '<tr><td colspan="2">no comments untill now</td></tr>';
+       }
+
+
+        exit();
+    }
     /********************************
     Open Cases List
  ********************************/

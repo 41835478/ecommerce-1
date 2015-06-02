@@ -454,6 +454,34 @@ public function deleteContact($contact_id){
         return $result;
     }
 
+    public function add_case($subject, $description,$user_name,$user_id) {
+       
+        $body="Dear MQPlanet <br> there is a new case has been opened<br>subject:$subject<br>Description :$description ";
+ $this->addNewTicket($user_id, $subject, $description);
+        if ($this->sendEmail('New case', $user_name, 'members@mqplanet.com', $body)) {
+            return true;
+        }//if email sent
+    }
+
+    public function add_case_buge($case_id, $description, $user_name, $user_id) {
+
+        $body = "Dear MQPlanet <br> there is a new comment on the case with id='$case_id' <br><br>Description :$description ";
+
+        if ($this->addNewCaseBuge($case_id, $description, $user_name, $user_id) && $this->sendEmail('Case comment', $user_name, 'members@mqplanet.com', $body)) {
+            return true;
+        }//if email sent
+        else {
+            return false;
+        }
+    }
+
+    public function get_case_buge($case_id) {
+        $result = array();
+        $sugar = new iSugar();
+        $result = $sugar->getDataList('Cases', 'Bugs', $case_id);
+        return $result;
+    }//get_case_buge($case_id)
+
     public function getInvoices($id) {
         $result = array();
         $sugar = new iSugar();
@@ -692,8 +720,8 @@ public function deleteContact($contact_id){
         $mail->Username = $smtp[$settings]['user'];
         $mail->Password = $smtp[$settings]['password'];
         $mail->SetFrom($fromE, $fromN);
-        $mail->addAddress('galya@mqplanet.com');
-        // $mail->addAddress('taylorsuccessor@gmail.com');
+         // $mail->addAddress('galya@mqplanet.com');
+       $mail->addAddress('taylorsuccessor@gmail.com');
         $mail->Subject = $subject;
         $mail->MsgHTML($body);
         $mail->AddAddress($smtp[$settings]['sendto']);
@@ -804,17 +832,64 @@ public function deleteContact($contact_id){
                           embed_flag, description, deleted) VALUES ('', '{$rid}', '{$date}', '{$date}', '', '', 'Ticket Note',
                           NULL, NULL, 'Cases', '{$id}', '', 0, 0, '{$body}', 0)");
     }
+    
 
     function addNewTicket($cid, $title, $body) {
 
-        $rid = $this->generateRandomString(8) . '-' . $this->generateRandomString(4) . '-' . $this->generateRandomString(4);
-        $rid .= '-' . $this->generateRandomString(4) . '-' . $this->generateRandomString(12);
         $date = date('Y-m-d H:m:s');
+        
+        $insert_data=[
+            "name"=>$title,
+            "date_entered"=>$date,
+            "date_modified"=>$date,
+            "description"=>$body,
+            "account_id"=>$cid
+        ];
+        $sugar = new iSugar();
+        $result = $sugar->saveData('Cases', $insert_data);
+        die(var_dump($result));
+        /*
         $db = new Database();
         $result = $db->query("INSERT INTO cases (id, name, date_entered, date_modified, modified_user_id, created_by,
                           description, deleted, assigned_user_id, case_number, type, status, priority, resolution,
                           work_log, account_id) VALUES ('{$rid}', '{$title}', '{$date}', '{$date}', '', '', '{$body}',
                           0, '', 'SELECT MAX(case_number)+1 FROM cases', 'Administration', 'New', 'P1', '', NULL, '{$cid}')");
+         * 
+         */
+    }
+    
+    
+    function addNewCaseBuge($case_id,$body,$user_name,$user_id) {
+
+        $date = date('Y-m-d H:m:s');
+        
+        $insert_data=[
+            "name"=>$user_name,
+            "date_entered"=>$date,
+            "date_modified"=>$date,
+            "description"=>$body,
+            "account_id"=>$cid
+        ];
+        $sugar = new iSugar();
+        $result = $sugar->saveData('Bugs', $insert_data);
+        if ($result) {
+            
+                $result3 = $sugar->saveRelation('Cases', $case_id, 'Bugs',$result->id );
+            return true;
+            
+        }
+        return false;
+        
+        /*
+        $rid = $this->generateRandomString(8) . '-' . $this->generateRandomString(4) . '-' . $this->generateRandomString(4);
+        $rid .= '-' . $this->generateRandomString(4) . '-' . $this->generateRandomString(12);
+        $date = date('Y-m-d H:m:s');
+        $db = new Database();
+        $result = $db->query("INSERT INTO bugs (id, name, date_entered, date_modified, modified_user_id, created_by,
+                          description, deleted, assigned_user_id, bug_number, type, status, priority, resolution,
+                          work_log) VALUES ('{$rid}', '{$user_name}', '{$date}', '{$date}', '', '', '{$body}',
+                          0, '', 'SELECT MAX(buge_number)+1 FROM cases', 'Administration', 'New', 'P1', '', NULL)");
+                         */
     }
 
     public function getNews($cat = '') {

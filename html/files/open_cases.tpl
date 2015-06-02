@@ -1,28 +1,87 @@
 {include file='header.tpl'}
 {include file='submenu.tpl'}
-    <div class="header_form2" >   
-    <div class="form_head">
-        <div class="cont_icon">
-            <div class="icon_back"></div>
-        </div>
-        <div class="cont_title">Cases List</div>
-      
-    </div>
-     <div class="pers_title">
-        <ul>
-            <li style="width:210px">Case</li>
-            <li style="width:110px">Status</li>
-            <li style="width:110px">Action</li>
-        </ul>
-    </div>   
-    {foreach from=$cases item=case}   
-        <div class="pers_body">
-        <ul>
-            <li style="width:210px">{$case.name}</li>
-            <li style="width:110px">{$status.{$case.status}}</li>
-            <li style="width:110px"></li>
-        </ul>
-    </div>
+       
+            <div class=" table_all_div"   >
+                <div class="table_head_div">
+                    <div class="top_table_icon_div">
+                        <i class="fa fa-share"></i>
+                    </div>
+                    <div class="table_head_label">
+                        add comment on case
+                            <span id="add_error_message_span" style='color:#f00'></span>
+                    </div>
+
+                </div>
+                 
+                <table class="main_table"  >
+                    <thead>
+                                <tr>
+            <th  >Case</th>
+            <th >Status</th>
+            <th >Action</th>
+        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {foreach from=$cases item=case}   
+        
+        <tr>
+            <td >{$case.name}</td>
+            <td >{$status.{$case.status}}</td>
+            <td ><i class="fa fa-list" onclick="getCaseBuges('{$case.id}')"></i></td>
+        </tr>
+   
     {/foreach}
-</div> 
+                    </tbody>
+                    
+
+                    
+                </table>
+
+            </div>
+            
+            
+       
+  
+        
+       
+            <div class=" table_all_div" id="add_comment_case_table_all_div" >
+                <div class="table_head_div">
+                    <div class="top_table_icon_div">
+                        <i class="fa fa-share"></i>
+                    </div>
+                    <div class="table_head_label">
+                        add comment on case
+                            <span id="add_error_message_span" style='color:#f00'></span>
+                    </div>
+
+                </div>
+                    <form action=" " method="post" id="add_comment_form" onsubmit="return false;">
+                <table class="main_table"  >
+                    <thead>
+                        
+                    </thead>
+                    
+                    <tbody>
+                    </tbody>
+                    
+                    
+                    <tfoot>
+                        <tr>
+                            <th>Description</th>
+                            <td> <textarea name="buge_description" id="buge_description" placeholder="Write your comment" required></textarea></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td> <button name="add_case_button" id="add_case_button" value="save">add comment</button></td>
+                        </tr>
+                    </tfoot>
+                    
+                    
+                </table>
+                </form>
+
+            </div><!-- #add_comment_table_all_div -->
+
+        
 {include file='footer.tpl'}

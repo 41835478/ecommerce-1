@@ -2080,11 +2080,11 @@ function mycp_ajax(ajax_data) {
         },
         error: function (errors) {
             ajax_data.return_data_place.html("error , please try again later");
+            
         }, complete: function () {
             $(".period_loading_span").hide();
-            get_products_period_status = false;
-            closeDialog();
-
+            get_products_period_status = false; 
+            
         }
     });
 
@@ -2265,3 +2265,44 @@ function send_cancel_email(service_name,service_id) {
     mycp_ajax(ajax_data);
 }//send_cancel_email(service_name,sevice_id) 
 /*_____________________________________________________END__cancel_service___*/
+
+/*________________________________________________________cases_page_*/
+
+function getCaseBuges(case_id){
+    $("#add_comment_form").attr("onsubmit","addCaseBuge('"+case_id+"',$('#buge_description').val());return false;");
+
+
+     var ajax_data = {
+        url:'index.php?cmd=get_case_buge',
+        show_container_node: $('#add_comment_case_table_all_div'),
+        wait_container: $('#add_comment_case_table_all_div tbody'),
+        sent_data: {"case_id":case_id},
+        return_data_place: $('#add_comment_case_table_all_div tbody')
+    }
+    mycp_ajax(ajax_data);
+}//get case buges
+
+
+
+
+
+function addCaseBuge(case_id,description) {
+    var ajax_data = {
+        url:'index.php?cmd=add_case_buge',
+        show_container_node:  $('#add_comment_case_table_all_div'),
+        wait_container: $('#add_comment_case_table_all_div tbody'),
+        sent_data: {"case_id":case_id,'description':description},
+        return_data_place: $('#add_comment_case_table_all_div tbody'),
+        success_function: function (return_data) {
+            if (return_data.trim() != "error") {
+               getCaseBuges(case_id);
+                $("#add_error_message_div").text(''); 
+            }else{
+                $("#add_error_message_div").text('there is an error, please try again later!');
+            }
+        }
+    }
+    mycp_ajax(ajax_data);
+}//function getProductsPeriod
+
+/*____________________________________________________END____cases_page_*/

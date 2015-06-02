@@ -2086,7 +2086,7 @@ background-color:#EFEFEF;
     cursor:pointer;
     color:#A0A0A0;
 }
-                                .news_date_span{ margin: 0px;margin:left:0px;}
+ .news_date_span{ margin: 0px; left:0px;}
 
 #news_table_all_div .news_title_h5{
     clear: both;
@@ -2109,10 +2109,27 @@ background-color:#EFEFEF;
     
 #inner_page_all_div{
     width:100%;
-    margin:10px 0px;
+    margin:10px 1%;
 } 
 #welcome_table_all_div,#new_messages_label_table_all_div,#account_summary_table_all_div{
     width:100%;
 }
 }
 /*___________________________________END____________dashboard__*/
+
+/*__________________________________________________new_case*/
+#add_case_form,#add_comment_form {
+    margin:0px;
+    padding:0px;
+}
+#add_case_form input,#add_case_form textarea,#add_case_form button,#add_comment_form input,#add_comment_form textarea,#add_comment_form button{
+    width:620px;
+    border:none;
+    paddin:0px;
+    margin: 0px;
+}
+#add_case_form textarea,#add_comment_form textarea{ width: 600px;}
+
+#add_comment_case_table_all_div{display: none;}
+/*_____________________________________________END_____new_case*/
+

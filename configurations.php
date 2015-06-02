@@ -1,8 +1,8 @@
   <?php
-$database = array('default' => array('host'     => 'localhost',
-                                     'user'     => 'root',
-                                     'password' => 'root',
-                                     'db'       => 'planetcrm'),
+$database = array('default' => array('host'     => 'db.office.mqplanet.com',
+                                     'user'     => 'planetcrm',
+                                     'password' => '8Qw35Mr8F94JzUSF',
+                                     'db'       => 'planetcrm2'),
 		              'site'    => array('host'     => '192.168.15.15',
                                      'user'     => 'root',
                                      'password' => 'gelite27',

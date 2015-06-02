@@ -24,7 +24,7 @@
                         <i class="fa fa-share"></i>
                     </div>
                     <div class="table_head_label">
-                        Products List
+                        Welcome Message
                     </div>
 
                 </div>
