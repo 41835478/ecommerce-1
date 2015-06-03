@@ -65,7 +65,7 @@ We place this tool in your hands to achieve a fast and effective connection betw
                         {/if}
                         </div>
                     </div>
-                        <div id="new_messages_icon_number_div" style="cursor:pointer;" onclick="window.location.href='index.php?cmd=open-cases';" >
+                        <div id="new_messages_icon_number_div" style="cursor:pointer;" onclick="window.location.href='index.php?cmd=open-cases&status=New';" >
                         {$cases_number}
                         <i class="fa fa-envelope-o"></i>
                     </div><!-- #new_messages_icon_number_div -->

@@ -17,20 +17,16 @@
   {/foreach} 
  </div>
 
-
+   <div  class="moreDoc4" >
 {$countDoc=count($documents)}
     {if $countDoc == 0} 
-         <div style="color:red"> Your search did not match any news. </div> 
+         <a href="#"><div  class='moreDoc2'  > No More document</div></a> 
     {else}
-         <div  id="moreDoc2" >
-            {if $finedArt == ""}
-             <a href="#"><div  class='moreDoc2' onclick="moreDocument({$offset})">more document </div></a>
-            {else}
-             <a href="#"><div  class='finedMoreDoc2' onclick="finedMoreDocument({$offset})">Fined More Document</div></a>
-            {/if}
-         </div>
+      
+       <a href="#"><div  class='moreDoc2' onclick="moreDocument({$offset})">More Document</div></a>
+
+       
     {/if}
-
-
+  </div>
 
 

@@ -725,10 +725,10 @@ elseif($cmd =='saveLicense') {
     $offset = $fwork->requestVar('offset');
     $type = $fwork->requestVar('type');  
     $smarty->assign('sub', 'documents');
-    $documents =  $fwork->getDocuments($type,$offset);
+    $documents =  $fwork->getDocuments($type,$offset+1);
     $smarty->assign('documents', $documents);
     $smarty->assign('type', $type);
-    $smarty->assign('offset', $offset); 
+    $smarty->assign('offset', $offset+1); 
     $smarty->assign('active_sub_menu','getDocuments');
     
     $smarty->display('documents_list.tpl');
@@ -740,38 +740,46 @@ elseif($cmd =='saveLicense') {
   }
   
    elseif($cmd == 'getDocumentBody'){
+       
+       
+    
+    
+   
     $document_id = $fwork->requestVar('id');
-    $smarty->assign('sub', 'documents');
-    $document =  $fwork->getDocument($document_id);
-    $smarty->assign('document', $document);
-    $smarty->assign('active_sub_menu','getDocument');
-    $smarty->display('document.tpl');
-    exit();
+   $smarty->assign('sub', 'documents');
+   $document =  $fwork->getDocument($document_id);
+   $smarty->assign('offset', 0);
+   $smarty->assign('document', $document);
+    $smarty->assign('active_sub_menu',$fwork->requestVar('docuemnt_type'));
+    
+        $smarty->display('document.tpl');
+    
+  exit();
   }   
  
  /********************************
       Articles
  ********************************/
-  elseif($cmd == 'articles' || $cmd == 'manuals' || $cmd == 'faqs'){
+  elseif($cmd == 'articles' || $cmd == 'manuals' || $cmd == 'faqs' || $cmd == 'news'){
    $offset = $fwork->requestVar('offset');
    $finedArt = $fwork->requestVar('find_articles');
    
    $smarty->assign('sub', 'documents');
-   $documents =  $fwork->findArticles($cmd,$offset);
+   //$documents =  $fwork->findArticles($cmd,$offset);
+   $documents = $fwork->getDocuments($cmd,$offset);
    $smarty->assign('finedArt', $finedArt);
    $smarty->assign('offset', $offset);
    $smarty->assign('documents', $documents);
     $smarty->assign('active_sub_menu',$cmd);
-   if($offset==0)
+   
         $smarty->display('documents.tpl');
-   else
-        $smarty->display('moreNews.tpl');
+  
   exit();
   }
    
  /********************************
      Find Articles
- ********************************/
+ ********************************
   elseif($cmd == 'news'){
 
    $smarty->assign('sub', 'documents');
@@ -779,7 +787,7 @@ elseif($cmd =='saveLicense') {
         $smarty->display('news.tpl');
   exit();
   }
-  
+  */
  
  elseif($cmd == 'getInvoiceDetails') {
     $invoice_id = $fwork->requestVar('id');

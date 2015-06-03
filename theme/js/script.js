@@ -1372,17 +1372,17 @@ function getDocuments(type) {
 
 function moreDocument(offset) {
 
-    var decuType = $('#dectCategory').text();
+    var decuType = $('#dectCategory').val();
     loadingDialog();
     $.ajax({
         url: 'index.php?cmd=getDocumentsAjax&type=' + decuType + '&offset=' + offset,
         success: function (data) {
-            $('#moreDoc' + offset).html(data);
+            $('.moreDoc4').last().html(data);
             closeDialog();
         },
         error: function (errors) {
             closeDialog();
-            alert(INTERNAL_ERROR);
+            alert('INTERNAL ERROR');
         }
     });
 }
