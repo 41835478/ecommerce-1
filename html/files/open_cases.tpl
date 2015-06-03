@@ -7,7 +7,7 @@
                         <i class="fa fa-share"></i>
                     </div>
                     <div class="table_head_label">
-                        add comment on case
+                        Cases list
                             <span id="add_error_message_span" style='color:#f00'></span>
                     </div>
 
@@ -24,7 +24,9 @@
                     
                     <tbody>
                         {foreach from=$cases item=case}   
-        
+             {if $case.status != $page_status} 
+        {continue} 
+     {/if} 
         <tr>
             <td >{$case.name}</td>
             <td >{$status.{$case.status}}</td>

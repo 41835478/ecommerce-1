@@ -152,8 +152,19 @@ $menu= array('dashboard' => array(
                                              'id'     => 'new-case'
                                    ),
                                    'caseslist' => array(
-                                             'display' =>'Open Cases',
-                                             'id'     => 'open-cases'
+                                             'display' =>'Cases',
+                                             'id'     => 'open-cases&status=New',
+                                             'status'=>'hidden',
+                                             'sub'     => array(
+                                                               'opencases' => array(
+                                                                                  'display' =>'Open Case',
+                                                                                  'id'     => 'open-cases&status=New'
+                                                                                  ),
+                                                               'closecases' => array(
+                                                                                  'display' =>'close Case',
+                                                                                  'id'     => 'open-cases&status=Closed'
+                                                                                  )
+                                                                )
                                    )
                          )
               ),

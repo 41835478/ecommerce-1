@@ -476,7 +476,7 @@ function checkLogin() {
 
     $.ajax({
         url: 'index.php?cmd=checklogin&login=' + login + '&password=' + password,
-        success: function (data) {
+        success: function (data) {alert(data);
             if (data) {
                 $('#banners').show();
                 window.location.reload();
@@ -2011,7 +2011,7 @@ function set_active_menu(active_menu_id) {
     var a_node = $(".set_menu #" + active_menu_id);
     a_node.css({"color": "#C5543B"});
     a_node.parent().css({"backgroundColor": "#F0f0f0"});
-
+if(a_node.attr("no_sub")=="1"){return false;}
     var ul_node = $(".set_menu #" + active_menu_id).parent().parent().parent().find('.sub_menu_account_ul');
     if (ul_node.length == 1) {
         ul_node.show(500);

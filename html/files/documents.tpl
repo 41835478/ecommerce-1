@@ -11,7 +11,7 @@
       </div>
       <div class="news_footer"> 
           <div class="full_document_div"></div>
-         <a href="#" id="news_footer_icon{$document.id}" style="width:70px;height:15pxa;float: right;" onclick="getDocument('{$document.id}',$(this))">
+         <a href="?cmd=getDocumentBody&docuemnt_type={$active_sub_menu}" id="news_footer_icon{$document.id}" style="width:70px;height:15pxa;float: right;" >
            <span>read more</span>
            <div class="news_footer_icon"></div>
          </a>            

@@ -31,7 +31,7 @@
 
                 <table class="main_table"  >
                     <thead>
-                        <tr><td style="font-size:15px; font-weight: bold; padding: 1%; line-height: 30px;">
+                        <tr><td style="font-size:16px;  padding: 1%; line-height: 30px;">
                            
                                 We would like to welcome you, to your control area.<br>
 This area is delivers all the information regarding your renewals and software updates. <br>
@@ -51,7 +51,7 @@ We place this tool in your hands to achieve a fast and effective connection betw
             
             
             
-            <div class=" table_all_div" id="new_messages_label_table_all_div" onclick="window.location.href='index.php?cmd=open-cases';" >
+            <div class=" table_all_div" id="new_messages_label_table_all_div">
                 <div class="table_head_div">
                     <div class="top_table_icon_div">
                         <i class="fa fa-refresh"></i>
@@ -65,7 +65,7 @@ We place this tool in your hands to achieve a fast and effective connection betw
                         {/if}
                         </div>
                     </div>
-                    <div id="new_messages_icon_number_div">
+                        <div id="new_messages_icon_number_div" style="cursor:pointer;" onclick="window.location.href='index.php?cmd=open-cases';" >
                         {$cases_number}
                         <i class="fa fa-envelope-o"></i>
                     </div><!-- #new_messages_icon_number_div -->
@@ -77,7 +77,7 @@ We place this tool in your hands to achieve a fast and effective connection betw
             
             
             
-            <div class=" table_all_div" id="account_summary_table_all_div" onclick="window.location.href='index.php?cmd=invoices'" >
+            <div class=" table_all_div" id="account_summary_table_all_div"  >
                 <div class="table_head_div">
                     <div class="top_table_icon_div">
                         <i class="fa fa-share"></i>
@@ -89,8 +89,13 @@ We place this tool in your hands to achieve a fast and effective connection betw
                 </div>
                 <div class="scroll_table_div" style="font-size:18px; text-align: center; ">
                 
+                    {if $remaining > 0}
     <br>The remaining  amount <br><br><b style="font-size:24px;">{$remaining}$ </b>
-
+    <br>
+    <a href="index.php?cmd=invoices" style="display:block;"><button  style="float:right; margin-right: 1%;" >Invoice list</button></a>
+    {else}
+        <br>You have pay all your invices(temp) </b>
+        {/if}
                 </div><!-- .scroll_table_div -->
                 
             </div><!-- #account_summary_table_all_div -->

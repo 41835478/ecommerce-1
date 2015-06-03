@@ -27,7 +27,7 @@
                             <td><input name="case_subject_input" id="case_subject_input" placeholder="Case Subject" required> </td>
                         </tr>
                         <tr>
-                            <th>Description</th>
+                            <th valign="top">Description</th>
                             <td> <textarea name="case_description_textarea" id="case_description_textarea" placeholder="Write case description" required></textarea></td>
                         </tr>
                         <tr>

@@ -602,8 +602,11 @@ elseif($cmd =='saveLicense') {
     $cases =  $fwork->getOpenCases($result['account_id']);
     $status  = $fwork->getFields("Cases","status");
     $smarty->assign('cases', $cases);
-    $smarty->assign('status', $status);  
-    $smarty->assign('active_sub_menu','open-cases');
+    $smarty->assign('status', $status); 
+    
+    $page_status=$fwork->requestVar('status');
+    $smarty->assign('page_status',$page_status);
+    $smarty->assign('active_sub_menu','open-casesstatus'.$page_status);
     $smarty->display('open_cases.tpl');
     exit();
   }

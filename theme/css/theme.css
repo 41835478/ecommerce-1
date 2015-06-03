@@ -2129,7 +2129,7 @@ background-color:#EFEFEF;
     margin: 0px;
 }
 #add_case_form textarea,#add_comment_form textarea{ width: 600px;}
-
+#add_case_form textarea{ height: 300px;}
 #add_comment_case_table_all_div{display: none;}
 /*_____________________________________________END_____new_case*/
 
