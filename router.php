@@ -64,6 +64,8 @@ $smarty->assign('client_name',$session_info["account_name"]);
     $smarty->assign('contact',$contact);
     $smarty->assign('member',$member);
     $smarty->assign('level',$level);
+    
+    $smarty->assign('sub','account');
     $smarty->assign('active_sub_menu','setting');
     $smarty->display('settings.tpl');
     exit(); 
@@ -147,18 +149,19 @@ echo $fwork->deleteContact($contact_id);
     $contact['primary_address_country']    = $fwork->requestVar('country');
     $contact['id']    = $fwork->requestVar('id');
     $result = $fwork->checkExistingEmail($contact['email1']);   
-
+    
+    $result2 = $session->read(SESS_ACTIVE_CLIENT_ID);
     if($contact['id']=='0') {
-        $result2 = $session->read(SESS_ACTIVE_CLIENT_ID);
+ 
         $contact['account_id'] =$result2['account_id'];
         
-        if($result){
+        if($result && $result["account_id"]!=$result2["account_id"]){
             echo "Email already been used";
             exit();
         }        
     }
     else {
-        if($result && $result['id']!=$contact['id']){
+        if($result && $result["account_id"]!=$result2["account_id"]){
             echo "Email already been used";
             exit();
         }

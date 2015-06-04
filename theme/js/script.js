@@ -545,7 +545,7 @@ function saveContactDetails() {
         $('#ConCountry').css({'background-color': '#F4BCBC'});
     else
         $('#ConCountry').css({'background-color': '#FFFFFF'});
-    alert(Contact_Email);
+   
     if (Contact_Email == '') {
         $('#ConEmail').css({'background-color': '#F4BCBC'});
     } else if (validateEmail(Contact_Email) == false) {
@@ -570,7 +570,7 @@ function saveContactDetails() {
                 '&city=' + Contact_city + '&country=' + Contact_country + '&email=' + Contact_Email + '&position=' + Contact_Position +
                 '&id=' + Contact_ID,
         success: function (data) {
-            window.location.href = "?cmd=contacts";
+           // window.location.href = "?cmd=contacts";
             modalText(data);
             document.getElementById('cont_first_name').innerHTML = Contact_firstName;
             document.getElementById('cont_Last_name').innerHTML = Contact_lastName;
@@ -740,8 +740,7 @@ function saveUserDetails() {
         $('#AccLable2').val("password must be more than 6 characters");
         return;
 
-    }
-    ;
+    };
     if (SelectAcc == 1) {
         var Acc_Username = $('#AccUsername').val();
         if (Acc_Username == '') {

@@ -29,9 +29,9 @@
         </table>            
         </div>
     </div>
-    <div class="foot_icon">
-        <span1><a id="Edit_PerInfo" href="#">Edit</a></span1>
-    <div class="foot_icon2"></div>
+              <div class="foot_icon" onclick="$('#contact_details_div').show(500);">
+                  <span1><a id="Edit_PerInfo" href="#ConfirstName">Edit</a></span1>
+    <i class="fa fa-edit"></i>
     </div>
 </div>
 <div class="contact_detalis" style="height:140px">
@@ -54,15 +54,15 @@
        
             
     </div>
-    <div class="foot_icon">
-    <span1><a id="Edit_ContInfo" href="#">Edit</a></span1>
-    <div class="foot_icon2"></div>
+        <div class="foot_icon" onclick="$('#access_details_form_div').show(500);">
+    <span1><a id="Edit_ContInfo" href="#AccCurrPassword" >Edit</a></span1>
+    <i class="fa fa-edit"></i>
     
 </div>
 
 </div>
-<div class="header_form1" style="height:225px">
-    <div class="form_head">
+<div class="header_form1" id="access_details_form_div" style="height:225px; width: 680px;">
+    <div class="form_head"style=" width: 680px;">
         <div class="cont_icon">
             <div class="icon_back"></div>
         </div>
@@ -101,8 +101,8 @@
     </div>
     
 </div>
-<div class="header_form">
-    <div class="form_head">
+    <div class="header_form" id="contact_details_div" style=" width: 680px;">
+    <div class="form_head" style=" width: 680px;">
         <div class="cont_icon">
             <div class="icon_back"></div>
         </div>
@@ -172,4 +172,15 @@
                <input type="submit" value="Save" id="saveContactDetalis" />
     </div>
 </div>
+              
+    
+  <div id="request-result" class="modal hide fade">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h5>Request Result</h5>
+   </div>
+   <div class="modal-body">
+    <p></p>
+   </div>
+  </div>
 {include file='footer.tpl'}
