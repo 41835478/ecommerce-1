@@ -14,12 +14,14 @@ $smarty->template_dir = 'html'.DS.'files';
 $smarty->assign('URL', URL);
 $smarty->assign('menu', $menu);
 
-
 if(!empty($cmd)){
-if (!$session->read(SESS_ACTIVE_CLIENT_ID)){
+if (!$session->read(SESS_ACTIVE_CLIENT_ID) && $cmd != 'forget-password'  && $cmd != 'send-forget-password'){
 
 header('location:index.php');//$smarty->display('login.tpl');
 }
+
+$session_info=$session->read(SESS_ACTIVE_CLIENT_ID);
+$smarty->assign('client_name',$session_info["account_name"]);
 
 /********************************
     Check Login
@@ -309,7 +311,6 @@ elseif($cmd =='saveLicense') {
     echo 2;
     exit();
    }
-   
    // send forget email 
    $result_2 = $fwork->sendForgetPassword($result);
       

@@ -7,10 +7,11 @@
  <div class="curved-tl curved-tr login-title">Member Login</div>
  <div class="form-horizontal">
   <p class="sep-10"></p>
-  
   <div class="control-group">
+      
+ 
    <div class="controls">
-    <div class="input-appendLog">
+    <div class="input-appendLog">    
      <input type="text" id="cid" placeholder="Login" />
      <span class="add-on"><i class="icon-user"></i></span>
     </div>
@@ -30,13 +31,13 @@
    <div class="controls">
     <div>
    
-     <a href="#" id="forget-password">Forget Password</a>
+     <a href="index.php?cmd=forget-password" id="forget-password">Forget Password</a>
     </div>
    </div>
   </div>  
   <div class="control-group">
    <div class="controls">
-    <button type="submit" id="login-btn" class="btn btn-primary">Login</button>
+       <button type="submit" id="login-btn" class="btn btn-primary" style="margin:12px 98px;">Login</button>
    </div>
   </div>
   <p id="login-result"></p>

@@ -105,7 +105,7 @@ public function deleteContact($contact_id){
             return;
         $result = array();
         $sugar = new iSugar();
-        $query = "mqp_members.name='$name'";
+        $query = "mqp_members.id='$name'";
         $result = $sugar->getData('mqp_members', $query);
         return $result;
     }
@@ -188,11 +188,18 @@ public function deleteContact($contact_id){
     public function sendForgetPassword($result) {
         global $smtp;
 
-        $result2 = self::checkDuplicateUsername($result['mqp_members_contacts_name']);
+        //$result2 = self::checkDuplicateUsername($result['account_id']);
+        //mqp_members_contacts_name
+        //$random_link=  md5(md5($result['account_id'])."hashim".  round());
+        //$user_link="localhost/mycp/index.php?cmd=reset_password_from&link=".$result['account_name'];
+         $sugar = new iSugar();
+        $members_array = $sugar->getDataList('Accounts', 'mqp_members', $result['account_id']);
+        
         $subject = 'Forget Password';
-        $body = "Username is : " . $result2['name'];
-        $body .= "\nYour password is : " . $result2['password'];
+        $body = "Username is : " . $members_array[0]['name'];
+        $body .= "<br>Your password is : " . $members_array[0]['password'];
 
+   
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->Host = $smtp['default']['host'];

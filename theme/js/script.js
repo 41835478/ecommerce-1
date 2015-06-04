@@ -425,7 +425,7 @@ function sendForgetPassword() {
 
     $.ajax({
         url: 'index.php?cmd=send-forget-password&email=' + email,
-        success: function (data) {
+        success: function (data) {//console.log(data);
 
             if (data == 1) {
                 $("#result_frgt").html('Invalid email address syntax');
@@ -476,7 +476,7 @@ function checkLogin() {
 
     $.ajax({
         url: 'index.php?cmd=checklogin&login=' + login + '&password=' + password,
-        success: function (data) {alert(data);
+        success: function (data) {
             if (data) {
                 $('#banners').show();
                 window.location.reload();
