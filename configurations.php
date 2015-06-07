@@ -161,7 +161,7 @@ $menu= array('dashboard' => array(
                                                                                   'id'     => 'open-cases&status=New'
                                                                                   ),
                                                                'closecases' => array(
-                                                                                  'display' =>'close Case',
+                                                                                  'display' =>'Closed Case',
                                                                                   'id'     => 'open-cases&status=Closed'
                                                                                   )
                                                                 )

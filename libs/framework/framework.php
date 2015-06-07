@@ -105,7 +105,7 @@ public function deleteContact($contact_id){
             return;
         $result = array();
         $sugar = new iSugar();
-        $query = "mqp_members.id='$name'";
+        $query = "mqp_members.name='$name'";
         $result = $sugar->getData('mqp_members', $query);
         return $result;
     }
@@ -185,6 +185,27 @@ public function deleteContact($contact_id){
         return $result;
     }
 
+    
+    public function checkExistingEmailContact($email) {
+        
+       
+        $sugar = new iSugar();
+        $query = "Contacts.email1='$email'";
+        $result = $sugar->getData('Contacts', $query);
+        return $result;
+    }
+
+    
+    public function checkExistingLoginId($login_id) {
+               if (empty($login_id))
+            return false;
+               
+        $sugar = new iSugar();
+        $query = "mqp_members.name='$login_id'";
+        $result = $sugar->getData('mqp_members', $query);
+        return $result;
+    }
+
     public function sendForgetPassword($result) {
         global $smtp;
 
@@ -192,14 +213,18 @@ public function deleteContact($contact_id){
         //mqp_members_contacts_name
         //$random_link=  md5(md5($result['account_id'])."hashim".  round());
         //$user_link="localhost/mycp/index.php?cmd=reset_password_from&link=".$result['account_name'];
-         $sugar = new iSugar();
-        $members_array = $sugar->getDataList('Accounts', 'mqp_members', $result['account_id']);
+         //$sugar = new iSugar();
+        //$members_array = $sugar->getDataList('Accounts', 'mqp_members', $result['account_id']);
         
         $subject = 'Forget Password';
-        $body = "Username is : " . $members_array[0]['name'];
-        $body .= "<br>Your password is : " . $members_array[0]['password'];
+        $body = "Username is : " . $result['name'];
+        $body .= "<br>Your password is : " . $result['password'];
 
-   
+       
+        $sugar = new iSugar();
+        $contact = $sugar->getDataList('mqp_members', 'Contacts', $result['id']);
+        
+        
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->Host = $smtp['default']['host'];
@@ -210,7 +235,7 @@ public function deleteContact($contact_id){
         $mail->SetFrom('members@mqplanet.com', 'Administrator');
         $mail->Subject = $subject;
         $mail->MsgHTML($body);
-        $mail->AddAddress($result['email1']);
+        $mail->AddAddress($contact[0]['email1']);
         return $mail->Send();
     }
 

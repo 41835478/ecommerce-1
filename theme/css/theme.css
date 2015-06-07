@@ -2131,5 +2131,17 @@ background-color:#EFEFEF;
 #add_case_form textarea,#add_comment_form textarea{ width: 600px;}
 #add_case_form textarea{ height: 300px;}
 #add_comment_case_table_all_div{display: none;}
+
+#add_comment_case_table_all_div table tbody td{
+    padding:7px;
+    
+    
+}
+
+#add_comment_case_table_all_div table tbody td span{
+   float:right; color: #E04B20;
+    
+    
+}
 /*_____________________________________________END_____new_case*/
 

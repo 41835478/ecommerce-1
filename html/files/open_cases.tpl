@@ -35,9 +35,6 @@
    
     {/foreach}
                     </tbody>
-                    
-
-                    
                 </table>
 
             </div>
@@ -53,11 +50,12 @@
                         <i class="fa fa-share"></i>
                     </div>
                     <div class="table_head_label">
-                        add comment on case
+                         case comments
                             <span id="add_error_message_span" style='color:#f00'></span>
                     </div>
 
                 </div>
+                {if $page_status!="Closed"}
                     <form action=" " method="post" id="add_comment_form" onsubmit="return false;">
                 <table class="main_table"  >
                     <thead>
@@ -82,7 +80,7 @@
                     
                 </table>
                 </form>
-
+{/if}
             </div><!-- #add_comment_table_all_div -->
 
         

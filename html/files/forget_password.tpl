@@ -13,7 +13,7 @@
   <div class="control-group">
                 <div class="controls">
                  <div class="input-appendx">
-                    <input type="text" name="email" id="email_frgt" class="email required" placeholder="Enter Your Email Please" />
+                    <input type="text" name="email" id="email_frgt" class="email required" placeholder="Enter Your login id Please" />
                  </div>
                 </div>
     </div>

@@ -148,29 +148,34 @@ echo $fwork->deleteContact($contact_id);
     $contact['primary_address_city']    = $fwork->requestVar('city');
     $contact['primary_address_country']    = $fwork->requestVar('country');
     $contact['id']    = $fwork->requestVar('id');
-    $result = $fwork->checkExistingEmail($contact['email1']);   
     
-    $result2 = $session->read(SESS_ACTIVE_CLIENT_ID);
+    $result = $fwork->checkExistingEmail($contact['email1']);   
+ 
+    $result2 = $session->read(SESS_ACTIVE_CLIENT_ID);    
+     
+    $result3 = $fwork->getContactDetails($result2["contact_id"]);
+    
+
     if($contact['id']=='0') {
  
         $contact['account_id'] =$result2['account_id'];
-        
-        if($result && $result["account_id"]!=$result2["account_id"]){
-            echo "Email already been used";
+
+        if($result && $result["email1"]!=$result3["email1"]){
+            echo "Email already been used 4";
             exit();
         }        
     }
     else {
-        if($result && $result["account_id"]!=$result2["account_id"]){
-            echo "Email already been used";
+        if($result && $result["email1"]!=$result3["email1"]){
+            echo "Email already been used 4";
             exit();
         }
     }
     $result = $fwork->saveContact($contact);
     if($result->number==0) 
-      echo "Success";
+      echo "The date has been edit successfully";
     else
-      echo "Error";
+      echo "Error,please try again later";
     
     
     exit();
@@ -303,13 +308,13 @@ elseif($cmd =='saveLicense') {
    $email = $fwork->requestVar('email');
     
     //validate email in server side 
-   if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+   if(!filter_var($email , FILTER_VALIDATE_INT)){
     echo 1;
     exit();
    }
    
    // checking the email if available
-   $result = $fwork->checkExistingEmail($email);
+   $result = $fwork->checkExistingLoginId($email);
    if(!$result){
     echo 2;
     exit();
@@ -683,7 +688,10 @@ elseif($cmd =='saveLicense') {
         if ($rows_num) {
 
             for ($i = 0; $i < $rows_num; $i++) {
-                echo '<tr><th>' . $result[$i]["name"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
+                echo '<tr><td colspan="2">'
+                . '<h4>' . $result[$i]["name"].'</h4>'
+                . '<p>' . $result[$i]["description"]. '</p>' 
+                . '<div ><span >'.$result[$i]["date_entered"].'</span><div></td></tr>';
             }
         }//if inserted successfully
         else {
@@ -728,8 +736,11 @@ elseif($cmd =='saveLicense') {
         if ($rows_num) {
 
             for ($i = 0; $i < $rows_num; $i++) {
-                echo '<tr><th>' . $result[$i]["name"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
-            }
+               echo '<tr><td colspan="2">'
+                . '<h4>' . $result[$i]["name"].'</h4>'
+                . '<p>' . $result[$i]["description"]. '</p>' 
+                . '<div ><span >'.$result[$i]["date_entered"].'</span></div></td></tr>';
+               }
         }//if inserted successfully
         else {
             echo '<tr><td colspan="2">no comments untill now</td></tr>';

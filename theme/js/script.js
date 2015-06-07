@@ -417,23 +417,23 @@ function forgetPassword() {
 function sendForgetPassword() {
     loadingDialog();
     var email = $('#email_frgt').val();
-    if (validateEmail(email) == false) {
-        $("#result_frgt").html('Invalid email address syntax ... ');
-        closeDialog();
-        return false;
-    }
+//    if (validateEmail(email) == false) {
+//        $("#result_frgt").html('Invalid email address syntax ... ');
+//        closeDialog();
+//        return false;
+//    }
 
     $.ajax({
         url: 'index.php?cmd=send-forget-password&email=' + email,
-        success: function (data) {//console.log(data);
+        success: function (data) {console.log(data);
 
             if (data == 1) {
-                $("#result_frgt").html('Invalid email address syntax');
+                $("#result_frgt").html('Invalid login ID syntax');
                 closeDialog();
                 return;
             }
             else if (data == 2) {
-                $("#result_frgt").html('Invalid email address');
+                $("#result_frgt").html('Invalid Login Id');
                 closeDialog();
                 return;
             }
