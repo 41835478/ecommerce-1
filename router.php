@@ -663,10 +663,26 @@ elseif($cmd =='saveLicense') {
      if($fwork->add_case_buge($case_id, $description,$result['account_name'],$result['account_id'])){
        
         $result = $fwork->get_case_buge($case_id);
-        $result_count = count($result);
-        if ($result_count) {
+      
+        $rows_num = count($result);
+        $temp_row = '';
+        $temp_j = 0;
+        for ($i = 0; $i < $rows_num; $i++) {
+            $temp_row = $result[$i];
+            for ($j = $i; $j < $rows_num; $j++) {
+                if ($result[$j]["bug_number"] * 1 >= $temp_row["bug_number"] * 1) {
+                    $temp_row = $result[$j];
+                    $temp_j = $j;
+                }
+            }//j  
+            $result[$temp_j] = $result[$i];
+            $result[$i] = $temp_row;
+        }//i
 
-            for ($i = 0; $i < $result_count; $i++) {
+        
+        if ($rows_num) {
+
+            for ($i = 0; $i < $rows_num; $i++) {
                 echo '<tr><th>' . $result[$i]["name"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
             }
         }//if inserted successfully
@@ -691,11 +707,28 @@ elseif($cmd =='saveLicense') {
         $case_id = $fwork->requestVar('case_id');
 
         $result = $fwork->get_case_buge($case_id);
-        $result_count = count($result);
-        if ($result_count) {
+        
+        
+        $rows_num = count($result);
+        $temp_row = '';
+        $temp_j = 0;
+        for ($i = 0; $i < $rows_num; $i++) {
+            $temp_row = $result[$i];
+            for ($j = $i; $j < $rows_num; $j++) {
+                if ($result[$j]["bug_number"] * 1 >= $temp_row["bug_number"] * 1) {
+                    $temp_row = $result[$j];
+                    $temp_j = $j;
+                }
+            }//j  
+            $result[$temp_j] = $result[$i];
+            $result[$i] = $temp_row;
+        }//i
 
-            for ($i = 0; $i < $result_count; $i++) {
-                echo '<tr><th>' . $result[$i]["name"].$result[$i]["bug_number"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
+
+        if ($rows_num) {
+
+            for ($i = 0; $i < $rows_num; $i++) {
+                echo '<tr><th>' . $result[$i]["name"] . '</th><td>' . $result[$i]["description"] . '</td><td></td></tr>';
             }
         }//if inserted successfully
         else {
