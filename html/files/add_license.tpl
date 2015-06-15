@@ -32,5 +32,17 @@
     </div>
     
     
+            
 </div>
+             
+                    
+  <div id="request-result" class="modal hide fade">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h5>Request Result</h5>
+   </div>
+   <div class="modal-body">
+    <p></p>
+   </div>
+  </div>
 {include file='footer.tpl'}

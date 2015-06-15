@@ -103,8 +103,8 @@
     </div>
       -->
       
-    <div class="tool_sli1">
-    <div class="Compnents">
+    <div class="tool_sli1"style="display:none;">
+        <div class="Compnents">
           <div id="serverComponent" ></div>
     </div>
     </div>

@@ -117,7 +117,6 @@ We place this tool in your hands to achieve a fast and effective connection betw
                     </div>
 
                 </div>
-                <div class="scroll_table_div">
                 <table class="main_table"  >
                     <thead>
                       
@@ -134,17 +133,23 @@ We place this tool in your hands to achieve a fast and effective connection betw
                                 
                                 <span class="news_date_span">{$document.publish_date}</span>
                                 <h5 class="news_title_h5">{$document.name}</h5>
+                                <div style="clear:both;"></div>
                                 <p class="one_news_shortcut_p">
-                                    {$document.body|unescape:"htmlall"}
+                                    {$document.body|unescape:"htmlall"|mb_substr:0:1000}<span >...</span>
                                 </p>
-                                
+                                <div class="read_more_news_div">
+                                    <a class="dashboard_news_read_more_a" onclick="read_more($(this));" >
+                                        read more <i class="fa fa-arrows-alt"></i>
+                                <div class="one_news_details_p">{$document.body|unescape:"htmlall"|mb_substr:1000:1000000}
+                                </div>
+                                    </a><!-- dashboard_news_read_more_a -->                                   
+                                </div><!-- read_more_news_div -->
                             </td></tr>
                           {/foreach} 
                         
                         
                     </tbody>
                 </table>
-                </div><!-- .scroll_table_div -->
 
             </div><!-- #news_table_all_div -->
 

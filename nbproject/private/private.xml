@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="5">
+        <file>
+            <url>theme/js/script.js</url>
+            <bookmark id="5">
+                <name/>
+                <line>616</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>router.php</url>
+            <bookmark id="3">
+                <name/>
+                <line>151</line>
+                <key/>
+            </bookmark>
+            <bookmark id="4">
+                <name/>
+                <line>153</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>libs/framework/framework.php</url>
+            <bookmark id="2">
+                <name/>
+                <line>103</line>
+                <key/>
+            </bookmark>
+            <bookmark id="1">
+                <name/>
+                <line>212</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/wamp/www/mycp/index.php</file>
+            <file>file:/F:/wamp/www/mycp/html/files/add_license.tpl</file>
+            <file>file:/F:/wamp/www/mycp/html/files/footer.tpl</file>
+            <file>file:/F:/wamp/www/mycp/html/files/main.tpl</file>
             <file>file:/F:/wamp/www/mycp/configurations.php</file>
             <file>file:/F:/wamp/www/mycp/theme/js/script.js</file>
-            <file>file:/F:/wamp/www/mycp/loader.php</file>
-            <file>file:/F:/wamp/www/mycp/router.php</file>
+            <file>file:/F:/wamp/www/mycp/html/files/company.tpl</file>
+            <file>file:/F:/wamp/www/mycp/html/files/dashboard.tpl</file>
+            <file>file:/F:/wamp/www/mycp/html/files/servers.tpl</file>
+            <file>file:/F:/wamp/www/mycp/theme/css/theme.css</file>
+            <file>file:/F:/wamp/www/mycp/html/files/products.tpl</file>
         </group>
     </open-files>
 </project-private>

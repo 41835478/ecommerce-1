@@ -96,34 +96,34 @@ $menu= array('dashboard' => array(
                         'id'     => '#',
                         'sub'     => array(
                                    'servers' => array (
-                                              'display' => 'Dedicated Servers',
+                                              'display' => 'Servers List',
                                               'id'      => 'servers',
-                                              'sub'     => array(
-                                                        'addserver' => array (
-                                                                     'display' => 'Add Server',
-                                                                     'id'      => 'add_server'
-                                                        )
-                                              )
+//                                              'sub'     => array(
+//                                                        'addserver' => array (
+//                                                                     'display' => 'Add Server',
+//                                                                     'id'      => 'add_server'
+//                                                        )
+//                                              )
                                    ),
                                    'webhosts' => array (
-                                              'display' => 'Web Hosts',
+                                              'display' => ' Hosting Services',
                                               'id'      => 'webhosts',
-                                              'sub'     => array(
-                                                        'addwebhost' => array (
-                                                                     'display' => 'Add WebHost',
-                                                                     'id'      => 'add_webhost'
-                                                        )
-                                              )
+//                                              'sub'     => array(
+//                                                        'addwebhost' => array (
+//                                                                     'display' => 'Add WebHost',
+//                                                                     'id'      => 'add_webhost'
+//                                                        )
+//                                              )
                                    ),
                                    'domains' => array (
                                               'display' => 'Domains',
                                               'id'      => 'domains',
-                                              'sub'     => array(
-                                                        'adddomain' => array (
-                                                                     'display' => 'Add Domain',
-                                                                     'id'      => 'add_domain'
-                                                        )
-                                              )
+//                                              'sub'     => array(
+//                                                        'adddomain' => array (
+//                                                                     'display' => 'Add Domain',
+//                                                                     'id'      => 'add_domain'
+//                                                        )
+//                                              )
                                    ),
                                  /*  'phoneredirection' => array (
                                              'display' => 'Phone Redirection',

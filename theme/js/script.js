@@ -614,15 +614,17 @@ function saveLicenseDetails()
                 + '&license_id=' + License_ID,
         success: function (data) {
             if (data.trim() == 'Success')
-                alert("a notification email has been sent to the admin ");
+ modalText("a notification email has been sent to the admin ");   
             else
-                alert('something wrong , please try again later');
+                modalText('something wrong , please try again later');
 
-            if (License_ID > 0)
-                window.location.reload();
-            else
-                window.location.href = "?cmd=company";
-            modalText(data);
+            if (License_ID > 0){
+              //  window.location.reload();
+          }
+            else{
+                setTimeout("window.location.href = '?cmd=company'",5000);
+                modalText("a notification email has been sent to the admin "); 
+            }
             //  getCompany();
 
         },
@@ -2305,3 +2307,8 @@ function addCaseBuge(case_id,description) {
 }//function getProductsPeriod
 
 /*____________________________________________________END____cases_page_*/
+/*___________________________dashboard*/
+function read_more(read_more_node){
+   
+   read_more_node.parent().prev().find("span").html(read_more_node.find(".one_news_details_p").html() );
+}
