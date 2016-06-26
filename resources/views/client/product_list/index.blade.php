@@ -11,7 +11,7 @@
                         <li class="active"><a href="#"> <i
                                         class="fa fa-search"></i> {{ trans('mycp.search') }} </a></li>
 
-                   
+
                         <li>
                             <div class=" nav-input-div  ">
                                 {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('accounts::accounts.first_name'),'class'=>'form-control input-sm']) !!}
