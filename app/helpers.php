@@ -1,6 +1,6 @@
 <?php
-use Fxweb\Helpers\User;
-use Fxweb\Helpers\Menu;
+use App\Helpers\User;
+use App\Helpers\Menu;
 use Illuminate\Routing\UrlGenerator;
 /*
  * Global helpers file with misc functions

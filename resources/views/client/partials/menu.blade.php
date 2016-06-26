@@ -4,7 +4,7 @@
             <div>
                 <br><img src="data:image/jpeg;base64,{{ current_user()->getAvatar() }}" alt="" class="">
                 <div class="btn-group">
-                    <a href="{{ route('client.users.profile') }}" class="btn btn-xs btn-primary btn-outline dark">
+                    <a href=" route('client.users.profile') " class="btn btn-xs btn-primary btn-outline dark">
                         <i class="fa fa-user"></i>
                     </a>
 
@@ -20,6 +20,7 @@
             </li>
 
             {{--*/ $aAdminMenu = get_client_menu() /*--}}
+
             @if(count($aAdminMenu))
             @foreach($aAdminMenu as $aModule)
             <li class="mm-dropdown">
@@ -42,11 +43,7 @@
             </li>
             @endforeach
             @endif
-            @if(config('fxweb.EnableLinkTradeForUser'))
-                <li>
-                    <a href="{{ route('client.webTrader') }}"><i class="menu-icon fa fa-bar-chart-o"></i><span class="mm-text">{{ trans('general.webTrader') }}</span></a>
-                </li>
-            @endif
+
         </ul>
 
 

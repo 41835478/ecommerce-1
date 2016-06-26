@@ -22,7 +22,12 @@ return [
 
     'adminEmail' => 'mag@mqplanet.com',
 
-
+    'theme' => [
+        'color' => 'default',
+        'navbarFixed' => true,
+        'menuFixed' => true,
+        'menuAnimated' =>true,
+    ],
 
     'admin_menu' => [
         [
@@ -30,15 +35,30 @@ return [
         ],
 
     ], 'client_menu' => [
-        'route' => 'client.dashboard',
-        'title' => 'dashboard',
-        'icon' => 'fa fa-gears',
-        'subMenus' => [
+        [
+            'route' => 'client.index',
+            'title' => 'dashboard',
+            'icon' => 'fa fa-gears',
+            'subMenus' => [
 
-            [
-                'route' => 'client.dashboard',
-                'title' => 'dashboard',
-                'icon' => 'fa fa-gears',
+                [
+                    'route' => 'client.index',
+                    'title' => 'dashboard',
+                    'icon' => 'fa fa-gears',
+                ]
+            ]
+        ],
+        [
+            'route' => 'client.product_list.index',
+            'title' => 'product_list',
+            'icon' => 'fa fa-gears',
+            'subMenus' => [
+
+                [
+                    'route' => 'client.product_list.index',
+                    'title' => 'product_list',
+                    'icon' => 'fa fa-gears',
+                ]
             ]
         ]
     ],

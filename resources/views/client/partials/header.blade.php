@@ -20,15 +20,7 @@
             <div>
                 <div class="right clearfix">
                     <ul class="nav navbar-nav pull-right right-navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-language"></i> {{ trans('general.language') }}</a>
-                            <ul class="dropdown-menu">
-                                @foreach(config('app.language')  as $locale=>$name)
-                                    <li><a href="?locale={{$locale}}">{{ trans('general.'.$name) }}</a></li>
 
-                                @endforeach
-                            </ul>
-                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
                                 <img src="data:image/jpeg;base64,{{ current_user()->getAvatar() }}" alt="">
@@ -36,7 +28,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('client.users.profile') }}">
+                                    <a href=" route('client.users.profile') ">
                                         <i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;
                                         {{ Lang::get('general.Profile') }}
                                     </a>

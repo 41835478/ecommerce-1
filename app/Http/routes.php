@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('client.public.dashboard');
 });
+
+Route::group(['prefix' => 'client', 'namespace' => 'Client'], function () {
+
+    require_once __DIR__ . "/Routes/Client/Dashboard.php";
+    require_once __DIR__ . "/Routes/Client/Auth.php";
+});
