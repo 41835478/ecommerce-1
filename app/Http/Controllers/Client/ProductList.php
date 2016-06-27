@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\View;
 
 
 use App\Models\ProductList as mProductList;
+use App\Repositories\client\product_list\ProductListContract as rProductList;
 class ProductList extends Controller
 {
+    private $rProductList;
+
+    public function __construct(rProductList $rProductList)
+    {
+        $this->rProductList=$rProductList;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,8 +52,11 @@ class ProductList extends Controller
 //
 //        ProductList::create($testData);
 //        dd(ProductList::all());
-        $oResults= mProductList::paginate(15);
         $aFilterParams=$request;
+        $oResults=$this->rProductList->getByFilter($aFilterParams);
+
+
+
         return view('client.product_list.index', compact('oResults'), compact('aFilterParams'));
     }
 
