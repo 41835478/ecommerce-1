@@ -6,6 +6,8 @@
     <file url="file://$PROJECT_DIR$/app/Http/Middleware/Client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/Http/Routes/Client/Dashboard.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/Models/ProductList.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Repositories/client/product_list/EloquentProductListRepository.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Repositories/client/product_list/ProductListContract.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/helpers.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config/mycp.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/assets/mycp" charset="UTF-8" />
