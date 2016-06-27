@@ -9,19 +9,19 @@
                     {!! Form::open(['method'=>'get', 'class'=>'form-bordered']) !!}
                     <ul class="sections">
                         <li class="active"><a href="#"> <i
-                                        class="fa fa-search"></i> {{ trans('mycp.search') }} </a></li>
+                                        class="fa fa-search"></i> {{ trans('general.search') }} </a></li>
 
 
                         <li>
                             <div class=" nav-input-div  ">
-                                {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('accounts::accounts.first_name'),'class'=>'form-control input-sm']) !!}
+                                {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('general.name'),'class'=>'form-control input-sm']) !!}
                             </div>
                         </li>
 
 
                         <li>
                             <div class=" nav-input-div  ">
-                                {!! Form::submit(trans('accounts::accounts.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
+                                {!! Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
                             </div>
                         </li>
                         <li class="divider"></li>
@@ -37,7 +37,7 @@
 
             <div class="mail-container ">
                 <div class="mail-container-header">
-                    {{ trans('accounts::accounts.accounts') }}
+                    {{ trans('general.product_list') }}
                 </div>
                 <div class="center_page_all_div">
                     @include('client.partials.messages')
@@ -45,30 +45,35 @@
                     <div class="table-light">
                         <div class="table-header">
                             <div class="table-caption">
-                                {{ trans('accounts::accounts.accounts') }}
+                                {{ trans('general.product_list') }}
+
+                                <a href="/client/product_list/create" style="float:right;">
+                                    <input name="new_menu_submit" class="btn btn-primary btn-flat" type="button"
+                                           value="{{ trans('accounts::accounts.addAccount') }}"> </a>
 
                             </div>
                         </div>
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th class="no-warp">{!! th_sort(trans('mycp.id'), 'id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.name'), 'name', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.deleted'), 'deleted', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.description'), 'description', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.created_at'), 'created_at', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.modified_at'), 'modified_at', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.created_by_id'), 'created_by_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.modified_by_id'), 'modified_by_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.assigned_user_id'), 'assigned_user_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.product_id'), 'product_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.type'), 'type', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.version_id'), 'version_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.version_id'), 'version_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.version'), 'version', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.download_id'), 'download_id', $oResults) !!}</th>
-                                <th class="no-warp">{!! th_sort(trans('mycp.knowledge_base_article_id'), 'knowledge_base_article_id', $oResults) !!}</th>
-                              <th class="no-warp"></th>
+                                <th class="no-warp">{!! th_sort(trans('general.id'), 'id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.name'), 'name', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.deleted'), 'deleted', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.description'), 'description', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.created_at'), 'created_at', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.modified_at'), 'modified_at', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.created_by_id'), 'created_by_id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.modified_by_id'), 'modified_by_id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.assigned_user_id'), 'assigned_user_id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.product_id'), 'product_id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.type'), 'type', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.version_id'), 'version_id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.version'), 'version', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.download_id'), 'download_id', $oResults) !!}</th>
+                                <th class="no-warp">{!! th_sort(trans('general.knowledge_base_article_id'), 'knowledge_base_article_id', $oResults) !!}</th>
+                              <th class="no-warp">
+
+                              </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -96,7 +101,15 @@
                                         <td>{{ $oResult->knowledge_base_article_id }}</td>
 
                                         <td>
+                                            <a href="/client/product_list/{{ $oResult->id }}"
+                                               class="fa fa-edit"></a>
 
+                                            {!! Form::open([
+                                    'method'=>'DELETE',
+                                   'url' => ['/client/product_list/', $oResult->id],
+                                     ]) !!}
+                                            {!! Form::button('<i class="fa fa-trash-o"></i>',['name'=>'delete_form_submit' ,'onclick'=>'if(!confirm("Are you sure you want to delete forms with its links")) return false;','class'=>'icon_button tooltip_number','data-original-title'=>trans('cms::cms.delete'),'type'=>'submit' ]) !!}
+                                            {!! Form::close() !!}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -115,14 +128,14 @@
 
 
 
-                                        {!! Form::submit(trans('accounts::accounts.go'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
+                                        {!! Form::submit(trans('general.go'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
 
 
                                     </div>
                                 @endif
 
                                 <div class="col-sm-3">
-                                    <span class="text-xs">{{trans('accounts::accounts.showing')}} {{ $oResults->firstItem() }} {{trans('accounts::accounts.to')}} {{ $oResults->lastItem() }} {{trans('accounts::accounts.of')}} {{ $oResults->total() }} {{trans('accounts::accounts.entries')}}</span>
+                                    <span class="text-xs">{{trans('general.showing')}} {{ $oResults->firstItem() }} {{trans('general.to')}} {{ $oResults->lastItem() }} {{trans('general.of')}} {{ $oResults->total() }} {{trans('general.entries')}}</span>
                                 </div>
                             @endif
                         </div>

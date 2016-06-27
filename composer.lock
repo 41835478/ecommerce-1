@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "55d8c3ea7f417eea9172efd8fd66652e",
-    "content-hash": "bdc01251960807c20b89fd1cd2e8edc0",
+    "hash": "a88eadcda3f2ece894c657bb9df4116f",
+    "content-hash": "ec64ecef4b7912491406dfa16fa8e9fb",
     "packages": [
         {
             "name": "cartalyst/sentinel",

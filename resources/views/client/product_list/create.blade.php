@@ -1,93 +1,111 @@
 @extends('client.layouts.main')
-
+@section('title', trans('accounts::accounts.addAccount'))
 @section('content')
-<div class="container">
-
     <div id="content-wrapper">
-    <h1>Create New Career Center</h1>
-    <hr/>
-
-    {!! Form::open(['url' => '/client/product_list', 'class' => 'form-horizontal']) !!}
-
-                <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
-                {!! Form::label('title', trans('title'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('firstName') ? 'has-error' : ''}}">
-                {!! Form::label('firstName', trans('firstName'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('firstName', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('firstName', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('lastName') ? 'has-error' : ''}}">
-                {!! Form::label('lastName', trans('lastName'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('lastName', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('lastName', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('jobApplyingFor') ? 'has-error' : ''}}">
-                {!! Form::label('jobApplyingFor', trans('jobApplyingFor'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('jobApplyingFor', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('jobApplyingFor', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('Email') ? 'has-error' : ''}}">
-                {!! Form::label('Email', trans('Email'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('Email', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('Email', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('CurrentBasicSalary') ? 'has-error' : ''}}">
-                {!! Form::label('CurrentBasicSalary', trans('CurrentBasicSalary'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('CurrentBasicSalary', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('CurrentBasicSalary', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('CoverLetter') ? 'has-error' : ''}}">
-                {!! Form::label('CoverLetter', trans('CoverLetter'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('CoverLetter', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('CoverLetter', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('eligible') ? 'has-error' : ''}}">
-                {!! Form::label('eligible', trans('eligible'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('eligible', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('eligible', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('cv') ? 'has-error' : ''}}">
-                {!! Form::label('cv', trans('cv'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('cv', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('cv', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+        <div class="page-header">
+            <h1>{{ trans('accounts::accounts.addAccount') }}</h1>
         </div>
-    </div>
-    {!! Form::close() !!}
+        {!! Form::open(['class'=>'panel form-horizontal']) !!}
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.first_name') }}</label>
+                        {!! Form::text('first_name',$product_list['name'],['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.last_name') }}</label>
+                        {!! Form::text('last_name',$product_list['deleted'],['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+            </div>
+            <!-- row -->
 
-    @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-</div>
-</div>
-@endsection
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.Email') }}</label>
+                        {!! Form::text('email',$product_list['description'],['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+                <!-- col-sm-6 -->
+            </div>
+            <!-- row -->
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.Nickname') }}</label>
+                        {!! Form::text('nickname',$product_list['created_at'],['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.address') }}</label>
+                        {!! Form::text('address',$product_list['modified_at'],['class'=>'form-control']) !!}
+
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+            </div>
+            <!-- row -->
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.Birthday') }}</label>
+                        {!! Form::text('birthday',$product_list['created_by_id'],['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.Phone') }}</label>
+                        {!! Form::text('phone',$product_list['modified_by_id'],['class'=>'form-control']) !!}
+
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+            </div>
+            <!-- row -->
+
+            <div class="row">
+
+                <!-- col-sm-6 -->
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.City') }}</label>
+                        {!! Form::text('city',$product_list['assigned_user_id'],['class'=>'form-control']) !!}
+                    </div>
+
+                </div>
+                <!-- col-sm-6 -->
+
+                <div class="col-sm-6">
+                    <div class="form-group no-margin-hr">
+                        <label class="control-label">{{ trans('accounts::accounts.ZipCode') }}</label>
+                        {!! Form::text('zip_code',$product_list['product_id'],['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <!-- col-sm-6 -->
+            </div>
+            <!-- row -->
+        </div>
+        {!!   View('admin/partials/messages')->with('errors',$errors) !!}
+        <div class="panel-footer text-right">
+            <button type="submit" class="btn btn-primary" name="edit_id"
+                    value="{{ $product_list['id']  or 0 }}">{{ trans('accounts::accounts.save') }}</button>
+        </div>
+
+        {!! Form::close() !!}
+    </div>
+@stop
+@section("script")
+    @parent
+@stop

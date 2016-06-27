@@ -45,6 +45,7 @@ class ProductList extends Controller
 //
 //        ProductList::create($testData);
 //        dd(ProductList::all());
+
         $oResults= mProductList::paginate(15);
         $aFilterParams=$request;
         return view('client.product_list.index', compact('oResults'), compact('aFilterParams'));
@@ -84,7 +85,9 @@ class ProductList extends Controller
      */
     public function show($id)
     {
+
         $product_list = mProductList::findOrFail($id);
+
 
         return view('client.product_list.show', compact('product_list'));
     }
@@ -98,6 +101,7 @@ class ProductList extends Controller
      */
     public function edit($id)
     {
+
         $product_list = mProductList::findOrFail($id);
 
         return view('client.product_list.edit', compact('product_list'));
