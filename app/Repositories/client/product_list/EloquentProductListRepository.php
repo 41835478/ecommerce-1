@@ -22,7 +22,7 @@ class EloquentProductListRepository implements ProductListContract
            $oResults=$oResults->orderBy($data->order,$sort);
        }
 
-       $oResults=$oResults::paginate(15);
+       $oResults=$oResults->paginate(15);
 return $oResults;
    }
 

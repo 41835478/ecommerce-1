@@ -54,9 +54,6 @@ class ProductList extends Controller
 //        dd(ProductList::all());
         $aFilterParams=$request;
         $oResults=$this->rProductList->getByFilter($aFilterParams);
-
-
-
         return view('client.product_list.index', compact('oResults'), compact('aFilterParams'));
     }
 
