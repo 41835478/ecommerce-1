@@ -102,14 +102,17 @@
 
                                         <td>
                                             <a href="/client/product_list/{{ $oResult->id }}"
+                                               class="fa fa-file-text"></a>
+
+
+                                            {!! Form::open(['method' => 'DELETE',
+                                            'url' => ['/client/product_list',$oResult->id]]) !!}
+                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                            {!! Form::close() !!}
+
+                                            <a href="/client/product_list/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"></a>
 
-                                            {!! Form::open([
-                                    'method'=>'DELETE',
-                                   'url' => ['/client/product_list/', $oResult->id],
-                                     ]) !!}
-                                            {!! Form::button('<i class="fa fa-trash-o"></i>',['name'=>'delete_form_submit' ,'onclick'=>'if(!confirm("Are you sure you want to delete forms with its links")) return false;','class'=>'icon_button tooltip_number','data-original-title'=>trans('cms::cms.delete'),'type'=>'submit' ]) !!}
-                                            {!! Form::close() !!}
                                         </td>
                                     </tr>
                                 @endforeach

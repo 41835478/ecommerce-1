@@ -13,69 +13,115 @@
         'class' => 'form-horizontal'
     ]) !!}
 
-                <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
-                {!! Form::label('title', trans('title'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
-                </div>
+        <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}">
+            {!! Form::label('id', trans('id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('firstName') ? 'has-error' : ''}}">
-                {!! Form::label('firstName', trans('firstName'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('firstName', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('firstName', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+
+        <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
+            {!! Form::label('name', trans('name'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('lastName') ? 'has-error' : ''}}">
-                {!! Form::label('lastName', trans('lastName'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('lastName', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('lastName', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('deleted') ? 'has-error' : ''}}">
+            {!! Form::label('deleted', trans('deleted'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('deleted', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('deleted', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('jobApplyingFor') ? 'has-error' : ''}}">
-                {!! Form::label('jobApplyingFor', trans('jobApplyingFor'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('jobApplyingFor', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('jobApplyingFor', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
+            {!! Form::label('description', trans('description'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('description', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('Email') ? 'has-error' : ''}}">
-                {!! Form::label('Email', trans('Email'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('Email', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('Email', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('created_at') ? 'has-error' : ''}}">
+            {!! Form::label('created_at', trans('created_at'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('created_at', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('created_at', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('CurrentBasicSalary') ? 'has-error' : ''}}">
-                {!! Form::label('CurrentBasicSalary', trans('CurrentBasicSalary'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('CurrentBasicSalary', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('CurrentBasicSalary', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('modified_at') ? 'has-error' : ''}}">
+            {!! Form::label('modified_at', trans('modified_at'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('modified_at', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('modified_at', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('CoverLetter') ? 'has-error' : ''}}">
-                {!! Form::label('CoverLetter', trans('CoverLetter'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('CoverLetter', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('CoverLetter', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('created_by_id') ? 'has-error' : ''}}">
+            {!! Form::label('created_by_id', trans('created_by_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('created_by_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('created_by_id', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('eligible') ? 'has-error' : ''}}">
-                {!! Form::label('eligible', trans('eligible'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('eligible', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('eligible', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('modified_by_id') ? 'has-error' : ''}}">
+            {!! Form::label('modified_by_id', trans('modified_by_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('modified_by_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('modified_by_id', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="form-group {{ $errors->has('cv') ? 'has-error' : ''}}">
-                {!! Form::label('cv', trans('cv'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('cv', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('cv', '<p class="help-block">:message</p>') !!}
-                </div>
+        </div>
+        <div class="form-group {{ $errors->has('assigned_user_id') ? 'has-error' : ''}}">
+            {!! Form::label('assigned_user_id', trans('assigned_user_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('assigned_user_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('assigned_user_id', '<p class="help-block">:message</p>') !!}
             </div>
+        </div>
+        <div class="form-group {{ $errors->has('product_id') ? 'has-error' : ''}}">
+            {!! Form::label('product_id', trans('product_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('product_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('product_id', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+
+        <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}">
+            {!! Form::label('type', trans('type'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('type', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+        <div class="form-group {{ $errors->has('version_id') ? 'has-error' : ''}}">
+            {!! Form::label('version_id', trans('version_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('version_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('version_id', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+
+        <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}}">
+            {!! Form::label('version', trans('version'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('version', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('version', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+        <div class="form-group {{ $errors->has('download_id') ? 'has-error' : ''}}">
+            {!! Form::label('download_id', trans('download_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('download_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('download_id', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+
+        <div class="form-group {{ $errors->has('knowledge_base_article_id') ? 'has-error' : ''}}">
+            {!! Form::label('knowledge_base_article_id', trans('knowledge_base_article_id'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="col-sm-6">
+                {!! Form::text('knowledge_base_article_id', null, ['class' => 'form-control']) !!}
+                {!! $errors->first('knowledge_base_article_id', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
 
 
     <div class="form-group">

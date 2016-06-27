@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductList extends Model
 {
     protected $fillable = [
+        "id",
         "name",
         "deleted",
         "description" ,
@@ -22,6 +23,6 @@ class ProductList extends Model
 
     public $timestamps =false ;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
 }

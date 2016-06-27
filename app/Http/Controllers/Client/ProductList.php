@@ -54,8 +54,6 @@ class ProductList extends Controller
 //        dd(ProductList::all());
 
 
-        $oResults= mProductList::paginate(15);
-
         $aFilterParams=$request;
         $oResults=$this->rProductList->getByFilter($aFilterParams);
 
@@ -80,9 +78,8 @@ class ProductList extends Controller
     public function store(Request $request)
     {
 
-        ProductList::create($request->all());
 
-        Session::flash('flash_message', 'product_list added!');
+        $oResults=$this->rProductList->create($request->all());
 
         return redirect('client/product_list');
     }
@@ -97,7 +94,8 @@ class ProductList extends Controller
     public function show($id)
     {
 
-        $product_list = mProductList::findOrFail($id);
+
+        $product_list=$this->rProductList->show($id);
 
 
         return view('client.product_list.show', compact('product_list'));
@@ -113,7 +111,8 @@ class ProductList extends Controller
     public function edit($id)
     {
 
-        $product_list = mProductList::findOrFail($id);
+
+        $product_list=$this->rProductList->show($id);
 
         return view('client.product_list.edit', compact('product_list'));
     }
@@ -128,10 +127,9 @@ class ProductList extends Controller
     public function update($id, Request $request)
     {
 
-        $product_list = mProductList::findOrFail($id);
-        $product_list->update($request->all());
+        $result=$this->rProductList->update($id,$request);
 
-        Session::flash('flash_message', 'product_list updated!');
+
 
         return redirect('client/product_list');
     }
@@ -145,10 +143,7 @@ class ProductList extends Controller
      */
     public function destroy($id)
     {
-        mProductList::destroy($id);
-
-        Session::flash('flash_message', 'product_list deleted!');
-
+        $product_list=$this->rProductList->destroy($id);
         return redirect('client/product_list');
     }
 
