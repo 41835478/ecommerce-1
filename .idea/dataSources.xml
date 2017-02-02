@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3093540830">
+  <component name="DataSourceManagerImpl" format="xml" hash="1323217161">
     <data-source source="LOCAL" name="MySQL - mycrm@online.office.mqplanet.com" uuid="4672bcfe-356e-449b-9aa5-ac6ddfe8e96f">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

@@ -30,7 +30,7 @@ class AuthController extends Controller
 
     public function postLogin(Request $oRequest)
     {
-        $contact = DB::table('contact')->where(['username'=>$oRequest->email, 'password' => $oRequest->password])->first();
+        $contact = DB::table('users')->where(['email'=>$oRequest->email, 'password' => $oRequest->password])->first();
 
 
         if($contact){
