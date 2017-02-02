@@ -16,7 +16,7 @@ return [
 
       'senderEmail' => 'm.hashim@mqplanet.com',
     'displayName' => 'Mqplanet',
-    'layoutAssetsFolder'=>'mycp',
+    'layoutAssetsFolder'=>'elite',
 
 
     'adminEmail' => 'mag@mqplanet.com',

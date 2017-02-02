@@ -1,56 +1,171 @@
 <!DOCTYPE html>
-<!--[if IE 8]>
-<html class="ie8">
-<![endif]-->
-<!--[if IE 9]>
-<html class="ie9 gt-ie8">
-<![endif]-->
-<!--[if gt IE 9]><!-->
-<html class="gt-ie8 gt-ie9 not-ie">
-    <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="_token" content="{{ csrf_token() }}" />
-        <title>@yield('title') - </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin" rel="stylesheet" type="text/css">
-        {!! HTML::style('assets/'.config('mycp.layoutAssetsFolder').'/css/bootstrap.min.css') !!}
-        {!! HTML::style('assets/'.config('mycp.layoutAssetsFolder').'/css/pixel-admin.min.css') !!}
-        {!! HTML::style('assets/'.config('mycp.layoutAssetsFolder').'/css/pages.min.css') !!}
-        {!! HTML::style('assets/'.config('mycp.layoutAssetsFolder').'/css/rtl.min.css') !!}
-        {!! HTML::style('assets/'.config('mycp.layoutAssetsFolder').'/css/themes.min.css') !!}
-        {!! HTML::style('assets/'.config('mycp.layoutAssetsFolder').'/css/helper.css') !!}
-        <!--[if lt IE 9]>
-        {!! HTML::script('assets/'.config('mycp.layoutAssetsFolder').'/js/ie.min.js') !!}
-        <![endif]-->
-    </head>
-    <body class="{{ theme_attr() }}">
-        <script>var init = [];</script>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <title>@yield('title') - {{ app_name() }}</title>
+    <!-- Bootstrap Core CSS -->
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/bootstrap/dist/css/bootstrap.min.css') !!}
 
-        <div id="main-wrapper">
-            @include('client.partials.header')
-            @include('client.partials.menu')
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/tablesaw-master/dist/tablesaw.css') !!}
+            <!-- animation CSS -->
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/css/animate.css') !!}
+            <!-- Custom CSS -->
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/css/style.css') !!}
+            <!-- color CSS -->
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/css/colors/default.css')!!}
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/css/helper.css')!!}
+            <!-- Date PICKER CSS -->
 
-                @yield('content')
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css')!!}
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css')!!}
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css')!!}
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/timepicker/bootstrap-timepicker.min.css')!!}
+    {!! HTML::style('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css')!!}
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {{--	{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/js/ie.min.js') !!}--}}
 
-            <div id="main-menu-bg"></div>
-        </div>
+</head>
+<body class="fix-sidebar rmv-right-panel content-wrapper">
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
 
-        @section('script')
-        <!--[if !IE]> -->
-        {!! HTML::script('assets/'.config('mycp.layoutAssetsFolder').'/js/jquery.2.0.3.min.js') !!}
-        <!-- <![endif]-->
-        <!--[if lte IE 9]>
-        {!! HTML::script('assets/'.config('mycp.layoutAssetsFolder').'/js/jquery.1.8.3.min.js') !!}
-        <![endif]-->
 
-        {!! HTML::script('assets/'.config('mycp.layoutAssetsFolder').'/js/bootstrap.min.js') !!}
-        {!! HTML::script('assets/'.config('mycp.layoutAssetsFolder').'/js/pixel-admin.min.js') !!}
 
-        <script type="text/javascript">
-            window.PixelAdmin.start(init);
-        </script>
-        @show
-    </body>
+
+
+    @include('client.partials.header')
+    @include('client.partials.menu')
+
+    @yield('content')
+
+
+</div>
+<!-- /#wrapper -->
+
+@section('script')
+        <!-- jQuery -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/jquery/dist/jquery.min.js') !!}
+        <!-- Bootstrap Core JavaScript -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/bootstrap/dist/js/bootstrap.min.js') !!}
+
+        <!--slimscroll JavaScript -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/js/jquery.slimscroll.js') !!}
+        <!--Wave Effects -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/js/waves.js') !!}
+        <!-- Custom Theme JavaScript -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/js/custom.min.js') !!}
+        <!-- jQuery peity -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/tablesaw-master/dist/tablesaw.js') !!}
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/tablesaw-master/dist/tablesaw-init.js') !!}
+        <!--Style Switcher -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') !!}
+        <!--Date PICKER -->
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/moment/moment.js') !!}
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js') !!}
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js') !!}
+{!! HTML::script('/assets/'.config('mycp.layoutAssetsFolder').'/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js') !!}
+
+<script>
+    var options = {
+        format: "yyyy-mm-dd",
+        todayBtn: "linked",
+        orientation: $('body').hasClass('right-to-left') ? "auto right" : 'auto auto'
+    }
+
+    $('.mydatepicker, #datepicker').datepicker(options);
+    $('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+    });
+
+    $('.myclockpicker, #clockpicker').clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        autoclose: true,
+        'default': 'now'
+
+    });
+
+    $('#date-range').datepicker({
+        toggleActive: true
+    });
+    $('#datepicker-inline').datepicker({
+        todayHighlight: true
+    });
+
+    $('#all-groups-chx').change(function () {
+        if ($('#all-groups-chx').prop('checked')) {
+            $('#all-groups-slc').attr('disabled', 'disabled');
+        } else {
+            $('#all-groups-slc').removeAttr('disabled');
+        }
+    });
+
+    $('#all-symbols-chx').change(function () {
+        if ($('#all-symbols-chx').prop('checked')) {
+            $('#all-symbols-slc').attr('disabled', 'disabled');
+        } else {
+            $('#all-symbols-slc').removeAttr('disabled');
+        }
+    });
+
+    if ($('#all-groups-chx').prop('checked')) {
+        $('#all-groups-slc').attr('disabled', 'disabled');
+    } else {
+        $('#all-groups-slc').removeAttr('disabled');
+    }
+
+    if ($('#all-symbols-chx').prop('checked')) {
+        $('#all-symbols-slc').attr('disabled', 'disabled');
+    } else {
+        $('#all-symbols-slc').removeAttr('disabled');
+    }
+
+
+    $('#exactLogin').change(function () {
+        if ($('#exactLogin').prop('checked')) {
+            $("#from_login_li,#to_login_li").hide();
+            $("#login_li").show();
+        } else {
+            $("#from_login_li,#to_login_li").show();
+            $("#login_li").hide();
+        }
+    });
+
+    if ($('#exactLogin').prop('checked')) {
+        $("#from_login_li,#to_login_li").hide();
+        $("#login_li").show();
+    } else {
+        $("#from_login_li,#to_login_li").show();
+        $("#login_li").hide();
+    }
+    $(document).ready(function(){
+
+        if($('.right-side-panel').length == 0){
+            $('.right-side-toggle').hide();
+        }
+
+    });
+
+
+</script>
+
+@show
+
+
+</body>
 </html>
