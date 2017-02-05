@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Contacts as mContacts;
 use App\Repositories\client\contacts\ContactsContract as rContacts;
+use App\Repositories\client\company\CompanyContract as rCompany;
 class Contacts extends Controller
 {
     private $rContacts;
 
-    public function __construct(rContacts $rContacts)
+    public function __construct(rContacts $rContacts,rCompany $rCompany)
     {
         $this->rContacts=$rContacts;
+        $this->rCompany=$rCompany;
     }
     /**
      * Display a listing of the resource.
@@ -44,9 +46,11 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('client.contacts.create');
+
+        $companiesList=$this->rCompany->getAllList();
+        return view('client.contacts.create',compact('request','companiesList'));
     }
 
     /**
@@ -92,8 +96,9 @@ class Contacts extends Controller
 
 
         $contacts=$this->rContacts->show($id);
+        $companiesList=$this->rCompany->getAllList();
 
-        return view('client.contacts.edit', compact('contacts'));
+        return view('client.contacts.edit', compact('contacts','companiesList'));
     }
 
     /**

@@ -15,13 +15,17 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Contracts as mContracts;
 use App\Repositories\client\contracts\ContractsContract as rContracts;
+use App\Repositories\client\company\CompanyContract as rCompany;
+use App\Repositories\client\products\ProductsContract as rProducts;
 class Contracts extends Controller
 {
     private $rContracts;
 
-    public function __construct(rContracts $rContracts)
+    public function __construct(rContracts $rContracts,rCompany $rCompany,rProducts $rProducts)
     {
+        $this->rCompany=$rCompany;
         $this->rContracts=$rContracts;
+        $this->rProducts=$rProducts;
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +39,6 @@ class Contracts extends Controller
 
         $aFilterParams=$request;
         $oResults=$this->rContracts->getByFilter($aFilterParams);
-
         return view('client.contracts.index', compact('oResults'), compact('aFilterParams'));
     }
 
@@ -44,9 +47,12 @@ class Contracts extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('client.contracts.create');
+        $companiesList=$this->rCompany->getAllList();
+        $productsList=$this->rProducts->getAllList();
+        return view('client.contracts.create',compact('request'),compact('productsList','companiesList'));
+
     }
 
     /**
@@ -92,8 +98,10 @@ class Contracts extends Controller
 
 
         $contracts=$this->rContracts->show($id);
+        $companiesList=$this->rCompany->getAllList();
+        $productsList=$this->rProducts->getAllList();
 
-        return view('client.contracts.edit', compact('contracts'));
+        return view('client.contracts.edit', compact('contracts','productsList','companiesList'));
     }
 
     /**

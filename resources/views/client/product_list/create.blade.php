@@ -7,7 +7,7 @@
     <h1>Create New Career Center</h1>
     <hr/>
 
-    {!! Form::open(['url' => '/client/product_list', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/product_list', 'class' => 'form-horizontal']) !!}
 
 
                 <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}">

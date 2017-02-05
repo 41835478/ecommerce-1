@@ -3,9 +3,30 @@
 @section('title', trans('general.contracts_renewal'))
 @section('content')
 
-    <div id="content-wrapper">
-    <h1>Create New Contracts Renewal</h1>
-    <hr/>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url({{'/assets/'.config('fxweb.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title">{{ trans('general.contracts_renewal') }}</h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#">{{ trans('general.contracts_renewal') }}</a></li>
+                        <li class="active">{{ trans('general.contracts_renewalCreate') }}</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" {{ trans('general.search') }} ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
 
     {!! Form::open(['url' => '/admin/contracts_renewal', 'class' => 'form-horizontal']) !!}
 
@@ -83,5 +104,9 @@
             @endforeach
         </ul>
     @endif
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

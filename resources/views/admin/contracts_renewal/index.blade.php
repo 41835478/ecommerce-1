@@ -1,94 +1,59 @@
 @extends('admin.layouts.main')
 @section('title', trans('general.contracts_renewal'))
+
 @section('content')
 
-    <div class="padding">
-        <div class="theme-default page-mail">
-            <div class="mail-nav">
-                <div class="navigation">
-                    {!! Form::open(['method'=>'get', 'class'=>'form-bordered']) !!}
-                    <ul class="sections">
-                        <li class="active"><a href="#"> <i
-                                        class="fa fa-search"></i> {{ trans('general.search') }} </a></li>
-
-
-
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('contracts_id', $aFilterParams['contracts_id'], ['placeholder'=>trans('general.contracts_id'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('description', $aFilterParams['description'], ['placeholder'=>trans('general.description'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('price', $aFilterParams['price'], ['placeholder'=>trans('general.price'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                        
-                        <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                    </ul>
-
-
-                    {!! Form::hidden('sort', $aFilterParams['sort']) !!}
-                    {!! Form::hidden('order', $aFilterParams['order']) !!}
-
-
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url({{'/assets/'.config('fxweb.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title">{{ trans('general.contracts_renewal') }}</h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#">{{ trans('general.contracts_renewal') }}</a></li>
+                        <li class="active">{{ trans('general.contracts_renewal') }}</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" {{ trans('general.search') }} ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
                 </div>
             </div>
 
-            <div class="mail-container ">
-                <div class="mail-container-header">
-                    {{ trans('general.contracts_renewal') }}
-                </div>
-                <div class="center_page_all_div">
-                    @include('client.partials.messages')
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
 
-                    <div class="table-light">
-                        <div class="table-header">
-                            <div class="table-caption">
-                                {{ trans('general.contracts_renewal') }}
+                        <h3 class="box-title m-b-0">{{ trans('general.contracts_renewalTableHead') }}</h3>
+                        <p class="text-muted m-b-20">{{ trans('general.contracts_renewalTableDescription') }}</p>
+                        @include('client.partials.messages')
+                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
-                                <a href="/admin/contracts_renewal/create" style="float:right;">
-                                    <input name="" class="btn btn-primary btn-flat" type="button"
-                                           value="{{ trans('general.addcontracts_renewal') }}"> </a>
-
-                            </div>
-                        </div>
-                        <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
 
 
-                                                          <th class="no-warp">{!! th_sort(trans('general.id'), 'id', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.contracts_id'), 'contracts_id', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                        {!! th_sort(trans('general.contracts_id'), 'contracts_id', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.description'), 'description', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                        {!! th_sort(trans('general.description'), 'description', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.price'), 'price', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                        {!! th_sort(trans('general.price'), 'price', $oResults) !!}
+                                    </th>
 
-                                                          <th class="no-warp">
-
-                              </th>
+                                
                             </tr>
                             </thead>
                             <tbody>
@@ -101,13 +66,13 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                    <td>{{ $oResult->contracts_id }}</td>
+                                                                                <td>{{ $oResult->contracts_id }}</td>
 
-                                                                                    <td>{{ $oResult->description }}</td>
+                                                                                <td>{{ $oResult->description }}</td>
 
-                                                                                    <td>{{ $oResult->price }}</td>
+                                                                                <td>{{ $oResult->price }}</td>
 
-                                            
+                                        
                                         <td>
                                             <a href="/admin/contracts_renewal/{{ $oResult->id }}"
                                                class="fa fa-file-text"></a>
@@ -127,76 +92,97 @@
                             @endif
                             </tbody>
                         </table>
-                        <div class="table-footer">
-                            @if (count($oResults))
-                                {!! str_replace('/?', '?', $oResults->appends(Input::except('page'))->appends($aFilterParams->all())->render()) !!}
-                                @if($oResults->total()>25)
+                        @if (count($oResults))
+                            <div class="row">
 
-                                    <div class="DT-lf-right change_page_all_div">
-
-
-                                        {!! Form::text('page',$oResults->currentPage(), ['type'=>'number', 'placeholder'=>trans('accounts::accounts.page'),'class'=>'form-control input-sm']) !!}
-
-
-
-                                        {!! Form::submit(trans('general.go'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
-
-
-                                    </div>
-                                @endif
-
-                                <div class="col-sm-3">
+                                <div class="col-xs-12 col-sm-6 ">
                                     <span class="text-xs">{{trans('general.showing')}} {{ $oResults->firstItem() }} {{trans('general.to')}} {{ $oResults->lastItem() }} {{trans('general.of')}} {{ $oResults->total() }} {{trans('general.entries')}}</span>
                                 </div>
-                            @endif
-                        </div>
+
+
+                                <div class="col-xs-12 col-sm-6 ">
+                                    {!! str_replace('/?', '?', $oResults->appends(Input::except('page'))->appends($aFilterParams)->render()) !!}
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> {{trans('general.CopyRights')}} </footer>
         </div>
-    </div>
-    {!! Form::close() !!}
-    <script>
-        init.push(function () {
+        <!-- /#page-wrapper -->
+        <!-- .right panel -->
+        <div class="right-side-panel">
+            <div class="scrollable-right container">
+                <!-- .Theme settings -->
+                <h3 class="title-heading">{{ trans('general.search') }}</h3>
+
+                {!! Form::open(['method'=>'get','id'=>'searchForm', 'class'=>'form-horizontal']) !!}
 
 
-            $('.tooltip_number').tooltip();
 
 
-            $('#all-groups-chx').change(function () {
+                
 
-                if ($('#all-groups-chx').prop('checked')) {
-                    $('#all-groups-slc').attr('disabled', 'disabled');
-                } else {
-                    $('#all-groups-slc').removeAttr('disabled');
-                }
-            });
-            if ($('#all-groups-chx').prop('checked')) {
-                $('#all-groups-slc').attr('disabled', 'disabled');
-            } else {
-                $('#all-groups-slc').removeAttr('disabled');
-            }
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('contracts_id', $aFilterParams['contracts_id'], ['placeholder'=>trans('general.contracts_id'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('description', $aFilterParams['description'], ['placeholder'=>trans('general.description'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('price', $aFilterParams['price'], ['placeholder'=>trans('general.price'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
 
 
-            $('#exactLogin').change(function () {
-                if ($('#exactLogin').prop('checked')) {
-                    $("#from_login_li,#to_login_li").hide();
-                    $("#login_li").show();
-                } else {
-                    $("#from_login_li,#to_login_li").show();
-                    $("#login_li").hide();
-                }
-            });
 
-            if ($('#exactLogin').prop('checked')) {
-                $("#from_login_li,#to_login_li").hide();
-                $("#login_li").show();
-            } else {
-                $("#from_login_li,#to_login_li").show();
-                $("#login_li").hide();
-            }
 
-        });
+                <div class="form-group">
+                    <label class="col-md-12"></label>
+                    <div class="col-md-12">
+                        {!! Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
+                    </div>
+                </div>
 
-    </script>
-@stop
+                {!! Form::hidden('sort', $aFilterParams['sort']) !!}
+                {!! Form::hidden('order', $aFilterParams['order']) !!}
+                {!! Form::close()!!}
+            </div>
+        </div>
+
+        @stop

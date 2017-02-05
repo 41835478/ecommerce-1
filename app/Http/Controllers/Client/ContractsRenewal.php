@@ -44,9 +44,10 @@ class ContractsRenewal extends Controller
      *
      * @return void
      */
-    public function create()
+    public function  create(Request $request)
     {
-        return view('client.contracts_renewal.create');
+        return view('client.contracts_renewal.create',compact('request'));
+
     }
 
     /**

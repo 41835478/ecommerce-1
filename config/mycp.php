@@ -323,24 +323,24 @@ return [
             ]
         ],
 
-        [
-            'route' => 'client.contracts_renewal.index',
-            'title' => 'contracts_renewal',
-            'icon' => 'fa fa-gears',
-            'subMenus' => [
-
-        [
-        'route' => 'client.contracts_renewal.index',
-        'title' => 'contracts_renewalList',
-        'icon' => 'fa fa-gears',
-        ],
-        [
-        'route' => 'client.contracts_renewal.create',
-        'title' => 'contracts_renewalCreate',
-        'icon' => 'fa fa-gears',
-        ]
-            ]
-        ],
+//        [
+//            'route' => 'client.contracts_renewal.index',
+//            'title' => 'contracts_renewal',
+//            'icon' => 'fa fa-gears',
+//            'subMenus' => [
+//
+//        [
+//        'route' => 'client.contracts_renewal.index',
+//        'title' => 'contracts_renewalList',
+//        'icon' => 'fa fa-gears',
+//        ],
+//        [
+//        'route' => 'client.contracts_renewal.create',
+//        'title' => 'contracts_renewalCreate',
+//        'icon' => 'fa fa-gears',
+//        ]
+//            ]
+//        ],
 
         [
             'route' => 'client.emails.index',

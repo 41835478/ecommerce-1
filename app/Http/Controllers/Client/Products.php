@@ -44,9 +44,10 @@ class Products extends Controller
      *
      * @return void
      */
-    public function create()
+    public function  create(Request $request)
     {
-        return view('client.products.create');
+        return view('client.products.create',compact('request'));
+
     }
 
     /**

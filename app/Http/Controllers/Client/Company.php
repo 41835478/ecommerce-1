@@ -31,8 +31,6 @@ class Company extends Controller
     public function index(Request $request)
     {
 
-
-
         $aFilterParams=$request;
         $oResults=$this->rCompany->getByFilter($aFilterParams);
 
@@ -44,9 +42,10 @@ class Company extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('client.company.create');
+        return view('client.company.create',compact('request'));
+
     }
 
     /**
@@ -56,6 +55,8 @@ class Company extends Controller
      */
     public function store(Request $request)
     {
+
+
         $oResults=$this->rCompany->create($request->all());
 
         return redirect('client/company');

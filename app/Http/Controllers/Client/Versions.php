@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Versions as mVersions;
 use App\Repositories\client\versions\VersionsContract as rVersions;
+use App\Repositories\client\products\ProductsContract as rProducts;
 class Versions extends Controller
 {
     private $rVersions;
 
-    public function __construct(rVersions $rVersions)
+    public function __construct(rVersions $rVersions,rProducts $rProducts)
     {
         $this->rVersions=$rVersions;
+        $this->rProducts=$rProducts;
     }
     /**
      * Display a listing of the resource.
@@ -44,9 +46,12 @@ class Versions extends Controller
      *
      * @return void
      */
-    public function create()
+    public function    create(Request $request)
     {
-        return view('client.versions.create');
+
+        $productsList=$this->rProducts->getAllList();
+        return view('client.versions.create',compact('request','productsList'));
+
     }
 
     /**
@@ -92,8 +97,9 @@ class Versions extends Controller
 
 
         $versions=$this->rVersions->show($id);
+        $productsList=$this->rProducts->getAllList();
 
-        return view('client.versions.edit', compact('versions'));
+        return view('client.versions.edit', compact('versions','productsList'));
     }
 
     /**

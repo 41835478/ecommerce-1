@@ -14,7 +14,7 @@ class EloquentCompanyRepository implements CompanyContract
         $oResults = new Company();
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id','=', $data['id'] );
         }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
@@ -49,6 +49,14 @@ class EloquentCompanyRepository implements CompanyContract
         }
 
         $oResults = $oResults->paginate(15);
+        return $oResults;
+    }
+
+    function getAllList(){
+
+        $oResults = new Company();
+
+        $oResults = $oResults::lists('name','id');
         return $oResults;
     }
 

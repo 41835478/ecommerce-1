@@ -11,7 +11,7 @@ class EloquentContactsRepository implements ContactsContract
     public function getByFilter($data)
     {
 
-        $oResults = new Contacts();
+        $oResults =Contacts::with('company');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');

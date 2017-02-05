@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Licenses as mLicenses;
 use App\Repositories\client\licenses\LicensesContract as rLicenses;
+use App\Repositories\client\company\CompanyContract as rCompany;
 class Licenses extends Controller
 {
     private $rLicenses;
 
-    public function __construct(rLicenses $rLicenses)
+    public function __construct(rLicenses $rLicenses,rCompany $rCompany)
     {
+        $this->rCompany=$rCompany;
         $this->rLicenses=$rLicenses;
     }
     /**
@@ -44,9 +46,11 @@ class Licenses extends Controller
      *
      * @return void
      */
-    public function create()
+    public function  create(Request $request)
     {
-        return view('client.licenses.create');
+        $companiesList=$this->rCompany->getAllList();
+        return view('client.licenses.create',compact('request','companiesList'));
+
     }
 
     /**
@@ -92,8 +96,9 @@ class Licenses extends Controller
 
 
         $licenses=$this->rLicenses->show($id);
+        $companiesList=$this->rCompany->getAllList();
 
-        return view('client.licenses.edit', compact('licenses'));
+        return view('client.licenses.edit', compact('licenses','companiesList'));
     }
 
     /**

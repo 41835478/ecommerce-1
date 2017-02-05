@@ -3,9 +3,30 @@
 @section('title', trans('general.emails'))
 @section('content')
 
-    <div id="content-wrapper">
-    <h1>Create New Emails</h1>
-    <hr/>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url({{'/assets/'.config('fxweb.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title">{{ trans('general.emails') }}</h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#">{{ trans('general.emails') }}</a></li>
+                        <li class="active">{{ trans('general.emailsCreate') }}</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" {{ trans('general.search') }} ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
 
     {!! Form::open(['url' => '/admin/emails', 'class' => 'form-horizontal']) !!}
 
@@ -101,5 +122,9 @@
             @endforeach
         </ul>
     @endif
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

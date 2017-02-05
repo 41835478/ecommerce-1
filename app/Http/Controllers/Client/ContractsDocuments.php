@@ -44,9 +44,11 @@ class ContractsDocuments extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('client.contracts_documents.create');
+        return view('client.contracts_documents.create',compact('request'));
+
+
     }
 
     /**

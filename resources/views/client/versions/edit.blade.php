@@ -3,9 +3,32 @@
 @section('title', trans('general.versions'))
 @section('content')
 
-    <div id="content-wrapper">
-    <h1>Edit Versions</h1>
-    <hr/>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title">{{ trans('general.versions') }}</h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#">{{ trans('general.versions') }}</a></li>
+                        <li class="active">{{ trans('general.editversions') }}</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" {{ trans('general.search') }} ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
+
 
     {!! Form::model($versions, [
         'method' => 'PATCH',
@@ -42,7 +65,7 @@
                 <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('products_id', trans('products_id'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('products_id', null, ['class' => 'form-control']) !!}
+                {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -106,5 +129,9 @@
             @endforeach
         </ul>
     @endif
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

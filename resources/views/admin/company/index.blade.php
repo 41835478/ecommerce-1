@@ -1,142 +1,83 @@
 @extends('admin.layouts.main')
 @section('title', trans('general.company'))
+
 @section('content')
 
-    <div class="padding">
-        <div class="theme-default page-mail">
-            <div class="mail-nav">
-                <div class="navigation">
-                    {!! Form::open(['method'=>'get', 'class'=>'form-bordered']) !!}
-                    <ul class="sections">
-                        <li class="active"><a href="#"> <i
-                                        class="fa fa-search"></i> {{ trans('general.search') }} </a></li>
-
-
-
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('general.name'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('email', $aFilterParams['email'], ['placeholder'=>trans('general.email'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('phone', $aFilterParams['phone'], ['placeholder'=>trans('general.phone'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('website', $aFilterParams['website'], ['placeholder'=>trans('general.website'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('address', $aFilterParams['address'], ['placeholder'=>trans('general.address'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('country', $aFilterParams['country'], ['placeholder'=>trans('general.country'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('city', $aFilterParams['city'], ['placeholder'=>trans('general.city'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('zipcode', $aFilterParams['zipcode'], ['placeholder'=>trans('general.zipcode'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                                                <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::text('status', $aFilterParams['status'], ['placeholder'=>trans('general.status'),'class'=>'form-control input-sm']) !!}
-                            </div>
-                        </li>
-
-                        
-                        <li>
-                            <div class=" nav-input-div  ">
-                                {!! Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                    </ul>
-
-
-                    {!! Form::hidden('sort', $aFilterParams['sort']) !!}
-                    {!! Form::hidden('order', $aFilterParams['order']) !!}
-
-
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url({{'/assets/'.config('fxweb.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title">{{ trans('general.company') }}</h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#">{{ trans('general.company') }}</a></li>
+                        <li class="active">{{ trans('general.company') }}</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" {{ trans('general.search') }} ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
                 </div>
             </div>
 
-            <div class="mail-container ">
-                <div class="mail-container-header">
-                    {{ trans('general.company') }}
-                </div>
-                <div class="center_page_all_div">
-                    @include('client.partials.messages')
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
 
-                    <div class="table-light">
-                        <div class="table-header">
-                            <div class="table-caption">
-                                {{ trans('general.company') }}
+                        <h3 class="box-title m-b-0">{{ trans('general.companyTableHead') }}</h3>
+                        <p class="text-muted m-b-20">{{ trans('general.companyTableDescription') }}</p>
+                        @include('client.partials.messages')
+                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
-                                <a href="/admin/company/create" style="float:right;">
-                                    <input name="" class="btn btn-primary btn-flat" type="button"
-                                           value="{{ trans('general.addcompany') }}"> </a>
-
-                            </div>
-                        </div>
-                        <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
 
 
-                                                          <th class="no-warp">{!! th_sort(trans('general.id'), 'id', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.name'), 'name', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                        {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.email'), 'email', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                        {!! th_sort(trans('general.email'), 'email', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.phone'), 'phone', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                        {!! th_sort(trans('general.phone'), 'phone', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.website'), 'website', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                        {!! th_sort(trans('general.website'), 'website', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.address'), 'address', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                        {!! th_sort(trans('general.address'), 'address', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.country'), 'country', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
+                                        {!! th_sort(trans('general.country'), 'country', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.city'), 'city', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
+                                        {!! th_sort(trans('general.city'), 'city', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.zipcode'), 'zipcode', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="9">
+                                        {!! th_sort(trans('general.zipcode'), 'zipcode', $oResults) !!}
+                                    </th>
 
-                                                      <th class="no-warp">{!! th_sort(trans('general.status'), 'status', $oResults) !!}</th>
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="10">
+                                        {!! th_sort(trans('general.status'), 'status', $oResults) !!}
+                                    </th>
 
-                                                          <th class="no-warp">
-
-                              </th>
+                                
                             </tr>
                             </thead>
                             <tbody>
@@ -149,25 +90,25 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                    <td>{{ $oResult->name }}</td>
+                                                                                <td>{{ $oResult->name }}</td>
 
-                                                                                    <td>{{ $oResult->email }}</td>
+                                                                                <td>{{ $oResult->email }}</td>
 
-                                                                                    <td>{{ $oResult->phone }}</td>
+                                                                                <td>{{ $oResult->phone }}</td>
 
-                                                                                    <td>{{ $oResult->website }}</td>
+                                                                                <td>{{ $oResult->website }}</td>
 
-                                                                                    <td>{{ $oResult->address }}</td>
+                                                                                <td>{{ $oResult->address }}</td>
 
-                                                                                    <td>{{ $oResult->country }}</td>
+                                                                                <td>{{ $oResult->country }}</td>
 
-                                                                                    <td>{{ $oResult->city }}</td>
+                                                                                <td>{{ $oResult->city }}</td>
 
-                                                                                    <td>{{ $oResult->zipcode }}</td>
+                                                                                <td>{{ $oResult->zipcode }}</td>
 
-                                                                                    <td>{{ $oResult->status }}</td>
+                                                                                <td>{{ $oResult->status }}</td>
 
-                                            
+                                        
                                         <td>
                                             <a href="/admin/company/{{ $oResult->id }}"
                                                class="fa fa-file-text"></a>
@@ -187,76 +128,163 @@
                             @endif
                             </tbody>
                         </table>
-                        <div class="table-footer">
-                            @if (count($oResults))
-                                {!! str_replace('/?', '?', $oResults->appends(Input::except('page'))->appends($aFilterParams->all())->render()) !!}
-                                @if($oResults->total()>25)
+                        @if (count($oResults))
+                            <div class="row">
 
-                                    <div class="DT-lf-right change_page_all_div">
-
-
-                                        {!! Form::text('page',$oResults->currentPage(), ['type'=>'number', 'placeholder'=>trans('accounts::accounts.page'),'class'=>'form-control input-sm']) !!}
-
-
-
-                                        {!! Form::submit(trans('general.go'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
-
-
-                                    </div>
-                                @endif
-
-                                <div class="col-sm-3">
+                                <div class="col-xs-12 col-sm-6 ">
                                     <span class="text-xs">{{trans('general.showing')}} {{ $oResults->firstItem() }} {{trans('general.to')}} {{ $oResults->lastItem() }} {{trans('general.of')}} {{ $oResults->total() }} {{trans('general.entries')}}</span>
                                 </div>
-                            @endif
-                        </div>
+
+
+                                <div class="col-xs-12 col-sm-6 ">
+                                    {!! str_replace('/?', '?', $oResults->appends(Input::except('page'))->appends($aFilterParams)->render()) !!}
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> {{trans('general.CopyRights')}} </footer>
         </div>
-    </div>
-    {!! Form::close() !!}
-    <script>
-        init.push(function () {
+        <!-- /#page-wrapper -->
+        <!-- .right panel -->
+        <div class="right-side-panel">
+            <div class="scrollable-right container">
+                <!-- .Theme settings -->
+                <h3 class="title-heading">{{ trans('general.search') }}</h3>
+
+                {!! Form::open(['method'=>'get','id'=>'searchForm', 'class'=>'form-horizontal']) !!}
 
 
-            $('.tooltip_number').tooltip();
 
 
-            $('#all-groups-chx').change(function () {
+                
 
-                if ($('#all-groups-chx').prop('checked')) {
-                    $('#all-groups-slc').attr('disabled', 'disabled');
-                } else {
-                    $('#all-groups-slc').removeAttr('disabled');
-                }
-            });
-            if ($('#all-groups-chx').prop('checked')) {
-                $('#all-groups-slc').attr('disabled', 'disabled');
-            } else {
-                $('#all-groups-slc').removeAttr('disabled');
-            }
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('general.name'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('email', $aFilterParams['email'], ['placeholder'=>trans('general.email'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('phone', $aFilterParams['phone'], ['placeholder'=>trans('general.phone'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('website', $aFilterParams['website'], ['placeholder'=>trans('general.website'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('address', $aFilterParams['address'], ['placeholder'=>trans('general.address'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('country', $aFilterParams['country'], ['placeholder'=>trans('general.country'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('city', $aFilterParams['city'], ['placeholder'=>trans('general.city'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('zipcode', $aFilterParams['zipcode'], ['placeholder'=>trans('general.zipcode'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('status', $aFilterParams['status'], ['placeholder'=>trans('general.status'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
 
 
-            $('#exactLogin').change(function () {
-                if ($('#exactLogin').prop('checked')) {
-                    $("#from_login_li,#to_login_li").hide();
-                    $("#login_li").show();
-                } else {
-                    $("#from_login_li,#to_login_li").show();
-                    $("#login_li").hide();
-                }
-            });
 
-            if ($('#exactLogin').prop('checked')) {
-                $("#from_login_li,#to_login_li").hide();
-                $("#login_li").show();
-            } else {
-                $("#from_login_li,#to_login_li").show();
-                $("#login_li").hide();
-            }
 
-        });
+                <div class="form-group">
+                    <label class="col-md-12"></label>
+                    <div class="col-md-12">
+                        {!! Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']) !!}
+                    </div>
+                </div>
 
-    </script>
-@stop
+                {!! Form::hidden('sort', $aFilterParams['sort']) !!}
+                {!! Form::hidden('order', $aFilterParams['order']) !!}
+                {!! Form::close()!!}
+            </div>
+        </div>
+
+        @stop
