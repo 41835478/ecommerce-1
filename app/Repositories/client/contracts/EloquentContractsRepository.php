@@ -11,7 +11,7 @@ class EloquentContractsRepository implements ContractsContract
     public function getByFilter($data)
     {
 
-        $oResults = new Contracts();
+        $oResults =Contracts::with('company','products');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');

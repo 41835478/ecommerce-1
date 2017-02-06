@@ -65,7 +65,7 @@
                 <div class="form-group {{ $errors->has('products_list_id') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('products_list_id', trans('products_list_id'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('products_list_id', null, ['class' => 'form-control']) !!}
+                {!! Form::select('products_list_id',$productsListArray, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('products_list_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

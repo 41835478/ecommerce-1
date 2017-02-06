@@ -46,13 +46,7 @@
 
             
         <div class="row">
-        <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('id', trans('general.id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
                 
         
         <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6">
@@ -62,6 +56,8 @@
                 {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+            
         </div>        
         <div class="row">
         <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}}  col-xs-6">

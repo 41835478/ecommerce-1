@@ -92,18 +92,27 @@
 
                                         
                                         <td>
+
+                                            <div class="tableActionsMenuDiv">
+                                                <div class="innerContainer">
+                                                    <i class="fa fa-list menuIconList"></i>
+
                                             <a href="/client/contacts/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/contacts',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                            <button type="submit" name="Delete" class="deleteRow" >
+                                                <i class="fa fa-trash"></i>
+                                                {{trans('general.delete')}}
+                                            </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/contacts/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"></a>
-
+                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+</div>
+                                                </div>
                                         </td>
                                     </tr>
                                 @endforeach

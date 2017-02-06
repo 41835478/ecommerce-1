@@ -19,7 +19,7 @@ Route::group(['middleware' => ['authorize.client']], function () {
  */
 Route::get('login', [
     'before'=>'changeLanguage',
-    'as' => 'client.public.login',
+    'as' => 'client.auth.login',
     'uses' => 'AuthController@getLogin'
 ]);
 Route::post('login', [

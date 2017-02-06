@@ -12,4 +12,12 @@ class Contracts extends Model
 
     protected $guarded = [];
 
+
+    public function company(){
+        return $this->belongsTo('App\Models\Company');
+    }
+
+    public function products(){
+        return $this->belongsTo('App\Models\Products');
+    }
 }

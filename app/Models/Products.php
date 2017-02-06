@@ -12,4 +12,8 @@ class Products extends Model
 
     protected $guarded = [];
 
+    public function productsList(){
+        return $this->belongsTo('App\Models\ProductsList');
+    }
+
 }

@@ -15,12 +15,15 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Products as mProducts;
 use App\Repositories\client\products\ProductsContract as rProducts;
+use App\Repositories\client\products_list\ProductsListContract as rProductList;
 class Products extends Controller
 {
     private $rProducts;
+    private $rProductList;
 
-    public function __construct(rProducts $rProducts)
+    public function __construct(rProducts $rProducts,rProductList $rProductList)
     {
+        $this->rProductList=$rProductList;
         $this->rProducts=$rProducts;
     }
     /**
@@ -46,7 +49,9 @@ class Products extends Controller
      */
     public function  create(Request $request)
     {
-        return view('client.products.create',compact('request'));
+        $productsListArray=$this->rProductList->getAllList();
+
+        return view('client.products.create',compact('request','productsListArray'));
 
     }
 
@@ -93,8 +98,10 @@ class Products extends Controller
 
 
         $products=$this->rProducts->show($id);
+        $productsListArray=$this->rProductList->getAllList();
 
-        return view('client.products.edit', compact('products'));
+
+        return view('client.products.edit', compact('products','productsListArray'));
     }
 
     /**

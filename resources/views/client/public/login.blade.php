@@ -1,58 +1,61 @@
 @extends('client.layouts.login', array('class' => 'page-signin'))
 @section('title', Lang::get('user.PageTitleSignIn'))
 @section('content')
-    <div class="signin-container">
+    <div class="login-box">
+        <div class="white-box">
+            {!! HTML::image('assets/'.config('mycp.layoutAssetsFolder').'/images/logo.png', '', ['style' => 'margin-top: -5px;width:90px;height:28px;']) !!}
 
+            {!! Form::open(['id'=>'loginform' , 'class'=>'form-horizontal form-material']) !!}
+            <div class="dropdown" style="float:right;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-language"></i> Language</a>
+                <ul class="dropdown-menu">
+                    @foreach(config('app.language')  as $locale=>$name)
+                        <li><a href="?locale={{$locale}}">{{ trans('general.'.$name) }}</a></li>
 
-        <div class="signin-form">
-
-            <a href="" class="logo">
-
-                {!! HTML::image('assets/'.config('mycp.layoutAssetsFolder').'/img/logo.png', '', ['style' => 'margin-top: -5px;width:90px;height:28px;']) !!}
-                &nbsp;
-            </a>
-
-
-
-            {!! Form::open(['id'=>'signin-form_id']) !!}
-            <div class="signin-text">
-                <span>{{ Lang::get('user.SignInText') }}</span>
+                    @endforeach
+                </ul>
             </div>
+
+            <h3 class="box-title m-b-20">{{ trans('user.signInText') }}</h3>
+
             @include('client.partials.messages')
-            <div class="form-group w-icon">
-                {!! Form::text('email', '', ['class'=>'form-control input-lg','placeholder'=>Lang::get('user.email')]) !!}
-                <span class="fa fa-user signin-form-icon"></span>
+
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    {!! Form::text('email', null, ['class'=>'form-control','placeholder'=>trans('user.email')]) !!}
+
+                </div>
             </div>
-            <div class="form-group w-icon">
-                {!! Form::password('password', ['class'=>'form-control input-lg','placeholder'=>Lang::get('user.password')]) !!}
-                <span class="fa fa-lock signin-form-icon"></span>
-            </div>
-            <div class="form-actions">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    {!! Form::password('password', ['class'=>'form-control','placeholder'=>trans('user.password')]) !!}
 
-                {!! Form::submit(Lang::get('user.SignIn'), ['class'=>'signin-btn bg-primary']) !!}
-                <a href="{{ route('client.auth.recover') }}"
-                   class="forgot-password">{{ Lang::get('user.ForgotYourPassword') }}</a>
-
-
-            </div>
-            {!! Form::close() !!}
-
-            <div class="signin-with">
-
-
-                <div class="text-center">
-                    <div class="clearfix"></div>
-                    {{ Lang::get('user.not_a_member') }}
-                    <a href="{{ route('client.auth.register') }}">{{ Lang::get('user.sign_up_now') }}</a>
-
-                    <div class="clearfix"></div>
                 </div>
             </div>
 
+            <div class="form-group text-center m-t-20">
+                <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">{{trans('user.signIn')}}</button>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
+                    <div class="social">
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group m-b-0">
+                <div class="col-sm-12 text-center">
+
+                </div>
+            </div>
+            </form>
+
         </div>
-
     </div>
-
-
-
 @stop

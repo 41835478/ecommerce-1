@@ -12,4 +12,9 @@ class Licenses extends Model
 
     protected $guarded = [];
 
+
+    public function company(){
+        return $this->belongsTo('App\Models\Company');
+    }
+
 }

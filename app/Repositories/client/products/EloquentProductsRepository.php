@@ -11,7 +11,7 @@ class EloquentProductsRepository implements ProductsContract
     public function getByFilter($data)
     {
 
-        $oResults = new Products();
+        $oResults = Products::with('productsList');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');

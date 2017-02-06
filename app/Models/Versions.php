@@ -12,4 +12,7 @@ class Versions extends Model
 
     protected $guarded = [];
 
+    public function products(){
+        return $this->belongsTo('App\Models\Products');
+    }
 }

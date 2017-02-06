@@ -34,6 +34,13 @@ class EloquentProductsListRepository implements ProductsListContract
         return $oResults;
     }
 
+    function getAllList(){
+
+        $oResults = new ProductsList();
+
+        $oResults = $oResults::lists('name','id');
+        return $oResults;
+    }
     public function create($data)
     {
 

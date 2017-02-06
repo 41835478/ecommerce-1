@@ -19,7 +19,7 @@ class ProductList extends Model
         "version_id",
         "version"
     ];
-    protected $table='product_list';
+    protected $table='products_list';
 
     public $timestamps =false ;
 

@@ -42,7 +42,7 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.products_id'), 'products_id', $oResults) !!}
+                                        {!! th_sort(trans('general.products'), 'products_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
@@ -78,7 +78,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->products_id }}</td>
+                                                                                <td>{{ isset($oResult->products->name)? $oResult->products->name:'' }}</td>
 
                                                                                 <td>{{ $oResult->version }}</td>
 
@@ -92,18 +92,27 @@
 
                                         
                                         <td>
+
+                                            <div class="tableActionsMenuDiv">
+                                                <div class="innerContainer">
+                                                    <i class="fa fa-list menuIconList"></i>
+
                                             <a href="/client/versions/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+                                               class="fa fa-file-text">  {{trans('general.details')}}</a>
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/versions',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                            <button type="submit" name="Delete" class="deleteRow" >
+                                                <i class="fa fa-trash"></i>
+                                                {{trans('general.delete')}}
+                                            </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/versions/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"></a>
-
+                                               class="fa fa-edit">{{trans('general.edit')}}</a>
+</div>
+                                                </div>
                                         </td>
                                     </tr>
                                 @endforeach

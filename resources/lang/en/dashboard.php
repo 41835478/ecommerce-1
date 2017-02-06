@@ -1,4 +1,7 @@
 <?php
 return[
-    'PageTitle'=>'Dashboard'
+    'PageTitle'=>'Dashboard',
+    'aboutDashboard'=>'MYCP  Dashboard',
+    'aboutDashboardText'=>'MYCP is a platform to  manage MQPlanet Products.'
+
 ];

@@ -53,7 +53,7 @@ return [
     */
 
     'locale' => 'en',
-
+'language'=>['ar'=>'arabic','en'=>'english'],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

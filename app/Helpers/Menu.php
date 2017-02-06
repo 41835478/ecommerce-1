@@ -94,6 +94,7 @@ class Menu {
                 'route' => $mainClientMenu['route'],
                 'icon' => $mainClientMenu['icon'],
                 'title' => trans('general.' . $mainClientMenu['title']),
+                'originTitle' => $mainClientMenu['title'],
                 'menu' => $mainClientMenu['subMenus'],
             ];
             $aModules[] = $menuTab;

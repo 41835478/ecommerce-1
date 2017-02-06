@@ -8,12 +8,18 @@ return [
     'to'=>'to',
     'of'=>'of',
     'entries'=>'entries',
-
-'dashboard'=>'Dashboard',
+    'details'=>'Details',
+    'edit'=>'Edit',
+    'delete'=>'Delete',
 'logout'=>'Logout',
+'dashboard'=>'Dashboard',
+'Logout'=>'Logout',
 'CopyRights'=>'2016 &copy; Elite Admin brought to you by themedesigner.in',
 
 'language'=>'Language',
+    'arabic'=>'Arabic',
+    'english'=>'English',
+
 
     'company'=>'Company',
     'addcompany'=>'Add Company',

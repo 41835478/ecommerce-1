@@ -18,10 +18,10 @@
 {{--          <li><a href="{{route('client.balanceChart') }}" target="">{{ trans('general.balance') }}</a></li>--}}
 
 <hr>
-        <h3 class="menu-title">{{trans('dashboard.aboutFxwebkit')}}</h3>
+        <h3 class="menu-title">{{trans('dashboard.aboutDashboard')}}</h3>
           <li>
 
-{{trans('dashboard.aboutFxwebkitText')}}
+{{trans('dashboard.aboutDashboardText')}}
 </li>
         </ul>
 
@@ -63,8 +63,8 @@
 
 
             <hr>
-            <h3 class="menu-title">Other Demos</h3>
-            <li><a href="../eliteadmin-inverse/index.html" target="_blank">Eliteadmin Inverse</a></li>
+            <h3 class="menu-title">{{ trans('general.'.$aModule['originTitle'].'MenuBottomHeader')}}</h3>
+            <li><a href="../eliteadmin-inverse/index.html" target="_blank">{{ trans('general.'.$aModule['originTitle'].'MenuBottomDescription')}}</a></li>
         </ul>
         <!-- Left navbar-header end -->
     </div>

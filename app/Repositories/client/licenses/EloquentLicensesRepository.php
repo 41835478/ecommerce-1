@@ -11,7 +11,7 @@ class EloquentLicensesRepository implements LicensesContract
     public function getByFilter($data)
     {
 
-        $oResults = new Licenses();
+        $oResults = Licenses::with('company');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');

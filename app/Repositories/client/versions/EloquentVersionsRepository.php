@@ -11,13 +11,13 @@ class EloquentVersionsRepository implements VersionsContract
     public function getByFilter($data)
     {
 
-        $oResults = new Versions();
+        $oResults = Versions::with('products');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id']);
         }
         if (isset($data->products_id) && !empty($data->products_id)) {
-            $oResults = $oResults->where('products_id', 'like', '%' . $data['products_id'] . '%');
+            $oResults = $oResults->where('products_id', '=', $data['products_id'] );
         }
         if (isset($data->version) && !empty($data->version)) {
             $oResults = $oResults->where('version', 'like', '%' . $data['version'] . '%');
