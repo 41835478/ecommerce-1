@@ -46,17 +46,17 @@
 
             
         <div class="row">
-        <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('id', trans('general.id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
+            <div class="form-group {{ $errors->has('license') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('license', trans('general.license'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('license', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('license', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
                 
         
         <div class="form-group {{ $errors->has('company_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('company_id', trans('general.company_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::select('company_id',$companiesList, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
@@ -64,13 +64,7 @@
         </div>
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('license') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('license', trans('general.license'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('license', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('license', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
                 
         
         <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
@@ -80,24 +74,20 @@
                 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-        </div>        
-        <div class="row">
-        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('status', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+
+            <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
         </div>
-                
 
-
-
-
-
+        <div class="row">
 
         <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
+        <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

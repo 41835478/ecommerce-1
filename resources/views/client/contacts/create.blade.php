@@ -46,33 +46,28 @@
 
             
         <div class="row">
-        <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('id', trans('general.id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
+
         
         <div class="form-group {{ $errors->has('company_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('company_id', trans('general.company_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::select('company_id',$companiesList, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+
+            <div class="form-group {{ $errors->has('users_id') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('users_id', trans('general.users_id'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('users_id', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('users_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('users_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('users_id', trans('general.users_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('users_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('users_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-        
+
         <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('phone', trans('general.phone'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
@@ -80,6 +75,14 @@
                 {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+            <div class="form-group {{ $errors->has('permissions') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('permissions', trans('general.permissions'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('permissions', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('permissions', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
         </div>        
         <div class="row">
         <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
@@ -100,13 +103,6 @@
         </div>
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('permissions') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('permissions', trans('general.permissions'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('permissions', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('permissions', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
                 
 
 
@@ -115,7 +111,7 @@
 
 
         <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
+        <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

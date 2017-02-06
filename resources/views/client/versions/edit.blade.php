@@ -54,30 +54,34 @@
 
 
             
-        <div class="row">        <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('id', trans('id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
+        <div class="row">
+
+            <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}} col-xs-6">
+                {!! Form::label('version', trans('version'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('version', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('version', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
                 
                 <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('products_id', trans('products_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('products_id', trans('products'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('version', trans('version'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('version', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('version', '<p class="help-block">:message</p>') !!}
+        <div class="row">
+
+            <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}} col-xs-6">
+                {!! Form::label('release_notes', trans('general.release_notes'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('release_notes', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
-                
+
                 <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('manual', trans('manual'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
@@ -102,18 +106,13 @@
             </div>
         </div>
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('release_notes', trans('release_notes'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('release_notes', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+        <div class="row">
+
                 
 
 
         <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
+        <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

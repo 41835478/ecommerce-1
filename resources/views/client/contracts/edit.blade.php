@@ -54,29 +54,26 @@
 
 
             
-        <div class="row">        <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('id', trans('id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+        <div class="row">
                 
                 <div class="form-group {{ $errors->has('company_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('company_id', trans('company_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::select('company_id',$companiesList, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('products_id', trans('products_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
-                {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+
+            <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}} col-xs-6">
+                {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
+
+        </div>        
+        <div class="row">
                 
                 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('description', trans('description'), ['class' => 'col-sm-4 control-label']) !!}
@@ -89,7 +86,7 @@
 
 
         <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
+        <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

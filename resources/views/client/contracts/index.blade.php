@@ -98,12 +98,20 @@
 
 
 
-                                            <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
-                                               class="fa fa-edit">renewal list</a>
+                                                    <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
+                                                       class="fa fa-edit">renewal list</a>
 
 
-                                            <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
-                                               class="fa fa-edit">add renewal</a>
+                                                    <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
+                                                       class="fa fa-edit">add renewal</a>
+
+
+                                                    <a href="{{ route('client.contracts_documents.index') }}?contracts_id={{ $oResult->id }}"
+                                                       class="fa fa-edit">documents list</a>
+
+
+                                                    <a href="{{ route('client.contracts_documents.create') }}?contracts_id={{ $oResult->id }}"
+                                                       class="fa fa-edit">add document</a>
 </div>
                                                 </div>
                                         </td>
