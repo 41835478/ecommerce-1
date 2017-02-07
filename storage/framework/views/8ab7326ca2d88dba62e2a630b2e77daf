@@ -1,0 +1,234 @@
+<?php $__env->startSection('title', trans('general.contracts')); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url(<?php echo e('/assets/'.config('mycp.layoutAssetsFolder')); ?>/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title"><?php echo e(trans('general.contracts')); ?></h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#"><?php echo e(trans('general.contracts')); ?></a></li>
+                        <li class="active"><?php echo e(trans('general.contracts')); ?></li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" <?php echo e(trans('general.search')); ?> ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
+
+                        <h3 class="box-title m-b-0"><?php echo e(trans('general.contractsTableHead')); ?></h3>
+                        <p class="text-muted m-b-20"><?php echo e(trans('general.contractsTableDescription')); ?></p>
+                        <?php echo $__env->make('client.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+
+                            <thead>
+                            <tr>
+
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                        <?php echo th_sort(trans('general.id'), 'id', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                        <?php echo th_sort(trans('general.company_id'), 'company_id', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                        <?php echo th_sort(trans('general.products_id'), 'products_id', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                        <?php echo th_sort(trans('general.description'), 'description', $oResults); ?>
+
+                                    </th>
+
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(count($oResults)): ?>
+                                <?php /* */$i=0;/* */ ?>
+                                <?php /* */$class='';/* */ ?>
+                                <?php foreach($oResults as $oResult): ?>
+                                    <?php /* */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* */ ?>
+                                    <tr class='<?php echo e($class); ?>'>
+
+                                                                                <td><?php echo e($oResult->id); ?></td>
+
+                                                                                <td><?php echo e((isset($oResult->company->name))? $oResult->company->name:''); ?></td>
+
+                                                                                <td><?php echo e((isset($oResult->products->name))? $oResult->products->name:''); ?></td>
+
+                                                                                <td><?php echo e($oResult->description); ?></td>
+
+                                        
+                                        <td>
+
+
+                                            <div class="tableActionsMenuDiv">
+                                                <div class="innerContainer">
+                                                    <i class="fa fa-list menuIconList"></i>
+
+
+                                            <a href="/client/contracts/<?php echo e($oResult->id); ?>"
+                                               class="fa fa-file-text"> <?php echo e(trans('general.details')); ?></a>
+
+
+                                            <?php echo Form::open(['method' => 'DELETE',
+                                            'url' => ['/client/contracts',$oResult->id]]); ?>
+
+                                            <button type="submit" name="Delete" class="deleteRow" >
+                                                <i class="fa fa-trash"></i>
+                                                <?php echo e(trans('general.delete')); ?>
+
+                                            </button>
+                                            <?php echo Form::close(); ?>
+
+
+                                            <a href="/client/contracts/<?php echo e($oResult->id); ?>/edit"
+                                               class="fa fa-edit"> <?php echo e(trans('general.edit')); ?></a>
+
+
+
+                                                    <a href="<?php echo e(route('client.contracts_renewal.index')); ?>?contracts_id=<?php echo e($oResult->id); ?>"
+                                                       class="fa fa-edit">renewal list</a>
+
+
+                                                    <a href="<?php echo e(route('client.contracts_renewal.create')); ?>?contracts_id=<?php echo e($oResult->id); ?>"
+                                                       class="fa fa-edit">add renewal</a>
+
+
+                                                    <a href="<?php echo e(route('client.contracts_documents.index')); ?>?contracts_id=<?php echo e($oResult->id); ?>"
+                                                       class="fa fa-edit">documents list</a>
+
+
+                                                    <a href="<?php echo e(route('client.contracts_documents.create')); ?>?contracts_id=<?php echo e($oResult->id); ?>"
+                                                       class="fa fa-edit">add document</a>
+</div>
+                                                </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                        <?php if(count($oResults)): ?>
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-6 ">
+                                    <span class="text-xs"><?php echo e(trans('general.showing')); ?> <?php echo e($oResults->firstItem()); ?> <?php echo e(trans('general.to')); ?> <?php echo e($oResults->lastItem()); ?> <?php echo e(trans('general.of')); ?> <?php echo e($oResults->total()); ?> <?php echo e(trans('general.entries')); ?></span>
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-6 ">
+                                    <?php echo str_replace('/?', '?', $oResults->appends(Input::except('page'))->appends($aFilterParams->all())->render()); ?>
+
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> <?php echo e(trans('general.CopyRights')); ?> </footer>
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- .right panel -->
+        <div class="right-side-panel">
+            <div class="scrollable-right container">
+                <!-- .Theme settings -->
+                <h3 class="title-heading"><?php echo e(trans('general.search')); ?></h3>
+
+                <?php echo Form::open(['method'=>'get','id'=>'searchForm', 'class'=>'form-horizontal']); ?>
+
+
+
+
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('company_id', $aFilterParams['company_id'], ['placeholder'=>trans('general.company_id'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('products_id', $aFilterParams['products_id'], ['placeholder'=>trans('general.products_id'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('description', $aFilterParams['description'], ['placeholder'=>trans('general.description'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+
+
+
+                <div class="form-group">
+                    <label class="col-md-12"></label>
+                    <div class="col-md-12">
+                        <?php echo Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']); ?>
+
+                    </div>
+                </div>
+
+                <?php echo Form::hidden('sort', $aFilterParams['sort']); ?>
+
+                <?php echo Form::hidden('order', $aFilterParams['order']); ?>
+
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('client.layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

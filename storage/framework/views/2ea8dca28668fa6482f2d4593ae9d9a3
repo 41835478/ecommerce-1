@@ -1,0 +1,125 @@
+<?php $__env->startSection('title', trans('general.users')); ?>
+<?php $__env->startSection('content'); ?>
+    <div id="content-wrapper">
+
+        <div class="page-header">
+            <h1><?php echo e(trans('general.details')); ?></h1>
+        </div>
+
+
+        <div class="panel">
+            <div class="panel-heading">
+                <span class="panel-title"><?php echo e(trans('general.usersInfo')); ?></span>
+            </div>
+
+            <div class="panel-body">
+
+
+                                <div class="row">                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.id')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['id']); ?></label>
+                        </div>
+                    </div>
+
+                    
+                                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.email')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['email']); ?></label>
+                        </div>
+                    </div>
+
+                    </div>
+                <div class="row">                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.password')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['password']); ?></label>
+                        </div>
+                    </div>
+
+                    
+                                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.permissions')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['permissions']); ?></label>
+                        </div>
+                    </div>
+
+                    </div>
+                <div class="row">                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.first_name')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['first_name']); ?></label>
+                        </div>
+                    </div>
+
+                    
+                                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.last_name')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['last_name']); ?></label>
+                        </div>
+                    </div>
+
+                    </div>
+                <div class="row">                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e(trans('general.avatar')); ?>  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label"><?php echo e($users['avatar']); ?></label>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+                <!-- row -->
+            </div>
+            <div class="panel-footer text-right">
+                <?php /*<a href="<?php echo e(route('/client/product_list')); ?>">*/ ?>
+                    <?php /*<button type="submit" class="btn btn-primary"*/ ?>
+                            <?php /*name="edit_id"><?php echo e(trans('accounts::accounts.edit')); ?></button>*/ ?>
+                <?php /*</a>*/ ?>
+            </div>
+
+        </div>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('client.layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

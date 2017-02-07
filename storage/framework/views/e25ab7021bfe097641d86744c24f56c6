@@ -1,0 +1,100 @@
+<?php $__env->startSection('title', trans('general.contracts_renewal')); ?>
+<?php $__env->startSection('content'); ?>
+
+    <div id="content-wrapper">
+    <h1>Edit Contracts Renewal</h1>
+    <hr/>
+
+    <?php echo Form::model($contracts_renewal, [
+        'method' => 'PATCH',
+        'url' => ['/client/contracts_renewal', $contracts_renewal->id],
+        'class' => 'form-horizontal'
+    ]); ?>
+
+
+
+
+
+
+
+
+        <div class="panel">
+            <div class="panel-heading">
+                <span class="panel-title"><?php echo e(trans('general.editcontracts_renewal')); ?></span>
+            </div>
+
+            <div class="panel-body">
+
+
+
+
+
+            
+        <div class="row">        <div class="form-group <?php echo e($errors->has('id') ? 'has-error' : ''); ?> col-xs-6">
+            <?php echo Form::label('id', trans('id'), ['class' => 'col-sm-4 control-label']); ?>
+
+            <div class="col-sm-8">
+                <?php echo Form::text('id', null, ['class' => 'form-control']); ?>
+
+                <?php echo $errors->first('id', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+                
+                <div class="form-group <?php echo e($errors->has('contracts_id') ? 'has-error' : ''); ?> col-xs-6">
+            <?php echo Form::label('contracts_id', trans('contracts_id'), ['class' => 'col-sm-4 control-label']); ?>
+
+            <div class="col-sm-8">
+                <?php echo Form::text('contracts_id', null, ['class' => 'form-control']); ?>
+
+                <?php echo $errors->first('contracts_id', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+        </div>        
+        <div class="row">        <div class="form-group <?php echo e($errors->has('description') ? 'has-error' : ''); ?> col-xs-6">
+            <?php echo Form::label('description', trans('description'), ['class' => 'col-sm-4 control-label']); ?>
+
+            <div class="col-sm-8">
+                <?php echo Form::text('description', null, ['class' => 'form-control']); ?>
+
+                <?php echo $errors->first('description', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+                
+                <div class="form-group <?php echo e($errors->has('price') ? 'has-error' : ''); ?> col-xs-6">
+            <?php echo Form::label('price', trans('price'), ['class' => 'col-sm-4 control-label']); ?>
+
+            <div class="col-sm-8">
+                <?php echo Form::text('price', null, ['class' => 'form-control']); ?>
+
+                <?php echo $errors->first('price', '<p class="help-block">:message</p>'); ?>
+
+            </div>
+        </div>
+        </div>        
+
+
+        <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-3">
+            <?php echo Form::submit('Update', ['class' => 'btn btn-primary form-control']); ?>
+
+        </div>
+    </div>
+
+            </div>
+        </div>
+    <?php echo Form::close(); ?>
+
+
+    <?php if($errors->any()): ?>
+        <ul class="alert alert-danger">
+            <?php foreach($errors->all() as $error): ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('client.layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,244 @@
+<?php $__env->startSection('title', trans('general.emails')); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- .row -->
+            <div class="row bg-title" style="background:url(<?php echo e('/assets/'.config('mycp.layoutAssetsFolder')); ?>/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="col-lg-12">
+                    <h4 class="page-title"><?php echo e(trans('general.emails')); ?></h4>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <ol class="breadcrumb pull-left">
+                        <li><a href="#"><?php echo e(trans('general.emails')); ?></a></li>
+                        <li class="active"><?php echo e(trans('general.emails')); ?></li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <form role="search" class="app-search hidden-xs pull-right">
+                        <input type="text" placeholder=" <?php echo e(trans('general.search')); ?> ..." class="form-control">
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="white-box">
+
+                        <h3 class="box-title m-b-0"><?php echo e(trans('general.emailsTableHead')); ?></h3>
+                        <p class="text-muted m-b-20"><?php echo e(trans('general.emailsTableDescription')); ?></p>
+                        <?php echo $__env->make('client.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+
+                            <thead>
+                            <tr>
+
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                        <?php echo th_sort(trans('general.id'), 'id', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                        <?php echo th_sort(trans('general.contacts_id'), 'contacts_id', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                        <?php echo th_sort(trans('general.email'), 'email', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                        <?php echo th_sort(trans('general.module'), 'module', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                        <?php echo th_sort(trans('general.status'), 'status', $oResults); ?>
+
+                                    </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                        <?php echo th_sort(trans('general.optout'), 'optout', $oResults); ?>
+
+                                    </th>
+
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(count($oResults)): ?>
+                                <?php /* */$i=0;/* */ ?>
+                                <?php /* */$class='';/* */ ?>
+                                <?php foreach($oResults as $oResult): ?>
+                                    <?php /* */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* */ ?>
+                                    <tr class='<?php echo e($class); ?>'>
+
+                                                                                <td><?php echo e($oResult->id); ?></td>
+
+                                                                                <td><?php echo e($oResult->contacts_id); ?></td>
+
+                                                                                <td><?php echo e($oResult->email); ?></td>
+
+                                                                                <td><?php echo e($oResult->module); ?></td>
+
+                                                                                <td><?php echo e($oResult->status); ?></td>
+
+                                                                                <td><?php echo e($oResult->optout); ?></td>
+
+                                        
+                                        <td>
+                                            <a href="/client/emails/<?php echo e($oResult->id); ?>"
+                                               class="fa fa-file-text"></a>
+
+
+                                            <?php echo Form::open(['method' => 'DELETE',
+                                            'url' => ['/client/emails',$oResult->id]]); ?>
+
+                                            <?php echo Form::submit('Delete', ['class' => 'btn btn-danger']); ?>
+
+                                            <?php echo Form::close(); ?>
+
+
+                                            <a href="/client/emails/<?php echo e($oResult->id); ?>/edit"
+                                               class="fa fa-edit"></a>
+
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                        <?php if(count($oResults)): ?>
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-6 ">
+                                    <span class="text-xs"><?php echo e(trans('general.showing')); ?> <?php echo e($oResults->firstItem()); ?> <?php echo e(trans('general.to')); ?> <?php echo e($oResults->lastItem()); ?> <?php echo e(trans('general.of')); ?> <?php echo e($oResults->total()); ?> <?php echo e(trans('general.entries')); ?></span>
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-6 ">
+                                    <?php echo str_replace('/?', '?', $oResults->appends(Input::except('page'))->appends($aFilterParams->all())->render()); ?>
+
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> <?php echo e(trans('general.CopyRights')); ?> </footer>
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- .right panel -->
+        <div class="right-side-panel">
+            <div class="scrollable-right container">
+                <!-- .Theme settings -->
+                <h3 class="title-heading"><?php echo e(trans('general.search')); ?></h3>
+
+                <?php echo Form::open(['method'=>'get','id'=>'searchForm', 'class'=>'form-horizontal']); ?>
+
+
+
+
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('contacts_id', $aFilterParams['contacts_id'], ['placeholder'=>trans('general.contacts_id'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('email', $aFilterParams['email'], ['placeholder'=>trans('general.email'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('module', $aFilterParams['module'], ['placeholder'=>trans('general.module'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('status', $aFilterParams['status'], ['placeholder'=>trans('general.status'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo Form::text('optout', $aFilterParams['optout'], ['placeholder'=>trans('general.optout'),'class'=>'form-control input-sm ']); ?>
+
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                
+
+
+
+
+                <div class="form-group">
+                    <label class="col-md-12"></label>
+                    <div class="col-md-12">
+                        <?php echo Form::submit(trans('general.search'), ['class'=>'btn btn-info btn-sm', 'name' => 'search']); ?>
+
+                    </div>
+                </div>
+
+                <?php echo Form::hidden('sort', $aFilterParams['sort']); ?>
+
+                <?php echo Form::hidden('order', $aFilterParams['order']); ?>
+
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('client.layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
