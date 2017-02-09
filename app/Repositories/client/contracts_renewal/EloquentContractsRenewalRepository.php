@@ -14,23 +14,31 @@ class EloquentContractsRenewalRepository implements ContractsRenewalContract
         $oResults = new ContractsRenewal();
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id'] );
         }
         if (isset($data->contracts_id) && !empty($data->contracts_id)) {
-            $oResults = $oResults->where('contracts_id', 'like', '%' . $data['contracts_id'] . '%');
+            $oResults = $oResults->where('contracts_id', '=',$data['contracts_id'] );
         }
         if (isset($data->description) && !empty($data->description)) {
             $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');
         }
         if (isset($data->price) && !empty($data->price)) {
-            $oResults = $oResults->where('price', 'like', '%' . $data['price'] . '%');
+            $oResults = $oResults->where('price', '=',$data['price'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
             $oResults = $oResults->orderBy($data->order, $sort);
         }
 
-        $oResults = $oResults->paginate(15);
+
+        if(isset($data->getAllRecords) && !empty($data->getAllRecords)){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'));
+        }
         return $oResults;
     }
 

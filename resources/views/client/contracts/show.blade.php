@@ -93,7 +93,29 @@
 
                     </div>
 
+
+                <div class="row">
+
+                    <div class="col-xs-offset-6 col-xs-3">
+
+
+                        <a href="/client/contracts/{{ $contracts['id'] }}/edit"
+                           class="fa fa-edit btn btn-primary form-control"> {{trans('general.edit')}}</a>
+                    </div>
+                    <div class=" col-xs-3">
+                        {!! Form::open(['method' => 'DELETE',
+                'url' => ['/client/contracts',$contracts['id']]]) !!}
+                        <button type="submit" name="Delete" class="deleteRow  btn btn-danger form-control" >
+                            <i class="fa fa-trash"></i>
+                            {{trans('general.delete')}}
+                        </button>
+                        {!! Form::close() !!}
+                    </div>
+
                 </div>
+
+
+            </div>
                 <!-- row -->
             </div>
             <div class="panel-footer text-right">

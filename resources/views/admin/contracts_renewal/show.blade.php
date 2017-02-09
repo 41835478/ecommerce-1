@@ -93,7 +93,10 @@
 
                     </div>
 
-                </div>
+
+
+
+            </div>
                 <!-- row -->
             </div>
             <div class="panel-footer text-right">

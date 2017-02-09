@@ -20,7 +20,7 @@ return [
 
 
     'adminEmail' => 'mag@mqplanet.com',
-
+    'pagination_size' => env('PAGINATION_SIZE', 25),
     'theme' => [
         'color' => 'default',
         'navbarFixed' => true,

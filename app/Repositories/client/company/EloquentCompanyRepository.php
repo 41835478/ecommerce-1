@@ -41,14 +41,22 @@ class EloquentCompanyRepository implements CompanyContract
             $oResults = $oResults->where('zipcode', 'like', '%' . $data['zipcode'] . '%');
         }
         if (isset($data->status) && !empty($data->status)) {
-            $oResults = $oResults->where('status', 'like', '%' . $data['status'] . '%');
+            $oResults = $oResults->where('status', '=', $data['status'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
             $oResults = $oResults->orderBy($data->order, $sort);
         }
 
-        $oResults = $oResults->paginate(15);
+
+        if(isset($data->getAllRecords) && !empty($data->getAllRecords)){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'));
+        }
         return $oResults;
     }
 

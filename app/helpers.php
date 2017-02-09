@@ -101,10 +101,12 @@ if (!function_exists('th_sort')) {
 			return '<a href="#">'.$sText.'</a>';
 		}
 
-		$sRouteName = Route::currentRouteName();
-                               
+		//$sRouteName = Route::currentRouteName();
+		//$sUrl =($sRouteName ==null)? '': route($sRouteName);
+		$sRouteName=Request::path();
+        $sUrl =($sRouteName ==null)? '/': '/'.$sRouteName;
+
 		$aParams = Input::get();
-		$sUrl =($sRouteName ==null)? '': route($sRouteName);
 		$aArrow = '';
 
 			$sUrl .= '?';

@@ -14,10 +14,10 @@ class EloquentProductsRepository implements ProductsContract
         $oResults = Products::with('productsList');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id']);
         }
         if (isset($data->products_list_id) && !empty($data->products_list_id)) {
-            $oResults = $oResults->where('products_list_id', 'like', '%' . $data['products_list_id'] . '%');
+            $oResults = $oResults->where('products_list_id', '=', $data['products_list_id']);
         }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
@@ -30,7 +30,15 @@ class EloquentProductsRepository implements ProductsContract
             $oResults = $oResults->orderBy($data->order, $sort);
         }
 
-        $oResults = $oResults->paginate(15);
+
+        if(isset($data->getAllRecords) && !empty($data->getAllRecords)){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'));
+        }
         return $oResults;
     }
 

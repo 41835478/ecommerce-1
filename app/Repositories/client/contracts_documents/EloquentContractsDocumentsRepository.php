@@ -14,13 +14,13 @@ class EloquentContractsDocumentsRepository implements ContractsDocumentsContract
         $oResults = new ContractsDocuments();
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id'] );
         }
         if (isset($data->contracts_id) && !empty($data->contracts_id)) {
-            $oResults = $oResults->where('contracts_id', 'like', '%' . $data['contracts_id'] . '%');
+            $oResults = $oResults->where('contracts_id', '=', $data['contracts_id']);
         }
         if (isset($data->products_id) && !empty($data->products_id)) {
-            $oResults = $oResults->where('products_id', 'like', '%' . $data['products_id'] . '%');
+            $oResults = $oResults->where('products_id', '=', $data['products_id'] );
         }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
@@ -32,14 +32,23 @@ class EloquentContractsDocumentsRepository implements ContractsDocumentsContract
             $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');
         }
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=', $data['type']);
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
             $oResults = $oResults->orderBy($data->order, $sort);
         }
 
-        $oResults = $oResults->paginate(15);
+
+
+        if(isset($data->getAllRecords) && !empty($data->getAllRecords)){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'));
+        }
         return $oResults;
     }
 

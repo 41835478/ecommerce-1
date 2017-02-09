@@ -28,8 +28,19 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-                        <h3 class="box-title m-b-0">{{ trans('general.productsTableHead') }}</h3>
-                        <p class="text-muted m-b-20">{{ trans('general.productsTableDescription') }}</p>
+
+
+                        <div class=" col-xs-9">
+                            <h3 class="box-title m-b-0">{{ trans('general.productsTableHead') }}</h3>
+                            <p class="text-muted m-b-20">{{ trans('general.productsTableDescription') }}</p>
+
+
+                        </div>
+                        <div class="col-xs-3">
+                            <a  href="{{route('client.products.create')}}"class="btn btn-primary form-control">
+                                + {{trans('general.productsCreate')}}
+                            </a>
+                        </div>
                         @include('client.partials.messages')
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 

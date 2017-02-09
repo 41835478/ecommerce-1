@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Company as mCompany;
 use App\Repositories\client\company\CompanyContract as rCompany;
+
+use App\Repositories\client\contacts\ContactsContract as rContacts;
+use App\Repositories\client\contracts\ContractsContract as rContracts;
 class Company extends Controller
 {
     private $rCompany;
@@ -69,14 +72,24 @@ class Company extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rContacts $rContacts,rContracts $rContracts)
     {
-
 
         $company=$this->rCompany->show($id);
 
 
-        return view('client.company.show', compact('company'));
+        $request->merge(['company_id'=>$id,'page_name'=>'page']);
+
+        $request->page_name='page_contacts';
+        $oContactsResults=$rContacts->getByFilter($request);
+
+        $request->page_name='page_contracts';
+        $oContractsResults=$rContacts->getByFilter($request);
+
+        $request->page_name='page_licenses';
+        $oLicensesResults=$rContacts->getByFilter($request);
+
+        return view('client.company.show', compact('company','request','oContactsResults','oContractsResults','oLicensesResults'));
     }
 
     /**

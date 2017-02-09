@@ -14,26 +14,34 @@ class EloquentLicensesRepository implements LicensesContract
         $oResults = Licenses::with('company');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id']);
         }
         if (isset($data->company_id) && !empty($data->company_id)) {
-            $oResults = $oResults->where('company_id', 'like', '%' . $data['company_id'] . '%');
+            $oResults = $oResults->where('company_id', '=', $data['company_id'] );
         }
         if (isset($data->license) && !empty($data->license)) {
             $oResults = $oResults->where('license', 'like', '%' . $data['license'] . '%');
         }
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=', $data['type'] );
         }
         if (isset($data->status) && !empty($data->status)) {
-            $oResults = $oResults->where('status', 'like', '%' . $data['status'] . '%');
+            $oResults = $oResults->where('status', '=', $data['status'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
             $oResults = $oResults->orderBy($data->order, $sort);
         }
 
-        $oResults = $oResults->paginate(15);
+
+        if(isset($data->getAllRecords) && !empty($data->getAllRecords)){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'));
+        }
         return $oResults;
     }
 

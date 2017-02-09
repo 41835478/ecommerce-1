@@ -174,6 +174,22 @@
                 </div>
                 <!-- row -->
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="panel-footer text-right">
                 {{--<a href="{{ route('/client/product_list') }}">--}}
                     {{--<button type="submit" class="btn btn-primary"--}}

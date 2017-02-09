@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\View;
 use App\Models\Products as mProducts;
 use App\Repositories\client\products\ProductsContract as rProducts;
 use App\Repositories\client\products_list\ProductsListContract as rProductList;
+use App\Repositories\client\versions\VersionsContract as rVersions;
+use App\Repositories\client\contracts\ContractsContract as rContracts;
 class Products extends Controller
 {
     private $rProducts;
@@ -76,14 +78,22 @@ class Products extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rVersions $rVersions,rContracts $rContracts)
     {
 
 
         $products=$this->rProducts->show($id);
 
+        $request->merge(['products_id'=>$id,'page_name'=>'page']);
 
-        return view('client.products.show', compact('products'));
+        $request->page_name='page_versions';
+        $oVersionsResults=$rVersions->getByFilter($request);
+
+
+        $request->page_name='page_contracts';
+        $oContractsResults=$rContracts->getByFilter($request);
+
+        return view('client.products.show', compact('products','request','oVersionsResults','oContractsResults'));
     }
 
     /**

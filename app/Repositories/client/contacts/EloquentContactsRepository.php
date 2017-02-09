@@ -14,13 +14,13 @@ class EloquentContactsRepository implements ContactsContract
         $oResults =Contacts::with('company');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id'] );
         }
         if (isset($data->company_id) && !empty($data->company_id)) {
-            $oResults = $oResults->where('company_id', 'like', '%' . $data['company_id'] . '%');
+            $oResults = $oResults->where('company_id','=', $data['company_id']);
         }
         if (isset($data->users_id) && !empty($data->users_id)) {
-            $oResults = $oResults->where('users_id', 'like', '%' . $data['users_id'] . '%');
+            $oResults = $oResults->where('users_id', '=', $data['users_id'] );
         }
         if (isset($data->phone) && !empty($data->phone)) {
             $oResults = $oResults->where('phone', 'like', '%' . $data['phone'] . '%');
@@ -29,7 +29,7 @@ class EloquentContactsRepository implements ContactsContract
             $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');
         }
         if (isset($data->status) && !empty($data->status)) {
-            $oResults = $oResults->where('status', 'like', '%' . $data['status'] . '%');
+            $oResults = $oResults->where('status','=',$data['status'] );
         }
         if (isset($data->permissions) && !empty($data->permissions)) {
             $oResults = $oResults->where('permissions', 'like', '%' . $data['permissions'] . '%');
@@ -39,7 +39,15 @@ class EloquentContactsRepository implements ContactsContract
             $oResults = $oResults->orderBy($data->order, $sort);
         }
 
-        $oResults = $oResults->paginate(15);
+
+        if(isset($data->getAllRecords) && !empty($data->getAllRecords)){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'));
+        }
         return $oResults;
     }
 
