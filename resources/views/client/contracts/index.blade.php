@@ -26,6 +26,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    @include('client.partials.messages')
                     <div class="white-box">
 
 
@@ -41,7 +42,7 @@
                             </a>
                         </div>
 
-                        @include('client.partials.messages')
+
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>
@@ -56,9 +57,12 @@
                                         {!! th_sort(trans('general.company_id'), 'company_id', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.products_id'), 'products_id', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                    {!! th_sort(trans('general.products_id'), 'products_id', $oResults) !!}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                    {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oResults) !!}
+                                </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.description'), 'description', $oResults) !!}
@@ -81,7 +85,8 @@
 
                                                                                 <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->description }}</td>
+                                        <td>{{ $oResult->purchasing_date }}</td>
+                                        <td>{{ $oResult->description }}</td>
 
                                         
                                         <td>

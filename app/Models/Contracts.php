@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contracts extends Model
 {
     protected $fillable = [
-       "id","company_id","products_id","description"    ];
+       "id","company_id","products_id","purchasing_date","description"    ];
     protected $table='contracts';
 
     public $timestamps =false ;

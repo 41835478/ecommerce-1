@@ -59,7 +59,7 @@ class EloquentContractsRepository implements ContractsContract
     public function show($id)
     {
 
-$contracts = Contracts::findOrFail($id);
+$contracts = Contracts::with('company','products')->findOrFail($id);
 
         return $contracts;
     }

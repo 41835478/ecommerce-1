@@ -74,7 +74,15 @@
 
         </div>        
         <div class="row">
-                
+
+            <div class="form-group {{ $errors->has('purchasing_date') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('purchasing_date', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('purchasing_date', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
                 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('description', trans('description'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">

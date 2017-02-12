@@ -17,6 +17,8 @@ use App\Models\Contracts as mContracts;
 use App\Repositories\client\contracts\ContractsContract as rContracts;
 use App\Repositories\client\company\CompanyContract as rCompany;
 use App\Repositories\client\products\ProductsContract as rProducts;
+use App\Repositories\client\contracts_renewal\ContractsRenewalContract as rContractsRenewal;
+use App\Repositories\client\contracts_documents\ContractsDocumentsContract as rContractsDocuments;
 class Contracts extends Controller
 {
     private $rContracts;
@@ -76,14 +78,25 @@ class Contracts extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rContractsRenewal $rContractsRenewal,rContractsDocuments $rContractsDocuments)
     {
 
 
         $contracts=$this->rContracts->show($id);
 
 
-        return view('client.contracts.show', compact('contracts'));
+        $request->merge(['contracts_id'=>$id,'page_name'=>'page','order'=>'to_date','sort'=>'desc']);
+
+        $request->page_name='page_renewal';
+        $oContractsRenewalResults=$rContractsRenewal->getByFilter($request);
+
+        $request->page_name='page_documents';
+        $request->order='id';
+
+        $oContractsDocumentsResults=$rContractsDocuments->getByFilter($request);
+
+
+        return view('client.contracts.show', compact('contracts','request','oContractsRenewalResults','oContractsDocumentsResults'));
     }
 
     /**

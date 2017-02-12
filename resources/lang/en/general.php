@@ -118,7 +118,7 @@ return [
 
 
     'products_id'=>'Products Id',
-
+'purchasing_date'=>'Purchasing Date',
 
     'description'=>'Description',
 
@@ -174,7 +174,8 @@ return [
 
 
     'contracts_id'=>'Contracts Id',
-
+'from_date'=>'From Date',
+    'to_date'=>'To Date',
 
     'description'=>'Description',
 
