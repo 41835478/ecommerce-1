@@ -69,7 +69,7 @@
             <div class="form-group {{ $errors->has('from_date') ? 'has-error' : ''}}  col-xs-6" >
                 {!! Form::label('from_date', trans('general.from_date'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('from_date', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('from_date', null, ['class' => 'form-control mydatepicker']) !!}
                     {!! $errors->first('from_date', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <div class="form-group {{ $errors->has('to_date') ? 'has-error' : ''}}  col-xs-6">
                 {!! Form::label('to_date', trans('general.to_date'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('to_date', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('to_date', null, ['class' => 'form-control mydatepicker']) !!}
                     {!! $errors->first('to_date', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -91,7 +91,7 @@
             </div>
         </div>
                 
-                <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}} col-xs-6">
+         <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('price', trans('price'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::text('price', null, ['class' => 'form-control']) !!}
@@ -102,7 +102,7 @@
 
 
         <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
+        <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

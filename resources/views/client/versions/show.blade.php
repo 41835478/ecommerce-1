@@ -55,13 +55,13 @@
                     
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.products_id') }}  </label>
+                            <label class="control-label">{{ trans('general.products') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$versions['products_id'] }}</label>
+                            <label class="control-label">{{(isset($versions->products()->first()->name))? $versions->products()->first()->name:'' }}</label>
                         </div>
                     </div>
 

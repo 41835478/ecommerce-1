@@ -168,7 +168,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$company['status'] }}</label>
+                            <label class="control-label">{{(array_key_exists($company['status'],config('array.company_status')))? config('array.company_status')[$company['status']]:'' }}</label>
                         </div>
                     </div>
 

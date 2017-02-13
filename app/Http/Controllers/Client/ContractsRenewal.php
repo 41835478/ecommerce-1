@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\client\contracts_renewal\createRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -47,6 +48,9 @@ class ContractsRenewal extends Controller
      */
     public function  create(Request $request)
     {
+
+        $request->merge(['from_date'=>Carbon::now()]);
+        $request->merge(['to_date'=>Carbon::now()->addYear(1)]);
         return view('client.contracts_renewal.create',compact('request'));
 
     }

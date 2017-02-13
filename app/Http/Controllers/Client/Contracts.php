@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\client\contracts\createRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -67,6 +68,7 @@ class Contracts extends Controller
     {
         $companiesList=$this->rCompany->getAllList();
         $productsList=$this->rProducts->getAllList();
+        $request->merge(['purchasing_date'=>Carbon::now()]);
         return view('client.contracts.create',compact('request'),compact('productsList','companiesList'));
 
     }

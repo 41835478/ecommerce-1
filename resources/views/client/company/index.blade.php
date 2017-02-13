@@ -117,8 +117,8 @@
                                                                                 <td>{{ $oResult->city }}</td>
 
                                                                                 <td>{{ $oResult->zipcode }}</td>
+                                        <td>{{(array_key_exists($oResult->status,config('array.company_status')) )? config('array.company_status')[$oResult->status]:'' }}</td>
 
-                                                                                <td>{{ $oResult->status }}</td>
 
 
                                         <td>

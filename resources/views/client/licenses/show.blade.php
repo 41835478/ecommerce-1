@@ -55,13 +55,13 @@
                     
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.company_id') }}  </label>
+                            <label class="control-label">{{ trans('general.company') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$licenses['company_id'] }}</label>
+                            <label class="control-label">{{(isset($licenses->company()->first()->name))? $licenses->company()->first()->name:'' }}</label>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$licenses['status'] }}</label>
+                            <label class="control-label">{{(array_key_exists($licenses['status'],config('array.licenses_status')))? config('array.licenses_status')[$licenses['status']]:'' }}</label>
                         </div>
                     </div>
 

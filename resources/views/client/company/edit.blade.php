@@ -85,7 +85,7 @@
             <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}} col-xs-6">
                 {!! Form::label('status', trans('status'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('status',config('array.company_status'), null, ['class' => 'form-control']) !!}
                     {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

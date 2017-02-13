@@ -50,7 +50,7 @@
                 
         
         <div class="form-group {{ $errors->has('company') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('company_id', trans('general.company_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::select('company_id',$companiesList, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
@@ -58,7 +58,7 @@
         </div>
 
             <div class="form-group {{ $errors->has('products') ? 'has-error' : ''}}  col-xs-6">
-                {!! Form::label('products_id', trans('general.products_id'), ['class' => 'col-sm-4 control-label']) !!}
+                {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
                     {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
                     {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
@@ -72,7 +72,7 @@
             <div class="form-group {{ $errors->has('purchasing_date') ? 'has-error' : ''}}  col-xs-6">
                 {!! Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('purchasing_date', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('purchasing_date', null, ['class' => 'form-control mydatepicker']) !!}
                     {!! $errors->first('purchasing_date', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

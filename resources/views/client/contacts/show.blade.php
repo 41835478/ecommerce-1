@@ -61,7 +61,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contacts['company_id'] }}</label>
+                            <label class="control-label">{{(isset($contacts->company()->first()->name))? $contacts->company()->first()->name:'' }}</label>
                         </div>
                     </div>
 
@@ -113,7 +113,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contacts['status'] }}</label>
+                            <label class="control-label">{{(array_key_exists($contacts['status'],config('array.contacts_status')))? config('array.contacts_status')[$contacts['status']]:'' }}</label>
                         </div>
                     </div>
 

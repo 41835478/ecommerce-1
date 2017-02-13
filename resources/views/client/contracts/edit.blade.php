@@ -78,7 +78,7 @@
             <div class="form-group {{ $errors->has('purchasing_date') ? 'has-error' : ''}}  col-xs-6">
                 {!! Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('purchasing_date', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('purchasing_date', null, ['class' => 'form-control mydatepicker']) !!}
                     {!! $errors->first('purchasing_date', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
