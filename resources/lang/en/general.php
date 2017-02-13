@@ -119,9 +119,11 @@ return [
 
     'products_id'=>'Products Id',
 'purchasing_date'=>'Purchasing Date',
-
+'expiredDate'=>'Expire Date',
+    'expiredContracts'=>'Expired Contracts',
     'description'=>'Description',
-
+    'daysExpireStart'=>'Days  Expire Start',
+    'daysToExpire'=>'Days To Expire',
 
     'contracts_documents'=>'Contracts Documents',
     'addcontracts_documents'=>'Add Contracts Documents',
@@ -176,7 +178,8 @@ return [
     'contracts_id'=>'Contracts Id',
 'from_date'=>'From Date',
     'to_date'=>'To Date',
-
+    'lastRenealFromDate'=>'Last Reneal From Date',
+    'lastRenealToDate'=>'Last Reneal To Date',
     'description'=>'Description',
 
 

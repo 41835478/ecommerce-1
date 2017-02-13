@@ -54,23 +54,20 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.company_id'), 'company_id', $oResults) !!}
+                                        {!! th_sort(trans('general.company'), 'company_id', $oResults) !!}
                                     </th>
 
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                    {!! th_sort(trans('general.products_id'), 'products_id', $oResults) !!}
+                                    {!! th_sort(trans('general.products'), 'products_id', $oResults) !!}
                                 </th>
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                     {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oResults) !!}
                                 </th>
 
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                   {{ trans('general.lastRenealFromDate')}}
+                                   {{ trans('general.expiredDate')}}
                                 </th>
 
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                    {{ trans('general.lastRenealToDate')}}
-                                </th>
 
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
@@ -95,8 +92,7 @@
                                                                                 <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
 
                                         <td>{{ $oResult->purchasing_date }}</td>
-                                        <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
-                                        <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>
+                                        <td>{{ $oResult->expired_date }}</td>
                                         <td>{{ $oResult->description }}</td>
 
                                         
@@ -147,7 +143,7 @@
                             @endif
                             </tbody>
                         </table>
-                        @if (count($oResults))
+                        @if (false)
                             <div class="row">
 
                                 <div class="col-xs-12 col-sm-6 ">
@@ -178,18 +174,31 @@
 
 
 
-                
+
+
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('daysExpireStart', (isset($aFilterParams['daysExpireStart'])? $aFilterParams['daysExpireStart']:7), ['placeholder'=>trans('general.daysExpireStart'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
                     </div>
                 </div>
 
-                
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('daysToExpire', (isset($aFilterParams['daysToExpire'])? $aFilterParams['daysToExpire']:30) , ['placeholder'=>trans('general.daysToExpire'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+
+
+
+
 
                 <div class="form-group">
                     <div class="col-md-12">

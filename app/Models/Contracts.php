@@ -20,4 +20,7 @@ class Contracts extends Model
     public function products(){
         return $this->belongsTo('App\Models\Products');
     }
+    public function renewal(){
+        return $this->hasMany('App\Models\ContractsRenewal');
+    }
 }

@@ -10,6 +10,7 @@ Route::group(['middleware' => ['authenticate.client']], function () {
 
     Route::resource('contacts', 'Contacts');
 
+    Route::get('contracts/expired', ['as'=>'client.contracts.expired','uses'=>'Contracts@getExpiredContracts']);
 
     Route::resource('contracts', 'Contracts');
 

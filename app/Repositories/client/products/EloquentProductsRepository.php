@@ -42,7 +42,8 @@ class EloquentProductsRepository implements ProductsContract
         return $oResults;
     }
 
-    function getAllList(){
+
+    public function getAllList(){
 
         $oResults = new Products();
 

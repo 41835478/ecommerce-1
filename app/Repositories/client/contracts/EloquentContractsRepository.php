@@ -3,15 +3,16 @@ namespace App\Repositories\client\contracts;
 
 use Session;
 use App\Models\Contracts;
+use App\Models\ContractsRenewal;
 use App\Repositories\client\contracts\ContractsContract;
-
+use Carbon\Carbon;
 class EloquentContractsRepository implements ContractsContract
 {
 
     public function getByFilter($data)
     {
 
-        $oResults =Contracts::with('company','products');
+        $oResults =Contracts::with(['company','products','renewal'=>function($query){$query->orderBy('to_date','desc');}]);
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
@@ -40,6 +41,58 @@ class EloquentContractsRepository implements ContractsContract
         }else{
             $oResults = $oResults->paginate(config('mycp.pagination_size'));
         }
+
+
+        return $oResults;
+    }
+
+    public function getExpired($data)
+    {
+
+        $oResults =Contracts::with('company','products')->leftJoin('contracts_renewal',function($query){
+            $query->on('contracts.id','=','contracts_renewal.contracts_id');
+        })->select(['contracts.*',\DB::raw('max(contracts_renewal.to_date) as expired_date')])
+          ->groupBy('contracts_renewal.contracts_id');
+
+
+        if (isset($data->id) && !empty($data->id)) {
+            $oResults = $oResults->where('id', '=', $data['id']);
+        }
+        if (isset($data->company_id) && !empty($data->company_id)) {
+            $oResults = $oResults->where('company_id', '=', $data['company_id']);
+        }
+        if (isset($data->products_id) && !empty($data->products_id)) {
+            $oResults = $oResults->where('products_id', '=', $data['products_id'] );
+        }
+        if (isset($data->description) && !empty($data->description)) {
+            $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');
+        }
+
+        $daysExpireStart=(isset($data->daysToExpire) && !empty($data->daysToExpire))? $data->daysToExpire:7;
+        $daysToExpire=(isset($data->daysToExpire) && !empty($data->daysToExpire))? $data->daysToExpire:30;
+        $current = Carbon::now()->subDay($daysExpireStart);
+
+        $contractExpires = Carbon::now()->addDays($daysToExpire);
+        $oResults = $oResults->having(\DB::raw('expired_date'), '>=',$current);
+        $oResults = $oResults->having(\DB::raw('expired_date'), '<=',$contractExpires);
+
+        if (isset($data->order) && !empty($data->order)) {
+            $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
+            $oResults = $oResults->orderBy($data->order, $sort);
+        }
+
+
+
+        if(true){
+            $oResults = $oResults->get();
+        }
+        elseif (isset($data->page_name) && !empty($data->page_name)) {
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'], $data->page_name);
+        }else{
+            $oResults = $oResults->paginate(config('mycp.pagination_size'), ['*'],'page');
+        }
+
+
         return $oResults;
     }
 

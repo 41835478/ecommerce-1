@@ -19,3 +19,8 @@ Route::group(['prefix' => 'client', 'namespace' => 'Client'], function () {
     require_once __DIR__ . "/Routes/Client/Dashboard.php";
     require_once __DIR__ . "/Routes/Client/Auth.php";
 });
+
+//Event::listen('illuminate.query', function($query)
+//{
+//    var_dump($query);
+//});

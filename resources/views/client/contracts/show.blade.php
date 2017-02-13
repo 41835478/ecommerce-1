@@ -94,9 +94,8 @@
                     </div>
 
 @if(count($oContractsRenewalResults))
-<div class="row">
 
-</div>
+
                 <div class="row">
                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">

@@ -45,6 +45,19 @@ class Contracts extends Controller
     }
 
     /**
+     * Display a  Expired Contracts.
+     *
+     * @return view
+     */
+    public function getExpiredContracts(Request $request){
+
+        $aFilterParams=$request;
+
+        $oResults=$this->rContracts->getExpired($aFilterParams);
+        return view('client.contracts.expired', compact('oResults'), compact('aFilterParams'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return void

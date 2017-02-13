@@ -379,11 +379,17 @@ return [
         'title' => 'contractsList',
         'icon' => 'fa fa-gears',
         ],
-        [
-        'route' => 'client.contracts.create',
-        'title' => 'contractsCreate',
-        'icon' => 'fa fa-gears',
-        ]
+                [
+                    'route' => 'client.contracts.create',
+                    'title' => 'contractsCreate',
+                    'icon' => 'fa fa-gears',
+                ],
+                [
+                    'route' => 'client.contracts.expired',
+                    'title' => 'expiredContracts',
+                    'icon' => 'fa fa-gears',
+                ]
+
             ]
         ],
 

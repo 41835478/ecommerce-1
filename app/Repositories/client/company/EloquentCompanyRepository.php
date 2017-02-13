@@ -60,7 +60,7 @@ class EloquentCompanyRepository implements CompanyContract
         return $oResults;
     }
 
-    function getAllList(){
+public function getAllList(){
 
         $oResults = new Company();
 

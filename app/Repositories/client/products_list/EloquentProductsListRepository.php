@@ -42,7 +42,7 @@ class EloquentProductsListRepository implements ProductsListContract
         return $oResults;
     }
 
-    function getAllList(){
+   public function getAllList(){
 
         $oResults = new ProductsList();
 
