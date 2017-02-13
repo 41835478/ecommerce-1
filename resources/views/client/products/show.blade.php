@@ -151,17 +151,11 @@
                                                     {!! th_sort(trans('general.manual'), 'manual', $oVersionsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                                    {!! th_sort(trans('general.articale'), 'articale', $oVersionsResults) !!}
-                                                </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
                                                     {!! th_sort(trans('general.links'), 'links', $oVersionsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                                    {!! th_sort(trans('general.release_notes'), 'release_notes', $oVersionsResults) !!}
-                                                </th>
 
 
                                             </tr>
@@ -181,11 +175,9 @@
 
                                                         <td>{{ $oResult->manual }}</td>
 
-                                                        <td>{{ $oResult->articale }}</td>
 
                                                         <td>{{ $oResult->links }}</td>
 
-                                                        <td>{{ $oResult->release_notes }}</td>
 
 
                                                         <td>
@@ -273,10 +265,6 @@
                                                     {!! th_sort(trans('general.products'), 'products_id', $oContractsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                                    {!! th_sort(trans('general.description'), 'description', $oContractsResults) !!}
-                                                </th>
-
 
                                             </tr>
                                             </thead>
@@ -294,7 +282,6 @@
 
                                                         <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
 
-                                                        <td>{{ $oResult->description }}</td>
 
 
                                                         <td>

@@ -244,9 +244,7 @@
                                                     {!! th_sort(trans('general.phone'), 'phone', $oContactsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                                    {!! th_sort(trans('general.description'), 'description', $oContactsResults) !!}
-                                                </th>
+
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
                                                     {!! th_sort(trans('general.status'), 'status', $oContactsResults) !!}
@@ -269,15 +267,16 @@
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{ $oResult->company_id }}</td>
+                                                        <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>
 
                                                         <td>{{ $oResult->users_id }}</td>
 
                                                         <td>{{ $oResult->phone }}</td>
 
-                                                        <td>{{ $oResult->description }}</td>
 
-                                                        <td>{{ $oResult->status }}</td>
+
+                                                        <td>{{(array_key_exists($oResult->status,config('array.contacts_status')) )? config('array.contacts_status')[$oResult->status]:'' }}</td>
+
 
                                                         <td>{{ $oResult->permissions }}</td>
 
@@ -365,9 +364,6 @@
                                                     {!! th_sort(trans('general.products'), 'products_id', $oContractsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                                    {!! th_sort(trans('general.description'), 'description', $oContractsResults) !!}
-                                                </th>
 
 
                                             </tr>
@@ -386,7 +382,6 @@
 
                                                         <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
 
-                                                        <td>{{ $oResult->description }}</td>
 
 
                                                         <td>
@@ -525,7 +520,7 @@
 
                                                         <td>{{ $oResult->type }}</td>
 
-                                                        <td>{{ $oResult->status }}</td>
+                                                        <td>{{(array_key_exists($oResult->status,config('array.licenses_status')) )? config('array.licenses_status')[$oResult->status]:'' }}</td>
 
 
                                                         <td>
