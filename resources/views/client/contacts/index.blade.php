@@ -29,6 +29,7 @@
                     <div class="white-box">
 
 
+                        @include('client.partials.messages')
 
                         <div class=" col-xs-9">
                             <h3 class="box-title m-b-0">{{ trans('general.contactsTableHead') }}</h3>
@@ -41,7 +42,6 @@
                                 + {{trans('general.contactsCreate')}}
                             </a>
                         </div>
-                        @include('client.partials.messages')
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>

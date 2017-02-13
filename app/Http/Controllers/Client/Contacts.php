@@ -4,7 +4,7 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\client\contacts\createRequest;
 
 use Illuminate\Http\Request;
 use Session;
@@ -58,7 +58,7 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(createRequest $request)
     {
 
 
@@ -108,7 +108,7 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function update($id, createRequest $request)
     {
 
         $result=$this->rContacts->update($id,$request);

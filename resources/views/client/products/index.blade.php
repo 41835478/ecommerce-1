@@ -28,6 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
+                        @include('client.partials.messages')
 
 
                         <div class=" col-xs-9">
@@ -41,7 +42,6 @@
                                 + {{trans('general.productsCreate')}}
                             </a>
                         </div>
-                        @include('client.partials.messages')
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>

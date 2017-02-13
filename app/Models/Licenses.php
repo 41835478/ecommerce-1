@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Licenses extends Model
 {
     protected $fillable = [
-       "id","company_id","license","type","status"    ];
+      "company_id","license","type","status"    ];
     protected $table='licenses';
 
     public $timestamps =false ;

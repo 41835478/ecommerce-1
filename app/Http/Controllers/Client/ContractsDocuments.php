@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 
 use Illuminate\Http\Request;
+use App\Http\Requests\client\contracts_documents\createRequest;
 use Session;
 
 use Illuminate\Support\Facades\Redirect;
@@ -56,7 +57,7 @@ class ContractsDocuments extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(createRequest $request)
     {
 
 
@@ -105,7 +106,7 @@ class ContractsDocuments extends Controller
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function update($id, createRequest $request)
     {
 
         $result=$this->rContractsDocuments->update($id,$request);

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 
 use Illuminate\Http\Request;
+use App\Http\Requests\client\company\createRequest;
+
+
 use Session;
 
 use Illuminate\Support\Facades\Redirect;
@@ -56,7 +59,7 @@ class Company extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(createRequest $request)
     {
 
 
@@ -115,7 +118,7 @@ class Company extends Controller
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function update($id, createRequest $request)
     {
 
         $result=$this->rCompany->update($id,$request);
