@@ -60,7 +60,7 @@ class EloquentCompanyRepository implements CompanyContract
         return $oResults;
     }
 
-public function getAllList(){
+    public function getAllList(){
 
         $oResults = new Company();
 
@@ -84,7 +84,7 @@ public function getAllList(){
     public function show($id)
     {
 
-$company = Company::findOrFail($id);
+        $company = Company::findOrFail($id);
 
         return $company;
     }
@@ -104,8 +104,8 @@ $company = Company::findOrFail($id);
 
     public function update($id,$data)
     {
-$company = Company::findOrFail($id);
-       $result= $company->update($data->all());
+        $company = Company::findOrFail($id);
+        $result= $company->update($data->all());
         if ($result) {
             Session::flash('flash_message', 'company updated!');
             return true;

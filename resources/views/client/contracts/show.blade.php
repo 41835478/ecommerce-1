@@ -302,11 +302,11 @@
                                                 </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.contracts_id'), 'contracts_id', $oContractsDocumentsResults) !!}
+                                                    {!! th_sort(trans('general.contracts'), 'contracts_id', $oContractsDocumentsResults) !!}
                                                 </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.products_id'), 'products_id', $oContractsDocumentsResults) !!}
+                                                    {!! th_sort(trans('general.products'), 'products_id', $oContractsDocumentsResults) !!}
                                                 </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
