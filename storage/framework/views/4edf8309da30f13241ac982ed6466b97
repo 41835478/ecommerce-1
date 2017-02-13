@@ -54,13 +54,13 @@
                     
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label"><?php echo e(trans('general.company_id')); ?>  </label>
+                            <label class="control-label"><?php echo e(trans('general.company')); ?>  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label"><?php echo e($licenses['company_id']); ?></label>
+                            <label class="control-label"><?php echo e((isset($licenses->company()->first()->name))? $licenses->company()->first()->name:''); ?></label>
                         </div>
                     </div>
 
@@ -99,13 +99,39 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label"><?php echo e($licenses['status']); ?></label>
+                            <label class="control-label"><?php echo e((array_key_exists($licenses['status'],config('array.licenses_status')))? config('array.licenses_status')[$licenses['status']]:''); ?></label>
                         </div>
                     </div>
 
                     
 
                 </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-xs-offset-6 col-xs-3">
+
+
+                        <a href="/client/licenses/<?php echo e($licenses['id']); ?>/edit"
+                           class="fa fa-edit btn btn-primary form-control"> <?php echo e(trans('general.edit')); ?></a>
+                    </div>
+                    <div class=" col-xs-3">
+                        <?php echo Form::open(['method' => 'DELETE',
+                'url' => ['/client/licenses',$licenses['id']]]); ?>
+
+                        <button type="submit" name="Delete" class="deleteRow  btn btn-danger form-control" >
+                            <i class="fa fa-trash"></i>
+                            <?php echo e(trans('general.delete')); ?>
+
+                        </button>
+                        <?php echo Form::close(); ?>
+
+                    </div>
+
+                </div>
+
                 <!-- row -->
             </div>
             <div class="panel-footer text-right">

@@ -48,8 +48,8 @@
 
                 
         
-        <div class="form-group <?php echo e($errors->has('company_id') ? 'has-error' : ''); ?>  col-xs-6">
-            <?php echo Form::label('company_id', trans('general.company_id'), ['class' => 'col-sm-4 control-label']); ?>
+        <div class="form-group <?php echo e($errors->has('company') ? 'has-error' : ''); ?>  col-xs-6">
+            <?php echo Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']); ?>
 
             <div class="col-sm-8">
                 <?php echo Form::select('company_id',$companiesList, null, ['class' => 'form-control']); ?>
@@ -59,8 +59,8 @@
             </div>
         </div>
 
-            <div class="form-group <?php echo e($errors->has('products_id') ? 'has-error' : ''); ?>  col-xs-6">
-                <?php echo Form::label('products_id', trans('general.products_id'), ['class' => 'col-sm-4 control-label']); ?>
+            <div class="form-group <?php echo e($errors->has('products') ? 'has-error' : ''); ?>  col-xs-6">
+                <?php echo Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']); ?>
 
                 <div class="col-sm-8">
                     <?php echo Form::select('products_id',$productsList, null, ['class' => 'form-control']); ?>
@@ -72,18 +72,29 @@
 
         </div>        
         <div class="row">
-                
-        
-        <div class="form-group <?php echo e($errors->has('description') ? 'has-error' : ''); ?>  col-xs-6">
-            <?php echo Form::label('description', trans('general.description'), ['class' => 'col-sm-4 control-label']); ?>
 
-            <div class="col-sm-8">
-                <?php echo Form::text('description', null, ['class' => 'form-control']); ?>
 
-                <?php echo $errors->first('description', '<p class="help-block">:message</p>'); ?>
+            <div class="form-group <?php echo e($errors->has('purchasing_date') ? 'has-error' : ''); ?>  col-xs-6">
+                <?php echo Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']); ?>
 
+                <div class="col-sm-8">
+                    <?php echo Form::text('purchasing_date', null, ['class' => 'form-control mydatepicker']); ?>
+
+                    <?php echo $errors->first('purchasing_date', '<p class="help-block">:message</p>'); ?>
+
+                </div>
             </div>
-        </div>
+
+            <div class="form-group <?php echo e($errors->has('description') ? 'has-error' : ''); ?>  col-xs-6">
+                <?php echo Form::label('description', trans('general.description'), ['class' => 'col-sm-4 control-label']); ?>
+
+                <div class="col-sm-8">
+                    <?php echo Form::text('description', null, ['class' => 'form-control']); ?>
+
+                    <?php echo $errors->first('description', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+            </div>
         </div>        
 
 

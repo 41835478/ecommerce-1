@@ -166,6 +166,8 @@
 
 @show
 
-
+<style type="text/css">
+    .right-side-panel{display: none;}
+</style>
 </body>
 </html>

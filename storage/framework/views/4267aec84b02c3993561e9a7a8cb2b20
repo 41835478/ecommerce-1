@@ -94,7 +94,7 @@
                 <?php echo Form::label('status', trans('status'), ['class' => 'col-sm-4 control-label']); ?>
 
                 <div class="col-sm-8">
-                    <?php echo Form::text('status', null, ['class' => 'form-control']); ?>
+                    <?php echo Form::select('status',config('array.company_status'), null, ['class' => 'form-control']); ?>
 
                     <?php echo $errors->first('status', '<p class="help-block">:message</p>'); ?>
 
@@ -160,7 +160,7 @@
 
 
         <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
+        <div class="col-sm-offset-6 col-sm-3">
             <?php echo Form::submit('Update', ['class' => 'btn btn-primary form-control']); ?>
 
         </div>

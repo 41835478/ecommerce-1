@@ -118,7 +118,7 @@
             <?php echo Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']); ?>
 
             <div class="col-sm-8">
-                <?php echo Form::text('status', null, ['class' => 'form-control']); ?>
+                <?php echo Form::select('status',config('array.contacts_status'), null, ['class' => 'form-control']); ?>
 
                 <?php echo $errors->first('status', '<p class="help-block">:message</p>'); ?>
 

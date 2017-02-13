@@ -189,6 +189,8 @@
 
 <?php echo $__env->yieldSection(); ?>
 
-
+<style type="text/css">
+    .right-side-panel{display: none;}
+</style>
 </body>
 </html>

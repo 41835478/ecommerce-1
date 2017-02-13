@@ -79,7 +79,18 @@
 
         </div>        
         <div class="row">
-                
+
+            <div class="form-group <?php echo e($errors->has('purchasing_date') ? 'has-error' : ''); ?>  col-xs-6">
+                <?php echo Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']); ?>
+
+                <div class="col-sm-8">
+                    <?php echo Form::text('purchasing_date', null, ['class' => 'form-control mydatepicker']); ?>
+
+                    <?php echo $errors->first('purchasing_date', '<p class="help-block">:message</p>'); ?>
+
+                </div>
+            </div>
+
                 <div class="form-group <?php echo e($errors->has('description') ? 'has-error' : ''); ?> col-xs-6">
             <?php echo Form::label('description', trans('description'), ['class' => 'col-sm-4 control-label']); ?>
 

@@ -60,7 +60,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label"><?php echo e($contacts['company_id']); ?></label>
+                            <label class="control-label"><?php echo e((isset($contacts->company()->first()->name))? $contacts->company()->first()->name:''); ?></label>
                         </div>
                     </div>
 
@@ -112,7 +112,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label"><?php echo e($contacts['status']); ?></label>
+                            <label class="control-label"><?php echo e((array_key_exists($contacts['status'],config('array.contacts_status')))? config('array.contacts_status')[$contacts['status']]:''); ?></label>
                         </div>
                     </div>
 
@@ -132,6 +132,32 @@
                     
 
                 </div>
+
+
+                <div class="row">
+
+                    <div class="col-xs-offset-6 col-xs-3">
+
+
+                        <a href="/client/contacts/<?php echo e($contacts['id']); ?>/edit"
+                           class="fa fa-edit btn btn-primary form-control"> <?php echo e(trans('general.edit')); ?></a>
+                    </div>
+                    <div class=" col-xs-3">
+                        <?php echo Form::open(['method' => 'DELETE',
+                'url' => ['/client/contacts',$contacts['id']]]); ?>
+
+                        <button type="submit" name="Delete" class="deleteRow  btn btn-danger form-control" >
+                            <i class="fa fa-trash"></i>
+                            <?php echo e(trans('general.delete')); ?>
+
+                        </button>
+                        <?php echo Form::close(); ?>
+
+                    </div>
+
+                </div>
+
+
                 <!-- row -->
             </div>
             <div class="panel-footer text-right">
