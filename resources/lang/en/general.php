@@ -268,7 +268,8 @@ return [
 
 
     'description'=>'Description',
-
+'article'=>'Article',
+    'manual'=>'Manual',
 
     'products_list'=>'Products List',
     'addproducts_list'=>'Add Products List',
@@ -354,13 +355,14 @@ return [
     'manual'=>'Manual',
 
 
-    'articale'=>'Articale',
+    'articale'=>'Article',
 
 
     'links'=>'Links',
 
 
     'release_notes'=>'Release Notes',
+    'publish_date'=>'Publish Date'
 
 
 

@@ -84,26 +84,38 @@
                 {!! $errors->first('manual', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-        </div>        
-        <div class="row">
-        <div class="form-group {{ $errors->has('articale') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('articale', trans('general.articale'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('articale', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('articale', '<p class="help-block">:message</p>') !!}
-            </div>
         </div>
-                
-        
-        <div class="form-group {{ $errors->has('links') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('links', trans('general.links'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('links', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('links', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">
+                <div class="row">
+                    <div class="form-group {{ $errors->has('articale') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('articale', trans('general.articale'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('articale', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('articale', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('links') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('links', trans('general.links'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('links', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('links', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group {{ $errors->has('publish_date') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('articale', trans('general.publish_date'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('publish_date', null, ['class' => 'form-control mydatepicker']) !!}
+                            {!! $errors->first('publish_date', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
                 
 
 

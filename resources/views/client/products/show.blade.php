@@ -71,19 +71,56 @@
                 <div class="row">
 
                     
-                                    <div class="col-sm-2 text-right">
+                                    <div class="col-sm-12">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.description') }}  </label>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 text-left">
+                    <div class="col-sm-12 longHtmlContainer">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$products['description'] }}</label>
+                            {{$products['description'] }}
                         </div>
                     </div>
 
                     </div>
+
+
+                <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.article') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 longHtmlContainer">
+                        <div class="form-group no-margin-hr">
+                            {{$products['article'] }}
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.manual') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 longHtmlContainer ">
+                        <div class="form-group no-margin-hr ">
+                            {{$products['manual'] }}
+                        </div>
+                    </div>
+
+                </div>
 
 
                 <div class="row">
@@ -155,8 +192,13 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
                                                     {!! th_sort(trans('general.links'), 'links', $oVersionsResults) !!}
                                                 </th>
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                                    {!! th_sort(trans('general.publish_date'), 'publish_date', $oVersionsResults) !!}
+                                                </th>
 
 
+                                                <th  >
+                                                   </th>
 
                                             </tr>
                                             </thead>
@@ -177,6 +219,8 @@
 
 
                                                         <td>{{ $oResult->links }}</td>
+
+                                                        <td>{{ $oResult->publish_date }}</td>
 
 
 

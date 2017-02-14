@@ -42,13 +42,13 @@
 
                                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.id') }}  </label>
+                            <label class="control-label">{{ trans('general.publish_date') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$versions['id'] }}</label>
+                            <label class="control-label">{{$versions['publish_date'] }}</label>
                         </div>
                     </div>
 

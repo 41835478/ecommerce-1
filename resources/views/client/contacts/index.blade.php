@@ -48,17 +48,20 @@
                             <tr>
 
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.email'), 'email', $oResults) !!}
+                                </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
                                         {!! th_sort(trans('general.company'), 'company_id', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.users_id'), 'users_id', $oResults) !!}
-                                    </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.phone'), 'phone', $oResults) !!}
@@ -72,10 +75,6 @@
                                         {!! th_sort(trans('general.status'), 'status', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                        {!! th_sort(trans('general.permissions'), 'permissions', $oResults) !!}
-                                    </th>
-
                                 
                             </tr>
                             </thead>
@@ -87,11 +86,12 @@
                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                     <tr class='{{ $class }}'>
 
-                                                                                <td>{{ $oResult->id }}</td>
+                                        <td>{{ $oResult->id }}</td>
+                                        <td>{{ $oResult->name }}</td>
+                                        <td>{{ $oResult->email }}</td>
 
                                                                                 <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->users_id }}</td>
 
                                                                                 <td>{{ $oResult->phone }}</td>
 
@@ -99,7 +99,7 @@
 
                                                     <td>{{(array_key_exists($oResult->status,config('array.contacts_status')) )? config('array.contacts_status')[$oResult->status]:'' }}</td>
 
-                                                                                <td>{{ $oResult->permissions }}</td>
+
 
                                         
                                         <td>

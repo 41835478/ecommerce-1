@@ -57,16 +57,42 @@
         </div>
 
 
-            <div class="form-group {{ $errors->has('users_id') ? 'has-error' : ''}}  col-xs-6">
-                {!! Form::label('users_id', trans('general.users_id'), ['class' => 'col-sm-4 control-label']) !!}
+            <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('name', trans('general.name'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('users_id', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('users_id', '<p class="help-block">:message</p>') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
-        </div>        
-        <div class="row">
+        </div>
+
+
+
+
+
+                <div class="row">
+
+                    <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('email', trans('general.email'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('password', trans('general.password'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
 
         <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('phone', trans('general.phone'), ['class' => 'col-sm-4 control-label']) !!}
@@ -76,13 +102,16 @@
             </div>
         </div>
 
-            <div class="form-group {{ $errors->has('permissions') ? 'has-error' : ''}}  col-xs-6">
-                {!! Form::label('permissions', trans('general.permissions'), ['class' => 'col-sm-4 control-label']) !!}
-                <div class="col-sm-8">
-                    {!! Form::text('permissions', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('permissions', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+
+
+                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('status',config('array.contacts_status'), null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
         </div>        
         <div class="row">
         <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
@@ -92,15 +121,7 @@
                 {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-                
-        
-        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::select('status',config('array.contacts_status'), null, ['class' => 'form-control']) !!}
-                {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
         </div>        
         <div class="row">
                 

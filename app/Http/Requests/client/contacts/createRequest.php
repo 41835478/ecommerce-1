@@ -26,10 +26,13 @@ class createRequest extends Request
         return [
             "company_id"=>'required|numeric',
             "users_id"=>'',
+            "name"=>'required|min:1|max:100',
+            "password"=>'required|min:7|max:100',
+            "email"=>'required|email',
             "phone"=>'required|max:20',
             "description"=>'required',
-            "status"=>'required|numeric',
-            "permissions"=>'required',
+            "status"=>'required|numeric'
+
 
         ];
     }

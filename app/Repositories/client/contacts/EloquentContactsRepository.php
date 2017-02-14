@@ -87,11 +87,12 @@ $contacts = Contacts::findOrFail($id);
 
     public function update($id,$data)
     {
-$contacts = Contacts::findOrFail($id);
+       $contacts = Contacts::findOrFail($id);
        $result= $contacts->update($data->all());
+
         if ($result) {
             Session::flash('flash_message', 'contacts updated!');
-            return true;
+            return $contacts->users_id;
         } else {
             return false;
         }

@@ -105,7 +105,20 @@
                 {!! $errors->first('links', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-        </div>        
+        </div>
+
+
+                <div class="row">
+                    <div class="form-group {{ $errors->has('publish_date') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('articale', trans('general.publish_date'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('publish_date', null, ['class' => 'form-control mydatepicker']) !!}
+                            {!! $errors->first('publish_date', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                </div>
+
         <div class="row">
 
                 

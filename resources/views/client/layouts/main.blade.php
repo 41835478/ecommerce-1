@@ -161,13 +161,14 @@
 
     });
 
-
+$('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer');});
 </script>
 
 @show
 
 <style type="text/css">
     .right-side-panel{display: none;}
+    .longHtmlContainer{height:30px;overflow: hidden;}
 </style>
 </body>
 </html>

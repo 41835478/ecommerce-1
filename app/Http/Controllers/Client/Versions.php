@@ -13,6 +13,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
+use Carbon\Carbon;
 
 use App\Models\Versions as mVersions;
 use App\Repositories\client\versions\VersionsContract as rVersions;
@@ -51,6 +52,7 @@ class Versions extends Controller
     {
 
         $productsList=$this->rProducts->getAllList();
+        $request->merge(['publish_date'=>Carbon::now()->format('Y-m-d')]);
         return view('client.versions.create',compact('request','productsList'));
 
     }

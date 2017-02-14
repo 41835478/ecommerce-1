@@ -2,6 +2,7 @@
 namespace App\Repositories\client\users;
 
 use Session;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use App\Models\Users;
 use App\Repositories\client\users\UsersContract;
 
@@ -46,11 +47,23 @@ class EloquentUsersRepository implements UsersContract
     public function create($data)
     {
 
-        $result = Users::create($data);
 
-        if ($result) {
+
+        $aCredentials = [
+            'first_name' => $data->name,
+            'last_name' => '',
+            'email' => $data->email,
+            'password' => $data->password,
+        ];
+
+
+
+            $oUser = Sentinel::registerAndActivate($aCredentials);
+
+
+        if ($oUser) {
             Session::flash('flash_message', 'users added!');
-            return true;
+            return $oUser->id;
         } else {
             return false;
         }
@@ -80,13 +93,33 @@ $users = Users::findOrFail($id);
     public function update($id,$data)
     {
 $users = Users::findOrFail($id);
-       $result= $users->update($data->all());
+      $users->update(['first_name'=>$data->name,'email'=>$data->email]);
+        $result=$this->changePassword($id,$data->password);
         if ($result) {
             Session::flash('flash_message', 'users updated!');
             return true;
         } else {
             return false;
         }
+
+    }
+
+    function changePassword($id,$password)
+    {
+        $message = trans('user.PleaseTryAgain');
+        $user = Sentinel::findById($id);
+
+        /* TODO validate password and confirm from Request not from code */
+
+
+
+            if ($password!='' && Sentinel::update($user, array('password' => $password)))
+            {
+                return true;
+            }else{
+            return false;
+        }
+
 
     }
 

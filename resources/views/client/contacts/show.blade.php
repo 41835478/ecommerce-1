@@ -40,22 +40,24 @@
             <div class="panel-body">
 
 
-                                <div class="row">                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.id') }}  </label>
-                        </div>
-                    </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <div class="form-group no-margin-hr">
+                                            <label class="control-label">{{ trans('general.name') }}  </label>
+                                        </div>
+                                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contacts['id'] }}</label>
-                        </div>
-                    </div>
+                                    <div class="col-sm-4 text-left">
+                                        <div class="form-group no-margin-hr">
+                                            <label class="control-label">{{$contacts['name'] }}</label>
+                                        </div>
+                                    </div>
 
-                    
+
+
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.company_id') }}  </label>
+                            <label class="control-label">{{ trans('general.company') }}  </label>
                         </div>
                     </div>
 
@@ -66,20 +68,22 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
+                <div class="row">
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.users_id') }}  </label>
+                            <label class="control-label">{{ trans('general.email') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contacts['users_id'] }}</label>
+                            <label class="control-label">{{$contacts['email'] }}</label>
                         </div>
                     </div>
 
-                    
-                                    <div class="col-sm-2 text-right">
+
+
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.phone') }}  </label>
                         </div>
@@ -118,21 +122,7 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.permissions') }}  </label>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contacts['permissions'] }}</label>
-                        </div>
-                    </div>
-
-                    
-
-                </div>
 
 
                 <div class="row">

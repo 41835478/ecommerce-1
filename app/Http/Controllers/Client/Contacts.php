@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\client\contacts\createRequest;
+use App\Http\Requests\client\contacts\editRequest;
 
 use Illuminate\Http\Request;
 use Session;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\Contacts as mContacts;
 use App\Repositories\client\contacts\ContactsContract as rContacts;
 use App\Repositories\client\company\CompanyContract as rCompany;
+use App\Repositories\client\users\UsersContract as rUsers;
 class Contacts extends Controller
 {
     private $rContacts;
@@ -58,11 +60,15 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function store(createRequest $request)
+    public function store(createRequest $request,rUsers $rUsers)
     {
 
-
+        $users_id= $rUsers->create($request);
+        if($users_id){
+            $request->merge(['users_id'=>$users_id]);
         $oResults=$this->rContacts->create($request->all());
+        }
+
 
         return redirect('client/contacts');
     }
@@ -108,10 +114,14 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function update($id, createRequest $request)
+    public function update($id, editRequest $request,rUsers $rUsers)
     {
 
-        $result=$this->rContacts->update($id,$request);
+        $users_id=$this->rContacts->update($id,$request);
+
+        if($users_id){
+            $rUsers->update($users_id,$request);
+        }
 
 
 

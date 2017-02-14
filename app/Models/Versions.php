@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Versions extends Model
 {
     protected $fillable = [
-      "products_id","version","manual","articale","links","release_notes"    ];
+      "products_id","version","manual","articale","links","release_notes" ,"publish_date"    ];
     protected $table='versions';
 
     public $timestamps =false ;

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contacts extends Model
 {
     protected $fillable = [
-      "company_id","users_id","phone","description","status","permissions"    ];
+      "company_id","users_id","name","email","phone","description","status"    ];
     protected $table='contacts';
 
     public $timestamps =false ;

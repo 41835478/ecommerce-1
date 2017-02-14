@@ -74,7 +74,7 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                        {!! th_sort(trans('general.release_notes'), 'release_notes', $oResults) !!}
+                                        {!! th_sort(trans('general.publish_date'), 'publish_date', $oResults) !!}
                                     </th>
 
                                 
@@ -100,7 +100,7 @@
 
                                                                                 <td>{{ $oResult->links }}</td>
 
-                                                                                <td>{{ $oResult->release_notes }}</td>
+                                                                                <td>{{ $oResult->publish_date }}</td>
 
                                         
                                         <td>
