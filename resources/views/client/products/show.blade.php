@@ -70,16 +70,15 @@
                     </div>
                 <div class="row">
 
-                    
-                                    <div class="col-sm-12">
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.description') }}  </label>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 longHtmlContainer">
+                    <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            {{$products['description'] }}
+                            <label class="control-label">{{$products['description'] }}</label>
                         </div>
                     </div>
 
@@ -97,7 +96,7 @@
 
                     <div class="col-sm-12 longHtmlContainer">
                         <div class="form-group no-margin-hr">
-                            {{$products['article'] }}
+                            {!! $products['article'] !!}
                         </div>
                     </div>
 
@@ -116,7 +115,7 @@
 
                     <div class="col-sm-12 longHtmlContainer ">
                         <div class="form-group no-margin-hr ">
-                            {{$products['manual'] }}
+                            {!! $products['manual']  !!}
                         </div>
                     </div>
 

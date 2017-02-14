@@ -66,7 +66,9 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
+                <div class="row">
+
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.version') }}  </label>
                         </div>
@@ -78,31 +80,8 @@
                         </div>
                     </div>
 
-                    
-                                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.manual') }}  </label>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$versions['manual'] }}</label>
-                        </div>
-                    </div>
 
-                    </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.articale') }}  </label>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$versions['articale'] }}</label>
-                        </div>
-                    </div>
 
                     
                                     <div class="col-sm-2 text-right">
@@ -134,6 +113,42 @@
 
                 </div>
 
+
+                <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.article') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 longHtmlContainer">
+                        <div class="form-group no-margin-hr">
+                            {!! $versions['articale'] !!}
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.manual') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 longHtmlContainer ">
+                        <div class="form-group no-margin-hr ">
+                            {!! $versions['manual']  !!}
+                        </div>
+                    </div>
+
+                </div>
 
 
                 <div class="row">

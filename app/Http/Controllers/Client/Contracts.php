@@ -68,7 +68,7 @@ class Contracts extends Controller
     {
         $companiesList=$this->rCompany->getAllList();
         $productsList=$this->rProducts->getAllList();
-        $request->merge(['purchasing_date'=>Carbon::now()]);
+        $request->merge(['purchasing_date'=>Carbon::now()->format('Y-m-d')]);
         return view('client.contracts.create',compact('request'),compact('productsList','companiesList'));
 
     }

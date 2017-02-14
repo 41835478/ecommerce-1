@@ -72,11 +72,6 @@
                                     {{ trans('general.lastRenealToDate')}}
                                 </th>
 
-
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.description'), 'description', $oResults) !!}
-                                    </th>
-
                                 
                             </tr>
                             </thead>
@@ -97,7 +92,7 @@
                                         <td>{{ $oResult->purchasing_date }}</td>
                                         <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
                                         <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>
-                                        <td>{{ $oResult->description }}</td>
+
 
                                         
                                         <td>

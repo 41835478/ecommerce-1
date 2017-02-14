@@ -49,8 +49,8 @@ class ContractsRenewal extends Controller
     public function  create(Request $request)
     {
 
-        $request->merge(['from_date'=>Carbon::now()]);
-        $request->merge(['to_date'=>Carbon::now()->addYear(1)]);
+        $request->merge(['from_date'=>Carbon::now()->format('Y-m-d')]);
+        $request->merge(['to_date'=>Carbon::now()->addYear(1)->format('Y-m-d')]);
         return view('client.contracts_renewal.create',compact('request'));
 
     }

@@ -61,14 +61,6 @@
                                         {!! th_sort(trans('general.version'), 'version', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.manual'), 'manual', $oResults) !!}
-                                    </th>
-
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                        {!! th_sort(trans('general.articale'), 'articale', $oResults) !!}
-                                    </th>
-
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
                                         {!! th_sort(trans('general.links'), 'links', $oResults) !!}
                                     </th>
@@ -94,9 +86,6 @@
 
                                                                                 <td>{{ $oResult->version }}</td>
 
-                                                                                <td>{{ $oResult->manual }}</td>
-
-                                                                                <td>{{ $oResult->articale }}</td>
 
                                                                                 <td>{{ $oResult->links }}</td>
 

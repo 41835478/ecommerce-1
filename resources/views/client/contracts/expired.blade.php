@@ -65,16 +65,12 @@
                                 </th>
 
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                   {{ trans('general.expiredDate')}}
+                                    {{ trans('general.expiredDate')}}
+                                </th>
+                                <th >
+
                                 </th>
 
-
-
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.description'), 'description', $oResults) !!}
-                                    </th>
-
-                                
                             </tr>
                             </thead>
                             <tbody>
@@ -93,7 +89,6 @@
 
                                         <td>{{ $oResult->purchasing_date }}</td>
                                         <td>{{ $oResult->expired_date }}</td>
-                                        <td>{{ $oResult->description }}</td>
 
                                         
                                         <td>

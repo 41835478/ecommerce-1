@@ -73,11 +73,14 @@
         </div>
         </div>
 
+
                 <div class="row">
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('article', trans('general.description'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::text('description', null, ['class' => 'form-control','id'=>'editor2']) !!}
+
+
+                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('description', trans('general.products_list'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('description', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                     <div class="form-group {{ $errors->has('article') ? 'has-error' : ''}}  col-xs-12">
                         {!! Form::label('article', trans('general.article'), ['class' => ' control-label']) !!}
                         <div class="col-sm-12">
-                            {!! Form::text('article', null, ['class' => 'form-control','id'=>'editor2']) !!}
+                            {!! Form::textarea('article', null, ['class' => 'form-control','id'=>'editor1']) !!}
                             {!! $errors->first('article', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
@@ -98,14 +101,15 @@
                     <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-12">
                         {!! Form::label('manual', trans('general.manual'), ['class' => ' control-label']) !!}
                         <div class="col-sm-12">
-                            {!! Form::text('manual', null, ['class' => 'form-control','id'=>'editor3']) !!}
+                            {!! Form::textarea('manual', null, ['class' => 'form-control','id'=>'editor2']) !!}
                             {!! $errors->first('manual', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                 </div>
 
 
-        <div class="form-group">
+
+                <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>

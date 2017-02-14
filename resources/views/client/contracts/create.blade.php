@@ -83,7 +83,7 @@
     <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-12">
         {!! Form::label('description', trans('general.description'), ['class' => ' control-label']) !!}
         <div class="col-sm-12">
-            {!! Form::text('description', null, ['class' => 'form-control','id'=>'editor1']) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control','id'=>'editor1']) !!}
             {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -116,16 +116,3 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    @parent
-    <script src="{{ asset('/assets/'.config('mycp.layoutAssetsFolder').'/ckeditor/ckeditor.js') }}"></script>
-    <script>
-        //CKEDITOR.replace( textarea );
-        CKEDITOR.replace('editor1', {
-            filebrowserBrowseUrl: " {{ asset('/cms/articles/file-browser') }}",
-            filebrowserUploadUrl: "{{ asset('/cms/articles/upload-image' ).'?_token='. csrf_token() }}"
-        });
-
-    </script>
-    @stop

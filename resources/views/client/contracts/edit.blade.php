@@ -83,15 +83,17 @@
                 </div>
             </div>
 
-                <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('description', trans('description'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('description', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
 
+        </div>
+                <div class="row">
+                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-12">
+                        {!! Form::label('description', trans('general.description'), ['class' => ' control-label']) !!}
+                        <div class="col-sm-12">
+                            {!! Form::textarea('description', null, ['class' => 'form-control','id'=>'editor1']) !!}
+                            {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
 
         <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
