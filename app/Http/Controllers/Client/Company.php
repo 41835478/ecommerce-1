@@ -21,6 +21,8 @@ use App\Repositories\client\company\CompanyContract as rCompany;
 
 use App\Repositories\client\contacts\ContactsContract as rContacts;
 use App\Repositories\client\contracts\ContractsContract as rContracts;
+use App\Repositories\client\licenses\licensesContract as rLicenses;
+
 class Company extends Controller
 {
     private $rCompany;
@@ -75,7 +77,7 @@ class Company extends Controller
      *
      * @return void
      */
-    public function show($id,Request $request,rContacts $rContacts,rContracts $rContracts)
+    public function show($id,Request $request,rContacts $rContacts,rContracts $rContracts,rLicenses $rLicenses)
     {
 
         $company=$this->rCompany->show($id);
@@ -87,10 +89,10 @@ class Company extends Controller
         $oContactsResults=$rContacts->getByFilter($request);
 
         $request->page_name='page_contracts';
-        $oContractsResults=$rContacts->getByFilter($request);
+        $oContractsResults=$rContracts->getByFilter($request);
 
         $request->page_name='page_licenses';
-        $oLicensesResults=$rContacts->getByFilter($request);
+        $oLicensesResults=$rLicenses->getByFilter($request);
 
         return view('client.company.show', compact('company','request','oContactsResults','oContractsResults','oLicensesResults'));
     }
