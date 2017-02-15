@@ -1,6 +1,6 @@
 @extends('client.layouts.main')
 
-@section('title', trans('general.products'))
+@section('title', trans('general.web_hosting_plans'))
 @section('content')
 
     <div id="page-wrapper">
@@ -8,12 +8,12 @@
             <!-- .row -->
             <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
-                    <h4 class="page-title">{{ trans('general.products') }}</h4>
+                    <h4 class="page-title">{{ trans('general.web_hosting_plans') }}</h4>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="#">{{ trans('general.products') }}</a></li>
-                        <li class="active">{{ trans('general.productsCreate') }}</li>
+                        <li><a href="#">{{ trans('general.web_hosting_plans') }}</a></li>
+                        <li class="active">{{ trans('general.web_hosting_plansCreate') }}</li>
                     </ol>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::model($request,['url' => '/client/products', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/web_hosting_plans', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -36,7 +36,7 @@
 
         <div class="panel">
             <div class="panel-heading">
-                <span class="panel-title">{{ trans('general.addproducts') }}</span>
+                <span class="panel-title">{{ trans('general.addweb_hosting_plans') }}</span>
             </div>
 
             <div class="panel-body">
@@ -54,51 +54,53 @@
                     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
-
-            <div class="form-group {{ $errors->has('products_list_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('products_list_id', trans('general.products_list'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::select('products_list_id',$productsListArray, null, ['class' => 'form-control']) !!}
-                {!! $errors->first('products_list_id', '<p class="help-block">:message</p>') !!}
+            <div class="form-group {{ $errors->has('web_space') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('web_space', trans('general.web_space'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('web_space', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('web_space', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
+
         </div>
-        </div>
+
+
+
+
 
 
                 <div class="row">
 
-
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
-                        {!! Form::label('description', trans('general.description'), ['class' => 'col-sm-4 control-label']) !!}
+                    <div class="form-group {{ $errors->has('domains_number') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('domains_number', trans('general.domains_number'), ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::text('description', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
+                            {!! Form::text('domains_number', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('domains_number', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+                    <div class="form-group {{ $errors->has('emails') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('emails', trans('general.emails'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('emails', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('emails', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
                 </div>
+
+
 
                 <div class="row">
-                    <div class="form-group {{ $errors->has('article') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('article', trans('general.article'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('article', null, ['class' => 'form-control','id'=>'editor1']) !!}
-                            {!! $errors->first('article', '<p class="help-block">:message</p>') !!}
+
+                    <div class="form-group {{ $errors->has('traffic') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('traffic', trans('general.traffic'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('traffic', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('traffic', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+
                 </div>
-
-
-                <div class="row">
-                    <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('manual', trans('general.manual'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('manual', null, ['class' => 'form-control','id'=>'editor2']) !!}
-                            {!! $errors->first('manual', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-
 
 
 

@@ -1,5 +1,5 @@
 @extends('client.layouts.main')
-@section('title', trans('general.contracts'))
+@section('title', trans('general.domains'))
 
 @section('content')
 
@@ -8,12 +8,12 @@
             <!-- .row -->
             <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
-                    <h4 class="page-title">{{ trans('general.contracts') }}</h4>
+                    <h4 class="page-title">{{ trans('general.domains') }}</h4>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="#">{{ trans('general.contracts') }}</a></li>
-                        <li class="active">{{ trans('general.contracts') }}</li>
+                        <li><a href="#">{{ trans('general.domains') }}</a></li>
+                        <li class="active">{{ trans('general.domains') }}</li>
                     </ol>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
@@ -26,51 +26,43 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    @include('client.partials.messages')
                     <div class="white-box">
+
+                        @include('client.partials.messages')
 
 
                         <div class=" col-xs-9">
-                            <h3 class="box-title m-b-0">{{ trans('general.contractsTableHead') }}</h3>
-                            <p class="text-muted m-b-20">{{ trans('general.contractsTableDescription') }}</p>
+                            <h3 class="box-title m-b-0">{{ trans('general.domainsTableHead') }}</h3>
+                            <p class="text-muted m-b-20">{{ trans('general.domainsTableDescription') }}</p>
 
 
                         </div>
                         <div class="col-xs-3">
-                            <a  href="{{route('client.contracts.create')}}"class="btn btn-primary form-control">
-                                + {{trans('general.contractsCreate')}}
+                            <a  href="{{route('client.domains.create')}}"class="btn btn-primary form-control">
+                                + {{trans('general.domainsCreate')}}
                             </a>
                         </div>
-
-
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>
                             <tr>
 
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                    {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                </th>
+
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                        {!! th_sort(trans('general.provider'), 'provider', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.company_id'), 'company_id', $oResults) !!}
+                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                        {!! th_sort(trans('general.cost'), 'cost', $oResults) !!}
                                     </th>
-
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                    {!! th_sort(trans('general.type'), 'type', $oResults) !!}
-                                </th>
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                    {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oResults) !!}
-                                </th>
-
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                   {{ trans('general.lastRenealFromDate')}}
-                                </th>
-
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                    {{ trans('general.lastRenealToDate')}}
-                                </th>
+<th></th>
 
                                 
                             </tr>
@@ -85,21 +77,11 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
+                                                                                <td>{{ $oResult->name }}</td>
 
-                                        @if( $oResult->type == config('array.productsTypeIndex'))
-                                            <td>{{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} ) </td>
-                                        @elseif( $oResult->type == config('array.domainsTypeIndex'))
-                                            <td>{{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} ) </td>
+                                                                                <td>{{(array_key_exists($oResult->provider,config('array.domains_providers')))? config('array.domains_providers')[$oResult->provider]:'' }}</td>
 
-                                        @elseif( $oResult->type == config('array.webHostingPlansTypeIndex'))
-                                            <td>{{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} ) </td>
-
-                                        @endif
-                                        <td>{{ $oResult->purchasing_date }}</td>
-                                        <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
-                                        <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>
-
+                                        <td>{{ $oResult->cost }}</td>
 
                                         
                                         <td>
@@ -110,37 +92,23 @@
                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                            <a href="/client/contracts/{{ $oResult->id }}"
+                                            <a href="/client/domains/{{ $oResult->id }}"
                                                class="fa fa-file-text"> {{trans('general.details')}}</a>
 
 
                                             {!! Form::open(['method' => 'DELETE',
-                                            'url' => ['/client/contracts',$oResult->id]]) !!}
+                                            'url' => ['/client/domains',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
                                                 {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
-                                            <a href="/client/contracts/{{ $oResult->id }}/edit"
+                                            <a href="/client/domains/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"> {{trans('general.edit')}}</a>
 
 
 
-                                                    <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">renewal list</a>
-
-
-                                                    <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">add renewal</a>
-
-
-                                                    <a href="{{ route('client.contracts_documents.index') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">documents list</a>
-
-
-                                                    <a href="{{ route('client.contracts_documents.create') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">add document</a>
 </div>
                                                 </div>
                                         </td>
@@ -195,7 +163,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('company_id', $aFilterParams['company_id'], ['placeholder'=>trans('general.company_id'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('domains_list_id', $aFilterParams['domains_list_id'], ['placeholder'=>trans('general.domains_list_id'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -206,7 +174,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('products_id', $aFilterParams['products_id'], ['placeholder'=>trans('general.products_id'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('general.name'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>

@@ -271,6 +271,63 @@ return [
 'article'=>'Article',
     'manual'=>'Manual',
 
+
+
+
+
+
+    'domains'=>'Domains',
+    'adddomains'=>'Add Domains',
+    'domainsList'=>'Domains List',
+    'domainsCreate'=>'Create Domains ',
+    'editdomains'=>'Edit Domains',
+    'domainsInfo'=>'Domains Info',
+
+    'domainsTableHead'=>'Domains Table Header',
+    'domainsTableDescription'=>'Domains Description',
+
+    'domainsMenuBottomHeader'=>'DomainsMenu Bottom Header',
+    'domainsMenuBottomDescription'=>'Domains Menu Bottom Description',
+
+
+
+    'provider'=>'Provider',
+    'cost'=>'Cost',
+
+
+
+
+
+
+
+
+
+    'web_hosting_plans'=>'Web Hosting Plans',
+    'addweb_hosting_plans'=>'Add Web Hosting Plan',
+    'web_hosting_plansList'=>'Web Hosting Plans List',
+    'web_hosting_plansCreate'=>'Create Web Hosting Plan ',
+    'editweb_hosting_plans'=>'Edit Web Hosting Plan',
+    'web_hosting_plansInfo'=>'Web Hosting Plan Info',
+
+    'web_hosting_plansTableHead'=>'Web Hosting Plan Table Header',
+    'web_hosting_plansTableDescription'=>'Web Hosting Plan Description',
+
+    'web_hosting_plansMenuBottomHeader'=>'Web Hosting Plans Menu Bottom Header',
+    'web_hosting_plansMenuBottomDescription'=>'Web Hosting Plans Menu Bottom Description',
+
+
+    'web_space'=>'Web Space',
+    'domains_number'=>'Domains Number',
+    'emails'=>'Emails',
+    'traffic'=>'Traffic',
+
+
+
+
+
+
+
+
     'products_list'=>'Products List',
     'addproducts_list'=>'Add Products List',
     'products_listList'=>'Products List List',

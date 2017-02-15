@@ -69,13 +69,6 @@
         <div class="row">
 
 
-            <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}}  col-xs-6">
-                {!! Form::label('release_notes', trans('general.release_notes'), ['class' => 'col-sm-4 control-label']) !!}
-                <div class="col-sm-8">
-                    {!! Form::text('release_notes', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
 
 
 
@@ -86,18 +79,29 @@
                     {!! $errors->first('links', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+
+            <div class="form-group {{ $errors->has('publish_date') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('articale', trans('general.publish_date'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('publish_date', null, ['class' => 'form-control mydatepicker']) !!}
+                    {!! $errors->first('publish_date', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+
         </div>
 
 
+
                 <div class="row">
-                    <div class="form-group {{ $errors->has('publish_date') ? 'has-error' : ''}}  col-xs-6">
-                        {!! Form::label('articale', trans('general.publish_date'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::text('publish_date', null, ['class' => 'form-control mydatepicker']) !!}
-                            {!! $errors->first('publish_date', '<p class="help-block">:message</p>') !!}
+                    <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}}  col-xs-12">
+                        {!! Form::label('release_notes', trans('general.release_notes'), ['class' => ' control-label']) !!}
+                        <div class="col-sm-12">
+                            {!! Form::textarea('release_notes', null, ['class' => 'form-control','id'=>'editor3']) !!}
+                            {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
-
                 </div>
 
 

@@ -165,24 +165,24 @@ return [
             ]
         ],
 
-        [
-            'route' => 'admin.products.index',
-            'title' => 'products',
-            'icon' => 'fa fa-gears',
-            'subMenus' => [
+       [
+           'route' => 'admin.products.index',
+           'title' => 'products',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
 
-        [
-        'route' => 'admin.products.index',
-        'title' => 'productsList',
-        'icon' => 'fa fa-gears',
-        ],
-        [
-        'route' => 'admin.products.create',
-        'title' => 'productsCreate',
-        'icon' => 'fa fa-gears',
-        ]
-            ]
-        ],
+               [
+                   'route' => 'admin.products.index',
+                   'title' => 'productsList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'admin.products.create',
+                   'title' => 'productsCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
 
         [
             'route' => 'admin.products_list.index',
@@ -341,6 +341,43 @@ return [
                [
                    'route' => 'client.products.create',
                    'title' => 'productsCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.domains.index',
+           'title' => 'domains',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.domains.index',
+                   'title' => 'domainsList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.domains.create',
+                   'title' => 'domainsCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+       [
+           'route' => 'client.web_hosting_plans.index',
+           'title' => 'web_hosting_plans',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.web_hosting_plans.index',
+                   'title' => 'web_hosting_plansList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.web_hosting_plans.create',
+                   'title' => 'web_hosting_plansCreate',
                    'icon' => 'fa fa-gears',
                ]
            ]

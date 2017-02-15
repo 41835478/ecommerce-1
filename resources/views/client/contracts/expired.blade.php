@@ -58,7 +58,7 @@
                                     </th>
 
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                    {!! th_sort(trans('general.products'), 'products_id', $oResults) !!}
+                                    {!! th_sort(trans('general.type'), 'type', $oResults) !!}
                                 </th>
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                     {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oResults) !!}
@@ -85,8 +85,16 @@
 
                                                                                 <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
 
-                                                                                <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
+                                        @if( $oResult->type == config('array.productsTypeIndex'))
+                                            <td>{{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} ) </td>
+                                        @elseif( $oResult->type == config('array.domainsTypeIndex'))
+                                            <td>{{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} ) </td>
 
+                                        @elseif( $oResult->type == config('array.webHostingPlansTypeIndex'))
+                                            <td>{{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} ) </td>
+
+
+                                        @endif
                                         <td>{{ $oResult->purchasing_date }}</td>
                                         <td>{{ $oResult->expired_date }}</td>
 

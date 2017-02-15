@@ -54,6 +54,7 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\admin\products\ProductsContract',
             'App\Repositories\admin\products\EloquentProductsRepository'
         );
+
         $this->app->bind(
             'App\Repositories\admin\products_list\ProductsListContract',
             'App\Repositories\admin\products_list\EloquentProductsListRepository'
@@ -99,6 +100,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repositories\client\products\ProductsContract',
             'App\Repositories\client\products\EloquentProductsRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\domains\DomainsContract',
+            'App\Repositories\client\domains\EloquentDomainsRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\web_hosting_plans\WebHostingPlansContract',
+            'App\Repositories\client\web_hosting_plans\EloquentWebHostingPlansRepository'
         );
         $this->app->bind(
             'App\Repositories\client\products_list\ProductsListContract',

@@ -161,6 +161,18 @@
 
     });
 
+
+    function changeSelectedView(selectId,viewStartId){
+        var selectedValue=$('#'+selectId).val();
+        $('.'+viewStartId).hide();
+        $('#'+viewStartId+selectedValue).show();
+
+
+        $('.'+viewStartId+' select').attr('name','');
+        $('#'+viewStartId+selectedValue+' select').attr('name','products_id');
+
+    }
+
 $('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer');});
 </script>
 

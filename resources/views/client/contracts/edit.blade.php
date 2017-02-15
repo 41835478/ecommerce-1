@@ -53,38 +53,70 @@
 
 
 
-            
-        <div class="row">
-                
-                <div class="form-group {{ $errors->has('company_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::select('company_id',$companiesList, null, ['class' => 'form-control']) !!}
-                {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+                <div class="row">
 
-            <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}} col-xs-6">
-                {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
-                <div class="col-sm-8">
-                    {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+
+
+                    <div class="form-group {{ $errors->has('company') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('company_id',$companiesList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('purchasing_date') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('purchasing_date', null, ['class' => 'form-control mydatepicker']) !!}
+                            {!! $errors->first('purchasing_date', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
                 </div>
-            </div>
+                <div class="row">
 
-        </div>        
-        <div class="row">
 
-            <div class="form-group {{ $errors->has('purchasing_date') ? 'has-error' : ''}}  col-xs-6">
-                {!! Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']) !!}
-                <div class="col-sm-8">
-                    {!! Form::text('purchasing_date', null, ['class' => 'form-control mydatepicker']) !!}
-                    {!! $errors->first('purchasing_date', '<p class="help-block">:message</p>') !!}
+                    <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('type',config('array.contracts_type'), null, ['class' => 'form-control','onChange'=>'changeSelectedView("contract_type","productsType_");','id'=>'contract_type']) !!}
+                            {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_{{config('array.productsTypeIndex')}}"@if(config('array.productsTypeIndex')!=$contracts['type'] ||$contracts['type'] !='') style="display: none" @endif>
+                        {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+
+                            {!! Form::select(((config('array.productsTypeIndex')==$contracts['type'] ||$contracts['type'] =='')? '"products_id"':'""'),$productsList, null, ['class' => 'form-control']) !!}
+
+                            {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_{{config('array.domainsTypeIndex')}}" @if(config('array.domainsTypeIndex')!=$contracts['type']) style="display: none" @endif>
+                        {!! Form::label('products_id', trans('general.domains'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.domainsTypeIndex')==$contracts['type'])? '"products_id"':'""'),$domainsList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_{{config('array.webHostingPlansTypeIndex')}}" @if(config('array.webHostingPlansTypeIndex')!=$contracts['type']) style="display: none" @endif>
+                        {!! Form::label('products_id', trans('general.web_hosting_plans'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.webHostingPlansTypeIndex')==$contracts['type'])? '"products_id"':'""'),$webHostingPlansList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
+
                 </div>
-            </div>
-
-
-        </div>
                 <div class="row">
                     <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-12">
                         {!! Form::label('description', trans('general.description'), ['class' => ' control-label']) !!}

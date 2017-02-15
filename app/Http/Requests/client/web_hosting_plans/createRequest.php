@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\client\contracts;
+namespace App\Http\Requests\client\web_hosting_plans;
 
 use App\Http\Requests\Request;
 
@@ -24,11 +24,11 @@ class createRequest extends Request
     public function rules()
     {
         return [
-            "company_id"=>'required|numeric',
-            "products_id"=>'required|numeric',
-            "type"=>'required|numeric',
-            "purchasing_date"=>'required|date',
-            "description" =>'required',
+            'name'=>'required',
+            'web_space'=>'required',
+            'domains_number'=>'required|numeric',
+            'emails'=>'required|numeric',
+            'traffic'=>'required|numeric',
 
 
         ];

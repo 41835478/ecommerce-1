@@ -19,6 +19,8 @@ use App\Models\Contracts as mContracts;
 use App\Repositories\client\contracts\ContractsContract as rContracts;
 use App\Repositories\client\company\CompanyContract as rCompany;
 use App\Repositories\client\products\ProductsContract as rProducts;
+use App\Repositories\client\domains\DomainsContract as rDomains;
+use App\Repositories\client\web_hosting_plans\WebHostingPlansContract as rWebHostingPlans;
 use App\Repositories\client\contracts_renewal\ContractsRenewalContract as rContractsRenewal;
 use App\Repositories\client\contracts_documents\ContractsDocumentsContract as rContractsDocuments;
 class Contracts extends Controller
@@ -64,12 +66,14 @@ class Contracts extends Controller
      *
      * @return void
      */
-    public function create(Request $request)
+    public function create(Request $request,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans)
     {
         $companiesList=$this->rCompany->getAllList();
         $productsList=$this->rProducts->getAllList();
+        $domainsList=$rDomains->getAllList();
+        $webHostingPlansList=$rWebHostingPlans->getAllList();
         $request->merge(['purchasing_date'=>Carbon::now()->format('Y-m-d')]);
-        return view('client.contracts.create',compact('request'),compact('productsList','companiesList'));
+        return view('client.contracts.create',compact('request'),compact('productsList','domainsList','companiesList','webHostingPlansList'));
 
     }
 
@@ -122,15 +126,17 @@ class Contracts extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans)
     {
 
 
         $contracts=$this->rContracts->show($id);
         $companiesList=$this->rCompany->getAllList();
         $productsList=$this->rProducts->getAllList();
+        $domainsList=$rDomains->getAllList();
 
-        return view('client.contracts.edit', compact('contracts','productsList','companiesList'));
+        $webHostingPlansList=$rWebHostingPlans->getAllList();
+        return view('client.contracts.edit', compact('contracts','productsList','companiesList','domainsList','webHostingPlansList'));
     }
 
     /**

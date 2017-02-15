@@ -57,18 +57,6 @@
             </div>
         </div>
 
-            <div class="form-group {{ $errors->has('products') ? 'has-error' : ''}}  col-xs-6">
-                {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
-                <div class="col-sm-8">
-                    {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-        </div>        
-        <div class="row">
-
-
             <div class="form-group {{ $errors->has('purchasing_date') ? 'has-error' : ''}}  col-xs-6">
                 {!! Form::label('purchasing_date', trans('general.purchasing_date'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
@@ -76,6 +64,45 @@
                     {!! $errors->first('purchasing_date', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+
+
+        </div>        
+        <div class="row">
+
+
+            <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('type',config('array.contracts_type'), null, ['class' => 'form-control','onChange'=>'changeSelectedView("contract_type","productsType_");','id'=>'contract_type']) !!}
+                    {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+            <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_0">
+                {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+            <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_1" style="display: none">
+                {!! Form::label('products_id', trans('general.domains'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('',$domainsList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+            <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_2" style="display: none">
+                {!! Form::label('products_id', trans('general.web_hosting_plans'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('',$webHostingPlansList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
 
 
         </div>        

@@ -29,6 +29,9 @@ Route::group(['middleware' => ['authenticate.client']], function () {
 
     Route::resource('products', 'Products');
 
+    Route::resource('domains', 'Domains');
+
+    Route::resource('web_hosting_plans', 'WebHostingPlans');
 
     Route::resource('products_list', 'ProductsList');
 

@@ -12,7 +12,7 @@ class EloquentContractsRepository implements ContractsContract
     public function getByFilter($data)
     {
 
-        $oResults =Contracts::with(['company','products','renewal'=>function($query){$query->orderBy('to_date','desc');}]);
+        $oResults =Contracts::with(['company','products','domains','renewal'=>function($query){$query->orderBy('to_date','desc');}]);
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
@@ -22,6 +22,9 @@ class EloquentContractsRepository implements ContractsContract
         }
         if (isset($data->products_id) && !empty($data->products_id)) {
             $oResults = $oResults->where('products_id', '=', $data['products_id'] );
+        }
+        if (isset($data->type) && !empty($data->type)) {
+            $oResults = $oResults->where('type', '=', $data['type'] );
         }
         if (isset($data->description) && !empty($data->description)) {
             $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');
@@ -63,6 +66,9 @@ class EloquentContractsRepository implements ContractsContract
         }
         if (isset($data->products_id) && !empty($data->products_id)) {
             $oResults = $oResults->where('products_id', '=', $data['products_id'] );
+        }
+        if (isset($data->type) && !empty($data->type)) {
+            $oResults = $oResults->where('type', '=', $data['type'] );
         }
         if (isset($data->description) && !empty($data->description)) {
             $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');

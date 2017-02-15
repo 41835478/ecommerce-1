@@ -1,6 +1,6 @@
 @extends('client.layouts.main')
 
-@section('title', trans('general.products'))
+@section('title', trans('general.domains'))
 @section('content')
 
     <div id="page-wrapper">
@@ -8,12 +8,12 @@
             <!-- .row -->
             <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
-                    <h4 class="page-title">{{ trans('general.products') }}</h4>
+                    <h4 class="page-title">{{ trans('general.domains') }}</h4>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="#">{{ trans('general.products') }}</a></li>
-                        <li class="active">{{ trans('general.productsCreate') }}</li>
+                        <li><a href="#">{{ trans('general.domains') }}</a></li>
+                        <li class="active">{{ trans('general.domainsCreate') }}</li>
                     </ol>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::model($request,['url' => '/client/products', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/domains', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -36,7 +36,7 @@
 
         <div class="panel">
             <div class="panel-heading">
-                <span class="panel-title">{{ trans('general.addproducts') }}</span>
+                <span class="panel-title">{{ trans('general.adddomains') }}</span>
             </div>
 
             <div class="panel-body">
@@ -56,11 +56,11 @@
             </div>
 
 
-            <div class="form-group {{ $errors->has('products_list_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('products_list_id', trans('general.products_list'), ['class' => 'col-sm-4 control-label']) !!}
+            <div class="form-group {{ $errors->has('provider') ? 'has-error' : ''}}  col-xs-6">
+            {!! Form::label('provider', trans('general.provider'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::select('products_list_id',$productsListArray, null, ['class' => 'form-control']) !!}
-                {!! $errors->first('products_list_id', '<p class="help-block">:message</p>') !!}
+                {!! Form::select('provider',config('array.domains_providers'), null, ['class' => 'form-control']) !!}
+                {!! $errors->first('provider', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
         </div>
@@ -69,35 +69,15 @@
                 <div class="row">
 
 
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
-                        {!! Form::label('description', trans('general.description'), ['class' => 'col-sm-4 control-label']) !!}
+                    <div class="form-group {{ $errors->has('cost') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('cost', trans('general.cost'), ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::text('description', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
+                            {!! Form::text('cost', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('cost', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="form-group {{ $errors->has('article') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('article', trans('general.article'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('article', null, ['class' => 'form-control','id'=>'editor1']) !!}
-                            {!! $errors->first('article', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('manual', trans('general.manual'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('manual', null, ['class' => 'form-control','id'=>'editor2']) !!}
-                            {!! $errors->first('manual', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
 
 
 

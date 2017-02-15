@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contracts extends Model
 {
     protected $fillable = [
-       "company_id","products_id","purchasing_date","description"    ];
+       "company_id","products_id","type","purchasing_date","description"    ];
     protected $table='contracts';
 
     public $timestamps =false ;
@@ -22,5 +22,13 @@ class Contracts extends Model
     }
     public function renewal(){
         return $this->hasMany('App\Models\ContractsRenewal');
+    }
+
+
+    public function domains(){
+        return $this->belongsTo('App\Models\Domains','products_id');
+    }
+    public function webHostingPlans(){
+        return $this->belongsTo('App\Models\WebHostingPlans','products_id');
     }
 }
