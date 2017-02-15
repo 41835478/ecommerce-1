@@ -349,7 +349,7 @@ return [
        [
            'route' => 'client.domains.index',
            'title' => 'domains',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-globe',
            'subMenus' => [
 
                [
@@ -367,7 +367,7 @@ return [
        [
            'route' => 'client.web_hosting_plans.index',
            'title' => 'web_hosting_plans',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-cloud',
            'subMenus' => [
 
                [
