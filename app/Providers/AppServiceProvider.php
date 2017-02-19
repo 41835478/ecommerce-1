@@ -123,5 +123,51 @@ class AppServiceProvider extends ServiceProvider
         );
 
 
+        $this->app->bind(
+            'App\Repositories\client\server_company\ServerCompanyContract',
+            'App\Repositories\client\server_company\EloquentServerCompanyRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\server_spec\ServerSpecContract',
+            'App\Repositories\client\server_spec\EloquentServerSpecRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\server_company_server_spec\ServerCompanyServerSpecContract',
+            'App\Repositories\client\server_company_server_spec\EloquentServerCompanyServerSpecRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\server_access\ServerAccessContract',
+            'App\Repositories\client\server_access\EloquentServerAccessRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\server_detail\ServerDetailContract',
+            'App\Repositories\client\server_detail\EloquentServerDetailRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\server_ip\ServerIpContract',
+            'App\Repositories\client\server_ip\EloquentServerIpRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\server_locations\ServerLocationsContract',
+            'App\Repositories\client\server_locations\EloquentServerLocationsRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\support\SupportContract',
+            'App\Repositories\client\support\EloquentSupportRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\ticket\TicketContract',
+            'App\Repositories\client\ticket\EloquentTicketRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\ticket_reply\TicketReplyContract',
+            'App\Repositories\client\ticket_reply\EloquentTicketReplyRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\logtime\LogtimeContract',
+            'App\Repositories\client\logtime\EloquentLogtimeRepository'
+        );
+
+
     }
 }

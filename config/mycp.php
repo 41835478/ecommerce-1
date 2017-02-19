@@ -430,6 +430,217 @@ return [
             ]
         ],
 
+
+
+       [
+           'route' => 'client.server_company.index',
+           'title' => 'server_company',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_company.index',
+                   'title' => 'server_companyList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_company.create',
+                   'title' => 'server_companyCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.server_spec.index',
+           'title' => 'server_spec',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_spec.index',
+                   'title' => 'server_specList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_spec.create',
+                   'title' => 'server_specCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.server_company_server_spec.index',
+           'title' => 'server_company_server_spec',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_company_server_spec.index',
+                   'title' => 'server_company_server_specList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_company_server_spec.create',
+                   'title' => 'server_company_server_specCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.server_access.index',
+           'title' => 'server_access',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_access.index',
+                   'title' => 'server_accessList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_access.create',
+                   'title' => 'server_accessCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.server_detail.index',
+           'title' => 'server_detail',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_detail.index',
+                   'title' => 'server_detailList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_detail.create',
+                   'title' => 'server_detailCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.server_ip.index',
+           'title' => 'server_ip',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_ip.index',
+                   'title' => 'server_ipList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_ip.create',
+                   'title' => 'server_ipCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.server_locations.index',
+           'title' => 'server_locations',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.server_locations.index',
+                   'title' => 'server_locationsList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.server_locations.create',
+                   'title' => 'server_locationsCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.support.index',
+           'title' => 'support',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.support.index',
+                   'title' => 'supportList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.support.create',
+                   'title' => 'supportCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.ticket.index',
+           'title' => 'ticket',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.ticket.index',
+                   'title' => 'ticketList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.ticket.create',
+                   'title' => 'ticketCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.ticket_reply.index',
+           'title' => 'ticket_reply',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.ticket_reply.index',
+                   'title' => 'ticket_replyList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.ticket_reply.create',
+                   'title' => 'ticket_replyCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.logtime.index',
+           'title' => 'logtime',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.logtime.index',
+                   'title' => 'logtimeList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.logtime.create',
+                   'title' => 'logtimeCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
 //        [
 //            'route' => 'client.contracts_documents.index',
 //            'title' => 'contracts_documents',

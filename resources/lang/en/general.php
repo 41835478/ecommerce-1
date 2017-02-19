@@ -419,7 +419,348 @@ return [
 
 
     'release_notes'=>'Release Notes',
-    'publish_date'=>'Publish Date'
+    'publish_date'=>'Publish Date',
+
+    'server_company'=>'Server Company',
+    'addserver_company'=>'Add Server Company',
+    'server_companyList'=>'Server Company List',
+    'server_companyCreate'=>'Create Server Company ',
+    'editserver_company'=>'Edit Server Company',
+    'server_companyInfo'=>'Server Company Info',
+
+    'server_companyTableHead'=>'Server Company Table Header',
+    'server_companyTableDescription'=>'Server Company Description',
+
+    'server_companyMenuBottomHeader'=>'Server CompanyMenu Bottom Header',
+    'server_companyMenuBottomDescription'=>'Server Company Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'server_spec'=>'Server Spec',
+    'addserver_spec'=>'Add Server Spec',
+    'server_specList'=>'Server Spec List',
+    'server_specCreate'=>'Create Server Spec ',
+    'editserver_spec'=>'Edit Server Spec',
+    'server_specInfo'=>'Server Spec Info',
+
+    'server_specTableHead'=>'Server Spec Table Header',
+    'server_specTableDescription'=>'Server Spec Description',
+
+    'server_specMenuBottomHeader'=>'Server SpecMenu Bottom Header',
+    'server_specMenuBottomDescription'=>'Server Spec Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'hard_disk'=>'Hard Disk',
+
+
+    'cpu'=>'Cpu',
+
+
+    'port'=>'Port',
+
+
+    'ram'=>'Ram',
+
+
+    'raid'=>'Raid',
+
+
+    'server_company_server_spec'=>'Server Company Server Spec',
+    'addserver_company_server_spec'=>'Add Server Company Server Spec',
+    'server_company_server_specList'=>'Server Company Server Spec List',
+    'server_company_server_specCreate'=>'Create Server Company Server Spec ',
+    'editserver_company_server_spec'=>'Edit Server Company Server Spec',
+    'server_company_server_specInfo'=>'Server Company Server Spec Info',
+
+    'server_company_server_specTableHead'=>'Server Company Server Spec Table Header',
+    'server_company_server_specTableDescription'=>'Server Company Server Spec Description',
+
+    'server_company_server_specMenuBottomHeader'=>'Server Company Server SpecMenu Bottom Header',
+    'server_company_server_specMenuBottomDescription'=>'Server Company Server Spec Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'server_company_id'=>'Server Company Id',
+
+
+    'server_spec_id'=>'Server Spec Id',
+
+
+    'cost'=>'Cost',
+
+
+    'period'=>'Period',
+
+
+    'server_access'=>'Server Access',
+    'addserver_access'=>'Add Server Access',
+    'server_accessList'=>'Server Access List',
+    'server_accessCreate'=>'Create Server Access ',
+    'editserver_access'=>'Edit Server Access',
+    'server_accessInfo'=>'Server Access Info',
+
+    'server_accessTableHead'=>'Server Access Table Header',
+    'server_accessTableDescription'=>'Server Access Description',
+
+    'server_accessMenuBottomHeader'=>'Server AccessMenu Bottom Header',
+    'server_accessMenuBottomDescription'=>'Server Access Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'server_ip_id'=>'Server Ip Id',
+
+
+    'type'=>'Type',
+
+
+    'user_name'=>'User Name',
+
+
+    'password'=>'Password',
+
+
+    'server_detail'=>'Server Detail',
+    'addserver_detail'=>'Add Server Detail',
+    'server_detailList'=>'Server Detail List',
+    'server_detailCreate'=>'Create Server Detail ',
+    'editserver_detail'=>'Edit Server Detail',
+    'server_detailInfo'=>'Server Detail Info',
+
+    'server_detailTableHead'=>'Server Detail Table Header',
+    'server_detailTableDescription'=>'Server Detail Description',
+
+    'server_detailMenuBottomHeader'=>'Server DetailMenu Bottom Header',
+    'server_detailMenuBottomDescription'=>'Server Detail Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'server_spec_id'=>'Server Spec Id',
+
+
+    'name'=>'Name',
+
+
+    'server_company_spec_id'=>'Server Company Spec Id',
+
+
+    'cost'=>'Cost',
+
+
+    'unique_name'=>'Unique Name',
+
+
+    'operating_system'=>'Operating System',
+
+
+    'control_panel'=>'Control Panel',
+
+
+    'additional_cost'=>'Additional Cost',
+
+
+    'server_ip'=>'Server Ip',
+    'addserver_ip'=>'Add Server Ip',
+    'server_ipList'=>'Server Ip List',
+    'server_ipCreate'=>'Create Server Ip ',
+    'editserver_ip'=>'Edit Server Ip',
+    'server_ipInfo'=>'Server Ip Info',
+
+    'server_ipTableHead'=>'Server Ip Table Header',
+    'server_ipTableDescription'=>'Server Ip Description',
+
+    'server_ipMenuBottomHeader'=>'Server IpMenu Bottom Header',
+    'server_ipMenuBottomDescription'=>'Server Ip Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'server_detail_id'=>'Server Detail Id',
+
+
+    'ip'=>'Ip',
+
+
+    'default_getway'=>'Default Getway',
+
+
+    'mask'=>'Mask',
+
+
+    'name_server_1'=>'Name Server 1',
+
+
+    'name_server_2'=>'Name Server 2',
+
+
+    'type'=>'Type',
+
+
+    'display'=>'Display',
+
+
+    'server_locations'=>'Server Locations',
+    'addserver_locations'=>'Add Server Locations',
+    'server_locationsList'=>'Server Locations List',
+    'server_locationsCreate'=>'Create Server Locations ',
+    'editserver_locations'=>'Edit Server Locations',
+    'server_locationsInfo'=>'Server Locations Info',
+
+    'server_locationsTableHead'=>'Server Locations Table Header',
+    'server_locationsTableDescription'=>'Server Locations Description',
+
+    'server_locationsMenuBottomHeader'=>'Server LocationsMenu Bottom Header',
+    'server_locationsMenuBottomDescription'=>'Server Locations Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'server_company_id'=>'Server Company Id',
+
+
+    'location_id'=>'Location Id',
+
+
+    'support'=>'Support',
+    'addsupport'=>'Add Support',
+    'supportList'=>'Support List',
+    'supportCreate'=>'Create Support ',
+    'editsupport'=>'Edit Support',
+    'supportInfo'=>'Support Info',
+
+    'supportTableHead'=>'Support Table Header',
+    'supportTableDescription'=>'Support Description',
+
+    'supportMenuBottomHeader'=>'SupportMenu Bottom Header',
+    'supportMenuBottomDescription'=>'Support Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'type'=>'Type',
+
+
+    'description'=>'Description',
+
+
+    'ticket'=>'Ticket',
+    'addticket'=>'Add Ticket',
+    'ticketList'=>'Ticket List',
+    'ticketCreate'=>'Create Ticket ',
+    'editticket'=>'Edit Ticket',
+    'ticketInfo'=>'Ticket Info',
+
+    'ticketTableHead'=>'Ticket Table Header',
+    'ticketTableDescription'=>'Ticket Description',
+
+    'ticketMenuBottomHeader'=>'TicketMenu Bottom Header',
+    'ticketMenuBottomDescription'=>'Ticket Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'contact_id'=>'Contact Id',
+
+
+    'contract_id'=>'Contract Id',
+
+
+    'name'=>'Name',
+
+
+    'type'=>'Type',
+
+
+    'status'=>'Status',
+
+
+    'description'=>'Description',
+
+
+    'create_time'=>'Create Time',
+
+
+    'open_time'=>'Open Time',
+
+
+    'close_time'=>'Close Time',
+
+
+    'ticket_reply'=>'Ticket Reply',
+    'addticket_reply'=>'Add Ticket Reply',
+    'ticket_replyList'=>'Ticket Reply List',
+    'ticket_replyCreate'=>'Create Ticket Reply ',
+    'editticket_reply'=>'Edit Ticket Reply',
+    'ticket_replyInfo'=>'Ticket Reply Info',
+
+    'ticket_replyTableHead'=>'Ticket Reply Table Header',
+    'ticket_replyTableDescription'=>'Ticket Reply Description',
+
+    'ticket_replyMenuBottomHeader'=>'Ticket ReplyMenu Bottom Header',
+    'ticket_replyMenuBottomDescription'=>'Ticket Reply Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'ticket_id'=>'Ticket Id',
+
+
+    'contact_id'=>'Contact Id',
+
+
+    'description'=>'Description',
+
+
+    'create_time'=>'Create Time',
+
+
+    'logtime'=>'Logtime',
+    'addlogtime'=>'Add Logtime',
+    'logtimeList'=>'Logtime List',
+    'logtimeCreate'=>'Create Logtime ',
+    'editlogtime'=>'Edit Logtime',
+    'logtimeInfo'=>'Logtime Info',
+
+    'logtimeTableHead'=>'Logtime Table Header',
+    'logtimeTableDescription'=>'Logtime Description',
+
+    'logtimeMenuBottomHeader'=>'LogtimeMenu Bottom Header',
+    'logtimeMenuBottomDescription'=>'Logtime Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'support_id'=>'Support Id',
+
+
+    'ticket_id'=>'Ticket Id',
+
+
+    'hours'=>'Hours',
+
+
+    'summary'=>'Summary',
+
+
+    'expenses'=>'Expenses',
+
+
+    'create_date'=>'Create Date',
+
 
 
 
