@@ -53,7 +53,7 @@
 
 
 
-            
+
         <div class="row">        <div class="form-group {{ $errors->has('server_company_id') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('server_company_id', trans('server_company_id'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
@@ -61,15 +61,16 @@
                 {!! $errors->first('server_company_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-                
-                <div class="form-group {{ $errors->has('location_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('location_id', trans('location_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('location_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('location_id', '<p class="help-block">:message</p>') !!}
+
+
+            <div class="form-group {{ $errors->has('location_id') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('location_id', trans('general.server_locations'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('location_id',config('array.server_locations'), null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('location_id', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
         </div>
-        </div>        
 
 
         <div class="form-group">

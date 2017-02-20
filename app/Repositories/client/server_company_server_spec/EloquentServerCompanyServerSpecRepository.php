@@ -11,22 +11,22 @@ class EloquentServerCompanyServerSpecRepository implements ServerCompanyServerSp
     public function getByFilter($data)
     {
 
-        $oResults = new ServerCompanyServerSpec();
+        $oResults =  ServerCompanyServerSpec::with('server_company','server_spec');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=',$data['id'] );
         }
         if (isset($data->server_company_id) && !empty($data->server_company_id)) {
-            $oResults = $oResults->where('server_company_id', 'like', '%' . $data['server_company_id'] . '%');
+            $oResults = $oResults->where('server_company_id', '=', $data['server_company_id'] );
         }
         if (isset($data->server_spec_id) && !empty($data->server_spec_id)) {
-            $oResults = $oResults->where('server_spec_id', 'like', '%' . $data['server_spec_id'] . '%');
+            $oResults = $oResults->where('server_spec_id', '=',$data['server_spec_id'] );
         }
         if (isset($data->cost) && !empty($data->cost)) {
-            $oResults = $oResults->where('cost', 'like', '%' . $data['cost'] . '%');
+            $oResults = $oResults->where('cost', '=', $data['cost'] );
         }
         if (isset($data->period) && !empty($data->period)) {
-            $oResults = $oResults->where('period', 'like', '%' . $data['period'] . '%');
+            $oResults = $oResults->where('period', '=' , $data['period'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
@@ -44,6 +44,24 @@ class EloquentServerCompanyServerSpecRepository implements ServerCompanyServerSp
         }
         return $oResults;
     }
+
+
+
+    public function getAllList(){
+
+        $oResults =  ServerCompanyServerSpec::with('server_company','server_spec');
+
+        $oResults = $oResults->get();
+        $aResults=[];
+        foreach($oResults as $oResult){
+            $server_company=(isset($oResult->server_company->name))? ' ( '.$oResult->server_company->name.' ) ':' (*)';
+            $server_spec=(isset($oResult->server_spec->name))? $oResult->server_spec->name:'';
+            $aResults[$oResult->id]=$server_spec.$server_company;
+        }
+        return $aResults;
+    }
+
+
 
     public function create($data)
     {

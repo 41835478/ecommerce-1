@@ -56,7 +56,7 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.server_detail_id'), 'server_detail_id', $oResults) !!}
+                                        {!! th_sort(trans('general.server_detail'), 'server_detail_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
@@ -100,9 +100,9 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->server_detail_id }}</td>
+                                        <td>{{(isset($oResult->server_detail->name))? $oResult->server_detail->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->ip }}</td>
+                                        <td>{{ $oResult->ip }}</td>
 
                                                                                 <td>{{ $oResult->default_getway }}</td>
 
@@ -112,11 +112,12 @@
 
                                                                                 <td>{{ $oResult->name_server_2 }}</td>
 
-                                                                                <td>{{ $oResult->type }}</td>
 
-                                                                                <td>{{ $oResult->display }}</td>
+                                        <td>{{ (array_key_exists($oResult->type,config('array.server_ip_type')))? config('array.server_ip_type')[$oResult->type]:'' }}</td>
+                                        <td>{{ (array_key_exists($oResult->display,config('array.server_ip_display')))? config('array.server_ip_display')[$oResult->display]:'' }}</td>
 
-                                        
+
+
                                         <td>
 
                                             <div class="tableActionsMenuDiv">

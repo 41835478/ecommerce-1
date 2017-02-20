@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::open(['url' => '/client/server_detail', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/server_detail', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -46,13 +46,14 @@
 
             
         <div class="row">
-        <div class="form-group {{ $errors->has('server_spec_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('server_spec_id', trans('general.server_spec_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('server_spec_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('server_spec_id', '<p class="help-block">:message</p>') !!}
+
+            <div class="form-group {{ $errors->has('server_company_spec_id') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('server_company_spec_id', trans('general.server_company_spec_id'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('server_company_spec_id',$serverCompanyServerSpecArray, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('server_company_spec_id', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
                 
         
         <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}  col-xs-6">
@@ -64,15 +65,14 @@
         </div>
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('server_company_spec_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('server_company_spec_id', trans('general.server_company_spec_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('server_company_spec_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('server_company_spec_id', '<p class="help-block">:message</p>') !!}
+
+            <div class="form-group {{ $errors->has('unique_name') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('unique_name', trans('general.unique_name'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::text('unique_name', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('unique_name', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
-                
-        
         <div class="form-group {{ $errors->has('cost') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('cost', trans('general.cost'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
@@ -82,31 +82,29 @@
         </div>
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('unique_name') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('unique_name', trans('general.unique_name'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('unique_name', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('unique_name', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
                 
         
         <div class="form-group {{ $errors->has('operating_system') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('operating_system', trans('general.operating_system'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('operating_system', null, ['class' => 'form-control']) !!}
+                {!! Form::select('operating_system',config('array.server_detail_systems'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('operating_system', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+            <div class="form-group {{ $errors->has('control_panel') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('control_panel', trans('general.control_panel'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('control_panel',config('array.server_detail_panel'), null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('control_panel', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('control_panel') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('control_panel', trans('general.control_panel'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('control_panel', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('control_panel', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
                 
         
         <div class="form-group {{ $errors->has('additional_cost') ? 'has-error' : ''}}  col-xs-6">

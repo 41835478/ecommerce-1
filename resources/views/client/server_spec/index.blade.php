@@ -102,7 +102,9 @@
 
                                                                                 <td>{{ $oResult->ram }}</td>
 
-                                                                                <td>{{ $oResult->raid }}</td>
+                                                                                <td>
+                                                                                    {{(array_key_exists($oResult->raid ,config('array.server_spec_raid')))? config('array.server_spec_raid')[$oResult->raid ]:'' }}
+</td>
 
                                         
                                         <td>

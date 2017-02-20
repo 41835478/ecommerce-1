@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\ServerAccess as mServerAccess;
 use App\Repositories\client\server_access\ServerAccessContract as rServerAccess;
+use App\Repositories\client\server_ip\ServerIpContract as rServerIp;
 class ServerAccess extends Controller
 {
     private $rServerAccess;
@@ -46,9 +47,11 @@ class ServerAccess extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(Request $request,rServerIp $rServerIp)
     {
-        return view('client.server_access.create');
+
+        $serverIpArray=$rServerIp->getAllList();
+        return view('client.server_access.create', compact('request','serverIpArray'));
     }
 
     /**
@@ -89,13 +92,15 @@ class ServerAccess extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rServerIp $rServerIp)
     {
+
+        $serverIpArray=$rServerIp->getAllList();
 
 
         $server_access=$this->rServerAccess->show($id);
 
-        return view('client.server_access.edit', compact('server_access'));
+        return view('client.server_access.edit', compact('server_access','serverIpArray'));
     }
 
     /**

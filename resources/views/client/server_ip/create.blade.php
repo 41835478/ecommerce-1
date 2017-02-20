@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::open(['url' => '/client/server_ip', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/server_ip', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -47,9 +47,9 @@
             
         <div class="row">
         <div class="form-group {{ $errors->has('server_detail_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('server_detail_id', trans('general.server_detail_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('server_detail_id', trans('general.server_detail'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('server_detail_id', null, ['class' => 'form-control']) !!}
+                {!! Form::select('server_detail_id',$serverDetailArray, null, ['class' => 'form-control']) !!}
                 {!! $errors->first('server_detail_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -103,7 +103,7 @@
         <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('type', null, ['class' => 'form-control']) !!}
+                {!! Form::select('type',config('array.server_ip_type'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -112,7 +112,7 @@
         <div class="form-group {{ $errors->has('display') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('display', trans('general.display'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('display', null, ['class' => 'form-control']) !!}
+                {!! Form::select('display',config('array.server_ip_display'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('display', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

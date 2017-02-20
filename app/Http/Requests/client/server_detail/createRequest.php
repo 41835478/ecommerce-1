@@ -23,7 +23,6 @@ class createRequest extends Request
     public function rules()
     {
         return [
-    "server_spec_id"=>'required',
     "name"=>'required',
     "server_company_spec_id"=>'required',
     "cost"=>'required',

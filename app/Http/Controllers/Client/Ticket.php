@@ -46,9 +46,10 @@ class Ticket extends Controller
      *
      * @return void
      */
-    public function create()
+
+    public function  create(Request $request)
     {
-        return view('client.ticket.create');
+        return view('client.ticket.create', compact('request'));
     }
 
     /**

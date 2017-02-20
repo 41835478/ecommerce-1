@@ -42,26 +42,30 @@
 
                                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.server_company_id') }}  </label>
+                            <label class="control-label">{{ trans('general.server_company') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$server_company_server_spec['server_company_id'] }}</label>
+                            <label class="control-label">
+                                {{(isset($server_company_server_spec->server_company()->first()->name))? $server_company_server_spec->server_company()->first()->name:'' }}
+                                </label>
                         </div>
                     </div>
 
                     
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.server_spec_id') }}  </label>
+                            <label class="control-label">{{ trans('general.server_spec') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$server_company_server_spec['server_spec_id'] }}</label>
+                            <label class="control-label">
+                                {{(isset($server_company_server_spec->server_spec()->first()->name))? $server_company_server_spec->server_spec()->first()->name:'' }}
+</label>
                         </div>
                     </div>
 

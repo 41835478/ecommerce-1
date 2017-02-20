@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\ServerIp as mServerIp;
 use App\Repositories\client\server_ip\ServerIpContract as rServerIp;
+use App\Repositories\client\server_detail\ServerDetailContract as rServerDetail;
+use App\Repositories\client\server_access\ServerAccessContract as rServerAccess;
 class ServerIp extends Controller
 {
     private $rServerIp;
@@ -46,9 +48,12 @@ class ServerIp extends Controller
      *
      * @return void
      */
-    public function create()
+    public function  create(Request $request,rServerDetail $rServerDetail)
     {
-        return view('client.server_ip.create');
+
+        $serverDetailArray=$rServerDetail->getAllList();
+
+        return view('client.server_ip.create', compact('request','serverDetailArray'));
     }
 
     /**
@@ -72,14 +77,21 @@ class ServerIp extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rServerAccess $rServerAccess)
     {
-
 
         $server_ip=$this->rServerIp->show($id);
 
+        $request->merge(['server_ip_id'=>$id,'page_name'=>'page']);
 
-        return view('client.server_ip.show', compact('server_ip'));
+
+        $request->page_name='page_server_access';
+        $oServerAccessResults=$rServerAccess->getByFilter($request);
+
+
+
+
+        return view('client.server_ip.show', compact('server_ip','request','oServerAccessResults'));
     }
 
     /**
@@ -89,13 +101,14 @@ class ServerIp extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rServerDetail $rServerDetail)
     {
-
 
         $server_ip=$this->rServerIp->show($id);
 
-        return view('client.server_ip.edit', compact('server_ip'));
+        $serverDetailArray=$rServerDetail->getAllList();
+
+        return view('client.server_ip.edit', compact('server_ip','serverDetailArray'));
     }
 
     /**

@@ -46,9 +46,10 @@ class Logtime extends Controller
      *
      * @return void
      */
-    public function create()
+
+    public function  create(Request $request)
     {
-        return view('client.logtime.create');
+        return view('client.logtime.create', compact('request'));
     }
 
     /**

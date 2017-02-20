@@ -435,7 +435,7 @@ return [
        [
            'route' => 'client.server_company.index',
            'title' => 'server_company',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-building-o',
            'subMenus' => [
 
                [
@@ -454,7 +454,7 @@ return [
        [
            'route' => 'client.server_spec.index',
            'title' => 'server_spec',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-server',
            'subMenus' => [
 
                [
@@ -473,7 +473,7 @@ return [
        [
            'route' => 'client.server_company_server_spec.index',
            'title' => 'server_company_server_spec',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-server',
            'subMenus' => [
 
                [
@@ -492,7 +492,7 @@ return [
        [
            'route' => 'client.server_access.index',
            'title' => 'server_access',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-user-secret',
            'subMenus' => [
 
                [
@@ -511,7 +511,7 @@ return [
        [
            'route' => 'client.server_detail.index',
            'title' => 'server_detail',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-tasks',
            'subMenus' => [
 
                [
@@ -530,7 +530,7 @@ return [
        [
            'route' => 'client.server_ip.index',
            'title' => 'server_ip',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-flag-o',
            'subMenus' => [
 
                [
@@ -549,7 +549,7 @@ return [
        [
            'route' => 'client.server_locations.index',
            'title' => 'server_locations',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-map-marker',
            'subMenus' => [
 
                [
@@ -568,7 +568,7 @@ return [
        [
            'route' => 'client.support.index',
            'title' => 'support',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-support',
            'subMenus' => [
 
                [
@@ -587,7 +587,7 @@ return [
        [
            'route' => 'client.ticket.index',
            'title' => 'ticket',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-ticket',
            'subMenus' => [
 
                [
@@ -625,7 +625,7 @@ return [
        [
            'route' => 'client.logtime.index',
            'title' => 'logtime',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-clock-o',
            'subMenus' => [
 
                [

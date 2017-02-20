@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\ServerDetail as mServerDetail;
 use App\Repositories\client\server_detail\ServerDetailContract as rServerDetail;
+use App\Repositories\client\server_company_server_spec\ServerCompanyServerSpecContract as rServerCompanyServerSpec;
+use App\Repositories\client\server_ip\ServerIpContract as rServerIp;
 class ServerDetail extends Controller
 {
     private $rServerDetail;
@@ -46,9 +48,12 @@ class ServerDetail extends Controller
      *
      * @return void
      */
-    public function create()
+
+    public function  create(Request $request,rServerCompanyServerSpec $rServerCompanyServerSpec)
     {
-        return view('client.server_detail.create');
+
+        $serverCompanyServerSpecArray=$rServerCompanyServerSpec->getAllList();
+        return view('client.server_detail.create', compact('request','serverCompanyServerSpecArray'));
     }
 
     /**
@@ -72,14 +77,21 @@ class ServerDetail extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rServerIp $rServerIp)
     {
-
 
         $server_detail=$this->rServerDetail->show($id);
 
+        $request->merge(['server_detail_id'=>$id,'page_name'=>'page']);
 
-        return view('client.server_detail.show', compact('server_detail'));
+
+        $request->page_name='page_server_ip';
+        $oServerIpResults=$rServerIp->getByFilter($request);
+
+
+
+
+        return view('client.server_detail.show', compact('server_detail','request','oServerIpResults'));
     }
 
     /**
@@ -89,13 +101,14 @@ class ServerDetail extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rServerCompanyServerSpec $rServerCompanyServerSpec)
     {
-
 
         $server_detail=$this->rServerDetail->show($id);
 
-        return view('client.server_detail.edit', compact('server_detail'));
+        $serverCompanyServerSpecArray=$rServerCompanyServerSpec->getAllList();
+
+        return view('client.server_detail.edit', compact('server_detail','serverCompanyServerSpecArray'));
     }
 
     /**

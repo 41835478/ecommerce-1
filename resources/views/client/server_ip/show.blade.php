@@ -42,13 +42,16 @@
 
                                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.server_detail_id') }}  </label>
+                            <label class="control-label">{{ trans('general.server_detail') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$server_ip['server_detail_id'] }}</label>
+                            <label class="control-label">
+                                {{(isset( $server_ip->server_detail()->first()->name))? $server_ip->server_detail()->first()->name:'' }}
+
+                            </label>
                         </div>
                     </div>
 
@@ -126,7 +129,9 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$server_ip['type'] }}</label>
+                            <label class="control-label">
+                                {{ (array_key_exists($server_ip['type'] ,config('array.server_ip_type')))? config('array.server_ip_type')[$server_ip['type'] ]:'' }}
+                            </label>
                         </div>
                     </div>
 
@@ -139,7 +144,9 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$server_ip['display'] }}</label>
+                            <label class="control-label">
+                                {{ (array_key_exists($server_ip['display'] ,config('array.server_ip_display')))? config('array.server_ip_display')[$server_ip['display'] ]:'' }}
+                            </label>
                         </div>
                     </div>
 
@@ -172,6 +179,118 @@
                 </div>
                 <!-- row -->
             </div>
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="white-box">
+
+
+
+                                        @include('client.partials.messages')
+
+                                        <div class=" col-xs-9">
+                                            <h3 class="box-title m-b-0">{{ trans('general.server_accessTableHead') }}</h3>
+                                            <p class="text-muted m-b-20">{{ trans('general.server_accessTableDescription') }}</p>
+
+
+
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a  href="{{route('client.server_access.create')}}?server_ip_id={{$server_ip['id']}}"class="btn btn-primary form-control">
+                                                + {{trans('general.server_accessCreate')}}
+                                            </a>
+                                        </div>
+
+                                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+
+                                            <thead>
+                                            <tr>
+
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                                    {!! th_sort(trans('general.id'), 'id', $oServerAccessResults) !!}
+                                                </th>
+
+
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                                    {!! th_sort(trans('general.type'), 'type', $oServerAccessResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                                    {!! th_sort(trans('general.user_name'), 'user_name', $oServerAccessResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                                    {!! th_sort(trans('general.password'), 'password', $oServerAccessResults) !!}
+                                                </th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (count($oServerAccessResults))
+                                                {{-- */$i=0;/* --}}
+                                                {{-- */$class='';/* --}}
+                                                @foreach($oServerAccessResults as $oResult)
+                                                    {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
+                                                    <tr class='{{ $class }}'>
+
+                                                        <td>{{ $oResult->id }}</td>
+
+
+                                                        <td>{{(array_key_exists($oResult->type,config('array.server_access_type')))? config('array.server_access_type')[$oResult->type]: '' }}</td>
+
+                                                        <td>{{ $oResult->user_name }}</td>
+
+                                                        <td>{{ $oResult->password }}</td>
+
+
+                                                        <td>
+
+                                                            <div class="tableActionsMenuDiv">
+                                                                <div class="innerContainer">
+                                                                    <i class="fa fa-list menuIconList"></i>
+
+                                                                    <a href="/client/server_access/{{ $oResult->id }}"
+                                                                       class="fa fa-file-text"></a>
+
+
+                                                                    {!! Form::open(['method' => 'DELETE',
+                                                                    'url' => ['/client/server_access',$oResult->id]]) !!}
+                                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                                    {!! Form::close() !!}
+
+                                                                    <a href="/client/server_access/{{ $oResult->id }}/edit"
+                                                                       class="fa fa-edit"></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                        @if (count($oServerAccessResults))
+                                            <div class="row">
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    <span class="text-xs">{{trans('general.showing')}} {{ $oServerAccessResults->firstItem() }} {{trans('general.to')}} {{ $oServerAccessResults->lastItem() }} {{trans('general.of')}} {{ $oServerAccessResults->total() }} {{trans('general.entries')}}</span>
+                                                </div>
+
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    {!! str_replace('/?', '?', $oServerAccessResults->appends(Input::except('page_server_access'))->appends($request->all())->render()) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
 
 
 

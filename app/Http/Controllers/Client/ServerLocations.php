@@ -46,9 +46,10 @@ class ServerLocations extends Controller
      *
      * @return void
      */
-    public function create()
+
+    public function  create(Request $request)
     {
-        return view('client.server_locations.create');
+        return view('client.server_locations.create', compact('request'));
     }
 
     /**
@@ -91,7 +92,6 @@ class ServerLocations extends Controller
      */
     public function edit($id)
     {
-
 
         $server_locations=$this->rServerLocations->show($id);
 

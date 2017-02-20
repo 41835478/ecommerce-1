@@ -11,16 +11,16 @@ class EloquentServerAccessRepository implements ServerAccessContract
     public function getByFilter($data)
     {
 
-        $oResults = new ServerAccess();
+        $oResults =  ServerAccess::with('server_ip');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id']);
         }
         if (isset($data->server_ip_id) && !empty($data->server_ip_id)) {
-            $oResults = $oResults->where('server_ip_id', 'like', '%' . $data['server_ip_id'] . '%');
+            $oResults = $oResults->where('server_ip_id', '=', $data['server_ip_id'] );
         }
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=', $data['type'] );
         }
         if (isset($data->user_name) && !empty($data->user_name)) {
             $oResults = $oResults->where('user_name', 'like', '%' . $data['user_name'] . '%');
@@ -42,6 +42,15 @@ class EloquentServerAccessRepository implements ServerAccessContract
         }else{
              $oResults = $oResults->paginate(config('mycp.pagination_size'));
         }
+        return $oResults;
+    }
+
+
+    public function getAllList(){
+
+        $oResults = new ServerAccess();
+
+        $oResults = $oResults::lists('user_name','id');
         return $oResults;
     }
 

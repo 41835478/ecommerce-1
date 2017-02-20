@@ -76,9 +76,9 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->server_company_id }}</td>
+                                                                                <td>{{(isset($oResult->server_company->name))? $oResult->server_company->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->location_id }}</td>
+                                                                                <td>{{ (array_key_exists($oResult->location_id,config('array.server_locations')))? config('array.server_locations')[$oResult->location_id]:'' }}</td>
 
                                         
                                         <td>

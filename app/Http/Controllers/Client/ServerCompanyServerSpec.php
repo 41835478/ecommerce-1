@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\ServerCompanyServerSpec as mServerCompanyServerSpec;
 use App\Repositories\client\server_company_server_spec\ServerCompanyServerSpecContract as rServerCompanyServerSpec;
+use App\Repositories\client\server_company\ServerCompanyContract as rServerCompany;
+use App\Repositories\client\server_spec\ServerSpecContract as rServerSpec;
 class ServerCompanyServerSpec extends Controller
 {
     private $rServerCompanyServerSpec;
@@ -46,9 +48,13 @@ class ServerCompanyServerSpec extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create(Request $request,rServerCompany $rServerCompany,rServerSpec $rServerSpec)
     {
-        return view('client.server_company_server_spec.create');
+
+        $serverCompanyArray=$rServerCompany->getAllList();
+        $serverSpecArray=$rServerSpec->getAllList();
+
+        return view('client.server_company_server_spec.create',compact('request','serverCompanyArray','serverSpecArray'));
     }
 
     /**
@@ -89,13 +95,15 @@ class ServerCompanyServerSpec extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,Request $request,rServerCompany $rServerCompany,rServerSpec $rServerSpec)
     {
 
+        $serverCompanyArray=$rServerCompany->getAllList();
+        $serverSpecArray=$rServerSpec->getAllList();
 
         $server_company_server_spec=$this->rServerCompanyServerSpec->show($id);
 
-        return view('client.server_company_server_spec.edit', compact('server_company_server_spec'));
+        return view('client.server_company_server_spec.edit', compact('server_company_server_spec','request','serverCompanyArray','serverSpecArray'));
     }
 
     /**

@@ -56,11 +56,11 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.server_company_id'), 'server_company_id', $oResults) !!}
+                                        {!! th_sort(trans('general.server_company'), 'server_company_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.server_spec_id'), 'server_spec_id', $oResults) !!}
+                                        {!! th_sort(trans('general.server_spec'), 'server_spec_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
@@ -84,9 +84,8 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->server_company_id }}</td>
-
-                                                                                <td>{{ $oResult->server_spec_id }}</td>
+                                        <td>{{(isset($oResult->server_company->name))? $oResult->server_company->name:'' }}</td>
+                                        <td>{{(isset($oResult->server_spec->name))? $oResult->server_spec->name:'' }}</td>
 
                                                                                 <td>{{ $oResult->cost }}</td>
 

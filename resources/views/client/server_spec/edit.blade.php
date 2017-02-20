@@ -97,7 +97,7 @@
                 <div class="form-group {{ $errors->has('raid') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('raid', trans('raid'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('raid', null, ['class' => 'form-control']) !!}
+                {!! Form::select('raid',config('array.server_spec_raid'),null, ['class' => 'form-control']) !!}
                 {!! $errors->first('raid', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

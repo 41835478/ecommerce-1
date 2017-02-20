@@ -55,16 +55,12 @@
                                         {!! th_sort(trans('general.id'), 'id', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.server_spec_id'), 'server_spec_id', $oResults) !!}
-                                    </th>
-
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.server_company_spec_id'), 'server_company_spec_id', $oResults) !!}
+                                        {!! th_sort(trans('general.server_spec'), 'server_company_spec_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
@@ -100,19 +96,25 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->server_spec_id }}</td>
-
                                                                                 <td>{{ $oResult->name }}</td>
 
-                                                                                <td>{{ $oResult->server_company_spec_id }}</td>
+                                                                                <td>
+                                                                                    @if(isset($oResult->server_company_spec->id))
+
+                                           {{(isset($oResult->server_company_spec->server_spec->name))? $oResult->server_company_spec->server_spec->name:'' }}
+                                           {{(isset($oResult->server_company_spec->server_company->name))? ' ( '.$oResult->server_company_spec->server_company->name.' ) ':' (*)' }}
+
+                                                                                    @endif
+
+                                                                                </td>
 
                                                                                 <td>{{ $oResult->cost }}</td>
 
                                                                                 <td>{{ $oResult->unique_name }}</td>
 
-                                                                                <td>{{ $oResult->operating_system }}</td>
+                                        <td>{{ (array_key_exists($oResult->operating_system,config('array.server_detail_systems')))? config('array.server_detail_systems')[$oResult->operating_system]:'' }}</td>
+                                        <td>{{ (array_key_exists($oResult->control_panel,config('array.server_detail_panel')))? config('array.server_detail_panel')[$oResult->control_panel]:'' }}</td>
 
-                                                                                <td>{{ $oResult->control_panel }}</td>
 
                                                                                 <td>{{ $oResult->additional_cost }}</td>
 

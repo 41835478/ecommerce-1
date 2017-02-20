@@ -11,19 +11,27 @@ class EloquentServerDetailRepository implements ServerDetailContract
     public function getByFilter($data)
     {
 
-        $oResults = new ServerDetail();
+        $oResults =ServerDetail::with(['server_company_spec'=>function($query){
+            $query->with('server_company','server_spec');
+        }]);
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id']);
         }
+
+
         if (isset($data->server_spec_id) && !empty($data->server_spec_id)) {
-            $oResults = $oResults->where('server_spec_id', 'like', '%' . $data['server_spec_id'] . '%');
+            $server_spec_id=$data->server_spec_id;
+            $oResults = $oResults->whereHas('server_company_spec',function($query)use($server_spec_id){
+                $query->where('server_spec_id','=',$server_spec_id);
+            });
         }
+
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
         }
         if (isset($data->server_company_spec_id) && !empty($data->server_company_spec_id)) {
-            $oResults = $oResults->where('server_company_spec_id', 'like', '%' . $data['server_company_spec_id'] . '%');
+            $oResults = $oResults->where('server_company_spec_id', '=',$data['server_company_spec_id'] );
         }
         if (isset($data->cost) && !empty($data->cost)) {
             $oResults = $oResults->where('cost', 'like', '%' . $data['cost'] . '%');
@@ -32,13 +40,13 @@ class EloquentServerDetailRepository implements ServerDetailContract
             $oResults = $oResults->where('unique_name', 'like', '%' . $data['unique_name'] . '%');
         }
         if (isset($data->operating_system) && !empty($data->operating_system)) {
-            $oResults = $oResults->where('operating_system', 'like', '%' . $data['operating_system'] . '%');
+            $oResults = $oResults->where('operating_system', '=', $data['operating_system'] );
         }
         if (isset($data->control_panel) && !empty($data->control_panel)) {
-            $oResults = $oResults->where('control_panel', 'like', '%' . $data['control_panel'] . '%');
+            $oResults = $oResults->where('control_panel', '=', $data['control_panel'] );
         }
         if (isset($data->additional_cost) && !empty($data->additional_cost)) {
-            $oResults = $oResults->where('additional_cost', 'like', '%' . $data['additional_cost'] . '%');
+            $oResults = $oResults->where('additional_cost', '=' , $data['additional_cost'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
@@ -56,6 +64,15 @@ class EloquentServerDetailRepository implements ServerDetailContract
         }
         return $oResults;
     }
+
+    public function getAllList(){
+
+        $oResults = new ServerDetail();
+
+        $oResults = $oResults::lists('name','id');
+        return $oResults;
+    }
+
 
     public function create($data)
     {

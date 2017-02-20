@@ -36,6 +36,16 @@ class EloquentServerCompanyRepository implements ServerCompanyContract
         return $oResults;
     }
 
+
+    public function getAllList(){
+
+        $oResults = new ServerCompany();
+
+        $oResults = $oResults::lists('name','id');
+        return $oResults;
+    }
+
+
     public function create($data)
     {
 

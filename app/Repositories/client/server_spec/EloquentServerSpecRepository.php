@@ -14,8 +14,16 @@ class EloquentServerSpecRepository implements ServerSpecContract
         $oResults = new ServerSpec();
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=' ,$data['id']);
         }
+        if (isset($data->server_company_id) && !empty($data->server_company_id)) {
+            $server_compnay_id=$data->server_company_id;
+            $oResults = $oResults->with('server_company')->whereHas('server_company',function($query)use($server_compnay_id){
+                $query->where('server_company_id','=',$server_compnay_id);
+            });
+
+        }
+
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
         }
@@ -32,7 +40,7 @@ class EloquentServerSpecRepository implements ServerSpecContract
             $oResults = $oResults->where('ram', 'like', '%' . $data['ram'] . '%');
         }
         if (isset($data->raid) && !empty($data->raid)) {
-            $oResults = $oResults->where('raid', 'like', '%' . $data['raid'] . '%');
+            $oResults = $oResults->where('raid', '=', $data['raid'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
@@ -50,6 +58,15 @@ class EloquentServerSpecRepository implements ServerSpecContract
         }
         return $oResults;
     }
+
+    public function getAllList(){
+
+        $oResults = new ServerSpec();
+
+        $oResults = $oResults::lists('name','id');
+        return $oResults;
+    }
+
 
     public function create($data)
     {

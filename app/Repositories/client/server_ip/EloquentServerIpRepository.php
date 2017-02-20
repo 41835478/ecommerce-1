@@ -14,10 +14,10 @@ class EloquentServerIpRepository implements ServerIpContract
         $oResults = new ServerIp();
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=', $data['id']);
         }
         if (isset($data->server_detail_id) && !empty($data->server_detail_id)) {
-            $oResults = $oResults->where('server_detail_id', 'like', '%' . $data['server_detail_id'] . '%');
+            $oResults = $oResults->where('server_detail_id', '=', $data['server_detail_id'] );
         }
         if (isset($data->ip) && !empty($data->ip)) {
             $oResults = $oResults->where('ip', 'like', '%' . $data['ip'] . '%');
@@ -35,10 +35,10 @@ class EloquentServerIpRepository implements ServerIpContract
             $oResults = $oResults->where('name_server_2', 'like', '%' . $data['name_server_2'] . '%');
         }
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=', $data['type'] );
         }
         if (isset($data->display) && !empty($data->display)) {
-            $oResults = $oResults->where('display', 'like', '%' . $data['display'] . '%');
+            $oResults = $oResults->where('display', '=',$data['display'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
@@ -56,6 +56,15 @@ class EloquentServerIpRepository implements ServerIpContract
         }
         return $oResults;
     }
+
+    public function getAllList(){
+
+        $oResults = new ServerIp();
+
+        $oResults = $oResults::lists('ip','id');
+        return $oResults;
+    }
+
 
     public function create($data)
     {

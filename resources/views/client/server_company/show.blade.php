@@ -85,6 +85,253 @@
 
 
 
+
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="white-box">
+
+
+
+                                        @include('client.partials.messages')
+
+                                        <div class=" col-xs-9">
+                                            <h3 class="box-title m-b-0">{{ trans('general.server_locationsTableHead') }}</h3>
+                                            <p class="text-muted m-b-20">{{ trans('general.server_locationsTableDescription') }}</p>
+
+
+
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a  href="{{route('client.server_locations.create')}}"class="btn btn-primary form-control">
+                                                + {{trans('general.server_locationsCreate')}}
+                                            </a>
+                                        </div>
+
+                                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+
+                                            <thead>
+                                            <tr>
+
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                                    {!! th_sort(trans('general.id'), 'id', $oServerLocationResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                                    {!! th_sort(trans('general.server_company_id'), 'server_company_id', $oServerLocationResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                                    {!! th_sort(trans('general.location_id'), 'location_id', $oServerLocationResults) !!}
+                                                </th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (count($oServerLocationResults))
+                                                {{-- */$i=0;/* --}}
+                                                {{-- */$class='';/* --}}
+                                                @foreach($oServerLocationResults as $oResult)
+                                                    {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
+                                                    <tr class='{{ $class }}'>
+
+                                                        <td>{{ $oResult->id }}</td>
+
+                                                        <td>{{(isset($oResult->server_company->name))? $oResult->server_company->name:'' }}</td>
+
+                                                        <td>{{ (array_key_exists($oResult->location_id,config('array.server_locations')))? config('array.server_locations')[$oResult->location_id]:'' }}</td>
+
+
+                                                        <td>
+
+                                                            <div class="tableActionsMenuDiv">
+                                                                <div class="innerContainer">
+                                                                    <i class="fa fa-list menuIconList"></i>
+
+                                                                    <a href="/client/server_locations/{{ $oResult->id }}"
+                                                                       class="fa fa-file-text"></a>
+
+
+                                                                    {!! Form::open(['method' => 'DELETE',
+                                                                    'url' => ['/client/server_locations',$oResult->id]]) !!}
+                                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                                    {!! Form::close() !!}
+
+                                                                    <a href="/client/server_locations/{{ $oResult->id }}/edit"
+                                                                       class="fa fa-edit"></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                        @if (count($oServerLocationResults))
+                                            <div class="row">
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    <span class="text-xs">{{trans('general.showing')}} {{ $oServerLocationResults->firstItem() }} {{trans('general.to')}} {{ $oServerLocationResults->lastItem() }} {{trans('general.of')}} {{ $oServerLocationResults->total() }} {{trans('general.entries')}}</span>
+                                                </div>
+
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    {!! str_replace('/?', '?', $oServerLocationResults->appends(Input::except('page_server_location'))->appends($request->all())->render()) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="white-box">
+
+
+
+                                        @include('client.partials.messages')
+
+                                        <div class=" col-xs-9">
+                                            <h3 class="box-title m-b-0">{{ trans('general.server_specTableHead') }}</h3>
+                                            <p class="text-muted m-b-20">{{ trans('general.server_specTableDescription') }}</p>
+
+
+
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a  href="{{route('client.server_company_server_spec.create')}}?server_company_id={{$server_company['id']}}"class="btn btn-primary form-control">
+                                                + {{trans('general.server_specCreate')}}
+                                            </a>
+                                        </div>
+
+                                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+
+                                            <thead>
+                                            <tr>
+
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                                    {!! th_sort(trans('general.id'), 'id', $oServerSpecResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                                    {!! th_sort(trans('general.name'), 'name', $oServerSpecResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                                    {!! th_sort(trans('general.hard_disk'), 'hard_disk', $oServerSpecResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                                    {!! th_sort(trans('general.cpu'), 'cpu', $oServerSpecResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                                    {!! th_sort(trans('general.ram'), 'ram', $oServerSpecResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                                    {!!trans('general.cost') !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
+                                                    {!! trans('general.period')!!}
+                                                </th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (count($oServerSpecResults))
+                                                {{-- */$i=0;/* --}}
+                                                {{-- */$class='';/* --}}
+                                                @foreach($oServerSpecResults as $oResult)
+                                                    {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
+                                                    <tr class='{{ $class }}'>
+
+                                                        <td>{{ $oResult->id }}</td>
+
+                                                        <td>{{ $oResult->name }}</td>
+
+                                                        <td>{{ $oResult->hard_disk }}</td>
+
+                                                        <td>{{ $oResult->cpu }}</td>
+
+                                                        <td>{{ $oResult->ram }}</td>
+
+                                                        <td>{{  $oResult->server_company->first()->cost }}</td>
+
+                                                        <td>
+                                                            {{  $oResult->server_company->first()->period }}</td>
+
+
+                                                        <td>
+
+                                                            <div class="tableActionsMenuDiv">
+                                                                <div class="innerContainer">
+                                                                    <i class="fa fa-list menuIconList"></i>
+
+                                                                    <a href="/client/server_spec/{{ $oResult->id }}"
+                                                                       class="fa fa-file-text"></a>
+
+
+                                                                    {!! Form::open(['method' => 'DELETE',
+                                                                    'url' => ['/client/server_spec',$oResult->id]]) !!}
+                                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                                    {!! Form::close() !!}
+
+                                                                    <a href="/client/server_spec/{{ $oResult->id }}/edit"
+                                                                       class="fa fa-edit"></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                        @if (count($oServerSpecResults))
+                                            <div class="row">
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    <span class="text-xs">{{trans('general.showing')}} {{ $oServerSpecResults->firstItem() }} {{trans('general.to')}} {{ $oServerSpecResults->lastItem() }} {{trans('general.of')}} {{ $oServerSpecResults->total() }} {{trans('general.entries')}}</span>
+                                                </div>
+
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    {!! str_replace('/?', '?', $oServerSpecResults->appends(Input::except('page_server_spec'))->appends($request->all())->render()) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
             <div class="panel-footer text-right">
                 {{--<a href="{{ route('/client/product_list') }}">--}}
                     {{--<button type="submit" class="btn btn-primary"--}}

@@ -28,5 +28,44 @@ return [
     ],
     'productsTypeIndex'=>0,
     'domainsTypeIndex'=>1,
-    'webHostingPlansTypeIndex'=>2
+    'webHostingPlansTypeIndex'=>2,
+
+    'server_spec_raid'=>[
+        0=>'raid 1',
+        1=>'raid 2',
+        2=>'raid 1 - raid 2'
+    ],
+    'server_detail_systems'=>[
+        0=>'Windows',
+        1=>'Linux',
+        2=>'windows/linux',
+        3=>'Other'
+    ],
+    'server_detail_panel'=>[
+        0=>'None',
+        1=>'CPanel',
+        2=>'Plesk',
+        3=>'Other'
+    ],
+    'server_ip_type'=>[
+       0=> 'Default',
+        1=>'IPMI',
+        2=>'IDRAC',
+        3=>'Additional'
+    ],
+    'server_ip_display'=>[
+        0=>'Show',
+        1=>'Hide'
+    ],
+    'server_access_type'=>[
+
+        0=>'RDP',
+        1=>'SSH',
+        2=>'KPM'
+    ],
+    'server_locations'=>[
+
+        0=>'USD',
+        1=>'UK',
+    ]
 ];

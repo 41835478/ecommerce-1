@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::open(['url' => '/client/server_locations', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/server_locations', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -56,9 +56,9 @@
                 
         
         <div class="form-group {{ $errors->has('location_id') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('location_id', trans('general.location_id'), ['class' => 'col-sm-4 control-label']) !!}
+            {!! Form::label('location_id', trans('general.server_locations'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('location_id', null, ['class' => 'form-control']) !!}
+                {!! Form::select('location_id',config('array.server_locations'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('location_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

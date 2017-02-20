@@ -53,42 +53,49 @@
 
 
 
-            
-        <div class="row">        <div class="form-group {{ $errors->has('server_ip_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('server_ip_id', trans('server_ip_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('server_ip_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('server_ip_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('type', trans('type'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('type', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('user_name') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('user_name', trans('user_name'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('user_name', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('user_name', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('password', trans('password'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('password', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
 
 
-        <div class="form-group">
+                <div class="row">
+                    <div class="form-group {{ $errors->has('server_ip_id') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('server_ip_id', trans('general.server_ip'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('server_ip_id',$serverIpArray, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('server_ip_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('type',config('array.server_access_type'), null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group {{ $errors->has('user_name') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('user_name', trans('general.user_name'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('user_name', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('user_name', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('password', trans('general.password'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>

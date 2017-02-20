@@ -46,9 +46,10 @@ class Support extends Controller
      *
      * @return void
      */
-    public function create()
+
+    public function  create(Request $request)
     {
-        return view('client.support.create');
+        return view('client.support.create', compact('request'));
     }
 
     /**

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\ServerSpec as mServerSpec;
 use App\Repositories\client\server_spec\ServerSpecContract as rServerSpec;
+use App\Repositories\client\server_detail\ServerDetailContract as rServerDetail;
 class ServerSpec extends Controller
 {
     private $rServerSpec;
@@ -46,9 +47,10 @@ class ServerSpec extends Controller
      *
      * @return void
      */
-    public function create()
+
+    public function  create(Request $request)
     {
-        return view('client.server_spec.create');
+        return view('client.server_spec.create', compact('request'));
     }
 
     /**
@@ -72,14 +74,23 @@ class ServerSpec extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rServerDetail $rServerDetail)
     {
+
+        $request->merge(['server_spec_id'=>$id,'page_name'=>'page']);
+
+
+
+
+        $request->page_name='page_server_detail';
+        $oServerDetailResults=$rServerDetail->getByFilter($request);
+
 
 
         $server_spec=$this->rServerSpec->show($id);
 
 
-        return view('client.server_spec.show', compact('server_spec'));
+        return view('client.server_spec.show', compact('server_spec','request','oServerDetailResults'));
     }
 
     /**

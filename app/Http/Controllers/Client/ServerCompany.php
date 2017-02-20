@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\ServerCompany as mServerCompany;
 use App\Repositories\client\server_company\ServerCompanyContract as rServerCompany;
+use App\Repositories\client\server_spec\ServerSpecContract as rServerSpec;
+use App\Repositories\client\server_locations\ServerLocationsContract as rServerLocation;
 class ServerCompany extends Controller
 {
     private $rServerCompany;
@@ -46,9 +48,9 @@ class ServerCompany extends Controller
      *
      * @return void
      */
-    public function create()
+    public function  create(Request $request)
     {
-        return view('client.server_company.create');
+        return view('client.server_company.create', compact('request'));
     }
 
     /**
@@ -72,14 +74,21 @@ class ServerCompany extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rServerSpec $rServerSpec,rServerLocation $rServerLocation)
     {
 
+        $request->merge(['server_company_id'=>$id,'page_name'=>'page']);
 
         $server_company=$this->rServerCompany->show($id);
 
 
-        return view('client.server_company.show', compact('server_company'));
+        $request->page_name='page_server_spec';
+        $oServerSpecResults=$rServerSpec->getByFilter($request);
+
+        $request->page_name='page_server_location';
+        $oServerLocationResults=$rServerLocation->getByFilter($request);
+
+        return view('client.server_company.show', compact('server_company','request','oServerSpecResults','oServerLocationResults'));
     }
 
     /**

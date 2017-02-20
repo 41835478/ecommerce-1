@@ -84,9 +84,9 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->server_ip_id }}</td>
+                                                                                <td>{{ (isset($oResult->server_ip->ip))?$oResult->server_ip->ip:'' }}</td>
 
-                                                                                <td>{{ $oResult->type }}</td>
+                                                                                <td>{{(array_key_exists($oResult->type,config('array.server_access_type')))? config('array.server_access_type')[$oResult->type]: '' }}</td>
 
                                                                                 <td>{{ $oResult->user_name }}</td>
 

@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::open(['url' => '/client/logtime', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/client/logtime', 'class' => 'form-horizontal']) !!}
 
 
 
