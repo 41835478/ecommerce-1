@@ -63,7 +63,8 @@ class ServerLocations extends Controller
 
         $oResults=$this->rServerLocations->create($request->all());
 
-        return redirect('client/server_locations');
+        return redirect('/client/server_company/'.$request->server_company_id);
+
     }
 
     /**
@@ -96,6 +97,7 @@ class ServerLocations extends Controller
         $server_locations=$this->rServerLocations->show($id);
 
         return view('client.server_locations.edit', compact('server_locations'));
+
     }
 
     /**
@@ -108,11 +110,13 @@ class ServerLocations extends Controller
     public function update($id, editRequest $request)
     {
 
+
+        $server_locations=$this->rServerLocations->show($id);
         $result=$this->rServerLocations->update($id,$request);
 
 
 
-        return redirect('client/server_locations');
+        return redirect('/client/server_company/'.$server_locations->server_company_id);
     }
 
     /**
@@ -124,8 +128,11 @@ class ServerLocations extends Controller
      */
     public function destroy($id)
     {
-        $server_locations=$this->rServerLocations->destroy($id);
-        return redirect('client/server_locations');
+
+        $server_locations=$this->rServerLocations->show($id);
+       $this->rServerLocations->destroy($id);
+
+        return redirect('/client/server_company/'.$server_locations->server_company_id);
     }
 
 

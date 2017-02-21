@@ -99,17 +99,62 @@
 
                                         @include('client.partials.messages')
 
-                                        <div class=" col-xs-9">
+                                        <div class=" col-xs-6">
                                             <h3 class="box-title m-b-0">{{ trans('general.server_locationsTableHead') }}</h3>
                                             <p class="text-muted m-b-20">{{ trans('general.server_locationsTableDescription') }}</p>
 
 
 
                                         </div>
-                                        <div class="col-xs-3">
-                                            <a  href="{{route('client.server_locations.create')}}"class="btn btn-primary form-control">
-                                                + {{trans('general.server_locationsCreate')}}
-                                            </a>
+                                        <div class="col-xs-6">
+
+
+
+
+
+
+
+                                                        {!! Form::model($request,['url' => '/client/server_locations', 'class' => 'form-horizontal']) !!}
+
+                                                                <div class="row">
+                                                                    <div class="form-group {{ $errors->has('server_company_id') ? 'has-error' : ''}}  col-xs-6" style="display: none;">
+                                                                        {!! Form::label('server_company_id', trans('general.server_company_id'), ['class' => 'col-sm-4 control-label']) !!}
+                                                                        <div class="col-sm-8">
+                                                                            {!! Form::text('server_company_id',  $server_company['id'], ['class' => 'form-control']) !!}
+                                                                            {!! $errors->first('server_company_id', '<p class="help-block">:message</p>') !!}
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group {{ $errors->has('location_id') ? 'has-error' : ''}}  col-xs-9">
+                                                                         <div class="col-sm-12">
+                                                                            {!! Form::select('location_id',config('array.server_locations'), null, ['class' => 'form-control']) !!}
+                                                                            {!! $errors->first('location_id', '<p class="help-block">:message</p>') !!}
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+
+
+
+                                                                <div class="form-group  col-sm-3">
+
+                                                                        {!! Form::submit('Add', ['class' => 'btn btn-primary form-control']) !!}
+
+                                                                </div>
+
+                                                    </div>
+                                                        {!! Form::close() !!}
+
+
+
+
+
+
+
+
                                         </div>
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
@@ -123,7 +168,7 @@
                                                 </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.server_company_id'), 'server_company_id', $oServerLocationResults) !!}
+                                                    {!! th_sort(trans('general.server_company'), 'server_company_id', $oServerLocationResults) !!}
                                                 </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
@@ -209,8 +254,6 @@
                                     <div class="white-box">
 
 
-
-                                        @include('client.partials.messages')
 
                                         <div class=" col-xs-9">
                                             <h3 class="box-title m-b-0">{{ trans('general.server_specTableHead') }}</h3>
