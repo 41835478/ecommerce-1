@@ -21,7 +21,7 @@ use App\Repositories\client\company\CompanyContract as rCompany;
 
 use App\Repositories\client\contacts\ContactsContract as rContacts;
 use App\Repositories\client\contracts\ContractsContract as rContracts;
-use App\Repositories\client\licenses\licensesContract as rLicenses;
+use App\Repositories\client\licenses\LicensesContract as rLicenses;
 
 class Company extends Controller
 {

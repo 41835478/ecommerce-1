@@ -67,5 +67,20 @@ return [
 
         0=>'USD',
         1=>'UK',
-    ]
+    ],
+    'ticket_type'=>
+        [
+            0=>'bug',
+            1=>'error',
+            2=>'new feature',
+            3=>'uncompleted task'
+        ],
+    'ticket_status'=>
+        [
+            0=>'open',
+            1=>'close',
+            2=>'pending admin',
+            3=>'pending client'
+
+        ]
 ];
