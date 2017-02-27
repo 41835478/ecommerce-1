@@ -11,7 +11,7 @@ class EloquentTicketReplyRepository implements TicketReplyContract
     public function getByFilter($data)
     {
 
-        $oResults = new TicketReply();
+        $oResults = TicketReply::with('contact');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
@@ -60,7 +60,6 @@ class EloquentTicketReplyRepository implements TicketReplyContract
 
     public function show($id)
     {
-
 $ticket_reply = TicketReply::findOrFail($id);
 
         return $ticket_reply;

@@ -24,11 +24,7 @@ class createRequest extends Request
     {
         return [
     "ticket_id"=>'required',
-    "contact_id"=>'required',
     "description"=>'required',
-    "create_time"=>'required',
-
-
 
         ];
     }

@@ -72,7 +72,7 @@
         </div>        
         <div class="row">        <div class="form-group {{ $errors->has('hours') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('hours', trans('hours'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
+            <div class="col-sm-8 input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
                 {!! Form::text('hours', null, ['class' => 'form-control']) !!}
                 {!! $errors->first('hours', '<p class="help-block">:message</p>') !!}
             </div>
@@ -97,7 +97,7 @@
                 <div class="form-group {{ $errors->has('create_date') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('create_date', trans('create_date'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('create_date', null, ['class' => 'form-control']) !!}
+                {!! Form::text('create_date', null, ['class' => 'form-control mydatepicker']) !!}
                 {!! $errors->first('create_date', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

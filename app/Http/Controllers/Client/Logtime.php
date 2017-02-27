@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\client\logtime\createRequest;
 use App\Http\Requests\client\logtime\editRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -49,6 +50,8 @@ class Logtime extends Controller
 
     public function  create(Request $request)
     {
+
+        $request->merge(['create_date'=>Carbon::now()->addYear(1)->format('Y-m-d')]);
         return view('client.logtime.create', compact('request'));
     }
 
@@ -95,7 +98,6 @@ class Logtime extends Controller
 
 
         $logtime=$this->rLogtime->show($id);
-
         return view('client.logtime.edit', compact('logtime'));
     }
 

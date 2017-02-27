@@ -54,7 +54,7 @@
 
 
             
-        <div class="row">        <div class="form-group {{ $errors->has('ticket_id') ? 'has-error' : ''}} col-xs-6">
+        <div class="row" style="display: none;">        <div class="form-group {{ $errors->has('ticket_id') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('ticket_id', trans('ticket_id'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::text('ticket_id', null, ['class' => 'form-control']) !!}

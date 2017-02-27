@@ -23,12 +23,9 @@ return true;
 public function rules()
 {
 return [
-    "support_id"=>'required',
-    "ticket_id"=>'required',
     "hours"=>'required',
     "summary"=>'required',
     "expenses"=>'required',
-    "create_date"=>'required',
 
 
 

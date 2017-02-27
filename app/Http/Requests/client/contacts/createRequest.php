@@ -30,7 +30,6 @@ class createRequest extends Request
             "password"=>'required|min:7|max:100',
             "email"=>'required|email',
             "phone"=>'required|max:20',
-            "description"=>'required',
             "status"=>'required|numeric'
 
 

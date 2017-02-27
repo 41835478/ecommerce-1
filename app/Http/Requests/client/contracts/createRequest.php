@@ -28,7 +28,6 @@ class createRequest extends Request
             "products_id"=>'required|numeric',
             "type"=>'required|numeric',
             "purchasing_date"=>'required|date',
-            "description" =>'required',
 
 
         ];

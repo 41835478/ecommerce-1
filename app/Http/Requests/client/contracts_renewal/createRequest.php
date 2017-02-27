@@ -25,7 +25,6 @@ class createRequest extends Request
     {
         return [
             "contracts_id"=>'required|numeric',
-            "description"=>'required',
             "from_date"=>'required|date',
             "to_date"=>'required|date',
             "price"=>'required',

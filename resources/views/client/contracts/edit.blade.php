@@ -114,6 +114,24 @@
                     </div>
 
 
+                    <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_{{config('array.serverTypeIndex')}}" @if(config('array.serverTypeIndex')!=$contracts['type']) style="display: none" @endif>
+                        {!! Form::label('products_id', trans('general.server_detail'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.serverTypeIndex')==$contracts['type'])? '"products_id"':'""'),$serverList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6 productsType_" id="productsType_{{config('array.supportTypeIndex')}}" @if(config('array.supportTypeIndex')!=$contracts['type']) style="display: none" @endif>
+                        {!! Form::label('products_id', trans('general.support'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.supportTypeIndex')==$contracts['type'])? '"products_id"':'""'),$supportList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
 
 
                 </div>

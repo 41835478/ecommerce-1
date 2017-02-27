@@ -23,13 +23,9 @@ class createRequest extends Request
     public function rules()
     {
         return [
-    "contact_id"=>'required',
-    "contract_id"=>'required',
     "name"=>'required',
     "type"=>'required',
     "status"=>'required',
-    "description"=>'required',
-    "create_time"=>'required',
     "open_time"=>'required',
     "close_time"=>'required',
 

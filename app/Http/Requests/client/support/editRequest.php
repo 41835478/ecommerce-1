@@ -25,7 +25,6 @@ public function rules()
 return [
     "name"=>'required',
     "type"=>'required',
-    "description"=>'required',
 
 
 

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\client\ticket\createRequest;
 use App\Http\Requests\client\ticket\editRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Ticket as mTicket;
 use App\Repositories\client\ticket\TicketContract as rTicket;
+use App\Repositories\client\ticket_reply\TicketReplyContract as rTicketReply;
 class Ticket extends Controller
 {
     private $rTicket;
@@ -49,6 +51,10 @@ class Ticket extends Controller
 
     public function  create(Request $request)
     {
+
+        $currentTime=Carbon::now()->format('Y-m-d');
+        $request->merge(['open_time'=>$currentTime,'close_time'=>$currentTime]);
+
         return view('client.ticket.create', compact('request'));
     }
 
@@ -60,6 +66,7 @@ class Ticket extends Controller
     public function store(createRequest $request)
     {
 
+        $request->merge(['contact_id'=>contacts_id(),'create_time'=>Carbon::now()]);
 
         $oResults=$this->rTicket->create($request->all());
 
@@ -73,14 +80,21 @@ class Ticket extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,Request $request,rTicketReply $rTicketReply)
     {
 
 
         $ticket=$this->rTicket->show($id);
 
+        $request->merge(['ticket_id'=>$id,'page_name'=>'page']);
 
-        return view('client.ticket.show', compact('ticket'));
+        $request->page_name='page_ticket_reply';
+
+        $request->merge(['getAllRecords'=>1]);
+        $oTicketReplyResults=$rTicketReply->getByFilter($request);
+
+
+        return view('client.ticket.show', compact('ticket','request','oTicketReplyResults'));
     }
 
     /**

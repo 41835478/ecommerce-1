@@ -11,7 +11,7 @@ class EloquentTicketRepository implements TicketContract
     public function getByFilter($data)
     {
 
-        $oResults = new Ticket();
+        $oResults = Ticket::with('contact');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');

@@ -107,6 +107,47 @@
         todayHighlight: true
     });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $('.clockpicker').clockpicker({
+        donetext: 'Done',
+
+    })
+            .find('input').change(function(){
+                console.log(this.value);
+            });
+
+
+
+
     $('#all-groups-chx').change(function () {
         if ($('#all-groups-chx').prop('checked')) {
             $('#all-groups-slc').attr('disabled', 'disabled');

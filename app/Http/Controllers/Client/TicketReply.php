@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\client\ticket_reply\createRequest;
 use App\Http\Requests\client\ticket_reply\editRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -59,11 +60,11 @@ class TicketReply extends Controller
      */
     public function store(createRequest $request)
     {
-
+        $request->merge(['contact_id'=>contacts_id(),'create_time'=>Carbon::now()]);
 
         $oResults=$this->rTicketReply->create($request->all());
 
-        return redirect('client/ticket_reply');
+        return redirect('/client/ticket/'.$request->ticket_id);
     }
 
     /**
@@ -111,9 +112,11 @@ class TicketReply extends Controller
 
         $result=$this->rTicketReply->update($id,$request);
 
+        $ticket_reply=$this->rTicketReply->show($id);
 
 
-        return redirect('client/ticket_reply');
+        return redirect('/client/ticket/'.$ticket_reply->ticket_id);
+//        return redirect('client/ticket_reply');
     }
 
     /**
@@ -125,8 +128,12 @@ class TicketReply extends Controller
      */
     public function destroy($id)
     {
-        $ticket_reply=$this->rTicketReply->destroy($id);
-        return redirect('client/ticket_reply');
+        $ticket_reply=$this->rTicketReply->show($id);
+        $result=$this->rTicketReply->destroy($id);
+
+
+
+        return redirect('/client/ticket/'.$ticket_reply->ticket_id);
     }
 
 

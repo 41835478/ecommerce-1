@@ -28,7 +28,6 @@ class createRequest extends Request
             "products_id"=>'required|numeric',
             "name"=>'required',
             "links"=>'required',
-            "description"=>'required',
             "type" =>'required',
 
 

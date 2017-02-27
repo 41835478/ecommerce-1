@@ -25,10 +25,14 @@ return [
         0=>'Products',
         1=>'Domains',
         2=>'Web Hosting Plans',
+        3=>'Server',
+        4=>'Support Contract',
     ],
     'productsTypeIndex'=>0,
     'domainsTypeIndex'=>1,
     'webHostingPlansTypeIndex'=>2,
+    'serverTypeIndex'=>3,
+    'supportTypeIndex'=>4,
 
     'server_spec_raid'=>[
         0=>'raid 1',

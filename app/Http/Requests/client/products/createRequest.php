@@ -26,7 +26,6 @@ class createRequest extends Request
         return [
             "products_list_id" =>'required|numeric',
             "name" =>'required',
-            "description"  =>'required',
 
 
         ];

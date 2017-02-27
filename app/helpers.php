@@ -141,3 +141,20 @@ if (!function_exists('th_sort')) {
 		return '<a href="'.$sUrl.'">'.$sText.$aArrow.'</a>';
 	}
 }
+
+
+if (!function_exists('contacts_id')) {
+	function contacts_id()
+	{
+
+		return \Session::get('contacts_id');
+	}
+}
+
+if (!function_exists('company_id')) {
+	function company_id()
+	{
+
+		return \Session::get('company_id');
+	}
+}

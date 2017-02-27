@@ -54,13 +54,8 @@
 
 
             
-        <div class="row">        <div class="form-group {{ $errors->has('contact_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('contact_id', trans('contact_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('contact_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('contact_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+        <div class="row">
+
                 
                 <div class="form-group {{ $errors->has('contract_id') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('contract_id', trans('contract_id'), ['class' => 'col-sm-4 control-label']) !!}
@@ -81,7 +76,7 @@
                 <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('type', trans('type'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('type', null, ['class' => 'form-control']) !!}
+                {!! Form::select('type',contig('array.ticket_type'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -89,7 +84,7 @@
         <div class="row">        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('status', trans('status'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                {!! Form::select('status',contig('array.ticket_status'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -102,26 +97,20 @@
             </div>
         </div>
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('create_time') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('create_time', trans('create_time'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('create_time', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('create_time', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
+        <div class="row">
                 <div class="form-group {{ $errors->has('open_time') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('open_time', trans('open_time'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('open_time', null, ['class' => 'form-control']) !!}
+                {!! Form::text('open_time', null, ['class' => 'form-control mydatepicker']) !!}
                 {!! $errors->first('open_time', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('close_time') ? 'has-error' : ''}} col-xs-6">
+
+
+            <div class="form-group {{ $errors->has('close_time') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('close_time', trans('close_time'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('close_time', null, ['class' => 'form-control']) !!}
+                {!! Form::text('close_time', null, ['class' => 'form-control mydatepicker']) !!}
                 {!! $errors->first('close_time', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

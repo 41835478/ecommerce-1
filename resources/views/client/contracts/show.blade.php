@@ -75,12 +75,23 @@
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">
-                                @if( $contracts->type == config('array.productsTypeIndex'))
-                                   {{trans('general.products')}} ( {{(isset($contracts->products->name))? $contracts->products->name:'' }} )
-                                @elseif( $contracts->type == config('array.domainsTypeIndex'))
-                                    {{trans('general.domains')}} ( {{(isset($contracts->domains->name))? $contracts->domains->name:'' }} )
 
-                                @endif
+                                        @if( $contracts->type == config('array.productsTypeIndex'))
+                                            {{trans('general.products')}} ( {{(isset($contracts->products->name))? $contracts->products->name:'' }} )
+                                        @elseif( $contracts->type == config('array.domainsTypeIndex'))
+                                            {{trans('general.domains')}} ( {{(isset($contracts->domains->name))? $contracts->domains->name:'' }} )
+
+                                        @elseif( $contracts->type == config('array.webHostingPlansTypeIndex'))
+                                            {{trans('general.web_hosting_plans')}} ( {{(isset($contracts->webHostingPlans->name))? $contracts->webHostingPlans->name:'' }} )
+
+                                        @elseif( $contracts->type == config('array.serverTypeIndex'))
+                                            {{trans('general.server_detail')}} ( {{(isset($contracts->server_detail->name))? $contracts->server_detail->name:'' }} )
+
+                                        @elseif( $contracts->type == config('array.supportTypeIndex'))
+                                            {{trans('general.support')}} ( {{(isset($contracts->support->name))? $contracts->support->name:'' }} )
+
+                                        @endif
+
                             </label>
                         </div>
                     </div>

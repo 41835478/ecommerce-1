@@ -47,41 +47,29 @@ class AuthController extends Controller
         }
 
         if ($oUser) {
-            $contact = Contacts::find($oUser->id);
-            \Session::set('company_id',$contact->company_id);
-            return Redirect::intended('/client');
+            $contact = Contacts::where('users_id','=',$oUser->id)->first();
+            if($contact){
+                \Session::set('company_id',$contact->company_id);
+                \Session::set('contacts_id',$contact->id);
+                return Redirect::intended('/client');
+            }else{
+                return Redirect::route('client.auth.login')->withErrors([trans('user.InvalidLogin')]);
+
+            }
+
         } else {
             return Redirect::route('client.auth.login')->withErrors([trans('user.InvalidLogin')]);
         }
 
 
-//        $contact = DB::table('users')->where(['email'=>$oRequest->email, 'password' => $oRequest->password])->first();
-//
-//
-//        if($contact){
-//            $user = Sentinel::findById($contact->id);
-//
-//            $activation = Activation::exists($user);
-//
-//            if(!$activation){
-//                $activationCreate = Activation::create($user);
-//                Activation::complete($user, $activationCreate->code);
-//            }
-//            Sentinel::login($user);
-//            return Redirect::intended('/client');
-//        }else{
-//
-//            return Redirect::route('client.public.login')->withErrors([trans('user.InvalidLogin')]);
-//        }
-
 
     }
 
 
-public function getLogout(){
-    Sentinel::logout(null, true);
-    return redirect()->route('client.auth.login');
-}
+    public function getLogout(){
+        Sentinel::logout(null, true);
+        return redirect()->route('client.auth.login');
+    }
 
 
 

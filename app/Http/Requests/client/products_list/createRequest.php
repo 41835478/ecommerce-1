@@ -26,7 +26,6 @@ class createRequest extends Request
         return [
             "name" =>'required',
             "type" =>'required',
-            "description" =>'required',
 
         ];
     }

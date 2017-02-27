@@ -31,4 +31,10 @@ class Contracts extends Model
     public function webHostingPlans(){
         return $this->belongsTo('App\Models\WebHostingPlans','products_id');
     }
+    public function server_detail(){
+        return $this->belongsTo('App\Models\ServerDetail','products_id');
+    }
+    public function support(){
+        return $this->belongsTo('App\Models\Support','products_id');
+    }
 }

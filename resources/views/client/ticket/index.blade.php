@@ -56,12 +56,12 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.contact_id'), 'contact_id', $oResults) !!}
+                                        {!! th_sort(trans('general.contacts'), 'contact_id', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.contract_id'), 'contract_id', $oResults) !!}
-                                    </th>
+                                                                    {{--<th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">--}}
+                                        {{--{!! th_sort(trans('general.contract_id'), 'contract_id', $oResults) !!}--}}
+                                    {{--</th>--}}
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
@@ -104,15 +104,19 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->contact_id }}</td>
+                                                                                <td>{{ (isset($oResult->contact->name))? $oResult->contact->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->contract_id }}</td>
+                                                                                {{--<td>{{ $oResult->contract_id }}</td>--}}
 
                                                                                 <td>{{ $oResult->name }}</td>
 
-                                                                                <td>{{ $oResult->type }}</td>
+                                                                                <td>
+                                                                                    {{(array_key_exists($oResult->type ,config('array.ticket_type')))? config('array.ticket_type')[$oResult->type ]:'' }}
+                                                                                </td>
 
-                                                                                <td>{{ $oResult->status }}</td>
+                                                                                <td>
+                                                                                    {{(array_key_exists($oResult->status ,config('array.ticket_status')))? config('array.ticket_status')[$oResult->status ]:'' }}
+                                                                                </td>
 
                                                                                 <td>{{ $oResult->description }}</td>
 

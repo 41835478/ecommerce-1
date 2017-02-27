@@ -11,4 +11,11 @@ class TicketReply extends Model
 
     protected $guarded = [];
 
+    public  function contact(){
+        return $this->belongsTo('\App\Models\Contacts');
+    }
+    public  function ticket(){
+        return $this->belongsTo('\App\Models\Ticket');
+    }
+
 }

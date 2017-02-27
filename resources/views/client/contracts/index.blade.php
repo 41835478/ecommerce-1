@@ -86,16 +86,23 @@
                                                                                 <td>{{ $oResult->id }}</td>
 
                                                                                 <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
-
+                                        <td>
                                         @if( $oResult->type == config('array.productsTypeIndex'))
-                                            <td>{{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} ) </td>
+                                            {{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} )
                                         @elseif( $oResult->type == config('array.domainsTypeIndex'))
-                                            <td>{{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} ) </td>
+                                            {{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} )
 
                                         @elseif( $oResult->type == config('array.webHostingPlansTypeIndex'))
-                                            <td>{{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} ) </td>
+                                            {{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} )
+
+                                        @elseif( $oResult->type == config('array.serverTypeIndex'))
+                                            {{trans('general.server_detail')}} ( {{(isset($oResult->server_detail->name))? $oResult->server_detail->name:'' }} )
+
+                                        @elseif( $oResult->type == config('array.supportTypeIndex'))
+                                           {{trans('general.support')}} ( {{(isset($oResult->support->name))? $oResult->support->name:'' }} )
 
                                         @endif
+                                            </td>
                                         <td>{{ $oResult->purchasing_date }}</td>
                                         <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
                                         <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>

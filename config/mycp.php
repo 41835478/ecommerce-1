@@ -546,24 +546,24 @@ return [
            ]
        ],
 
-       [
-           'route' => 'client.server_locations.index',
-           'title' => 'server_locations',
-           'icon' => 'fa fa-map-marker',
-           'subMenus' => [
-
-               [
-                   'route' => 'client.server_locations.index',
-                   'title' => 'server_locationsList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'client.server_locations.create',
-                   'title' => 'server_locationsCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
+//       [
+//           'route' => 'client.server_locations.index',
+//           'title' => 'server_locations',
+//           'icon' => 'fa fa-map-marker',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.server_locations.index',
+//                   'title' => 'server_locationsList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.server_locations.create',
+//                   'title' => 'server_locationsCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
 
        [
            'route' => 'client.support.index',
@@ -603,24 +603,24 @@ return [
            ]
        ],
 
-       [
-           'route' => 'client.ticket_reply.index',
-           'title' => 'ticket_reply',
-           'icon' => 'fa fa-gears',
-           'subMenus' => [
-
-               [
-                   'route' => 'client.ticket_reply.index',
-                   'title' => 'ticket_replyList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'client.ticket_reply.create',
-                   'title' => 'ticket_replyCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
+//       [
+//           'route' => 'client.ticket_reply.index',
+//           'title' => 'ticket_reply',
+//           'icon' => 'fa fa-gears',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.ticket_reply.index',
+//                   'title' => 'ticket_replyList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.ticket_reply.create',
+//                   'title' => 'ticket_replyCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
 
        [
            'route' => 'client.logtime.index',

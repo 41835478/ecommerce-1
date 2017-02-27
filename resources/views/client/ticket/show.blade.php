@@ -48,7 +48,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$ticket['contact_id'] }}</label>
+                            <label class="control-label">{{(isset($ticket->contact->name))? $ticket->contact->name:''}}</label>
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$ticket['type'] }}</label>
+                            <label class="control-label">{{(array_key_exists($ticket['type'],config('array.ticket_type')))? config('array.ticket_type')[$ticket['type']]:'' }}</label>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$ticket['status'] }}</label>
+                            <label class="control-label">{{(array_key_exists($ticket['status'],config('array.ticket_status')))? config('array.ticket_status')[$ticket['status']]:'' }}</label>
                         </div>
                     </div>
 
@@ -185,6 +185,140 @@
                 </div>
                 <!-- row -->
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="white-box">
+
+
+
+
+                                        <div class="white-box">
+                                            <h3 class="box-title">Recent Comments</h3>
+                                            <div class="comment-center">
+
+
+                                                @if (count($oTicketReplyResults))
+                                                    {{-- */$i=0;/* --}}
+                                                    {{-- */$class='';/* --}}
+                                                    @foreach($oTicketReplyResults as $oResult)
+                                                        {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
+
+                                                <div class="comment-body" style="width: 100%;">
+                                                    <div class="user-img"> </div>
+                                                    <div class="mail-contnet">
+                                                        <h5>{{ isset($oResult->contact->name)? $oResult->contact->name:'' }}</h5>
+                                                        <span class="mail-desc">{{ $oResult->description }}</span>
+                                                        {{--<span class="label label-rounded label-info">PENDING</span>--}}
+                                                        {{--<a href="javacript:void(0)" class=""><i class="ti-close text-danger"></i></a>--}}
+
+<div style="float:left;" class="action">
+                                                        {!! Form::open(['method' => 'DELETE',
+                                                        'url' => ['/client/ticket_reply',$oResult->id]]) !!}
+                                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger ']) !!}
+                                                        {!! Form::close() !!}
+</div>
+                                                        <a href="/client/ticket_reply/{{ $oResult->id }}/edit" class="action"><i class="fa fa-edit text-success" style="font-size: 34px"></i></a>
+
+                                                        <span class="time pull-right">{{ $oResult->create_time }}</span></div>
+                                                </div>
+
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                        @include('client.partials.messages')
+
+
+                                        {!! Form::model($request,['url' => '/client/ticket_reply', 'class' => 'form-horizontal']) !!}
+
+
+
+
+
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <span class="panel-title">{{ trans('general.addticket_reply') }}</span>
+                                            </div>
+
+                                            <div class="panel-body">
+
+
+
+
+
+
+                                                    <div class="form-group {{ $errors->has('ticket_id') ? 'has-error' : ''}}  col-xs-6" style="display: none;">
+                                                        {!! Form::label('ticket_id', trans('general.ticket_id'), ['class' => 'col-sm-4 control-label']) !!}
+                                                        <div class="col-sm-8">
+                                                            {!! Form::text('ticket_id', null, ['class' => 'form-control']) !!}
+                                                            {!! $errors->first('ticket_id', '<p class="help-block">:message</p>') !!}
+                                                        </div>
+                                                    </div>
+
+
+
+                                                <div class="row">
+                                                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-12">
+                                                        {!! Form::label('description', trans('general.description'), ['class' => 'col-sm-1 control-label']) !!}
+                                                        <div class="col-sm-11">
+                                                            {!! Form::text('description', null, ['class' => 'form-control']) !!}
+                                                            {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+
+
+
+
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-9 col-sm-3">
+                                                        {!! Form::submit(trans('general.addticket_reply'), ['class' => 'btn btn-primary form-control']) !!}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        {!! Form::close() !!}
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
 
 
 

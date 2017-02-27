@@ -23,6 +23,8 @@ use App\Repositories\client\domains\DomainsContract as rDomains;
 use App\Repositories\client\web_hosting_plans\WebHostingPlansContract as rWebHostingPlans;
 use App\Repositories\client\contracts_renewal\ContractsRenewalContract as rContractsRenewal;
 use App\Repositories\client\contracts_documents\ContractsDocumentsContract as rContractsDocuments;
+use App\Repositories\client\server_detail\ServerDetailContract as rServer;
+use App\Repositories\client\support\SupportContract as rSupport;
 class Contracts extends Controller
 {
     private $rContracts;
@@ -66,14 +68,18 @@ class Contracts extends Controller
      *
      * @return void
      */
-    public function create(Request $request,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans)
+    public function create(Request $request,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans,rServer $rServer, rSupport $rSupport)
     {
         $companiesList=$this->rCompany->getAllList();
         $productsList=$this->rProducts->getAllList();
         $domainsList=$rDomains->getAllList();
         $webHostingPlansList=$rWebHostingPlans->getAllList();
+        $serverList=$rServer->getAllList();
+
+        $supportList=$rSupport->getAllList();
         $request->merge(['purchasing_date'=>Carbon::now()->format('Y-m-d')]);
-        return view('client.contracts.create',compact('request'),compact('productsList','domainsList','companiesList','webHostingPlansList'));
+
+        return view('client.contracts.create',compact('request','productsList','domainsList','companiesList','webHostingPlansList','serverList','supportList'));
 
     }
 
@@ -126,7 +132,7 @@ class Contracts extends Controller
      *
      * @return void
      */
-    public function edit($id,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans)
+    public function edit($id,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans,rServer $rServer, rSupport $rSupport)
     {
 
 
@@ -136,7 +142,10 @@ class Contracts extends Controller
         $domainsList=$rDomains->getAllList();
 
         $webHostingPlansList=$rWebHostingPlans->getAllList();
-        return view('client.contracts.edit', compact('contracts','productsList','companiesList','domainsList','webHostingPlansList'));
+        $serverList=$rServer->getAllList();
+
+        $supportList=$rSupport->getAllList();
+        return view('client.contracts.edit', compact('contracts','productsList','companiesList','domainsList','webHostingPlansList','serverList','supportList'));
     }
 
     /**
