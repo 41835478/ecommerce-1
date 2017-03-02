@@ -203,14 +203,14 @@
     });
 
 
-    function changeSelectedView(selectId,viewStartId){
+    function changeSelectedView(selectId,viewStartId,selectName){
         var selectedValue=$('#'+selectId).val();
         $('.'+viewStartId).hide();
         $('#'+viewStartId+selectedValue).show();
 
 
         $('.'+viewStartId+' select').attr('name','');
-        $('#'+viewStartId+selectedValue+' select').attr('name','products_id');
+        $('#'+viewStartId+selectedValue+' select').attr('name',selectName);
 
     }
 

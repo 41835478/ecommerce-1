@@ -75,4 +75,12 @@ Route::group(['middleware' => ['authenticate.client']], function () {
 
 
     Route::resource('logtime', 'Logtime');
+
+
+
+    Route::resource('documents', 'Documents');
+
+
+    Route::resource('files', 'Files');
+
 });

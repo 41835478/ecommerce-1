@@ -763,5 +763,79 @@ return [
 
 
 
+    'documents'=>'Documents',
+    'adddocuments'=>'Add Documents',
+    'documentsList'=>'Documents List',
+    'documentsCreate'=>'Create Documents ',
+    'editdocuments'=>'Edit Documents',
+    'documentsInfo'=>'Documents Info',
+
+    'documentsTableHead'=>'Documents Table Header',
+    'documentsTableDescription'=>'Documents Description',
+
+    'documentsMenuBottomHeader'=>'DocumentsMenu Bottom Header',
+    'documentsMenuBottomDescription'=>'Documents Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'body'=>'Body',
+
+
+    'version'=>'Version',
+
+
+    'parent'=>'Parent',
+
+
+    'type'=>'Type',
+
+
+    'module_type'=>'Module Type',
+
+
+    'module_id'=>'Module Id',
+
+
+    'files'=>'Files',
+    'addfiles'=>'Add Files',
+    'filesList'=>'Files List',
+    'filesCreate'=>'Create Files ',
+    'editfiles'=>'Edit Files',
+    'filesInfo'=>'Files Info',
+
+    'filesTableHead'=>'Files Table Header',
+    'filesTableDescription'=>'Files Description',
+
+    'filesMenuBottomHeader'=>'FilesMenu Bottom Header',
+    'filesMenuBottomDescription'=>'Files Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'link'=>'Link',
+
+
+    'version'=>'Version',
+
+
+    'parent'=>'Parent',
+
+
+    'type'=>'Type',
+
+
+    'module_type'=>'Module Type',
+
+
+    'module_id'=>'Module Id',
+
+
 
 ];

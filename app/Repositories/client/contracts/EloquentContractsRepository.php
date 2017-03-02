@@ -12,7 +12,7 @@ class EloquentContractsRepository implements ContractsContract
     public function getByFilter($data)
     {
 
-        $oResults =Contracts::with(['company','products','domains','renewal'=>function($query){$query->orderBy('to_date','desc');}]);
+        $oResults =Contracts::with(['company','products','domains','webHostingPlans','server_detail','support','renewal'=>function($query){$query->orderBy('to_date','desc');}]);
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);

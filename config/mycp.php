@@ -641,6 +641,47 @@ return [
            ]
        ],
 
+
+
+
+       [
+           'route' => 'client.documents.index',
+           'title' => 'documents',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.documents.index',
+                   'title' => 'documentsList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.documents.create',
+                   'title' => 'documentsCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+       [
+           'route' => 'client.files.index',
+           'title' => 'files',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.files.index',
+                   'title' => 'filesList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.files.create',
+                   'title' => 'filesCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
 //        [
 //            'route' => 'client.contracts_documents.index',
 //            'title' => 'contracts_documents',

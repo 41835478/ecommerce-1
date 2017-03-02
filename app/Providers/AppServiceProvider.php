@@ -168,6 +168,14 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\client\logtime\EloquentLogtimeRepository'
         );
 
+        $this->app->bind(
+            'App\Repositories\client\documents\DocumentsContract',
+            'App\Repositories\client\documents\EloquentDocumentsRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\files\FilesContract',
+            'App\Repositories\client\files\EloquentFilesRepository'
+        );
 
     }
 }

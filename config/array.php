@@ -21,7 +21,7 @@ return [
     0=>'GoDaddy',
     1=>'blueHost'
 ],
-    'contracts_type'=>[
+    'modules_type'=>[
         0=>'Products',
         1=>'Domains',
         2=>'Web Hosting Plans',
@@ -86,5 +86,17 @@ return [
             2=>'pending admin',
             3=>'pending client'
 
-        ]
+        ],
+    'documents_type'=>[
+        0=>'article',
+        1=>'manual',
+        2=>'news',
+        3=>'other'],
+    'files_type'=>[
+        0=>'pdf',
+        1=>'contract',
+        2=>'identity',
+        3=>'receipt',
+        4=>'other'
+    ]
 ];
