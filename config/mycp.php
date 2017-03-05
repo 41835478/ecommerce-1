@@ -487,108 +487,141 @@ return [
                    'title' => 'server_companyList',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.server_company.create',
-                   'title' => 'server_companyCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
-
-       [
-           'route' => 'client.server_spec.index',
-           'title' => 'server_spec',
-           'icon' => 'fa fa-server',
-           'subMenus' => [
+ 
 
                [
                    'route' => 'client.server_spec.index',
                    'title' => 'server_specList',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.server_spec.create',
-                   'title' => 'server_specCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
 
-       [
-           'route' => 'client.server_company_server_spec.index',
-           'title' => 'server_company_server_spec',
-           'icon' => 'fa fa-server',
-           'subMenus' => [
 
                [
                    'route' => 'client.server_company_server_spec.index',
                    'title' => 'server_company_server_specList',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.server_company_server_spec.create',
-                   'title' => 'server_company_server_specCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
 
-       [
-           'route' => 'client.server_access.index',
-           'title' => 'server_access',
-           'icon' => 'fa fa-user-secret',
-           'subMenus' => [
 
                [
                    'route' => 'client.server_access.index',
                    'title' => 'server_accessList',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.server_access.create',
-                   'title' => 'server_accessCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
 
-       [
-           'route' => 'client.server_detail.index',
-           'title' => 'server_detail',
-           'icon' => 'fa fa-tasks',
-           'subMenus' => [
 
                [
                    'route' => 'client.server_detail.index',
                    'title' => 'server_detailList',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.server_detail.create',
-                   'title' => 'server_detailCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
 
-       [
-           'route' => 'client.server_ip.index',
-           'title' => 'server_ip',
-           'icon' => 'fa fa-flag-o',
-           'subMenus' => [
 
                [
                    'route' => 'client.server_ip.index',
                    'title' => 'server_ipList',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.server_ip.create',
-                   'title' => 'server_ipCreate',
-                   'icon' => 'fa fa-gears',
-               ]
+
+
+
            ]
        ],
+
+//       [
+//           'route' => 'client.server_spec.index',
+//           'title' => 'server_spec',
+//           'icon' => 'fa fa-server',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.server_spec.index',
+//                   'title' => 'server_specList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.server_spec.create',
+//                   'title' => 'server_specCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+//       [
+//           'route' => 'client.server_company_server_spec.index',
+//           'title' => 'server_company_server_spec',
+//           'icon' => 'fa fa-server',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.server_company_server_spec.index',
+//                   'title' => 'server_company_server_specList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.server_company_server_spec.create',
+//                   'title' => 'server_company_server_specCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+//       [
+//           'route' => 'client.server_access.index',
+//           'title' => 'server_access',
+//           'icon' => 'fa fa-user-secret',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.server_access.index',
+//                   'title' => 'server_accessList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.server_access.create',
+//                   'title' => 'server_accessCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+//       [
+//           'route' => 'client.server_detail.index',
+//           'title' => 'server_detail',
+//           'icon' => 'fa fa-tasks',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.server_detail.index',
+//                   'title' => 'server_detailList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.server_detail.create',
+//                   'title' => 'server_detailCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+//       [
+//           'route' => 'client.server_ip.index',
+//           'title' => 'server_ip',
+//           'icon' => 'fa fa-flag-o',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.server_ip.index',
+//                   'title' => 'server_ipList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.server_ip.create',
+//                   'title' => 'server_ipCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
 
 //       [
 //           'route' => 'client.server_locations.index',
