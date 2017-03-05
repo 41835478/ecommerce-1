@@ -66,15 +66,15 @@ class EloquentFilesRepository implements FilesContract
         $filesIds=(is_array($filesIds))?$filesIds:[$filesIds];
         $oFiles=  Files::select('id')->whereIn("parent",$filesIds)->get();
 
-        $CurrentFilesIds=[];
+        $currentFilesIds=[];
         if(count($oFiles)){
             foreach($oFiles as $file){
-                $CurrentFilesIds[]=$file->id;
-                $allDocumentsIds[]=$file->id;
+                $currentFilesIds[]=$file->id;
+                $allFilesIds[]=$file->id;
 
             }
-            if($filesIds !=$CurrentFilesIds){
-                $this->getChildrenIds($allFilesIds,$CurrentFilesIds);
+            if($filesIds !=$currentFilesIds){
+                $this->getChildrenIds($allFilesIds,$currentFilesIds);
             }
 
 

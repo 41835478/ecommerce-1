@@ -253,64 +253,105 @@ return [
             'icon' => 'fa fa-building-o',
             'subMenus' => [
 
-        [
-        'route' => 'client.company.index',
-        'title' => 'companyList',
-        'icon' => 'fa fa-gears',
-        ],
-        [
-        'route' => 'client.company.create',
-        'title' => 'companyCreate',
-        'icon' => 'fa fa-gears',
-        ]
+                [
+                    'route' => 'client.company.index',
+                    'title' => 'companyList',
+                    'icon' => 'fa fa-gears',
+                ],
+                [
+                    'route' => 'client.company.create',
+                    'title' => 'companyCreate',
+                    'icon' => 'fa fa-gears',
+                ],
+
+                [
+                    'route' => 'client.contacts.index',
+                    'title' => 'contactsList',
+                    'icon' => 'fa fa-gears',
+                ],
+                [
+                    'route' => 'client.contacts.create',
+                    'title' => 'contactsCreate',
+                    'icon' => 'fa fa-gears',
+                ],
+                [
+                    'route' => 'client.licenses.index',
+                    'title' => 'licensesList',
+                    'icon' => 'fa fa-gears',
+                ],
+                [
+                    'route' => 'client.licenses.create',
+                    'title' => 'licensesCreate',
+                    'icon' => 'fa fa-gears',
+                ]
             ]
         ],
 
 
+//       [
+//           'route' => 'client.contacts.index',
+//           'title' => 'contacts',
+//           'icon' => 'fa fa-user',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.contacts.index',
+//                   'title' => 'contactsList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.contacts.create',
+//                   'title' => 'contactsCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+//
+//       [
+//           'route' => 'client.licenses.index',
+//           'title' => 'licenses',
+//           'icon' => 'fa fa-bookmark',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.licenses.index',
+//                   'title' => 'licensesList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.licenses.create',
+//                   'title' => 'licensesCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+
+//       [
+//           'route' => 'client.products_list.index',
+//           'title' => 'products_list',
+//           'icon' => 'fa fa-cubes',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.products_list.index',
+//                   'title' => 'products_listList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.products_list.create',
+//                   'title' => 'products_listCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+
        [
-           'route' => 'client.contacts.index',
-           'title' => 'contacts',
-           'icon' => 'fa fa-user',
-           'subMenus' => [
-
-               [
-                   'route' => 'client.contacts.index',
-                   'title' => 'contactsList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'client.contacts.create',
-                   'title' => 'contactsCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
-
-
-       [
-           'route' => 'client.licenses.index',
-           'title' => 'licenses',
-           'icon' => 'fa fa-bookmark',
-           'subMenus' => [
-
-               [
-                   'route' => 'client.licenses.index',
-                   'title' => 'licensesList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'client.licenses.create',
-                   'title' => 'licensesCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
-
-
-       [
-           'route' => 'client.products_list.index',
-           'title' => 'products_list',
-           'icon' => 'fa fa-cubes',
+           'route' => 'client.products.index',
+           'title' => 'products',
+           'icon' => 'fa fa-cube',
            'subMenus' => [
 
                [
@@ -322,17 +363,7 @@ return [
                    'route' => 'client.products_list.create',
                    'title' => 'products_listCreate',
                    'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
-
-
-       [
-           'route' => 'client.products.index',
-           'title' => 'products',
-           'icon' => 'fa fa-cube',
-           'subMenus' => [
-
+               ],
                [
                    'route' => 'client.products.index',
                    'title' => 'productsList',
@@ -342,7 +373,20 @@ return [
                    'route' => 'client.products.create',
                    'title' => 'productsCreate',
                    'icon' => 'fa fa-gears',
+               ],
+
+
+               [
+                   'route' => 'client.versions.index',
+                   'title' => 'versionsList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.versions.create',
+                   'title' => 'versionsCreate',
+                   'icon' => 'fa fa-gears',
                ]
+
            ]
        ],
 
@@ -385,25 +429,25 @@ return [
 
 
 
-
-       [
-           'route' => 'client.versions.index',
-           'title' => 'versions',
-           'icon' => 'fa fa-tags',
-           'subMenus' => [
-
-               [
-                   'route' => 'client.versions.index',
-                   'title' => 'versionsList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'client.versions.create',
-                   'title' => 'versionsCreate',
-                   'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
+//
+//       [
+//           'route' => 'client.versions.index',
+//           'title' => 'versions',
+//           'icon' => 'fa fa-tags',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.versions.index',
+//                   'title' => 'versionsList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.versions.create',
+//                   'title' => 'versionsCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
 
         [
             'route' => 'client.contracts.index',
