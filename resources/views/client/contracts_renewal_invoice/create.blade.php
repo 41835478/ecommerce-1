@@ -54,6 +54,8 @@
                 {!! $errors->first('contracts_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+
+            {!! Form::hidden('company_id', null) !!}
 {!!  Form::close()!!}
             {!! Form::model($request,['url' => '/client/contracts_renewal_invoice', 'class' => 'form-horizontal']) !!}
         <div class="form-group {{ $errors->has('contracts_renewal_id') ? 'has-error' : ''}}  col-xs-6">
@@ -92,6 +94,7 @@
         <div class="col-sm-offset-9 col-sm-3">
 
             {!! Form::hidden('contracts_id', null) !!}
+            {!! Form::hidden('company_id', null) !!}
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

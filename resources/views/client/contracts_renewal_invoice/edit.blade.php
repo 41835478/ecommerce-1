@@ -56,6 +56,7 @@
                             {!! $errors->first('contracts_id', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+                    {!! Form::hidden('company_id', null) !!}
                     {!!  Form::close()!!}
 
                     {!! Form::model($contracts_renewal_invoice, [
@@ -99,6 +100,7 @@
                 <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
             {!! Form::hidden('contracts_id', null) !!}
+            {!! Form::hidden('company_id', null) !!}
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

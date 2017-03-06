@@ -89,16 +89,18 @@
                                         </address>
                                     </div>
                                     <div  class="pull-right text-right">
+                                        @if(isset($invoice->company->name))
                                         <address>
                                             <h3>To,</h3>
-                                            <h4 class="font-bold">Gaala & Sons,</h4>
-                                            <p class="text-muted m-l-30">E 104, Dharti-2, <br/>
-                                                Nr' Viswakarma Temple, <br/>
-                                                Talaja Road, <br/>
-                                                Bhavnagar - 364002</p>
+                                            <h4 class="font-bold">{{ $invoice->company->name }}</h4>
+                                            <p class="text-muted m-l-30">{{ $invoice->company->address}} <br/>
+                                                {{ $invoice->company->city}} <br/>
+                                                {{ $invoice->company->cuntry}} <br/>
+                                                {{ $invoice->company->zipcode}}</p>
                                             <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> {{$invoice['create_date'] }}</p>
                                             <p><b>Due Date :</b> <i class="fa fa-calendar"></i> {{$invoice['due_date'] }}</p>
                                         </address>
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -160,7 +162,7 @@
                                     <hr>
                                     <div class="text-right">
                                        <a href="{{route('client.payment.create')}}?invoice_id={{$invoice['id']}}"><button class="btn btn-danger" type="submit"> Proceed to payment </button></a>
-                                        <a href="{{route('client.contracts_renewal_invoice.create')}}?invoice_id={{$invoice['id']}}"> <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-file"></i> {{trans('general.addToInvoice')}}</span> </button></a>
+                                        <a href="{{route('client.contracts_renewal_invoice.create')}}?invoice_id={{$invoice['id']}}&company_id={{$invoice['company_id']}}"> <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-file"></i> {{trans('general.addToInvoice')}}</span> </button></a>
                                     </div>
                                 </div>
                             </div>

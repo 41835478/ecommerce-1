@@ -53,17 +53,19 @@
                 {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-                
-        
-        <div class="form-group {{ $errors->has('create_date') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('create_date', trans('general.create_date'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('create_date', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('create_date', '<p class="help-block">:message</p>') !!}
+
+            <div class="form-group {{ $errors->has('company_id') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('company_id',$companyList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('company_id', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
+
         </div>        
         <div class="row">
+
+
         <div class="form-group {{ $errors->has('due_date') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('due_date', trans('general.due_date'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">

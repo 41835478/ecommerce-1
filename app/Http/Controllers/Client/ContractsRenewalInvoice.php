@@ -53,7 +53,7 @@ class ContractsRenewalInvoice extends Controller
     {
 
         $invoiceList=$rInvoice->getAllList();
-        $contractsList=$rContracts->getAllList();
+        $contractsList=$rContracts->getAllList((isset($request->company_id)?$request->company_id:0));
 
         $contractsId=0;
         if(isset($request->contracts_id)){
@@ -81,7 +81,7 @@ class ContractsRenewalInvoice extends Controller
 
         $oResults=$this->rContractsRenewalInvoice->create($request->all());
 
-        return redirect('client/contracts_renewal_invoice');
+        return redirect('/client/invoice/'.$request->invoice_id);
     }
 
     /**
@@ -114,7 +114,7 @@ class ContractsRenewalInvoice extends Controller
         $contracts_renewal_invoice=$this->rContractsRenewalInvoice->show($id);
 
         $invoiceList=$rInvoice->getAllList();
-        $contractsList=$rContracts->getAllList();
+        $contractsList=$rContracts->getAllList((isset($contracts_renewal_invoice->invoice->company_id)?$contracts_renewal_invoice->invoice->company_id:0));
 
 
         $contractsId=0;
@@ -150,8 +150,11 @@ class ContractsRenewalInvoice extends Controller
         $result=$this->rContractsRenewalInvoice->update($id,$request);
 
 
+        $contracts_renewal_invoice=$this->rContractsRenewalInvoice->show($id);
 
-        return redirect('client/contracts_renewal_invoice');
+
+        return redirect('/client/invoice/'.$contracts_renewal_invoice->invoice_id);
+
     }
 
     /**
@@ -163,8 +166,13 @@ class ContractsRenewalInvoice extends Controller
      */
     public function destroy($id)
     {
-        $contracts_renewal_invoice=$this->rContractsRenewalInvoice->destroy($id);
-        return redirect('client/contracts_renewal_invoice');
+
+        $contracts_renewal_invoice=$this->rContractsRenewalInvoice->show($id);
+      $this->rContractsRenewalInvoice->destroy($id);
+
+
+        return redirect('/client/invoice/'.$contracts_renewal_invoice->invoice_id);
+
     }
 
 

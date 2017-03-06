@@ -51,9 +51,12 @@
                             <tr>
 
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.company'), 'company_id', $oResults) !!}
+                                </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
@@ -67,9 +70,12 @@
                                         {!! th_sort(trans('general.due_date'), 'due_date', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                        {!! th_sort(trans('general.description'), 'description', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                    {!! th_sort(trans('general.description'), 'description', $oResults) !!}
+                                </th>
+                                <th  >
+
+                                </th>
 
                                 
                             </tr>
@@ -84,7 +90,8 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                        <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>
+                                        <td>{{ $oResult->name }}</td>
 
                                                                                 <td>{{ $oResult->create_date }}</td>
 

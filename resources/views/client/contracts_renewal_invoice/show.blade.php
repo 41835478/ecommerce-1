@@ -42,39 +42,39 @@
 
                                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.contracts_id') }}  </label>
+                            <label class="control-label">{{ trans('general.contracts') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contracts_renewal_invoice['contracts_id'] }}</label>
+                            <label class="control-label">{{(isset($contracts_renewal_invoice->contracts->name))? $contracts_renewal_invoice->contracts->name:'' }}</label>
                         </div>
                     </div>
 
                     
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.contracts_renewal_id') }}  </label>
+                            <label class="control-label">{{ trans('general.contracts_renewal') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contracts_renewal_invoice['contracts_renewal_id'] }}</label>
+                            <label class="control-label">{{(isset($contracts_renewal_invoice->contracts_renewal->to_date))? $contracts_renewal_invoice->contracts_renewal->price.' ( '.$contracts_renewal_invoice->contracts_renewal->to_date .' ) ':'' }} </label>
                         </div>
                     </div>
 
                     </div>
                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.invoice_id') }}  </label>
+                            <label class="control-label">{{ trans('general.invoice') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contracts_renewal_invoice['invoice_id'] }}</label>
+                            <label class="control-label">{{(isset($contracts_renewal_invoice->invoice->name))? $contracts_renewal_invoice->invoice->name:'' }}</label>
                         </div>
                     </div>
 

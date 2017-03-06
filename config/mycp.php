@@ -786,16 +786,16 @@ return [
                    'title' => 'invoiceCreate',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'client.contracts_renewal_invoice.index',
-                   'title' => 'contracts_renewal_invoiceList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'client.contracts_renewal_invoice.create',
-                   'title' => 'contracts_renewal_invoiceCreate',
-                   'icon' => 'fa fa-gears',
-               ],
+//               [
+//                   'route' => 'client.contracts_renewal_invoice.index',
+//                   'title' => 'contracts_renewal_invoiceList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.contracts_renewal_invoice.create',
+//                   'title' => 'contracts_renewal_invoiceCreate',
+//                   'icon' => 'fa fa-gears',
+//               ],
 
                [
                    'route' => 'client.payment.index',

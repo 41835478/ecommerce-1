@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\client\invoice\createRequest;
 use App\Http\Requests\client\invoice\editRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -19,6 +20,7 @@ use App\Models\Invoice as mInvoice;
 use App\Repositories\client\invoice\InvoiceContract as rInvoice;
 use App\Repositories\client\contracts_renewal_invoice\ContractsRenewalInvoiceContract as rContractsRenewalInvoice;
 use App\Repositories\client\payment\PaymentContract as rPayment;
+use App\Repositories\client\company\CompanyContract as rCompany;
 class Invoice extends Controller
 {
     private $rInvoice;
@@ -48,9 +50,11 @@ class Invoice extends Controller
      *
      * @return void
      */
-    public function create(Request $request)
+    public function create(Request $request,rCompany $rCompany)
     {
-        return view('client.invoice.create',compact('request'));
+
+        $companyList=$rCompany->getAllList();
+        return view('client.invoice.create',compact('request','companyList'));
     }
 
     /**
@@ -61,7 +65,7 @@ class Invoice extends Controller
     public function store(createRequest $request)
     {
 
-
+        $request->merge(['create_date'=>Carbon::now()->format('Y-m-d')]);
         $oResults=$this->rInvoice->create($request->all());
 
         return redirect('client/invoice');
@@ -83,12 +87,13 @@ class Invoice extends Controller
 
         $request->merge(['invoice_id'=>$id,'page_name'=>'page']);
 
-        $request->page_name='page_contracts_renewal_invoice';
-        $oContractsRenewalInvoiceResults=$rContractsRenewalInvoice->getByFilter($request);
-
         $request->page_name='page_payment';
         $oPaymentResults=$rPayment->getByFilter($request);
 
+
+        $request->page_name='page_contracts_renewal_invoice';
+        $request->merge(['getAllRecords'=>1]);
+        $oContractsRenewalInvoiceResults=$rContractsRenewalInvoice->getByFilter($request);
 
         return view('client.invoice.show', compact('invoice','request','oContractsRenewalInvoiceResults','oPaymentResults'));
     }
@@ -100,13 +105,15 @@ class Invoice extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rCompany $rCompany)
     {
-
 
         $invoice=$this->rInvoice->show($id);
 
-        return view('client.invoice.edit', compact('invoice'));
+        $companyList=$rCompany->getAllList();
+
+
+        return view('client.invoice.edit', compact('invoice','companyList'));
     }
 
     /**

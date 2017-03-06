@@ -575,6 +575,102 @@
 
 
 
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="white-box">
+
+
+
+
+                                        <div class=" col-xs-9">
+                                            <h3 class="box-title m-b-0">{{ trans('general.invoiceTableHead') }}</h3>
+                                            <p class="text-muted m-b-20">{{ trans('general.invoiceTableDescription') }}</p>
+
+
+
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a  href="{{route('client.invoice.create')}}?company_id={{$company['id']}}"class="btn btn-primary form-control">
+                                                + {{trans('general.invoiceCreate')}}
+                                            </a>
+                                        </div>
+
+                                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+
+                                            <thead>
+                                            <tr>
+
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                                    {!! th_sort(trans('general.id'), 'id', $oInvoiceResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                                    {!! th_sort(trans('general.name'), 'name', $oInvoiceResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                                    {!! th_sort(trans('general.create_date'), 'create_date', $oInvoiceResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                                    {!! th_sort(trans('general.due_date'), 'due_date', $oInvoiceResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                                    {!! th_sort(trans('general.description'), 'description', $oInvoiceResults) !!}
+                                                </th>
+                                                <th  >
+
+                                                </th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (count($oInvoiceResults))
+                                                {{-- */$i=0;/* --}}
+                                                {{-- */$class='';/* --}}
+                                                @foreach($oInvoiceResults as $oResult)
+                                                    {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
+                                                    <tr class='{{ $class }}' onclick="window.location.href='/client/invoice/{{ $oResult->id }}';" style="cursor: pointer;">
+
+                                                        <td>{{ $oResult->id }}</td>
+
+                                                        <td>{{ $oResult->name }}</td>
+
+                                                        <td>{{ $oResult->create_date }}</td>
+
+                                                        <td>{{ $oResult->due_date }}</td>
+
+                                                        <td>{{ $oResult->description }}</td>
+
+
+
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                        @if (count($oInvoiceResults))
+                                            <div class="row">
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    <span class="text-xs">{{trans('general.showing')}} {{ $oInvoiceResults->firstItem() }} {{trans('general.to')}} {{ $oInvoiceResults->lastItem() }} {{trans('general.of')}} {{ $oInvoiceResults->total() }} {{trans('general.entries')}}</span>
+                                                </div>
+
+
+                                                <div class="col-xs-12 col-sm-6 ">
+                                                    {!! str_replace('/?', '?', $oInvoiceResults->appends(Input::except('page_invoice'))->appends($request->all())->render()) !!}
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                             <div class="panel-footer text-right">
                 {{--<a href="{{ route('/client/product_list') }}">--}}
                     {{--<button type="submit" class="btn btn-primary"--}}

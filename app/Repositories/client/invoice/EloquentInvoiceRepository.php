@@ -11,7 +11,7 @@ class EloquentInvoiceRepository implements InvoiceContract
     public function getByFilter($data)
     {
 
-        $oResults = new Invoice();
+        $oResults =Invoice::with('company');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');

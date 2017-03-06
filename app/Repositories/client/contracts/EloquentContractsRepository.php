@@ -56,10 +56,13 @@ class EloquentContractsRepository implements ContractsContract
         return $oResults;
     }
 
-    public function getAllList(){
+    public function getAllList($company_id=0){
 
-        $oResults =Contracts::with('company','products')->get();
-
+        $oResults =Contracts::with('company','products');
+if($company_id > 0){
+    $oResults =$oResults->where('company_id','=',$company_id);
+}
+        $oResults =$oResults->get();
         $aResults = [];
         foreach($oResults as $oResult){
             $company=(isset($oResult->company->name))? $oResult->company->name:'';
