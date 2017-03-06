@@ -83,4 +83,12 @@ Route::group(['middleware' => ['authenticate.client']], function () {
 
     Route::resource('files', 'Files');
 
+
+    Route::resource('invoice', 'Invoice');
+
+
+    Route::resource('contracts_renewal_invoice', 'ContractsRenewalInvoice');
+
+
+    Route::resource('payment', 'Payment');
 });

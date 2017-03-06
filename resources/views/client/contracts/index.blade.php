@@ -49,9 +49,19 @@
                             <tr>
 
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                </th>
+
+
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                </th>
+
+
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                    {!! th_sort(trans('general.price'), 'price', $oResults) !!}
+                                </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
                                         {!! th_sort(trans('general.company_id'), 'company_id', $oResults) !!}
@@ -83,7 +93,9 @@
                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                     <tr class='{{ $class }}'>
 
-                                                                                <td>{{ $oResult->id }}</td>
+                                        <td>{{ $oResult->id }}</td>
+                                        <td>{{ $oResult->name }}</td>
+                                        <td>{{ $oResult->price }}</td>
 
                                                                                 <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
                                         <td>
@@ -198,7 +210,25 @@
                     </div>
                 </div>
 
-                
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('general.name'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        {!! Form::text('price', $aFilterParams['price'], ['placeholder'=>trans('general.price'),'class'=>'form-control input-sm ']) !!}
+                        <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <div class="col-md-12">

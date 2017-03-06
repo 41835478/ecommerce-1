@@ -98,5 +98,11 @@ return [
         2=>'identity',
         3=>'receipt',
         4=>'other'
+    ],
+    'payment_status'=>[
+        0=>'pending',
+        1=>'paid',
+        2=>'after payment condition',
+        3=>'other'
     ]
 ];

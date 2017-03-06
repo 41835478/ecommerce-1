@@ -487,7 +487,7 @@ return [
                    'title' => 'server_companyList',
                    'icon' => 'fa fa-gears',
                ],
- 
+
 
                [
                    'route' => 'client.server_spec.index',
@@ -724,7 +724,7 @@ return [
        [
            'route' => 'client.documents.index',
            'title' => 'documents',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa fa-folder-open',
            'subMenus' => [
 
                [
@@ -736,15 +736,7 @@ return [
                    'route' => 'client.documents.create',
                    'title' => 'documentsCreate',
                    'icon' => 'fa fa-gears',
-               ]
-           ]
-       ],
-
-       [
-           'route' => 'client.files.index',
-           'title' => 'files',
-           'icon' => 'fa fa-gears',
-           'subMenus' => [
+               ],
 
                [
                    'route' => 'client.files.index',
@@ -758,6 +750,104 @@ return [
                ]
            ]
        ],
+
+//       [
+//           'route' => 'client.files.index',
+//           'title' => 'files',
+//           'icon' => 'fa fa-gears',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.files.index',
+//                   'title' => 'filesList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.files.create',
+//                   'title' => 'filesCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+       [
+           'route' => 'client.invoice.index',
+           'title' => 'invoice',
+           'icon' => 'fa fa-dollar',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.invoice.index',
+                   'title' => 'invoiceList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.invoice.create',
+                   'title' => 'invoiceCreate',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.contracts_renewal_invoice.index',
+                   'title' => 'contracts_renewal_invoiceList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.contracts_renewal_invoice.create',
+                   'title' => 'contracts_renewal_invoiceCreate',
+                   'icon' => 'fa fa-gears',
+               ],
+
+               [
+                   'route' => 'client.payment.index',
+                   'title' => 'paymentList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.payment.create',
+                   'title' => 'paymentCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+
+           ]
+       ],
+
+//       [
+//           'route' => 'client.contracts_renewal_invoice.index',
+//           'title' => 'contracts_renewal_invoice',
+//           'icon' => 'fa fa-gears',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.contracts_renewal_invoice.index',
+//                   'title' => 'contracts_renewal_invoiceList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.contracts_renewal_invoice.create',
+//                   'title' => 'contracts_renewal_invoiceCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
+
+//       [
+//           'route' => 'client.payment.index',
+//           'title' => 'payment',
+//           'icon' => 'fa fa-gears',
+//           'subMenus' => [
+//
+//               [
+//                   'route' => 'client.payment.index',
+//                   'title' => 'paymentList',
+//                   'icon' => 'fa fa-gears',
+//               ],
+//               [
+//                   'route' => 'client.payment.create',
+//                   'title' => 'paymentCreate',
+//                   'icon' => 'fa fa-gears',
+//               ]
+//           ]
+//       ],
 
 //        [
 //            'route' => 'client.contracts_documents.index',

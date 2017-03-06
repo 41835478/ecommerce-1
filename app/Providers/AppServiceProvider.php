@@ -177,5 +177,19 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\client\files\EloquentFilesRepository'
         );
 
+        $this->app->bind(
+            'App\Repositories\client\invoice\InvoiceContract',
+            'App\Repositories\client\invoice\EloquentInvoiceRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\contracts_renewal_invoice\ContractsRenewalInvoiceContract',
+            'App\Repositories\client\contracts_renewal_invoice\EloquentContractsRenewalInvoiceRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\client\payment\PaymentContract',
+            'App\Repositories\client\payment\EloquentPaymentRepository'
+        );
+
+
     }
 }

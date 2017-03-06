@@ -19,7 +19,9 @@ return [
 'language'=>'Language',
     'arabic'=>'Arabic',
     'english'=>'English',
-
+    'selectOne'=>'Select One',
+    'total'=>'Total',
+    'addToInvoice'=>'Add To Invoice',
 
     'company'=>'Company',
     'addcompany'=>'Add Company',
@@ -836,6 +838,98 @@ return [
 
     'module_id'=>'Module Id',
 
+
+    'invoice'=>'Invoice',
+    'addinvoice'=>'Add Invoice',
+    'invoiceList'=>'Invoice List',
+    'invoiceCreate'=>'Create Invoice ',
+    'editinvoice'=>'Edit Invoice',
+    'invoiceInfo'=>'Invoice Info',
+
+    'invoiceTableHead'=>'Invoice Table Header',
+    'invoiceTableDescription'=>'Invoice Description',
+
+    'invoiceMenuBottomHeader'=>'InvoiceMenu Bottom Header',
+    'invoiceMenuBottomDescription'=>'Invoice Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'create_date'=>'Create Date',
+
+
+    'due_date'=>'Due Date',
+
+
+    'description'=>'Description',
+
+
+    'contracts_renewal_invoice'=>'Contracts Renewal Invoice',
+    'addcontracts_renewal_invoice'=>'Add Contracts Renewal Invoice',
+    'contracts_renewal_invoiceList'=>'Contracts Renewal Invoice List',
+    'contracts_renewal_invoiceCreate'=>'Create Contracts Renewal Invoice ',
+    'editcontracts_renewal_invoice'=>'Edit Contracts Renewal Invoice',
+    'contracts_renewal_invoiceInfo'=>'Contracts Renewal Invoice Info',
+
+    'contracts_renewal_invoiceTableHead'=>'Contracts Renewal Invoice Table Header',
+    'contracts_renewal_invoiceTableDescription'=>'Contracts Renewal Invoice Description',
+
+    'contracts_renewal_invoiceMenuBottomHeader'=>'Contracts Renewal InvoiceMenu Bottom Header',
+    'contracts_renewal_invoiceMenuBottomDescription'=>'Contracts Renewal Invoice Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'contracts_id'=>'Contracts Id',
+
+
+    'contracts_renewal_id'=>'Contracts Renewal Id',
+
+
+    'invoice_id'=>'Invoice Id',
+
+
+    'description'=>'Description',
+
+
+    'payment'=>'Payment',
+    'addpayment'=>'Add Payment',
+    'paymentList'=>'Payment List',
+    'paymentCreate'=>'Create Payment ',
+    'editpayment'=>'Edit Payment',
+    'paymentInfo'=>'Payment Info',
+
+    'paymentTableHead'=>'Payment Table Header',
+    'paymentTableDescription'=>'Payment Description',
+
+    'paymentMenuBottomHeader'=>'PaymentMenu Bottom Header',
+    'paymentMenuBottomDescription'=>'Payment Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'invoice_id'=>'Invoice Id',
+
+
+    'amount'=>'Amount',
+
+
+    'status'=>'Status',
+
+
+    'payment_condition'=>'Payment Condition',
+
+
+    'create_date'=>'Create Date',
+
+
+    'due_date'=>'Due Date',
+
+
+    'description'=>'Description',
 
 
 ];

@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Requests\client\contracts;
+namespace App\Http\Requests\client\contracts_renewal_invoice;
 
 use App\Http\Requests\Request;
 
@@ -24,11 +23,11 @@ class createRequest extends Request
     public function rules()
     {
         return [
-            "name"=>'required',
-            "company_id"=>'required|numeric',
-            "products_id"=>'required|numeric',
-            "type"=>'required|numeric',
-            "purchasing_date"=>'required|date',
+    "contracts_id"=>'required',
+    "contracts_renewal_id"=>'required',
+    "invoice_id"=>'required',
+    "description"=>'required',
+
 
 
         ];

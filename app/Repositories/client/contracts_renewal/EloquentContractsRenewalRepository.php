@@ -42,6 +42,23 @@ class EloquentContractsRenewalRepository implements ContractsRenewalContract
         return $oResults;
     }
 
+    public function getAllList($contractId =0){
+
+        $oResults = new ContractsRenewal();
+
+        if($contractId > 0){
+            $oResults=$oResults->where('contracts_id','=',$contractId);
+        }
+        $oResults->orderBy('to_date','desc');
+        $oResults=$oResults->get();
+
+        $aResults = [];
+        foreach($oResults as $oResult){
+            $aResults [$oResult->id]=$oResult->price .' ( '.$oResult->to_date.' ) ';
+        }
+        return $aResults;
+    }
+
     public function create($data)
     {
 

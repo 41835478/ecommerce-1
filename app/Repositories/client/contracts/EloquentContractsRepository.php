@@ -17,6 +17,10 @@ class EloquentContractsRepository implements ContractsContract
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }
+
+        if (isset($data->name) && !empty($data->name)) {
+            $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
+        }
         if (isset($data->company_id) && !empty($data->company_id)) {
             $oResults = $oResults->where('company_id', '=', $data['company_id']);
         }
@@ -25,6 +29,9 @@ class EloquentContractsRepository implements ContractsContract
         }
         if (isset($data->type) && !empty($data->type)) {
             $oResults = $oResults->where('type', '=', $data['type'] );
+        }
+        if (isset($data->price) && !empty($data->price)) {
+            $oResults = $oResults->where('price', '=', $data['price'] );
         }
         if (isset($data->description) && !empty($data->description)) {
             $oResults = $oResults->where('description', 'like', '%' . $data['description'] . '%');
@@ -47,6 +54,19 @@ class EloquentContractsRepository implements ContractsContract
 
 
         return $oResults;
+    }
+
+    public function getAllList(){
+
+        $oResults =Contracts::with('company','products')->get();
+
+        $aResults = [];
+        foreach($oResults as $oResult){
+            $company=(isset($oResult->company->name))? $oResult->company->name:'';
+            $products=(isset($oResult->products->name))? $oResult->products->name:'';
+            $aResults [$oResult->id]=$oResult->name.' ( '.$company .' - '.$products.' ) ';
+        }
+        return $aResults;
     }
 
     public function getExpired($data)

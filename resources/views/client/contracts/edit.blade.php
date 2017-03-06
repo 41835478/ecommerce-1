@@ -57,6 +57,34 @@
 
 
 
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('name', trans('general.name'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('price', trans('general.price'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('price', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('price', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div class="row">
+
+
+
                     <div class="form-group {{ $errors->has('company') ? 'has-error' : ''}}  col-xs-6">
                         {!! Form::label('company_id', trans('general.company'), ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
