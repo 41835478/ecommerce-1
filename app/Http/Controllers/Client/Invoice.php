@@ -54,6 +54,8 @@ class Invoice extends Controller
     {
 
         $companyList=$rCompany->getAllList();
+
+        $request->merge(['due_date'=>Carbon::now()->format('Y-m-d')]);
         return view('client.invoice.create',compact('request','companyList'));
     }
 

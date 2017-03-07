@@ -74,7 +74,7 @@
         <div class="row">        <div class="form-group {{ $errors->has('due_date') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('due_date', trans('due_date'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('due_date', null, ['class' => 'form-control']) !!}
+                {!! Form::text('due_date', null, ['class' => 'form-control mydatepicker']) !!}
                 {!! $errors->first('due_date', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

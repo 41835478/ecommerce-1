@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\client\payment\createRequest;
 use App\Http\Requests\client\payment\editRequest;
 use Session;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -51,6 +52,9 @@ class Payment extends Controller
     {
 
         $invoiceList=$rInvoice->getAllList();
+
+        $request->merge(['due_date'=>Carbon::now()->format('Y-m-d')]);
+        $request->merge(['create_date'=>Carbon::now()->format('Y-m-d')]);
         return view('client.payment.create',compact('request','invoiceList'));
     }
 
@@ -92,13 +96,15 @@ class Payment extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rInvoice $rInvoice)
     {
-
 
         $payment=$this->rPayment->show($id);
 
-        return view('client.payment.edit', compact('payment'));
+        $invoiceList=$rInvoice->getAllList();
+
+
+        return view('client.payment.edit', compact('payment','invoiceList'));
     }
 
     /**

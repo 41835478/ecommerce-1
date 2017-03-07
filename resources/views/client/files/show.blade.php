@@ -218,7 +218,7 @@
 
                                                         <td>{{ (array_key_exists($oResult->type,config('array.files_type')))?config('array.files_type')[$oResult->type]:'' }}</td>
 
-                                                    
+
 
 
                                                         <td>

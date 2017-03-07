@@ -54,13 +54,14 @@
 
 
             
-        <div class="row">        <div class="form-group {{ $errors->has('invoice_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('invoice_id', trans('invoice_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('invoice_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('invoice_id', '<p class="help-block">:message</p>') !!}
+        <div class="row">
+            <div class="form-group {{ $errors->has('invoice_id') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('invoice_id', trans('general.invoice'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('invoice_id',$invoiceList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('invoice_id', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
                 
                 <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('amount', trans('amount'), ['class' => 'col-sm-4 control-label']) !!}
@@ -70,15 +71,17 @@
             </div>
         </div>
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('status', trans('status'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('status', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+        <div class="row">
+            <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('status',config('array.payment_status'), null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('payment_condition') ? 'has-error' : ''}} col-xs-6">
+
+
+            <div class="form-group {{ $errors->has('payment_condition') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('payment_condition', trans('payment_condition'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::text('payment_condition', null, ['class' => 'form-control']) !!}
@@ -89,7 +92,7 @@
         <div class="row">        <div class="form-group {{ $errors->has('create_date') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('create_date', trans('create_date'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('create_date', null, ['class' => 'form-control']) !!}
+                {!! Form::text('create_date', null, ['class' => 'form-control mydatepicker']) !!}
                 {!! $errors->first('create_date', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -97,7 +100,7 @@
                 <div class="form-group {{ $errors->has('due_date') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('due_date', trans('due_date'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('due_date', null, ['class' => 'form-control']) !!}
+                {!! Form::text('due_date', null, ['class' => 'form-control mydatepicker']) !!}
                 {!! $errors->first('due_date', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

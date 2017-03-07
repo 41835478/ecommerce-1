@@ -52,20 +52,21 @@
                         </div>
                     </div>
 
-                    
+
                                     <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.body') }}  </label>
-                        </div>
-                    </div>
+                                        <div class="form-group no-margin-hr">
+                                            <label class="control-label">{{ trans('general.type') }}  </label>
+                                        </div>
+                                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$documents['body'] }}</label>
-                        </div>
-                    </div>
+                                    <div class="col-sm-4 text-left">
+                                        <div class="form-group no-margin-hr">
+                                            <label class="control-label">{{ (array_key_exists($documents['type'],config('array.documents_type')))?config('array.documents_type')[$documents['type']]:'' }}</label>
+                                        </div>
+                                    </div>
 
-                    </div>
+
+                                </div>
                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.version') }}  </label>
@@ -92,24 +93,22 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.type') }}  </label>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ (array_key_exists($documents['type'],config('array.documents_type')))?config('array.documents_type')[$documents['type']]:'' }}</label>
-                        </div>
-                    </div>
-
-                    
-
-
-
-                    </div>
                 <div class="row">
+
+                    <div class="">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.body') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 text-left longHtmlContainer">
+                        <div class="form-group no-margin-hr">
+                            {!!  $documents['body'] !!}
+                        </div>
+                    </div>
+
+                </div>
                     
 
 
@@ -179,9 +178,6 @@
                                                     {!! th_sort(trans('general.name'), 'name', $childrenDocuments) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.body'), 'body', $childrenDocuments) !!}
-                                                </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                                     {!! th_sort(trans('general.version'), 'version', $childrenDocuments) !!}
@@ -212,8 +208,6 @@
                                                         <td>{{ $oResult->id }}</td>
 
                                                         <td>{{ $oResult->name }}</td>
-
-                                                        <td>{{ $oResult->body }}</td>
 
                                                         <td>{{ $oResult->version }}</td>
 

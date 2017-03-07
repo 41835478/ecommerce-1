@@ -76,7 +76,7 @@
                 <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('type', trans('type'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::select('type',contig('array.ticket_type'), null, ['class' => 'form-control']) !!}
+                {!! Form::select('type',config('array.ticket_type'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
@@ -84,7 +84,7 @@
         <div class="row">        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('status', trans('status'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::select('status',contig('array.ticket_status'), null, ['class' => 'form-control']) !!}
+                {!! Form::select('status',config('array.ticket_status'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

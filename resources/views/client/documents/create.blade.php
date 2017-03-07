@@ -54,14 +54,17 @@
             </div>
         </div>
                 
-        
-        <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('body', trans('general.body'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('body', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
+
+
+            <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('type',config('array.documents_type'), null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
+
+
         </div>        
         <div class="row">
         <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}}  col-xs-6">
@@ -82,14 +85,15 @@
         </div>
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::select('type',config('array.documents_type'), null, ['class' => 'form-control']) !!}
-                {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+
+
+            <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}}  col-xs-12">
+                {!! Form::label('body', trans('general.body'), ['class' => 'col-sm-12 control-label ' ,'style'=>'text-align:left;']) !!}
+                <div class="col-sm-12">
+                    {!! Form::textarea('body', null, ['class' => 'form-control','id'=>'editor1']) !!}
+                    {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
-                
 
         </div>
 
