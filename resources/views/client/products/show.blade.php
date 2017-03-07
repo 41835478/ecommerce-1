@@ -87,39 +87,46 @@
 
                 <div class="row">
 
-
-                    <div class="col-sm-12">
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.article') }}  </label>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 longHtmlContainer">
+                    <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            {!! $products['article'] !!}
+                            <label class="control-label">
+                                @if(isset($products->article()->first()->name))
+                                    <a href="/client/documents/{{$products['article']}}">{{$products->article()->first()->name }}</a>
+                                @endif
+                            </label>
                         </div>
                     </div>
 
-                </div>
 
 
 
-                <div class="row">
-
-
-                    <div class="col-sm-12">
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.manual') }}  </label>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 longHtmlContainer ">
-                        <div class="form-group no-margin-hr ">
-                            {!! $products['manual']  !!}
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                @if(isset($products->manual()->first()->name))
+                               <a href="/client/documents/{{$products['manual']}}">{{$products->manual()->first()->name}}</a>
+                            @endif
+                            </label>
                         </div>
                     </div>
 
                 </div>
+
+
+
+
 
 
                 <div class="row">

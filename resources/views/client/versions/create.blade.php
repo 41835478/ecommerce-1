@@ -95,36 +95,36 @@
 
 
                 <div class="row">
-                    <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('release_notes', trans('general.release_notes'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('release_notes', null, ['class' => 'form-control','id'=>'editor3']) !!}
+                    <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('release_notes', trans('general.release_notes'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('release_notes',$releaseNotesList, null, ['class' => 'form-control']) !!}
                             {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="form-group {{ $errors->has('articale') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('article', trans('general.article'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('articale', null, ['class' => 'form-control','id'=>'editor1']) !!}
-                            {!! $errors->first('articale', '<p class="help-block">:message</p>') !!}
+                    <div class="form-group {{ $errors->has('article') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('article', trans('general.article'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('article',$articleList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('article', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+
                 </div>
 
 
                 <div class="row">
-                    <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('manual', trans('general.manual'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('manual', null, ['class' => 'form-control','id'=>'editor2']) !!}
+
+                    <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('manual', trans('general.manual'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('manual',$manualList, null, ['class' => 'form-control']) !!}
                             {!! $errors->first('manual', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                 </div>
+
+
 
                 <div class="row">
                 

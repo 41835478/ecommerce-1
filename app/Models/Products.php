@@ -16,4 +16,12 @@ class Products extends Model
         return $this->belongsTo('App\Models\ProductsList');
     }
 
+    public function article(){
+        return $this->belongsTo('App\Models\Documents','article');
+    }
+
+    public function manual(){
+        return $this->belongsTo('App\Models\Documents','manual');
+    }
+
 }

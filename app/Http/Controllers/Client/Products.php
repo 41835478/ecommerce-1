@@ -19,6 +19,7 @@ use App\Repositories\client\products\ProductsContract as rProducts;
 use App\Repositories\client\products_list\ProductsListContract as rProductList;
 use App\Repositories\client\versions\VersionsContract as rVersions;
 use App\Repositories\client\contracts\ContractsContract as rContracts;
+use App\Repositories\client\documents\DocumentsContract as rDocuments;
 class Products extends Controller
 {
     private $rProducts;
@@ -50,11 +51,13 @@ class Products extends Controller
      *
      * @return void
      */
-    public function  create(Request $request)
+    public function  create(Request $request,rDocuments $rDocuments)
     {
         $productsListArray=$this->rProductList->getAllList();
 
-        return view('client.products.create',compact('request','productsListArray'));
+        $articleList= $rDocuments->getAllList(config('array.articleIndex'));
+        $manualList=  $rDocuments->getAllList(config('array.manualIndex'));
+        return view('client.products.create',compact('request','productsListArray','articleList','manualList'));
 
     }
 
@@ -104,15 +107,18 @@ class Products extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rDocuments $rDocuments)
     {
+
+        $articleList=  $rDocuments->getAllList(config('array.articleIndex'));
+        $manualList= $rDocuments->getAllList(config('array.manualIndex'));
 
 
         $products=$this->rProducts->show($id);
         $productsListArray=$this->rProductList->getAllList();
 
 
-        return view('client.products.edit', compact('products','productsListArray'));
+        return view('client.products.edit', compact('products','productsListArray','articleList','manualList'));
     }
 
     /**

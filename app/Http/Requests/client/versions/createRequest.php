@@ -27,7 +27,7 @@ class createRequest extends Request
             "products_id"=>'required|numeric',
             "version"=>'required',
             "manual"=>'required',
-            "articale"=>'required',
+            "article"=>'required',
             "links"=>'required',
             "release_notes"=>'required',
 

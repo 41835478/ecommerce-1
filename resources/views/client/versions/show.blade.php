@@ -97,7 +97,12 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
+
+                <div class="row">
+
+
+
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.release_notes') }}  </label>
                         </div>
@@ -105,51 +110,61 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$versions['release_notes'] }}</label>
+                            <label class="control-label">
+                                @if(isset($versions->release_notes()->first()->name))
+                                    <a href="/client/documents/{{$versions['release_notes']}}">{{$versions->release_notes()->first()->name}}</a>
+                                @endif
+                            </label>
                         </div>
                     </div>
 
-                    
-
-                </div>
 
 
-                <div class="row">
 
-
-                    <div class="col-sm-12">
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.article') }}  </label>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 longHtmlContainer">
+                    <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            {!! $versions['articale'] !!}
+                            <label class="control-label">
+                                @if(isset($versions->article()->first()->name))
+                                    <a href="/client/documents/{{$versions['article']}}">{{$versions->article()->first()->name }}</a>
+                                @endif
+                            </label>
                         </div>
                     </div>
 
+
+
                 </div>
-
-
 
                 <div class="row">
 
 
-                    <div class="col-sm-12">
+
+
+
+
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.manual') }}  </label>
                         </div>
                     </div>
 
-                    <div class="col-sm-12 longHtmlContainer ">
-                        <div class="form-group no-margin-hr ">
-                            {!! $versions['manual']  !!}
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                @if(isset($versions->manual()->first()->name))
+                                    <a href="/client/documents/{{$versions['manual']}}">{{$versions->manual()->first()->name}}</a>
+                                @endif
+                            </label>
                         </div>
                     </div>
 
                 </div>
-
 
                 <div class="row">
 

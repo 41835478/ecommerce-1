@@ -18,6 +18,7 @@ use Carbon\Carbon;
 use App\Models\Versions as mVersions;
 use App\Repositories\client\versions\VersionsContract as rVersions;
 use App\Repositories\client\products\ProductsContract as rProducts;
+use App\Repositories\client\documents\DocumentsContract as rDocuments;
 class Versions extends Controller
 {
     private $rVersions;
@@ -48,12 +49,18 @@ class Versions extends Controller
      *
      * @return void
      */
-    public function    create(Request $request)
+    public function    create(Request $request,rDocuments $rDocuments)
     {
 
         $productsList=$this->rProducts->getAllList();
         $request->merge(['publish_date'=>Carbon::now()->format('Y-m-d')]);
-        return view('client.versions.create',compact('request','productsList'));
+
+
+        $articleList= $rDocuments->getAllList(config('array.articleIndex'));
+        $manualList=  $rDocuments->getAllList(config('array.manualIndex'));
+        $releaseNotesList=  $rDocuments->getAllList(config('array.notesIndex'));
+
+        return view('client.versions.create',compact('request','productsList','articleList','manualList','releaseNotesList'));
 
     }
 
@@ -95,14 +102,19 @@ class Versions extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rDocuments $rDocuments)
     {
 
 
         $versions=$this->rVersions->show($id);
         $productsList=$this->rProducts->getAllList();
 
-        return view('client.versions.edit', compact('versions','productsList'));
+
+        $articleList= $rDocuments->getAllList(config('array.articleIndex'));
+        $manualList=  $rDocuments->getAllList(config('array.manualIndex'));
+        $releaseNotesList=  $rDocuments->getAllList(config('array.notesIndex'));
+
+        return view('client.versions.edit', compact('versions','productsList','articleList','manualList','releaseNotesList'));
     }
 
     /**

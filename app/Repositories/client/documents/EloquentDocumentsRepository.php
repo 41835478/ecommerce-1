@@ -54,12 +54,19 @@ class EloquentDocumentsRepository implements DocumentsContract
         return $oResults;
     }
 
-    public function getAllList(){
+    public function getAllList($type=-1){
 
-          $oResults = new Documents();
+        $oResults = new Documents();
+        if($type>-1){
+        $oResults= $oResults->where('type','=',$type);
+        }
+        $oResults = $oResults->get();
+        $aResults=[0=>trans('general.selectOne')];
+        foreach($oResults as $oResult){
+            $aResults[$oResult->id]=$oResult->name;
+        }
 
-          $oResults = $oResults::lists('name','id');
-          return $oResults;
+        return $aResults;
     }
 
     public function getChildrenIds(&$allDocumentsIds,$documentsIds){

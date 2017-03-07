@@ -100,7 +100,12 @@ return [
         0=>'article',
         1=>'manual',
         2=>'news',
-        3=>'other'],
+        3=>'Notes',
+        4=>'other'],
+    'articleIndex'=>0,
+    'manualIndex'=>1,
+    'newsIndex'=>2,
+    'notesIndex'=>3,
     'files_type'=>[
         0=>'pdf',
         1=>'contract',

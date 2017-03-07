@@ -23,16 +23,16 @@ class EloquentVersionsRepository implements VersionsContract
             $oResults = $oResults->where('version', 'like', '%' . $data['version'] . '%');
         }
         if (isset($data->manual) && !empty($data->manual)) {
-            $oResults = $oResults->where('manual', 'like', '%' . $data['manual'] . '%');
+            $oResults = $oResults->where('manual', '=' , $data['manual'] );
         }
-        if (isset($data->articale) && !empty($data->articale)) {
-            $oResults = $oResults->where('articale', 'like', '%' . $data['articale'] . '%');
+        if (isset($data->article) && !empty($data->article)) {
+            $oResults = $oResults->where('article', '=' , $data['article'] );
         }
         if (isset($data->links) && !empty($data->links)) {
             $oResults = $oResults->where('links', 'like', '%' . $data['links'] . '%');
         }
         if (isset($data->release_notes) && !empty($data->release_notes)) {
-            $oResults = $oResults->where('release_notes', 'like', '%' . $data['release_notes'] . '%');
+            $oResults = $oResults->where('release_notes', '=' ,$data['release_notes'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
