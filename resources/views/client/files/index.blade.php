@@ -75,8 +75,8 @@
                                         {!! th_sort(trans('general.type'), 'type', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                        {!! th_sort(trans('general.module_type'), 'module_type', $oResults) !!}
+                                                                    <th >
+
                                     </th>
 
 
@@ -104,23 +104,7 @@
 
                                         <td>{{ (array_key_exists($oResult->type,config('array.files_type')))?config('array.files_type')[$oResult->type]:'' }}</td>
 
-                                        <td>
-                                            @if( $oResult->module_type == config('array.productsTypeIndex'))
-                                                {{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} )
-                                            @elseif( $oResult->module_type == config('array.domainsTypeIndex'))
-                                                {{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} )
 
-                                            @elseif( $oResult->module_type == config('array.webHostingPlansTypeIndex'))
-                                                {{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} )
-
-                                            @elseif( $oResult->module_type == config('array.serverTypeIndex'))
-                                                {{trans('general.server_detail')}} ( {{(isset($oResult->server_detail->name))? $oResult->server_detail->name:'' }} )
-
-                                            @elseif( $oResult->module_type == config('array.supportTypeIndex'))
-                                                {{trans('general.support')}} ( {{(isset($oResult->support->name))? $oResult->support->name:'' }} )
-
-                                            @endif
-                                        </td>
 
                                         
                                         <td>

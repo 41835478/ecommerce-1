@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Files extends Model
 {
     protected $fillable = [
-       "id","name","link","version","parent","type","module_type","module_id"    ];
+       "id","name","link","version","parent","type"   ];
     protected $table='files';
 
     public $timestamps =false ;

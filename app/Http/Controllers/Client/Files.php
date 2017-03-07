@@ -55,17 +55,13 @@ class Files extends Controller
      *
      * @return void
      */
-    public function create(Request $request,rProducts $rProducts,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans,rServer $rServer, rSupport $rSupport)
+    public function create(Request $request)
     {
 
         $filesList=$this->rFiles->getAllList();
-        $productsList=$rProducts->getAllList();
-        $domainsList=$rDomains->getAllList();
-        $webHostingPlansList=$rWebHostingPlans->getAllList();
-        $serverList=$rServer->getAllList();
 
-        $supportList=$rSupport->getAllList();
-        return view('client.files.create',compact('request','filesList','productsList','domainsList','webHostingPlansList','serverList','supportList'));
+
+        return view('client.files.create',compact('request','filesList'));
     }
 
     /**
@@ -107,21 +103,16 @@ class Files extends Controller
      *
      * @return void
      */
-    public function edit($id,Request $request,rProducts $rProducts,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans,rServer $rServer, rSupport $rSupport)
+    public function edit($id,Request $request)
     {
 
         $files=$this->rFiles->show($id);
 
         $filesList=$this->rFiles->getAllList();
-        $productsList=$rProducts->getAllList();
-        $domainsList=$rDomains->getAllList();
-        $webHostingPlansList=$rWebHostingPlans->getAllList();
-        $serverList=$rServer->getAllList();
-
-        $supportList=$rSupport->getAllList();
 
 
-        return view('client.files.edit', compact('files','request','filesList','productsList','domainsList','webHostingPlansList','serverList','supportList'));
+
+        return view('client.files.edit', compact('files','request','filesList'));
     }
 
     /**

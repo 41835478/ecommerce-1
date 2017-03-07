@@ -104,34 +104,7 @@
                         </div>
                     </div>
 
-                    
-                                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.module_type') }}  </label>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">
-                                @if( $files['module_type'] == config('array.productsTypeIndex'))
-                                    {{trans('general.products')}} ( {{(isset($files->products->name))? $files->products->name:'' }} )
-                                @elseif( $files['module_type'] == config('array.domainsTypeIndex'))
-                                    {{trans('general.domains')}} ( {{(isset($files->domains->name))? $files->domains->name:'' }} )
-
-                                @elseif( $files['module_type']== config('array.webHostingPlansTypeIndex'))
-                                    {{trans('general.web_hosting_plans')}} ( {{(isset($files->webHostingPlans->name))? $files->webHostingPlans->name:'' }} )
-
-                                @elseif( $files['module_type'] == config('array.serverTypeIndex'))
-                                    {{trans('general.server_detail')}} ( {{(isset($files->server_detail->name))? $files->server_detail->name:'' }} )
-
-                                @elseif( $files['module_type']== config('array.supportTypeIndex'))
-                                    {{trans('general.support')}} ( {{(isset($files->support->name))? $files->support->name:'' }} )
-
-                                @endif
-                            </label>
-                        </div>
-                    </div>
 
                     </div>
                 <div class="row">
@@ -219,9 +192,6 @@
                                                     {!! th_sort(trans('general.type'), 'type', $childrenFiles) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                                    {!! th_sort(trans('general.module_type'), 'module_type', $childrenFiles) !!}
-                                                </th>
 
 
 
@@ -248,23 +218,7 @@
 
                                                         <td>{{ (array_key_exists($oResult->type,config('array.files_type')))?config('array.files_type')[$oResult->type]:'' }}</td>
 
-                                                        <td>
-                                                            @if( $oResult->module_type == config('array.productsTypeIndex'))
-                                                                {{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} )
-                                                            @elseif( $oResult->module_type == config('array.domainsTypeIndex'))
-                                                                {{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} )
-
-                                                            @elseif( $oResult->module_type == config('array.webHostingPlansTypeIndex'))
-                                                                {{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} )
-
-                                                            @elseif( $oResult->module_type == config('array.serverTypeIndex'))
-                                                                {{trans('general.server_detail')}} ( {{(isset($oResult->server_detail->name))? $oResult->server_detail->name:'' }} )
-
-                                                            @elseif( $oResult->module_type == config('array.supportTypeIndex'))
-                                                                {{trans('general.support')}} ( {{(isset($oResult->support->name))? $oResult->support->name:'' }} )
-
-                                                            @endif
-                                                        </td>
+                                                    
 
 
                                                         <td>

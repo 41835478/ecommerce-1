@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Documents extends Model
 {
     protected $fillable = [
-       "id","name","body","version","parent","type","module_type","module_id"    ];
+       "id","name","body","version","parent","type"   ];
     protected $table='documents';
 
     public $timestamps =false ;

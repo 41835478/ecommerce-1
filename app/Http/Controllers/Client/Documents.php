@@ -19,13 +19,6 @@ use App\Models\Documents as mDocuments;
 use App\Repositories\client\documents\DocumentsContract as rDocuments;
 
 
-use App\Repositories\client\products\ProductsContract as rProducts;
-use App\Repositories\client\domains\DomainsContract as rDomains;
-use App\Repositories\client\web_hosting_plans\WebHostingPlansContract as rWebHostingPlans;
-use App\Repositories\client\contracts_renewal\ContractsRenewalContract as rContractsRenewal;
-use App\Repositories\client\contracts_documents\ContractsDocumentsContract as rContractsDocuments;
-use App\Repositories\client\server_detail\ServerDetailContract as rServer;
-use App\Repositories\client\support\SupportContract as rSupport;
 class Documents extends Controller
 {
     private $rDocuments;
@@ -55,18 +48,13 @@ class Documents extends Controller
      *
      * @return void
      */
-    public function create(Request $request,rProducts $rProducts,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans,rServer $rServer, rSupport $rSupport)
+    public function create(Request $request)
     {
 
 
         $documentsList=$this->rDocuments->getAllList();
-        $productsList=$rProducts->getAllList();
-        $domainsList=$rDomains->getAllList();
-        $webHostingPlansList=$rWebHostingPlans->getAllList();
-        $serverList=$rServer->getAllList();
 
-        $supportList=$rSupport->getAllList();
-        return view('client.documents.create',compact('request','documentsList','productsList','domainsList','webHostingPlansList','serverList','supportList'));
+        return view('client.documents.create',compact('request','documentsList'));
     }
 
     /**
@@ -107,20 +95,15 @@ class Documents extends Controller
      *
      * @return void
      */
-    public function edit($id,Request $request,rProducts $rProducts,rDomains $rDomains,rWebHostingPlans $rWebHostingPlans,rServer $rServer, rSupport $rSupport)
+    public function edit($id,Request $request)
     {
 
         $documents=$this->rDocuments->show($id);
 
         $documentsList=$this->rDocuments->getAllList();
-        $productsList=$rProducts->getAllList();
-        $domainsList=$rDomains->getAllList();
-        $webHostingPlansList=$rWebHostingPlans->getAllList();
-        $serverList=$rServer->getAllList();
 
-        $supportList=$rSupport->getAllList();
 
-        return view('client.documents.edit', compact('documents','request','documentsList','productsList','domainsList','webHostingPlansList','serverList','supportList'));
+        return view('client.documents.edit', compact('documents','request','documentsList'));
     }
 
     /**

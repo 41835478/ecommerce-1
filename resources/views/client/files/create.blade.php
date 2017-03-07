@@ -93,65 +93,7 @@
         </div>
 
 
-                <div class="row">
 
-
-                    <div class="form-group {{ $errors->has('module_type') ? 'has-error' : ''}}  col-xs-6">
-                        {!! Form::label('type', trans('general.module_type'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::select('module_type',config('array.modules_type'), null, ['class' => 'form-control','onChange'=>'changeSelectedView("module_type","moduleType_","module_id");','id'=>'module_type']) !!}
-                            {!! $errors->first('module_type', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-
-
-                    <div class="form-group {{ $errors->has('module_id') ? 'has-error' : ''}}  col-xs-6 moduleType_" id="moduleType_{{config('array.productsTypeIndex')}}"@if( isset($request->type) && config('array.productsTypeIndex')!=$request->type ) style="display: none" @endif>
-                        {!! Form::label('module_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-
-                            {!! Form::select(((config('array.productsTypeIndex')==$request->type || $request->type =='')? 'module_id':''),$productsList, null, ['class' => 'form-control']) !!}
-
-                            {!! $errors->first('module_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group {{ $errors->has('module_id') ? 'has-error' : ''}}  col-xs-6 moduleType_" id="moduleType_{{config('array.domainsTypeIndex')}}" @if(config('array.domainsTypeIndex')!=$request->type) style="display: none" @endif>
-                        {!! Form::label('module_id', trans('general.domains'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::select(((config('array.domainsTypeIndex')==$request->type)? 'module_id':''),$domainsList, null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('module_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group {{ $errors->has('module_id') ? 'has-error' : ''}}  col-xs-6 moduleType_" id="moduleType_{{config('array.webHostingPlansTypeIndex')}}" @if(config('array.webHostingPlansTypeIndex')!=$request->type) style="display: none" @endif>
-                        {!! Form::label('module_id', trans('general.web_hosting_plans'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::select(((config('array.webHostingPlansTypeIndex')==$request->type)? 'module_id':''),$webHostingPlansList, null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('module_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-
-
-                    <div class="form-group {{ $errors->has('module_id') ? 'has-error' : ''}}  col-xs-6 moduleType_" id="moduleType_{{config('array.serverTypeIndex')}}" @if(config('array.serverTypeIndex')!=$request->type) style="display: none" @endif>
-                        {!! Form::label('module_id', trans('general.server_detail'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::select(((config('array.serverTypeIndex')==$request->type)? 'module_id':''),$serverList, null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('module_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-
-
-                    <div class="form-group {{ $errors->has('module_id') ? 'has-error' : ''}}  col-xs-6 moduleType_" id="moduleType_{{config('array.supportTypeIndex')}}" @if(config('array.supportTypeIndex')!=$request->type) style="display: none" @endif>
-                        {!! Form::label('module_id', trans('general.support'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::select(((config('array.supportTypeIndex')==$request->type)? 'module_id':''),$supportList, null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('module_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-
-
-
-                </div>
 
 
 
