@@ -59,9 +59,6 @@
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.link'), 'link', $oResults) !!}
-                                    </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.version'), 'version', $oResults) !!}
@@ -93,9 +90,8 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td><a href="/{{$oResult->link}}"> {{ $oResult->name }}</a></td>
 
-                                                                                <td>{{ $oResult->link }}</td>
 
                                                                                 <td>{{ $oResult->version }}</td>
 

@@ -221,16 +221,16 @@ $('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer'
 <script>
     //CKEDITOR.replace( textarea );
     CKEDITOR.replace('editor1', {
-        filebrowserBrowseUrl: " {{ asset('/cms/articles/file-browser') }}",
-        filebrowserUploadUrl: "{{ asset('/cms/articles/upload-image' ).'?_token='. csrf_token() }}"
+        filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
+        filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
     });
     CKEDITOR.replace('editor2', {
-        filebrowserBrowseUrl: " {{ asset('/cms/articles/file-browser') }}",
-        filebrowserUploadUrl: "{{ asset('/cms/articles/upload-image' ).'?_token='. csrf_token() }}"
+        filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
+        filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
     });
     CKEDITOR.replace('editor3', {
-        filebrowserBrowseUrl: " {{ asset('/cms/articles/file-browser') }}",
-        filebrowserUploadUrl: "{{ asset('/cms/articles/upload-image' ).'?_token='. csrf_token() }}"
+        filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
+        filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
     });
 </script>
 @show

@@ -11,6 +11,14 @@
 |
 */
 
+Route::controller('files','\App\Http\Controllers\common\FilesController',
+    [
+        'postUpload'=>'common.files.upload',
+        'getFileBrowser'=>'common.files.browser',
+    'postUploadAjax'=>'common.files.uploadAjax'
+    ]);
+
+
 Route::get('/', function () {
     return view('client.public.dashboard');
 });

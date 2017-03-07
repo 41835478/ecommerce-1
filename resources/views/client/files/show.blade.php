@@ -61,7 +61,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$files['link'] }}</label>
+                            <label class="control-label"><a href="/{{$files['link'] }}">{{$files['link'] }}</a> </label>
                         </div>
                     </div>
 
@@ -157,7 +157,7 @@
 
                                         </div>
                                         <div class="col-xs-3">
-                                            <a  href="{{route('client.files.create')}}"class="btn btn-primary form-control">
+                                            <a  href="{{route('client.files.create')}}?parent={{$files['id'] }}"class="btn btn-primary form-control">
                                                 + {{trans('general.filesCreate')}}
                                             </a>
                                         </div>
@@ -176,9 +176,6 @@
                                                     {!! th_sort(trans('general.name'), 'name', $childrenFiles) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.link'), 'link', $childrenFiles) !!}
-                                                </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                                     {!! th_sort(trans('general.version'), 'version', $childrenFiles) !!}
@@ -207,9 +204,9 @@
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{ $oResult->name }}</td>
+                                                        <td><a href="/{{ $oResult->link }}"> {{ $oResult->name }}</a></td>
 
-                                                        <td>{{ $oResult->link }}</td>
+
 
                                                         <td>{{ $oResult->version }}</td>
 

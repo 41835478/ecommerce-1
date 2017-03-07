@@ -57,7 +57,7 @@
         
         <div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('link', trans('general.link'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
+            <div class="col-sm-8 file">
                 {!! Form::text('link', null, ['class' => 'form-control']) !!}
                 {!! $errors->first('link', '<p class="help-block">:message</p>') !!}
             </div>
@@ -123,4 +123,67 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @parent
+
+
+    <script>
+
+        function upload_file(file_input,resultInputName){
+
+// var formData = new FormData($('form')[0]);
+            var formData = new FormData();
+            //   formData.append("upload_files",true);
+            var fileInput = file_input;
+
+
+            for(var i = 0; i < fileInput.files.length; i ++ ){
+                formData.append('upload', fileInput.files[i]);
+            }// for each file in th array
+
+
+            $.ajax({
+                url: '{{route('common.files.uploadAjax').'?_token='.csrf_token()}}' ,  //Server script to process data
+                type: 'post',
+                xhr: function() {  // Custom XMLHttpRequest
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload){ // Check if upload property exists
+                        //  myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+                    }
+                    return myXhr;
+                },
+                //Ajax events
+                beforeSend:  function(){},
+                success:  function(data){
+                    var dataArray=data.split('|');
+                    if(dataArray[0].trim() == 'success'){
+                        $(file_input).parent().attr('data-content',dataArray[1]);
+                        // $(file_input).parent().data('content',data);
+                        $('input[name="'+resultInputName+'"]').val(dataArray[1]);
+                    }else{
+                        alert(dataArray[1]);
+                    }
+                },
+                error: function(){},
+                complete:function(){},
+                // Form data
+                data: formData,
+                //Options to tell jQuery not to process data or worry about content-type.
+                cache: false,
+                contentType: false,
+                processData: false
+            });//ajax
+        }//upload_file(file_input)
+
+        $(".file input").each(function(){
+            var uploadHtml='<div class="file_input_div"><div class="country_list" data-content="Choose file">'+
+                    '<i class="fa fa-upload"></i><input type="file" onchange="upload_file(this,\''+$(this).attr('name')+'\')"> </div></div>';
+            $(this).parent().prepend(uploadHtml);
+            $(this).attr('type','hidden');
+
+        });
+
+    </script>
 @endsection
