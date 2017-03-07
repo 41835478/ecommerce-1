@@ -70,12 +70,9 @@
                                     <div class="col-sm-4 text-left">
                                         <div class="form-group no-margin-hr">
                                             <label class="control-label">
-                                                @if(isset($server_detail->server_company_spec()->first()->id))
 
-                                                    {{(isset($server_detail->server_company_spec()->first()->server_spec()->first()->name))? $server_detail->server_company_spec()->first()->server_spec()->first()->name:'' }}
-                                                    {{(isset($server_detail->server_company_spec()->first()->server_company()->first()->name))? ' ( '.$server_detail->server_company_spec()->first()->server_company()->first()->name.' ) ':' (*)' }}
+                                                    {{(isset($server_detail->server_spec()->first()->name))? $server_detail->server_spec()->first()->name:'' }}
 
-                                                @endif
 
 
 
@@ -86,6 +83,43 @@
 
 
                     </div>
+
+                <div class="row">
+
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.company') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                {{ (array_key_exists($server_detail['company_id'],config('array.server_detail_company')))? config('array.server_detail_company')[$server_detail['company_id']]:'' }}
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.location') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                {{ (array_key_exists($server_detail['location'],config('array.server_detail_location')))? config('array.server_detail_location')[$server_detail['location']]:'' }}
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
                 <div class="row">
 
                     <div class="col-sm-2 text-right">
@@ -149,22 +183,7 @@
 
 
                     </div>
-                <div class="row">
 
-                    
-                                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.additional_cost') }}  </label>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$server_detail['additional_cost'] }}</label>
-                        </div>
-                    </div>
-
-                    </div>
 
 
 

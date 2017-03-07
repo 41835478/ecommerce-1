@@ -24,12 +24,13 @@ class editRequest extends Request
     {
         return [
             "name"=>'required',
-            "server_company_spec_id"=>'required',
+            "server_spec_id"=>'required',
+            "company_id"=>'required',
+            "location"=>'required',
             "cost"=>'required',
             "unique_name"=>'required',
             "operating_system"=>'required',
             "control_panel"=>'required',
-            "additional_cost"=>'required',
         ];
     }
 }

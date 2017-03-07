@@ -51,6 +51,15 @@ return [
         2=>'Plesk',
         3=>'Other'
     ],
+    'server_detail_company'=>[
+        0=>'BlueHost',
+        1=>'Other'
+    ],
+    'server_detail_location'=>[
+        0=>'UK',
+        1=>'USA',
+        2=>'Other'
+    ],
     'server_ip_type'=>[
        0=> 'Default',
         1=>'IPMI',

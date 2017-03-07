@@ -482,11 +482,11 @@ return [
            'icon' => 'fa fa-building-o',
            'subMenus' => [
 
-               [
-                   'route' => 'client.server_company.index',
-                   'title' => 'server_companyList',
-                   'icon' => 'fa fa-gears',
-               ],
+//               [
+//                   'route' => 'client.server_company.index',
+//                   'title' => 'server_companyList',
+//                   'icon' => 'fa fa-gears',
+//               ],
 
 
                [
@@ -496,18 +496,12 @@ return [
                ],
 
 
-               [
-                   'route' => 'client.server_company_server_spec.index',
-                   'title' => 'server_company_server_specList',
-                   'icon' => 'fa fa-gears',
-               ],
+//               [
+//                   'route' => 'client.server_company_server_spec.index',
+//                   'title' => 'server_company_server_specList',
+//                   'icon' => 'fa fa-gears',
+//               ],
 
-
-               [
-                   'route' => 'client.server_access.index',
-                   'title' => 'server_accessList',
-                   'icon' => 'fa fa-gears',
-               ],
 
 
                [
@@ -523,6 +517,12 @@ return [
                    'icon' => 'fa fa-gears',
                ],
 
+
+               [
+                   'route' => 'client.server_access.index',
+                   'title' => 'server_accessList',
+                   'icon' => 'fa fa-gears',
+               ],
 
 
            ]

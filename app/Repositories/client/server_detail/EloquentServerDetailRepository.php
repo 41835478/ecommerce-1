@@ -11,28 +11,32 @@ class EloquentServerDetailRepository implements ServerDetailContract
     public function getByFilter($data)
     {
 
-        $oResults =ServerDetail::with(['server_company_spec'=>function($query){
-            $query->with('server_company','server_spec');
-        }]);
+        $oResults =ServerDetail::with('server_spec');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }
 
-
         if (isset($data->server_spec_id) && !empty($data->server_spec_id)) {
-            $server_spec_id=$data->server_spec_id;
-            $oResults = $oResults->whereHas('server_company_spec',function($query)use($server_spec_id){
-                $query->where('server_spec_id','=',$server_spec_id);
-            });
+            $oResults = $oResults->where('server_spec_id', '=', $data['server_spec_id']);
         }
+
+
+        if (isset($data->company_id) && !empty($data->company_id)) {
+            $oResults = $oResults->where('company_id', '=', $data['company_id']);
+        }
+
+
+        if (isset($data->location) && !empty($data->location)) {
+            $oResults = $oResults->where('location', '=', $data['location']);
+        }
+
+
 
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
         }
-        if (isset($data->server_company_spec_id) && !empty($data->server_company_spec_id)) {
-            $oResults = $oResults->where('server_company_spec_id', '=',$data['server_company_spec_id'] );
-        }
+
         if (isset($data->cost) && !empty($data->cost)) {
             $oResults = $oResults->where('cost', 'like', '%' . $data['cost'] . '%');
         }
@@ -45,9 +49,7 @@ class EloquentServerDetailRepository implements ServerDetailContract
         if (isset($data->control_panel) && !empty($data->control_panel)) {
             $oResults = $oResults->where('control_panel', '=', $data['control_panel'] );
         }
-        if (isset($data->additional_cost) && !empty($data->additional_cost)) {
-            $oResults = $oResults->where('additional_cost', '=' , $data['additional_cost'] );
-        }
+
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
             $oResults = $oResults->orderBy($data->order, $sort);

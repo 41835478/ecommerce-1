@@ -59,8 +59,16 @@
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                     </th>
 
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                    {!! th_sort(trans('general.company'), 'company_id', $oResults) !!}
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                    {!! th_sort(trans('general.location'), 'location', $oResults) !!}
+                                </th>
+
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.server_spec'), 'server_company_spec_id', $oResults) !!}
+                                        {!! th_sort(trans('general.server_spec'), 'server_spec_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
@@ -79,9 +87,6 @@
                                         {!! th_sort(trans('general.control_panel'), 'control_panel', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="9">
-                                        {!! th_sort(trans('general.additional_cost'), 'additional_cost', $oResults) !!}
-                                    </th>
 
                                 
                             </tr>
@@ -96,15 +101,14 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                        <td>{{ $oResult->name }}</td>
+                                        <td>{{ (array_key_exists($oResult->company_id,config('array.server_detail_company')))? config('array.server_detail_company')[$oResult->company_id]:'' }}</td>
+                                        <td>{{ (array_key_exists($oResult->location,config('array.server_detail_location')))? config('array.server_detail_location')[$oResult->location]:'' }}</td>
 
-                                                                                <td>
-                                                                                    @if(isset($oResult->server_company_spec->id))
+                                        <td>
 
-                                           {{(isset($oResult->server_company_spec->server_spec->name))? $oResult->server_company_spec->server_spec->name:'' }}
-                                           {{(isset($oResult->server_company_spec->server_company->name))? ' ( '.$oResult->server_company_spec->server_company->name.' ) ':' (*)' }}
+                                           {{(isset($oResult->server_spec->name))? $oResult->server_spec->name:'' }}
 
-                                                                                    @endif
 
                                                                                 </td>
 
@@ -116,7 +120,6 @@
                                         <td>{{ (array_key_exists($oResult->control_panel,config('array.server_detail_panel')))? config('array.server_detail_panel')[$oResult->control_panel]:'' }}</td>
 
 
-                                                                                <td>{{ $oResult->additional_cost }}</td>
 
                                         
                                         <td>

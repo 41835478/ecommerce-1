@@ -44,13 +44,13 @@ Route::group(['middleware' => ['authenticate.client']], function () {
 
 
 
-    Route::resource('server_company', 'ServerCompany');
+   // Route::resource('server_company', 'ServerCompany');
 
 
     Route::resource('server_spec', 'ServerSpec');
 
 
-    Route::resource('server_company_server_spec', 'ServerCompanyServerSpec');
+  //  Route::resource('server_company_server_spec', 'ServerCompanyServerSpec');
 
 
     Route::resource('server_access', 'ServerAccess');
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['authenticate.client']], function () {
     Route::resource('server_ip', 'ServerIp');
 
 
-    Route::resource('server_locations', 'ServerLocations');
+   // Route::resource('server_locations', 'ServerLocations');
 
 
     Route::resource('support', 'Support');
