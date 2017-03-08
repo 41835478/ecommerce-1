@@ -60,11 +60,11 @@ class FilesController extends Controller
     public function postUploadAjax(){
 
         $file = Input::file('upload');
-        $allowed_ext = ["png", "jpg", "jpeg", "gif", "bmp", "svg","pdf","docx"];
+      //  $allowed_ext = ["png", "jpg", "jpeg", "gif", "bmp", "svg","pdf","docx"];
         if($file == null){ echo 'error|no file'; exit();}
         $fileExt = strtolower($file->getClientOriginalExtension());
 
-        if (in_array($fileExt, $allowed_ext)) {
+        if (true) {//in_array($fileExt, $allowed_ext)
             $imageName = rand() . '_' . rand() . $file->getClientOriginalName();
             if ($file->move( 'files/', $imageName)) {
                 echo 'success|'.'files/'. $imageName;

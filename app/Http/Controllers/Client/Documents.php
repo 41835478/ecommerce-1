@@ -34,6 +34,9 @@ class Documents extends Controller
      */
     public function index(Request $request)
     {
+        if(!isset($request->parent)){
+            $request->merge(['parent'=>0]);
+        }
 
 
 

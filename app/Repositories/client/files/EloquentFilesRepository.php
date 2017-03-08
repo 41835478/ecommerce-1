@@ -14,7 +14,7 @@ class EloquentFilesRepository implements FilesContract
         $oResults =  Files::with('parentFile','products','domains','webHostingPlans','server_detail','support');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=' , $data['id'] );
         }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
@@ -25,17 +25,18 @@ class EloquentFilesRepository implements FilesContract
         if (isset($data->version) && !empty($data->version)) {
             $oResults = $oResults->where('version', 'like', '%' . $data['version'] . '%');
         }
-        if (isset($data->parent) && !empty($data->parent)) {
-            $oResults = $oResults->where('parent', 'like', '%' . $data['parent'] . '%');
+
+        if (isset($data->parent) && $data->parent>-1) {
+            $oResults = $oResults->where('parent', '=' , $data['parent']);
         }
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=' , $data['type']);
         }
         if (isset($data->module_type) && !empty($data->module_type)) {
-            $oResults = $oResults->where('module_type', 'like', '%' . $data['module_type'] . '%');
+            $oResults = $oResults->where('module_type', '=' , $data['module_type'] );
         }
         if (isset($data->module_id) && !empty($data->module_id)) {
-            $oResults = $oResults->where('module_id', 'like', '%' . $data['module_id'] . '%');
+            $oResults = $oResults->where('module_id', '=' , $data['module_id'] );
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
@@ -57,8 +58,8 @@ class EloquentFilesRepository implements FilesContract
     public function getAllList(){
 
           $oResults = new Files();
-
-          $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->where('parent','=',0);
+          $oResults = $oResults->lists('name','id');
         $aResults=[0=>trans('general.selectOne')];
         foreach($oResults as $key=>$value){
             $aResults[$key]=$value;

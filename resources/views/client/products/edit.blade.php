@@ -74,17 +74,6 @@
         </div>
 
 
-                <div class="row">
-
-
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
-                        {!! Form::label('description', trans('general.products_list'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::text('description', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="form-group {{ $errors->has('article') ? 'has-error' : ''}}  col-xs-6">
@@ -114,6 +103,13 @@
                         </div>
                     </div>
 
+                    <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('description', trans('general.products_list'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('description', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
                 </div>
 
 

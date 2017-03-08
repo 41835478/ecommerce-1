@@ -64,7 +64,9 @@
 
                                     <div class="col-sm-4 text-left">
                                         <div class="form-group no-margin-hr">
-                                            <label class="control-label">{{$products_list['type'] }}</label>
+                                            <label class="control-label">
+                                                {{ (array_key_exists($products_list['type']  ,config('array.products_list_type')))? config('array.products_list_type')[$products_list['type'] ]:'' }}
+                                               </label>
                                         </div>
                                     </div>
 

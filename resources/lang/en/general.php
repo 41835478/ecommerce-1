@@ -330,18 +330,18 @@ return [
 
 
 
-    'products_list'=>'Products List',
-    'addproducts_list'=>'Add Products List',
-    'products_listList'=>'Products List List',
-    'products_listCreate'=>'Create Products List ',
-    'editproducts_list'=>'Edit Products List',
-    'products_listInfo'=>'Products List Info',
+    'products_list'=>'Category',
+    'addproducts_list'=>'Add Products Category',
+    'products_listList'=>'Products Category ',
+    'products_listCreate'=>'Create Products Category ',
+    'editproducts_list'=>'Edit Products Category',
+    'products_listInfo'=>'Products Category Info',
 
-    'products_listTableHead'=>'Products List Table Header',
-    'products_listTableDescription'=>'Products List Description',
+    'products_listTableHead'=>'Products Category Table Header',
+    'products_listTableDescription'=>'Products Category Description',
 
-    'products_listMenuBottomHeader'=>'Products ListMenu Bottom Header',
-    'products_listMenuBottomDescription'=>'Products List Menu Bottom Description',
+    'products_listMenuBottomHeader'=>'Products Category Menu Bottom Header',
+    'products_listMenuBottomDescription'=>'Products Category Menu Bottom Description',
 
     'id'=>'Id',
 

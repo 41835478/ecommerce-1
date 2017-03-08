@@ -42,7 +42,9 @@ class Files extends Controller
     public function index(Request $request)
     {
 
-
+        if(!isset($request->parent)){
+            $request->merge(['parent'=>0]);
+        }
 
         $aFilterParams=$request;
         $oResults=$this->rFiles->getByFilter($aFilterParams);

@@ -129,5 +129,12 @@ return [
         1=>"finished",
         2=>"future",
         3=>'Other'
+    ],
+    'products_list_type'=>[
+        0=>'Plugin',
+        1=>"Program",
+        2=>"Web Site",
+        3=>'service',
+        4=>"Other"
     ]
 ];

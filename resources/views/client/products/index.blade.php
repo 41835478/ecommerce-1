@@ -53,7 +53,7 @@
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.products_list_id'), 'products_list_id', $oResults) !!}
+                                        {!! th_sort(trans('general.products_list'), 'products_list_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">

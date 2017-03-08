@@ -14,7 +14,7 @@ class EloquentDocumentsRepository implements DocumentsContract
         $oResults =Documents::with('parentDocument','products','domains','webHostingPlans','server_detail','support');
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=' , $data['id']);
         }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
@@ -25,17 +25,18 @@ class EloquentDocumentsRepository implements DocumentsContract
         if (isset($data->version) && !empty($data->version)) {
             $oResults = $oResults->where('version', 'like', '%' . $data['version'] . '%');
         }
-        if (isset($data->parent) && !empty($data->parent)) {
-            $oResults = $oResults->where('parent', 'like', '%' . $data['parent'] . '%');
-        }
+
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=' , $data['type']);
         }
         if (isset($data->module_type) && !empty($data->module_type)) {
-            $oResults = $oResults->where('module_type', 'like', '%' . $data['module_type'] . '%');
+            $oResults = $oResults->where('module_type', '=' , $data['module_type'] );
         }
         if (isset($data->module_id) && !empty($data->module_id)) {
-            $oResults = $oResults->where('module_id', 'like', '%' . $data['module_id'] . '%');
+            $oResults = $oResults->where('module_id', '=' , $data['module_id'] );
+        }
+        if (isset($data->parent) && $data->parent>-1) {
+            $oResults = $oResults->where('parent', '=' , $data['parent']);
         }
         if (isset($data->order) && !empty($data->order)) {
             $sort = (isset($data->sort) && !empty($data->sort)) ? $data->sort : 'desc';
@@ -58,7 +59,7 @@ class EloquentDocumentsRepository implements DocumentsContract
 
         $oResults = new Documents();
         if($type>-1){
-        $oResults= $oResults->where('type','=',$type);
+        $oResults= $oResults->where('type','=',$type)->where('parent','=',0);
         }
         $oResults = $oResults->get();
         $aResults=[0=>trans('general.selectOne')];

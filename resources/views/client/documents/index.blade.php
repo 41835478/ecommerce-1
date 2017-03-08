@@ -63,9 +63,7 @@
                                         {!! th_sort(trans('general.version'), 'version', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                        {!! th_sort(trans('general.parent'), 'parent', $oResults) !!}
-                                    </th>
+
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
                                         {!! th_sort(trans('general.type'), 'type', $oResults) !!}
@@ -92,7 +90,6 @@
 
                                                                                 <td>{{ $oResult->version }}</td>
 
-                                                                                <td>{{ isset($oResult->parentDocument->name)? $oResult->parentDocument->name:'' }}</td>
 
                                                                                 <td>{{ (array_key_exists($oResult->type,config('array.documents_type')))?config('array.documents_type')[$oResult->type]:'' }}</td>
 
