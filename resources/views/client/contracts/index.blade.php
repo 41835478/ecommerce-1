@@ -103,7 +103,11 @@
                                                                                 <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
                                         <td>
                                         @if( $oResult->type == config('array.productsTypeIndex'))
-                                            {{trans('general.products')}} ( {{(isset($oResult->products->name))? $oResult->products->name:'' }} )
+                                                {{trans('general.products')}}
+                                            @if(isset($oResult->products->name))
+                                                ( {{(isset($oResult->products->productsList->name))? $oResult->products->productsList->name:'' }} - {{$oResult->products->name  }})
+                                                @endif
+
                                         @elseif( $oResult->type == config('array.domainsTypeIndex'))
                                             {{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} )
 

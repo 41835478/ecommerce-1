@@ -104,7 +104,11 @@
                             <label class="control-label">
 
                                         @if( $contracts->type == config('array.productsTypeIndex'))
-                                            {{trans('general.products')}} ( {{(isset($contracts->products->name))? $contracts->products->name:'' }} )
+                                    {{trans('general.products')}}
+                                    @if(isset($contracts->products->name))
+                                        ( {{(isset($contracts->products->productsList->name))? $contracts->products->productsList->name:'' }} - {{$contracts->products->name  }})
+                                    @endif
+
                                         @elseif( $contracts->type == config('array.domainsTypeIndex'))
                                             {{trans('general.domains')}} ( {{(isset($contracts->domains->name))? $contracts->domains->name:'' }} )
 
