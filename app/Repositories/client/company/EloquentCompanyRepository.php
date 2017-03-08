@@ -64,7 +64,7 @@ class EloquentCompanyRepository implements CompanyContract
 
         $oResults = new Company();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
 

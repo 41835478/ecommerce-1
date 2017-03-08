@@ -40,7 +40,7 @@ class EloquentProductListRepository implements ProductListContract
 
         $oResults = new ProductList();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
 

@@ -59,7 +59,7 @@ class EloquentWebHostingPlansRepository implements WebHostingPlansContract
 
         $oResults = new WebHostingPlans();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
     public function create($data)

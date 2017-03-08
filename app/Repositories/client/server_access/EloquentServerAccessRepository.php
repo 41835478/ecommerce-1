@@ -50,7 +50,8 @@ class EloquentServerAccessRepository implements ServerAccessContract
 
         $oResults = new ServerAccess();
 
-        $oResults = $oResults::lists('user_name','id');
+        $oResults = $oResults->orderBy('user_name')->lists('user_name','id');
+
         return $oResults;
     }
 

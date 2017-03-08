@@ -46,7 +46,7 @@ class EloquentSupportRepository implements SupportContract
 
         $oResults = new Support();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
     public function create($data)

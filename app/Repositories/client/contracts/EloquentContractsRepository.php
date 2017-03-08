@@ -65,7 +65,7 @@ class EloquentContractsRepository implements ContractsContract
 if($company_id > 0){
     $oResults =$oResults->where('company_id','=',$company_id);
 }
-        $oResults =$oResults->get();
+        $oResults =$oResults->orderBy('name')->get();
         $aResults = [];
         foreach($oResults as $oResult){
             $company=(isset($oResult->company->name))? $oResult->company->name:'';

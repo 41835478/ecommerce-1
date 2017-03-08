@@ -54,13 +54,13 @@ class EloquentProductsRepository implements ProductsContract
 
     public function getAllList(){
 
-        $oResults = Products::with('productsList');
+        $oResults = Products::with('productsList')->orderBy('name');
 
         $oResults = $oResults->get();
         $aResults=[];
         foreach($oResults as $oResult){
-            $productListName=(isset($oResult->productsList->name))? ' ( '.$oResult->productsList->name.' ) ':'';
-            $aResults[$oResult->id]=$oResult->name.$productListName;
+            $productListName=(isset($oResult->productsList->name))? $oResult->productsList->name:'';
+            $aResults[$oResult->id]=$productListName.' ( '.$oResult->name.' ) ';
 
         }
         return $aResults;

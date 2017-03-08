@@ -61,7 +61,7 @@ class EloquentServerIpRepository implements ServerIpContract
 
         $oResults = new ServerIp();
 
-        $oResults = $oResults::lists('ip','id');
+        $oResults = $oResults->orderBy('ip')->lists('ip','id');
         return $oResults;
     }
 

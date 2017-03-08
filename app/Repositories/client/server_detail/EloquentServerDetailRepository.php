@@ -71,7 +71,7 @@ class EloquentServerDetailRepository implements ServerDetailContract
 
         $oResults = new ServerDetail();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
 

@@ -41,7 +41,8 @@ class EloquentServerCompanyRepository implements ServerCompanyContract
 
         $oResults = new ServerCompany();
 
-        $oResults = $oResults::lists('name','id');
+
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
 

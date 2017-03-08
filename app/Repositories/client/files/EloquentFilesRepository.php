@@ -64,7 +64,7 @@ class EloquentFilesRepository implements FilesContract
         }else{
             $oResults = $oResults->where('parent','=',0);
         }
-          $oResults = $oResults->lists('name','id');
+          $oResults = $oResults->orderBy('name')->lists('name','id');
         $aResults=[0=>trans('general.selectOne')];
         foreach($oResults as $key=>$value){
             $aResults[$key]=$value;

@@ -63,7 +63,8 @@ class EloquentServerSpecRepository implements ServerSpecContract
 
         $oResults = new ServerSpec();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
+
         return $oResults;
     }
 

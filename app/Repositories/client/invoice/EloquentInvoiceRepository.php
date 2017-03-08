@@ -49,7 +49,7 @@ class EloquentInvoiceRepository implements InvoiceContract
 
           $oResults = new Invoice();
 
-          $oResults = $oResults::lists('name','id');
+          $oResults = $oResults->orderBy('name')->lists('name','id');
           return $oResults;
     }
 

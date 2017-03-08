@@ -48,7 +48,7 @@ class EloquentDomainsRepository implements DomainsContract
 
         $oResults = new Domains();
 
-        $oResults = $oResults::lists('name','id');
+        $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
     public function create($data)

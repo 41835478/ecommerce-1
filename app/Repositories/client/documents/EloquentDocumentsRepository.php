@@ -61,7 +61,7 @@ class EloquentDocumentsRepository implements DocumentsContract
         if($type>-1){
         $oResults= $oResults->where('type','=',$type)->where('parent','=',0);
         }
-        $oResults = $oResults->get();
+        $oResults = $oResults->orderBy('name')->get();
         $aResults=[0=>trans('general.selectOne')];
         foreach($oResults as $oResult){
             $aResults[$oResult->id]=$oResult->name;
