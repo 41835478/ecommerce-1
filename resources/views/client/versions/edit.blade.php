@@ -30,14 +30,6 @@
                     <div class="white-box">
 
 
-    {!! Form::model($versions, [
-        'method' => 'PATCH',
-        'url' => ['/client/versions', $versions->id],
-        'class' => 'form-horizontal'
-    ]) !!}
-
-
-
 
 
 
@@ -59,13 +51,24 @@
 
 
 
+                    {!! Form::model($request,['method'=>'get', 'class' => 'form-horizontal','id'=>'productsChangeForm']) !!}
+
+
                     <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6">
                         {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
+                            {!! Form::select('products_id',$productsList, null, ['class' => 'form-control','onchange'=>"$('#productsChangeForm').submit();"]) !!}
                             {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+                    {!! Form::close() !!}
+
+                    {!! Form::model($versions, [
+                        'method' => 'PATCH',
+                        'url' => ['/client/versions', $versions->id],
+                        'class' => 'form-horizontal'
+                    ]) !!}
+
 
                     <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}}  col-xs-6">
                         {!! Form::label('version', trans('general.version'), ['class' => 'col-sm-4 control-label']) !!}
@@ -79,27 +82,18 @@
                 <div class="row">
 
 
-                    <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}}  col-xs-6">
-                        {!! Form::label('release_notes', trans('general.release_notes'), ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::text('release_notes', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
 
 
 
                     <div class="form-group {{ $errors->has('links') ? 'has-error' : ''}}  col-xs-6">
                         {!! Form::label('links', trans('general.links'), ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::text('links', null, ['class' => 'form-control']) !!}
+                            {!! Form::select('links',$filesList, null, ['class' => 'form-control']) !!}
                             {!! $errors->first('links', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
-                </div>
 
 
-                <div class="row">
                     <div class="form-group {{ $errors->has('publish_date') ? 'has-error' : ''}}  col-xs-6">
                         {!! Form::label('articale', trans('general.publish_date'), ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
@@ -108,37 +102,48 @@
                         </div>
                     </div>
 
+
                 </div>
 
 
+
                 <div class="row">
-                    <div class="form-group {{ $errors->has('articale') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('article', trans('general.article'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('articale', null, ['class' => 'form-control','id'=>'editor1']) !!}
-                            {!! $errors->first('articale', '<p class="help-block">:message</p>') !!}
+                    <div class="form-group {{ $errors->has('release_notes') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('release_notes', trans('general.release_notes'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('release_notes',$releaseNotesList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('release_notes', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+                    <div class="form-group {{ $errors->has('article') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('article', trans('general.article'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('article',$articleList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('article', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
                 </div>
 
 
                 <div class="row">
-                    <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-12">
-                        {!! Form::label('manual', trans('general.manual'), ['class' => ' control-label']) !!}
-                        <div class="col-sm-12">
-                            {!! Form::textarea('manual', null, ['class' => 'form-control','id'=>'editor2']) !!}
+
+                    <div class="form-group {{ $errors->has('manual') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('manual', trans('general.manual'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('manual',$manualList, null, ['class' => 'form-control']) !!}
                             {!! $errors->first('manual', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
                 </div>
 
-        <div class="row">
-
-                
 
 
-        <div class="form-group">
+                <div class="row">
+
+                <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
+            {!! Form::hidden('products_id', null) !!}
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

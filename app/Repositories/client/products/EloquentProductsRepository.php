@@ -81,9 +81,9 @@ class EloquentProductsRepository implements ProductsContract
     public function show($id)
     {
 
-$products = Products::findOrFail($id);
+$products = Products::find($id);
 
-        return $products;
+        return ($products)?  $products:false;
     }
 
     public function destroy($id)

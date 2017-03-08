@@ -55,10 +55,15 @@ class EloquentFilesRepository implements FilesContract
         return $oResults;
     }
 
-    public function getAllList(){
+    public function getAllList($parentId=0){
 
           $oResults = new Files();
-        $oResults = $oResults->where('parent','=',0);
+
+        if($parentId>0){
+            $oResults = $oResults->where('parent','=',$parentId);
+        }else{
+            $oResults = $oResults->where('parent','=',0);
+        }
           $oResults = $oResults->lists('name','id');
         $aResults=[0=>trans('general.selectOne')];
         foreach($oResults as $key=>$value){

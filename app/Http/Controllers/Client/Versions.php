@@ -19,6 +19,7 @@ use App\Models\Versions as mVersions;
 use App\Repositories\client\versions\VersionsContract as rVersions;
 use App\Repositories\client\products\ProductsContract as rProducts;
 use App\Repositories\client\documents\DocumentsContract as rDocuments;
+use App\Repositories\client\files\FilesContract as rFiles;
 class Versions extends Controller
 {
     private $rVersions;
@@ -49,7 +50,7 @@ class Versions extends Controller
      *
      * @return void
      */
-    public function    create(Request $request,rDocuments $rDocuments)
+    public function    create(Request $request,rDocuments $rDocuments,rFiles $rFiles)
     {
 
         $productsList=$this->rProducts->getAllList();
@@ -60,7 +61,24 @@ class Versions extends Controller
         $manualList=  $rDocuments->getAllList(config('array.manualIndex'));
         $releaseNotesList=  $rDocuments->getAllList(config('array.notesIndex'));
 
-        return view('client.versions.create',compact('request','productsList','articleList','manualList','releaseNotesList'));
+
+        $productsId=0;
+        if(isset($request->products_id)){
+            $productsId=$request->products_id;
+        }
+        elseif(count($productsList)){
+
+            $productsId=reset($productsList);
+            $request->products_id=$productsId;
+        }
+        $selectedProduct=$this->rProducts->show($productsId);
+        $selectedProductFile=0;
+        if($selectedProduct){
+            $selectedProductFile=$selectedProduct->files_id;
+        }
+        $filesList=  $rFiles->getAllList($selectedProductFile);
+
+        return view('client.versions.create',compact('request','productsList','articleList','manualList','releaseNotesList','filesList'));
 
     }
 
@@ -102,7 +120,7 @@ class Versions extends Controller
      *
      * @return void
      */
-    public function edit($id,rDocuments $rDocuments)
+    public function edit($id,Request $request,rDocuments $rDocuments,rFiles $rFiles)
     {
 
 
@@ -114,7 +132,33 @@ class Versions extends Controller
         $manualList=  $rDocuments->getAllList(config('array.manualIndex'));
         $releaseNotesList=  $rDocuments->getAllList(config('array.notesIndex'));
 
-        return view('client.versions.edit', compact('versions','productsList','articleList','manualList','releaseNotesList'));
+
+        $productsId=0;
+        if(isset($request->products_id)){
+            $productsId=$request->products_id;
+            $versions->products_id=$request->products_id;
+        }
+        elseif($versions){
+
+            $productsId=$versions->products_id;
+            $request->merge(['products_id'=>$productsId]);
+        }
+        elseif(count($productsList)){
+
+            $productsId=reset($productsList);
+        }
+
+
+
+        $selectedProduct=$this->rProducts->show($productsId);
+        $selectedProductFile=0;
+        if($selectedProduct){
+            $selectedProductFile=$selectedProduct->files_id;
+        }
+        $filesList=  $rFiles->getAllList($selectedProductFile);
+
+
+        return view('client.versions.edit', compact('versions','request','productsList','articleList','manualList','releaseNotesList','filesList'));
     }
 
     /**

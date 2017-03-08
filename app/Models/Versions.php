@@ -30,4 +30,8 @@ class Versions extends Model
     }
 
 
+    public function files(){
+        return $this->belongsTo('App\Models\Files','links');
+    }
+
 }

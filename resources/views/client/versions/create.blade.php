@@ -28,7 +28,6 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::model($request,['url' => '/client/versions', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -47,15 +46,18 @@
             
         <div class="row">
 
-                
-        
-        <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6">
+            {!! Form::model($request,['method'=>'get', 'class' => 'form-horizontal','id'=>'productsChangeForm']) !!}
+
+
+            <div class="form-group {{ $errors->has('products_id') ? 'has-error' : ''}}  col-xs-6">
             {!! Form::label('products_id', trans('general.products'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::select('products_id',$productsList, null, ['class' => 'form-control']) !!}
+                {!! Form::select('products_id',$productsList, null, ['class' => 'form-control','onchange'=>"$('#productsChangeForm').submit();"]) !!}
                 {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
+            {!! Form::close() !!}
+            {!! Form::model($request,['url' => '/client/versions', 'class' => 'form-horizontal']) !!}
 
             <div class="form-group {{ $errors->has('version') ? 'has-error' : ''}}  col-xs-6">
                 {!! Form::label('version', trans('general.version'), ['class' => 'col-sm-4 control-label']) !!}
@@ -75,7 +77,7 @@
             <div class="form-group {{ $errors->has('links') ? 'has-error' : ''}}  col-xs-6">
                 {!! Form::label('links', trans('general.links'), ['class' => 'col-sm-4 control-label']) !!}
                 <div class="col-sm-8">
-                    {!! Form::text('links', null, ['class' => 'form-control']) !!}
+                    {!! Form::select('links',$filesList, null, ['class' => 'form-control']) !!}
                     {!! $errors->first('links', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -136,6 +138,7 @@
 
         <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
+            {!! Form::hidden('products_id', null) !!}
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
