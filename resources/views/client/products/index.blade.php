@@ -60,9 +60,12 @@
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.description'), 'description', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                    {{trans('general.versions')}}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                    {{trans('general.publish_date')}}
+                                </th>
 
                                 
                             </tr>
@@ -81,9 +84,11 @@
 
                                                                                 <td>{{ $oResult->name }}</td>
 
-                                                                                <td>{{ $oResult->description }}</td>
+                                        <td>{!!  (isset($oResult->versions) && count($oResult->versions->first()) )? '<a href="/client/versions/'.$oResult->versions->first()->id.'">'.$oResult->versions->first()->version.'</a>':'' !!} </td>
+                                        <td>{{  (isset($oResult->versions)&& count($oResult->versions->first()) )? $oResult->versions->first()->publish_date:'' }}</td>
 
-                                        
+
+
                                         <td>
 
 

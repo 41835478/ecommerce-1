@@ -27,5 +27,8 @@ class Products extends Model
     public function files(){
         return $this->belongsTo('App\Models\Files');
     }
+    public function versions(){
+        return $this->hasMany('App\Models\Versions');
+    }
 
 }
