@@ -17,6 +17,10 @@ return [
         1=>'not active',
         2=>'other'
     ],
+    'licenses_type'=>[
+        0=>'Meta Trader 4',
+        1=>'Meta Trader 5'
+    ],
 'domains_providers'=>[
     0=>'GoDaddy',
     1=>'blueHost'

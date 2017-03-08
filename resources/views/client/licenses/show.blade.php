@@ -87,7 +87,9 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$licenses['type'] }}</label>
+                            <label class="control-label">
+                                {{ (array_key_exists($licenses['type'],config('array.licenses_type')))?config('array.licenses_type')[$licenses['type']]:'' }}
+                               </label>
                         </div>
                     </div>
 

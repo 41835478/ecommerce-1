@@ -77,7 +77,7 @@
                 <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
-                {!! Form::text('type', null, ['class' => 'form-control']) !!}
+                {!! Form::select('type',config('array.licenses_type'), null, ['class' => 'form-control']) !!}
                 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
             </div>
         </div>

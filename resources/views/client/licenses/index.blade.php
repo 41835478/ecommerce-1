@@ -84,7 +84,7 @@
 
                                                                                 <td>{{ $oResult->license }}</td>
 
-                                                                                <td>{{ $oResult->type }}</td>
+                                                                                <td>{{ (array_key_exists($oResult->type,config('array.licenses_type')))?config('array.licenses_type')[$oResult->type]:'' }}</td>
 
                                         <td>{{(array_key_exists($oResult->status,config('array.licenses_status')) )? config('array.licenses_status')[$oResult->status]:'' }}</td>
 
