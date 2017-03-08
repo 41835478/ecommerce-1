@@ -61,7 +61,7 @@
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$support['type'] }}</label>
+                            <label class="control-label">{{config('array.support_type')[$support['type']] }}</label>
                         </div>
                     </div>
 

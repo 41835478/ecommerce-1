@@ -19,6 +19,15 @@ class EloquentProductsRepository implements ProductsContract
         if (isset($data->products_list_id) && !empty($data->products_list_id)) {
             $oResults = $oResults->where('products_list_id', '=', $data['products_list_id']);
         }
+        if (isset($data->manual) && !empty($data->manual)) {
+            $oResults = $oResults->where('manual', '=', $data['manual']);
+        }
+        if (isset($data->article) && !empty($data->article)) {
+            $oResults = $oResults->where('article', '=', $data['article']);
+        }
+        if (isset($data->files_id) && !empty($data->files_id)) {
+            $oResults = $oResults->where('files_id', '=', $data['files_id']);
+        }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
         }

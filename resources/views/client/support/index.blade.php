@@ -82,7 +82,7 @@
 
                                                                                 <td>{{ $oResult->name }}</td>
 
-                                                                                <td>{{ $oResult->type }}</td>
+                                                                                <td>{{(array_key_exists($oResult->type,config('array.support_type')))? config('array.support_type')[$oResult->type]:'' }}</td>
 
                                                                                 <td>{{ $oResult->description }}</td>
 

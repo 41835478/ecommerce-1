@@ -131,6 +131,33 @@
 
                 <div class="row">
 
+
+
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.files') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                @if(isset($products->files->name))
+                                    <a href="/client/files/{{$products['files_id']}}">{{$products->files->name}}</a>
+                                @endif
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div class="row">
+
                     <div class="col-xs-offset-6 col-xs-3">
 
 

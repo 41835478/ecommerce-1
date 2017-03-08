@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     protected $fillable = [
-   "products_list_id","name","description" ,"article","manual"   ];
+   "products_list_id","name","description" ,"article","manual","files_id"   ];
     protected $table='products';
 
     public $timestamps =false ;
@@ -22,6 +22,10 @@ class Products extends Model
 
     public function manual(){
         return $this->belongsTo('App\Models\Documents','manual');
+    }
+
+    public function files(){
+        return $this->belongsTo('App\Models\Files');
     }
 
 }

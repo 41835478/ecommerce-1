@@ -59,7 +59,11 @@ class EloquentFilesRepository implements FilesContract
           $oResults = new Files();
 
           $oResults = $oResults::lists('name','id');
-          return $oResults;
+        $aResults=[0=>trans('general.selectOne')];
+        foreach($oResults as $key=>$value){
+            $aResults[$key]=$value;
+        }
+          return $aResults;
     }
 
     public function getChildrenIds(&$allFilesIds,$filesIds){

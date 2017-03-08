@@ -118,5 +118,10 @@ return [
         1=>'paid',
         2=>'after payment condition',
         3=>'other'
+    ],
+    'support_type'=>[
+        0=>'support',
+        1=>'New Feature',
+        2=>'Other'
     ]
 ];

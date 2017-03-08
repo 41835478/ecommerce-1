@@ -98,6 +98,16 @@
 
 
 
+                <div class="row">
+                    <div class="form-group {{ $errors->has('files_id') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('files_id', trans('general.files'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('files_id',$filesList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('files_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                </div>
 
 
 

@@ -61,14 +61,15 @@
                 {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
-                
-                <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('type', trans('type'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('type', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+
+
+            <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('type',config('array.support_type'), null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
-        </div>
         </div>        
         <div class="row">        <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('description', trans('description'), ['class' => 'col-sm-4 control-label']) !!}
