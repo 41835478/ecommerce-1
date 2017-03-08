@@ -53,18 +53,7 @@
 
 
 
-            
-        <div class="row">
 
-                
-                <div class="form-group {{ $errors->has('contract_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('contract_id', trans('contract_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('contract_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('contract_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
         <div class="row">        <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('name', trans('name'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">

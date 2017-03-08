@@ -42,7 +42,7 @@
 
                                 <div class="row">                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.contact_id') }}  </label>
+                            <label class="control-label">{{ trans('general.contact') }}  </label>
                         </div>
                     </div>
 
@@ -53,17 +53,7 @@
                     </div>
 
                     
-                                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.contract_id') }}  </label>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$ticket['contract_id'] }}</label>
-                        </div>
-                    </div>
 
                     </div>
                 <div class="row">                    <div class="col-sm-2 text-right">

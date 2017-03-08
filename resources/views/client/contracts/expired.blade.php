@@ -71,6 +71,9 @@
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                     {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oResults) !!}
                                 </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                    {!! th_sort(trans('general.status'), 'status', $oResults) !!}
+                                </th>
 
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                     {{ trans('general.expiredDate')}}
@@ -115,6 +118,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $oResult->purchasing_date }}</td>
+                                        <td>{{ (array_key_exists($oResult->status,config('array.contracts_status')))?config('array.contracts_status')[$oResult->status]:'' }}</td>
                                         <td>{{ $oResult->expired_date }}</td>
 
                                         

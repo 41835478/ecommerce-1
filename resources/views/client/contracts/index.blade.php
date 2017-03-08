@@ -54,12 +54,12 @@
                                 </th>
 
 
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
                                     {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                 </th>
 
 
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                     {!! th_sort(trans('general.price'), 'price', $oResults) !!}
                                 </th>
 
@@ -67,18 +67,21 @@
                                         {!! th_sort(trans('general.company_id'), 'company_id', $oResults) !!}
                                     </th>
 
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                     {!! th_sort(trans('general.type'), 'type', $oResults) !!}
                                 </th>
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                     {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oResults) !!}
                                 </th>
 
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                   {{ trans('general.lastRenealFromDate')}}
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                    {!! th_sort(trans('general.status'), 'status', $oResults) !!}
+                                </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
+                                    {{ trans('general.lastRenealFromDate')}}
                                 </th>
 
-                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
                                     {{ trans('general.lastRenealToDate')}}
                                 </th>
 
@@ -116,6 +119,8 @@
                                         @endif
                                             </td>
                                         <td>{{ $oResult->purchasing_date }}</td>
+                                        <td>{{ (array_key_exists($oResult->status,config('array.contracts_status')))?config('array.contracts_status')[$oResult->status]:'' }}</td>
+
                                         <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
                                         <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>
 

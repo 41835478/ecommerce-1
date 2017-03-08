@@ -128,6 +128,29 @@
 
                     </div>
 
+
+
+
+                <div class="row">
+
+
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.status') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                {{ (array_key_exists($contracts['status'],config('array.contracts_status')))?config('array.contracts_status')[$contracts['status']]:'' }}
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
 @if(count($oContractsRenewalResults))
 
 

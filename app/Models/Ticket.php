@@ -15,4 +15,6 @@ class Ticket extends Model
         return $this->belongsTo('\App\Models\Contacts','contact_id');
     }
 
+
+
 }

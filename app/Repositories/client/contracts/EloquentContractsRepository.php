@@ -30,6 +30,9 @@ class EloquentContractsRepository implements ContractsContract
         if (isset($data->type) && !empty($data->type)) {
             $oResults = $oResults->where('type', '=', $data['type'] );
         }
+        if (isset($data->status) && !empty($data->status)) {
+            $oResults = $oResults->where('status', '=', $data['status'] );
+        }
         if (isset($data->price) && !empty($data->price)) {
             $oResults = $oResults->where('price', '=', $data['price'] );
         }

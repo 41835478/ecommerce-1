@@ -123,5 +123,11 @@ return [
         0=>'support',
         1=>'New Feature',
         2=>'Other'
+    ],
+    'contracts_status'=>[
+        0=>'open',
+        1=>"finished",
+        2=>"future",
+        3=>'Other'
     ]
 ];

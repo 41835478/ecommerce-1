@@ -54,7 +54,6 @@ class Ticket extends Controller
 
         $currentTime=Carbon::now()->format('Y-m-d');
         $request->merge(['open_time'=>$currentTime,'close_time'=>$currentTime]);
-
         return view('client.ticket.create', compact('request'));
     }
 

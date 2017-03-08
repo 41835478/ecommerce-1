@@ -28,6 +28,7 @@ class createRequest extends Request
             "company_id"=>'required|numeric',
             "products_id"=>'required|numeric',
             "type"=>'required|numeric',
+            "status"=>'required|numeric',
             "purchasing_date"=>'required|date',
 
 
