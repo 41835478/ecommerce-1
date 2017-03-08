@@ -87,7 +87,11 @@
                                                                                 <td>{{ $oResult->version }}</td>
 
 
-                                                                                <td>{{ $oResult->links }}</td>
+                                                                                <td>
+                                                                                    @if(isset($oResult->files->name))
+                                                                                        <a href="/client/files/{{$oResult->links}}">{{$oResult->files->name}}</a>
+                                                                                    @endif
+                                                                                </td>
 
                                                                                 <td>{{ $oResult->publish_date }}</td>
 

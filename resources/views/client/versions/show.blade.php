@@ -93,7 +93,7 @@
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">
-                                @if(isset($versions->files()->first()->name))
+                                @if(isset($versions->files->name))
                                     <a href="/client/files/{{$versions['links']}}">{{$versions->files->name}}</a>
                                 @endif
                                </label>

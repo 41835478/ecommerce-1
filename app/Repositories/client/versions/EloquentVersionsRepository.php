@@ -11,7 +11,7 @@ class EloquentVersionsRepository implements VersionsContract
     public function getByFilter($data)
     {
 
-        $oResults = Versions::with('products');
+        $oResults = Versions::with('products','files');
 
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
