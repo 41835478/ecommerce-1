@@ -1067,15 +1067,16 @@ line-height: 20px !important;
 .tableActionsMenuDiv button,
 .tableActionsMenuDiv input[type="button"],
 .tableActionsMenuDiv input[type="submit"]{
-    width:30px;
-    height:28px;
+    /*width:30px;*/
+    /*height:28px;*/
     display:block;
     float:right;
-    border:1px solid #cccccc;
+    border:none;
     padding:5px;
     overflow: hidden;
     font-size: 24px;
     margin:0px 3px;
+    background-color: transparent;
     /*display:block;*/
     /*width:100%;*/
     /*padding:5px;*/
@@ -1089,16 +1090,23 @@ line-height: 20px !important;
 
 
 .tableActionsMenuDiv a{
-    border-color:#0f0;
-    color:#0f0;
+    border-color:#337ec0;
+    color:#337ec0;
 
 }
 
 
 .tableActionsMenuDiv input[type="button"],
-.tableActionsMenuDiv input[type="submit"] i{
+.tableActionsMenuDiv .deleteRow i{
 
-    border-color:#f00;
-    color:#f00;
+    border-color:#b75d5d ;
+    color:#b75d5d !important;
+}
+.actionHeader{
+    text-align: center;
+}
+.actionHeader i{
+    font-size: 24px;
+    color:#337ec0;
 }
 /*_______________________________________END__table_actions_menu_*/

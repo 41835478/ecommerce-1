@@ -88,6 +88,7 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="10">
                                         {!! th_sort(trans('general.status'), 'status', $oResults) !!}
                                     </th>
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
 
                             </tr>
@@ -102,7 +103,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td> <a href="/client/company/{{ $oResult->id }}" ><i class="fa fa-file-text"></i> {{ $oResult->name }} </a></td>
 
                                                                                 <td>{{ $oResult->email }}</td>
 
@@ -126,41 +127,19 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/company/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/company',$oResult->id]]) !!}
                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                         <i class="fa fa-trash"></i>
-                                                        {{trans('general.delete')}}
+
                                                     </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/company/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
-
-                                            <a href="{{ route('client.contacts.index') }}?company_id={{ $oResult->id }}"
-                                               class="fa fa-edit">contacts</a>
-
-
-                                            <a href="{{ route('client.contacts.create') }}?company_id={{ $oResult->id }}"
-                                               class="fa fa-edit">add contacts</a>
-
-                                            <a href="{{ route('client.licenses.index') }}?company_id={{ $oResult->id }}"
-                                               class="fa fa-edit">license</a>
-
-
-                                            <a href="{{ route('client.licenses.create') }}?company_id={{ $oResult->id }}"
-                                               class="fa fa-edit">add license</a>
-
-                                            <a href="{{ route('client.contracts.index') }}?company_id={{ $oResult->id }}"
-                                               class="fa fa-edit">contracts</a>
-
-
-                                            <a href="{{ route('client.contracts.create') }}?company_id={{ $oResult->id }}"
-                                               class="fa fa-edit">add contracts</a>
+                                               class="fa fa-edit"> </a>
 
                                                 </div>
                                             </div>
