@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServerDetail extends Model
 {
-    protected $fillable = ["server_spec_id","name" ,"company_id","location","cost","unique_name","operating_system","control_panel"    ];
+    protected $fillable = ["server_spec_id","name" ,"company_id","location","cost","unique_name","operating_system","control_panel" ,"period"    ];
     protected $table='server_detail';
 
     public $timestamps =false ;

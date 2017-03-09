@@ -83,9 +83,13 @@
                                         {!! th_sort(trans('general.operating_system'), 'operating_system', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
-                                        {!! th_sort(trans('general.control_panel'), 'control_panel', $oResults) !!}
-                                    </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
+                                    {!! th_sort(trans('general.control_panel'), 'control_panel', $oResults) !!}
+                                </th>
+
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
+                                    {!! th_sort(trans('general.period'), 'period', $oResults) !!}
+                                </th>
 
 
                                 
@@ -118,6 +122,7 @@
 
                                         <td>{{ (array_key_exists($oResult->operating_system,config('array.server_detail_systems')))? config('array.server_detail_systems')[$oResult->operating_system]:'' }}</td>
                                         <td>{{ (array_key_exists($oResult->control_panel,config('array.server_detail_panel')))? config('array.server_detail_panel')[$oResult->control_panel]:'' }}</td>
+                                        <td>{{ (array_key_exists($oResult->period,config('array.server_detail_period')))? config('array.server_detail_period')[$oResult->period]:'' }}</td>
 
 
 

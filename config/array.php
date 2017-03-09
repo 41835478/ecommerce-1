@@ -64,6 +64,20 @@ return [
         1=>'USA',
         2=>'Other'
     ],
+    'server_detail_period'=>[
+        1=>'1 Month',
+        2=>'2 Month',
+        3=>'3 Month',
+        4=>'4 Month',
+        5=>'5 Month',
+        6=>'6 Month',
+        7=>'7 Month',
+        8=>'8 Month',
+        9=>'9 Month',
+        10=>'10 Month',
+        11=>'11 Month',
+        12=>'12 Month',
+    ],
     'server_ip_type'=>[
        0=> 'Default',
         1=>'IPMI',

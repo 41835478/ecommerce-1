@@ -141,6 +141,22 @@
 
 
 
+                <div class="row">
+
+
+
+                    <div class="form-group {{ $errors->has('period') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('period', trans('general.period'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('period',config('array.server_detail_period'), null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('period', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
+                </div>
+
 
 
 

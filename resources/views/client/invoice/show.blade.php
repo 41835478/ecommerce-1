@@ -116,6 +116,7 @@
                                                 <th class="text-center">#</th>
                                                 <th>{{trans('general.contracts')}}</th>
                                                 <th class="text-right">{{trans('general.contracts_renewal')}}</th>
+                                                <th class="text-right">{{trans('general.service')}}</th>
                                                 <th class="text-right">{{trans('general.description')}}</th>
                                                 <th class="text-right">{{trans('general.total')}}</th>
                                             </tr>
@@ -136,8 +137,29 @@
 
                                                         <td>{{ (isset($oResult->contracts->name))?$oResult->contracts->name:'' }}</td>
                                                         <td class="text-right">{{ (isset($oResult->contracts_renewal->to_date))? $oResult->contracts_renewal->price.'( '.$oResult->contracts_renewal->to_date.' )':'' }}</td>
+<td class="text-right">
+    @if(isset($oResult->contracts->type))
+                                                        @if( $oResult->contracts->type == config('array.productsTypeIndex'))
+                                                            {{trans('general.products')}}
+                                                            @if(isset($oResult->contracts->products->name))
+                                                                ( {{(isset($oResult->contracts->products->productsList->name))? $oResult->contracts->products->productsList->name:'' }} - {{$oResult->contracts->products->name  }})
+                                                            @endif
 
+                                                        @elseif( $oResult->contracts->type == config('array.domainsTypeIndex'))
+                                                            {{trans('general.domains')}} ( {{(isset($oResult->contracts->domains->name))? $oResult->contracts->domains->name:'' }} )
 
+                                                        @elseif( $oResult->contracts->type== config('array.webHostingPlansTypeIndex'))
+                                                            {{trans('general.web_hosting_plans')}} ( {{(isset($oResult->contracts->webHostingPlans->name))? $oResult->contracts->webHostingPlans->name:'' }} )
+
+                                                        @elseif( $oResult->contracts->type== config('array.serverTypeIndex'))
+                                                            {{trans('general.server')}} ( {{(isset($oResult->contracts->server_detail->name))? $oResult->contracts->server_detail->name:'' }} )
+
+                                                        @elseif( $oResult->contracts->type == config('array.supportTypeIndex'))
+                                                            {{trans('general.support')}} ( {{(isset($oResult->contracts->support->name))? $oResult->contracts->support->name:'' }} )
+
+                                                        @endif
+        @endif
+</td>
                                                         <td  class="text-right">{{ $oResult->description }}</td>
 
                                                         <td  class="text-right">{{ $currentRowPrice }}</td>

@@ -185,10 +185,32 @@
                     </div>
 
 
+                <div class="row">
+
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.period') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                                {{ (array_key_exists($server_detail['period'],config('array.server_detail_period')))? config('array.server_detail_period')[$server_detail['period']]:'' }}
+                            </label>
+                        </div>
+                    </div>
 
 
 
-                    <div class="row">
+
+                </div>
+
+
+
+
+                <div class="row">
 
                         <div class="col-xs-offset-6 col-xs-3">
 

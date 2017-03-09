@@ -61,7 +61,10 @@ class ContractsRenewalInvoice extends Controller
         }
         elseif(count($contractsList)){
 
-            $contractsId=reset($contractsList);
+            $contractsId=0;
+            foreach($contractsList as $key=>$contract){
+                $contractsId=$key; break;
+            }
             $request->contracts_id=$contractsId;
         }
         $contractsRenewalList=[0=>trans('general.selectOne')]+$rContractsRenewal->getAllList($contractsId);
@@ -129,7 +132,10 @@ class ContractsRenewalInvoice extends Controller
         }
         elseif(count($contractsList)){
 
-            $contractsId=reset($contractsList);
+            $contractsId=0;
+            foreach($contractsList as $key=>$contract){
+                $contractsId=$key; break;
+            }
         }
         $contractsRenewalList=[0=>trans('general.selectOne')]+$rContractsRenewal->getAllList($contractsId);
 

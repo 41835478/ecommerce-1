@@ -15,7 +15,9 @@ return [
 'dashboard'=>'Dashboard',
 'Logout'=>'Logout',
 'CopyRights'=>'2016 &copy; Elite Admin brought to you by themedesigner.in',
-
+'location'=>'Location',
+    'service'=>'Service',
+    'server'=>'Server',
 'language'=>'Language',
     'arabic'=>'Arabic',
     'english'=>'English',
