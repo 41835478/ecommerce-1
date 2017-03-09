@@ -215,6 +215,15 @@
     }
 
 $('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer');});
+
+
+
+    $('.deleteRow').click(function(){
+        if(!confirm('Are you sure that you are want to delete this?')){
+            event.preventDefault();
+        }
+
+    });
 </script>
 
 <script src="{{ asset('/assets/'.config('mycp.layoutAssetsFolder').'/ckeditor/ckeditor.js') }}"></script>
@@ -232,6 +241,7 @@ $('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer'
         filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
         filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
     });
+
 </script>
 @show
 
