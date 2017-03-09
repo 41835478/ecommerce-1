@@ -53,7 +53,8 @@
                                         {!! th_sort(trans('general.price'), 'price', $oResults) !!}
                                     </th>
 
-                                
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>

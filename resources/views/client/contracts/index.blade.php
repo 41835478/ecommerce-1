@@ -85,6 +85,7 @@
                                     {{ trans('general.lastRenealToDate')}}
                                 </th>
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -97,7 +98,7 @@
                                     <tr class='{{ $class }}'>
 
                                         <td>{{ $oResult->id }}</td>
-                                        <td>{{ $oResult->name }}</td>
+                                        <td><a href="/client/contracts/{{ $oResult->id }}" >{{ $oResult->name }}</a></td>
                                         <td>{{ $oResult->price }}</td>
 
                                                                                 <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
@@ -138,37 +139,18 @@
                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                            <a href="/client/contracts/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
-
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/contracts',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/contracts/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                               class="fa fa-edit"> </a>
 
 
-
-                                                    <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">renewal list</a>
-
-
-                                                    <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">add renewal</a>
-
-
-                                                    <a href="{{ route('client.contracts_documents.index') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">documents list</a>
-
-
-                                                    <a href="{{ route('client.contracts_documents.create') }}?contracts_id={{ $oResult->id }}"
-                                                       class="fa fa-edit">add document</a>
 </div>
                                                 </div>
                                         </td>

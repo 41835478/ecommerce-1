@@ -79,7 +79,8 @@
                                         {!! th_sort(trans('general.create_date'), 'create_date', $oResults) !!}
                                     </th>
 
-                                
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -90,7 +91,7 @@
                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                     <tr class='{{ $class }}'>
 
-                                                                                <td>{{ $oResult->id }}</td>
+                                                                                <td><a href="/client/logtime/{{ $oResult->id }}" >{{ $oResult->id }}</a></td>
 
                                                                                 <td>{{ $oResult->support_id }}</td>
 
@@ -111,13 +112,14 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/logtime/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/logtime',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/logtime/{{ $oResult->id }}/edit"

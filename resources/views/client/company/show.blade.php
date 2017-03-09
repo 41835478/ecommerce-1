@@ -233,12 +233,9 @@
                                                 </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.company'), 'company_id', $oContactsResults) !!}
+                                                    {!! th_sort(trans('general.name'), 'name', $oContactsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.users'), 'users_id', $oContactsResults) !!}
-                                                </th>
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                                     {!! th_sort(trans('general.phone'), 'phone', $oContactsResults) !!}
@@ -255,6 +252,7 @@
                                                 </th>
 
 
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -267,9 +265,9 @@
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>
+                                                        <td><a href="/admin/contacts/{{ $oResult->id }}" >{{   $oResult->name }}</a></td>
 
-                                                        <td>{{ $oResult->users_id }}</td>
+
 
                                                         <td>{{ $oResult->phone }}</td>
 
@@ -287,13 +285,14 @@
                                                                 <div class="innerContainer">
                                                                     <i class="fa fa-list menuIconList"></i>
 
-                                                                    <a href="/admin/contacts/{{ $oResult->id }}"
-                                                               class="fa fa-file-text"></a>
 
 
                                                             {!! Form::open(['method' => 'DELETE',
                                                             'url' => ['/admin/contacts',$oResult->id]]) !!}
-                                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                                        <i class="fa fa-trash"></i>
+
+                                                                    </button>
                                                             {!! Form::close() !!}
 
                                                             <a href="/admin/contacts/{{ $oResult->id }}/edit"
@@ -369,10 +368,6 @@
                                                     {!! th_sort(trans('general.price'), 'price', $oContractsResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.company_id'), 'company_id', $oContractsResults) !!}
-                                                </th>
-
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                                     {!! th_sort(trans('general.type'), 'type', $oContractsResults) !!}
                                                 </th>
@@ -390,7 +385,8 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
                                                     {{ trans('general.lastRenealToDate')}}
                                                 </th>
-<th></th>
+
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                             </tr>
                                             </thead>
@@ -403,10 +399,9 @@
                                                     <tr class='{{ $class }}'>
 
                                                         <td>{{ $oResult->id }}</td>
-                                                        <td>{{ $oResult->name }}</td>
+                                                        <td>  <a href="/client/contracts/{{ $oResult->id }}" >{{ $oResult->name }}</a></td>
                                                         <td>{{ $oResult->price }}</td>
 
-                                                        <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
                                                         <td>
                                                             @if( $oResult->type == config('array.productsTypeIndex'))
                                                                 {{trans('general.products')}}
@@ -449,12 +444,12 @@
                                                                     'url' => ['/client/contracts',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
+
                                                                     </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/contracts/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                                                       class="fa fa-edit"> </a>
 
 
                                                                 </div>
@@ -525,9 +520,7 @@
                                                     {!! th_sort(trans('general.id'), 'id', $oLicensesResults) !!}
                                                 </th>
 
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.company'), 'company_id', $oLicensesResults) !!}
-                                                </th>
+
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                                     {!! th_sort(trans('general.license'), 'license', $oLicensesResults) !!}
@@ -540,6 +533,7 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                                     {!! th_sort(trans('general.status'), 'status', $oLicensesResults) !!}
                                                 </th>
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
 
                                             </tr>
@@ -554,9 +548,7 @@
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
-
-                                                        <td>{{ $oResult->license }}</td>
+                                                        <td> <a href="/client/licenses/{{ $oResult->id }}"> {{ $oResult->license }}</a></td>
 
                                                         <td>{{ $oResult->type }}</td>
 
@@ -571,20 +563,17 @@
                                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                                                    <a href="/client/licenses/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"> {{trans('general.details')}}</a>
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
                                                                     'url' => ['/client/licenses',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
                                                                     </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/licenses/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                                                       class="fa fa-edit"> </a>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -660,9 +649,8 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                                     {!! th_sort(trans('general.description'), 'description', $oInvoiceResults) !!}
                                                 </th>
-                                                <th  >
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
-                                                </th>
 
 
                                             </tr>
@@ -673,18 +661,41 @@
                                                 {{-- */$class='';/* --}}
                                                 @foreach($oInvoiceResults as $oResult)
                                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
-                                                    <tr class='{{ $class }}' onclick="window.location.href='/client/invoice/{{ $oResult->id }}';" style="cursor: pointer;">
+                                                    <tr class='{{ $class }}'  >
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{ $oResult->name }}</td>
+                                                        <td><a href="/client/invoice/{{ $oResult->id }}"> {{ $oResult->name }}</a></td>
 
                                                         <td>{{ $oResult->create_date }}</td>
 
                                                         <td>{{ $oResult->due_date }}</td>
 
                                                         <td>{{ $oResult->description }}</td>
+<td>
 
+
+    <div class="tableActionsMenuDiv">
+        <div class="innerContainer">
+            <i class="fa fa-list menuIconList"></i>
+
+
+
+            {!! Form::open(['method' => 'DELETE',
+            'url' => ['/client/invoice',$oResult->id]]) !!}
+            <button type="submit" name="Delete" class="deleteRow" >
+                <i class="fa fa-trash"></i>
+
+            </button>
+            {!! Form::close() !!}
+
+            <a href="/client/invoice/{{ $oResult->id }}/edit"
+               class="fa fa-edit"> </a>
+
+
+        </div>
+    </div>
+</td>
 
 
                                                     </tr>

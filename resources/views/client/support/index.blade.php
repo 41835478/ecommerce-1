@@ -66,6 +66,7 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.description'), 'description', $oResults) !!}
                                     </th>
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                 
                             </tr>
@@ -80,7 +81,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td>  <a href="/client/support/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                                                                 <td>{{(array_key_exists($oResult->type,config('array.support_type')))? config('array.support_type')[$oResult->type]:'' }}</td>
 
@@ -93,13 +94,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/support/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/support',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/support/{{ $oResult->id }}/edit"

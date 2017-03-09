@@ -107,7 +107,7 @@
                         <div class=" col-xs-3">
                             {!! Form::open(['method' => 'DELETE',
                     'url' => ['/client/server_access',$server_access['id']]]) !!}
-                            <button type="submit" name="Delete" class="deleteRow  btn btn-danger form-control" >
+                            <button type="submit" name="Delete" class="deleteRow " >
                                 <i class="fa fa-trash"></i>
                                 {{trans('general.delete')}}
                             </button>

@@ -83,7 +83,8 @@
                                         {!! th_sort(trans('general.description'), 'description', $oResults) !!}
                                     </th>
 
-                                
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -94,7 +95,7 @@
                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                     <tr class='{{ $class }}'>
 
-                                                                                <td>{{ $oResult->id }}</td>
+                                                                                <td>  <a href="/client/payment/{{ $oResult->id }}" > {{ $oResult->id }}</a></td>
 
                                                                                 <td>{{ (isset($oResult->invoice->name))? $oResult->invoice->name:'' }}</td>
 
@@ -104,7 +105,7 @@
 
                                                                                 <td>{{ $oResult->payment_condition }}</td>
 
-                                                                                <td>{{ $oResult->create_date }}</td>
+                                                                                <td>  <a href="/client/payment/{{ $oResult->id }}" > {{ $oResult->create_date }}</a></td>
 
                                                                                 <td>{{ $oResult->due_date }}</td>
 
@@ -117,13 +118,14 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/payment/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/payment',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/payment/{{ $oResult->id }}/edit"

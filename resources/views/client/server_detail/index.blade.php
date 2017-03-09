@@ -92,6 +92,7 @@
                                 </th>
 
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -105,7 +106,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                        <td>{{ $oResult->name }}</td>
+                                        <td>  <a href="/client/server_detail/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
                                         <td>{{ (array_key_exists($oResult->company_id,config('array.server_detail_company')))? config('array.server_detail_company')[$oResult->company_id]:'' }}</td>
                                         <td>{{ (array_key_exists($oResult->location,config('array.server_detail_location')))? config('array.server_detail_location')[$oResult->location]:'' }}</td>
 
@@ -133,13 +134,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/server_detail/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/server_detail',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/server_detail/{{ $oResult->id }}/edit"

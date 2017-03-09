@@ -283,6 +283,7 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
                                                     {!! th_sort(trans('general.description'), 'description', $oPaymentResults) !!}
                                                 </th>
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
 
                                             </tr>
@@ -295,7 +296,7 @@
                                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                                     <tr class='{{ $class }}'  onclick="window.location.href='/client/payment/{{ $oResult->id }}';" style="cursor: pointer">
 
-                                                        <td>{{ $oResult->id }}</td>
+                                                        <td><a href="/client/payment/{{ $oResult->id }}" >{{ $oResult->id }}</a></td>
 
                                                         <td>{{ $oResult->amount }}</td>
 
@@ -303,13 +304,33 @@
 
                                                         <td>{{ $oResult->payment_condition }}</td>
 
-                                                        <td>{{ $oResult->create_date }}</td>
+                                                        <td><a href="/client/payment/{{ $oResult->id }}" >{{ $oResult->create_date }}</a></td>
 
                                                         <td>{{ $oResult->due_date }}</td>
 
                                                         <td>{{ $oResult->description }}</td>
 
+                                                        <td>
 
+                                                            <div class="tableActionsMenuDiv">
+                                                                <div class="innerContainer">
+                                                                    <i class="fa fa-list menuIconList"></i>
+
+
+
+
+                                                                    {!! Form::open(['method' => 'DELETE',
+                                                                    'url' => ['/client/payment',$oResult->id]]) !!}
+                                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    {!! Form::close() !!}
+
+                                                                    <a href="/client/payment/{{ $oResult->id }}/edit"
+                                                                       class="fa fa-edit"></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
 
                                                     </tr>
                                                 @endforeach

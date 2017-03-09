@@ -63,7 +63,7 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.description'), 'description', $oResults) !!}
                                     </th>
-
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -77,7 +77,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td><a href="/client/products_list/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                                                                 <td>{{ (array_key_exists($oResult->type ,config('array.products_list_type')))? config('array.products_list_type')[$oResult->type]:'' }}</td>
 
@@ -91,26 +91,16 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-
-                                            <a href="/client/products_list/{{ $oResult->id }}"
-                                               class="fa fa-file-text">{{trans('general.details')}}</a>
-
-
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/products_list',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/products_list/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit">{{trans('general.edit')}}</a>
+                                               class="fa fa-edit"></a>
 
-                                            <a href="{{ route('client.products.create') }}?products_list_id={{ $oResult->id }}"
-                                               class="fa fa-edit">add products</a>
-                                            <a href="{{ route('client.products.index') }}?products_list_id={{ $oResult->id }}"
-                                               class="fa fa-edit"> products</a>
 
                                                     </div>
                                                 </div>

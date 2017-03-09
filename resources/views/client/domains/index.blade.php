@@ -62,7 +62,8 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.cost'), 'cost', $oResults) !!}
                                     </th>
-<th></th>
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                 
                             </tr>
@@ -77,7 +78,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td>  <a href="/client/domains/{{ $oResult->id }}" >  {{ $oResult->name }}</a></td>
 
                                                                                 <td>{{(array_key_exists($oResult->provider,config('array.domains_providers')))? config('array.domains_providers')[$oResult->provider]:'' }}</td>
 
@@ -92,20 +93,18 @@
                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                            <a href="/client/domains/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/domains',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/domains/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                               class="fa fa-edit"></a>
 
 
 

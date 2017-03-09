@@ -59,7 +59,8 @@
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                     </th>
 
-                                
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -72,7 +73,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td>  <a href="/client/server_company/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                         
                                         <td>
@@ -81,14 +82,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/server_company/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/server_company',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>{!! Form::close() !!}
 
                                             <a href="/client/server_company/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"></a>

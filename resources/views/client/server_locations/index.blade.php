@@ -62,6 +62,7 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                         {!! th_sort(trans('general.location_id'), 'location_id', $oResults) !!}
                                     </th>
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                 
                             </tr>
@@ -74,7 +75,7 @@
                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                     <tr class='{{ $class }}'>
 
-                                                                                <td>{{ $oResult->id }}</td>
+                                                                                <td> <a href="/client/server_locations/{{ $oResult->id }}" > {{ $oResult->id }}</a></td>
 
                                                                                 <td>{{(isset($oResult->server_company->name))? $oResult->server_company->name:'' }}</td>
 
@@ -87,13 +88,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/server_locations/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/server_locations',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/server_locations/{{ $oResult->id }}/edit"

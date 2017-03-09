@@ -67,6 +67,7 @@
                                     {{trans('general.publish_date')}}
                                 </th>
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -82,7 +83,7 @@
 
                                                                                 <td>{{ (isset($oResult->productsList->name))?$oResult->productsList->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td><a href="/client/products/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                         <td>{!!  (isset($oResult->versions) && count($oResult->versions->first()) )? '<a href="/client/versions/'.$oResult->versions->first()->id.'">'.$oResult->versions->first()->version.'</a>':'' !!} </td>
                                         <td>{{  (isset($oResult->versions)&& count($oResult->versions->first()) )? $oResult->versions->first()->publish_date:'' }}</td>
@@ -102,12 +103,11 @@
                                             'url' => ['/client/products',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/products/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                               class="fa fa-edit">  </a>
 
 
 </div>

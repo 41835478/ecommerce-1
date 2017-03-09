@@ -87,6 +87,7 @@
                                         {!! th_sort(trans('general.display'), 'display', $oResults) !!}
                                     </th>
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -102,7 +103,7 @@
 
                                         <td>{{(isset($oResult->server_detail->name))? $oResult->server_detail->name:'' }}</td>
 
-                                        <td>{{ $oResult->ip }}</td>
+                                        <td><a href="/client/server_ip/{{ $oResult->id }}" > {{ $oResult->ip }}</a></td>
 
                                                                                 <td>{{ $oResult->default_getway }}</td>
 
@@ -124,13 +125,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/server_ip/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/server_ip',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/server_ip/{{ $oResult->id }}/edit"

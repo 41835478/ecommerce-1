@@ -68,7 +68,8 @@
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
                                     {!! th_sort(trans('general.traffic'), 'traffic', $oResults) !!}
                                 </th>
-<th></th>
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                 
                             </tr>
@@ -83,7 +84,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td> <a href="/client/web_hosting_plans/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                         <td>{{ $oResult->web_space }}</td>
                                         <td>{{ $oResult->domains_number }}</td>
@@ -99,20 +100,18 @@
                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                            <a href="/client/web_hosting_plans/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/web_hosting_plans',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/web_hosting_plans/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                               class="fa fa-edit"> </a>
 
 
 

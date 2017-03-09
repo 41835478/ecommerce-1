@@ -213,6 +213,7 @@
                                                     {!! th_sort(trans('general.additional_cost'), 'additional_cost', $oServerDetailResults) !!}
                                                 </th>
 
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                             </tr>
                                             </thead>
@@ -226,7 +227,7 @@
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{ $oResult->name }}</td>
+                                                        <td> <a href="/client/server_detail/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                                         <td>
                                                             @if(isset($oResult->server_company_spec->id))
@@ -254,13 +255,15 @@
                                                                 <div class="innerContainer">
                                                                     <i class="fa fa-list menuIconList"></i>
 
-                                                                    <a href="/client/server_detail/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"></a>
+
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
                                                                     'url' => ['/client/server_detail',$oResult->id]]) !!}
-                                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                                        <i class="fa fa-trash"></i>
+
+                                                                    </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/server_detail/{{ $oResult->id }}/edit"

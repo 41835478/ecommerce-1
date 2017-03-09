@@ -133,7 +133,7 @@
                                             <p class="text-muted m-b-20">{{ trans('general.contractsTableDescription') }}</p>
                                         </div>
                                         <div class="col-xs-3">
-                                            <a  href="{{route('client.contracts.create').'?domains_id='.$domains['id']}}"class="btn btn-primary form-control">
+                                            <a  href="{{route('client.contracts.create').'?type='.config('array.domainsTypeIndex').'&products_id='.$domains['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.contractsCreate')}}
                                             </a>
                                         </div>
@@ -156,6 +156,7 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                                     {!! th_sort(trans('general.domains'), 'domains_id', $oContractsResults) !!}
                                                 </th>
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
 
                                             </tr>
@@ -170,7 +171,7 @@
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
+                                                        <td> <a href="/client/contracts/{{ $oResult->id }}" > {{(isset($oResult->company->name))? $oResult->company->name:'' }}</a></td>
 
                                                         <td>{{(isset($oResult->domains()->first()->name))? $oResult->domains()->first()->name:'' }}</td>
 
@@ -184,37 +185,20 @@
                                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                                                    <a href="/client/contracts/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
                                                                     'url' => ['/client/contracts',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
                                                                     </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/contracts/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                                                       class="fa fa-edit"> </a>
 
 
-
-                                                                    <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">renewal list</a>
-
-
-                                                                    <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">add renewal</a>
-
-
-                                                                    <a href="{{ route('client.contracts_documents.index') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">documents list</a>
-
-
-                                                                    <a href="{{ route('client.contracts_documents.create') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">add document</a>
                                                                 </div>
                                                             </div>
                                                         </td>

@@ -70,7 +70,7 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                         {!! th_sort(trans('general.password'), 'password', $oResults) !!}
                                     </th>
-
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -88,7 +88,7 @@
 
                                                                                 <td>{{(array_key_exists($oResult->type,config('array.server_access_type')))? config('array.server_access_type')[$oResult->type]: '' }}</td>
 
-                                                                                <td>{{ $oResult->user_name }}</td>
+                                                                                <td><a href="/client/server_access/{{ $oResult->id }}" > {{ $oResult->user_name }}</a></td>
 
                                                                                 <td>{{ $oResult->password }}</td>
 
@@ -99,14 +99,16 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/server_access/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/server_access',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
+                                                    {!! Form::close() !!}
 
                                             <a href="/client/server_access/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"></a>

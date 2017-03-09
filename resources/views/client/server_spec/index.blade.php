@@ -78,6 +78,7 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
                                         {!! th_sort(trans('general.raid'), 'raid', $oResults) !!}
                                     </th>
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                 
                             </tr>
@@ -92,7 +93,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td> <a href="/client/server_spec/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                                                                 <td>{{ $oResult->hard_disk }}</td>
 
@@ -113,13 +114,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/server_spec/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/server_spec',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/server_spec/{{ $oResult->id }}/edit"

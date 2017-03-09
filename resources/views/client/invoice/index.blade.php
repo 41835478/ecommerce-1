@@ -73,11 +73,10 @@
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                     {!! th_sort(trans('general.description'), 'description', $oResults) !!}
                                 </th>
-                                <th  >
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
-                                </th>
 
-                                
+
                             </tr>
                             </thead>
                             <tbody>
@@ -91,7 +90,7 @@
                                                                                 <td>{{ $oResult->id }}</td>
 
                                         <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>
-                                        <td>{{ $oResult->name }}</td>
+                                        <td> <a href="/client/invoice/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                                                                 <td>{{ $oResult->create_date }}</td>
 
@@ -106,13 +105,14 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/invoice/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/invoice',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/invoice/{{ $oResult->id }}/edit"

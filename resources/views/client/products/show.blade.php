@@ -226,9 +226,7 @@
                                                     {!! th_sort(trans('general.publish_date'), 'publish_date', $oVersionsResults) !!}
                                                 </th>
 
-
-                                                <th  >
-                                                   </th>
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                             </tr>
                                             </thead>
@@ -243,7 +241,7 @@
                                                         <td>{{ $oResult->id }}</td>
 
 
-                                                        <td>{{ $oResult->version }}</td>
+                                                        <td>  <a href="/client/versions/{{ $oResult->id }}">{{ $oResult->version }}</a></td>
 
 
                                                         <td>{{ $oResult->links }}</td>
@@ -258,20 +256,18 @@
                                                                 <div class="innerContainer">
                                                                     <i class="fa fa-list menuIconList"></i>
 
-                                                                    <a href="/client/versions/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text">  {{trans('general.details')}}</a>
+
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
                                                                     'url' => ['/client/versions',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
                                                                     </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/versions/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit">{{trans('general.edit')}}</a>
+                                                                       class="fa fa-edit"></a>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -313,7 +309,7 @@
                                             <p class="text-muted m-b-20">{{ trans('general.contractsTableDescription') }}</p>
                                         </div>
                                         <div class="col-xs-3">
-                                            <a  href="{{route('client.contracts.create').'?products_id='.$products['id']}}"class="btn btn-primary form-control">
+                                            <a  href="{{route('client.contracts.create').'?type='.config('array.productsTypeIndex').'&products_id='.$products['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.contractsCreate')}}
                                             </a>
                                         </div>
@@ -338,6 +334,7 @@
                                                 </th>
 
 
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -348,9 +345,9 @@
                                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                                     <tr class='{{ $class }}'>
 
-                                                        <td>{{ $oResult->id }}</td>
+                                                        <td><a href="/client/contracts/{{ $oResult->id }}" >{{ $oResult->id }}</a></td>
 
-                                                        <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
+                                                        <td>   {{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
 
                                                         <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
 
@@ -364,37 +361,20 @@
                                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                                                    <a href="/client/contracts/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
                                                                     'url' => ['/client/contracts',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
                                                                     </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/contracts/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                                                       class="fa fa-edit"> </a>
 
 
-
-                                                                    <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">renewal list</a>
-
-
-                                                                    <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">add renewal</a>
-
-
-                                                                    <a href="{{ route('client.contracts_documents.index') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">documents list</a>
-
-
-                                                                    <a href="{{ route('client.contracts_documents.create') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">add document</a>
                                                                 </div>
                                                             </div>
                                                         </td>

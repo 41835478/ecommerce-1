@@ -127,15 +127,6 @@
                         </div>
                     </div>
 
-                    
-
-
-                    </div>
-
-
-
-
-                <div class="row">
 
 
 
@@ -153,7 +144,12 @@
                         </div>
                     </div>
 
-                </div>
+
+
+                    </div>
+
+
+
 
 @if(count($oContractsRenewalResults))
 
@@ -273,6 +269,7 @@
                                                     {!! th_sort(trans('general.description'), 'description', $oContractsRenewalResults) !!}
                                                 </th>
 
+                                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
                                             </tr>
                                             </thead>
@@ -284,12 +281,12 @@
                                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                                     <tr class='{{ $class }}'>
 
-                                                        <td>{{ $oResult->id }}</td>
+                                                        <td><a href="/client/contracts_renewal/{{ $oResult->id }}"> {{ $oResult->id }}</a></td>
 
                                                         <td>{{ $oResult->price }}</td>
 
                                                         <td>{{ $oResult->from_date }}</td>
-                                                        <td>{{ $oResult->to_date }}</td>
+                                                        <td><a href="/client/contracts_renewal/{{ $oResult->id }}"> {{ $oResult->to_date }}</a></td>
 
                                                         <td>{{ $oResult->description }}</td>
 
@@ -300,20 +297,18 @@
                                                                 <div class="innerContainer">
                                                                     <i class="fa fa-list menuIconList"></i>
 
-                                                                    <a href="/client/contracts_renewal/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
                                                                     'url' => ['/client/contracts_renewal',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
                                                                     </button>
                                                                     {!! Form::close() !!}
 
                                                                     <a href="/client/contracts_renewal/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                                                       class="fa fa-edit"> </a>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -347,131 +342,6 @@
 
 
 
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="white-box">
-
-
-
-                                        <div class=" col-xs-8">
-                                            <h3 class="box-title m-b-0">{{ trans('general.contracts_documentsTableHead') }}</h3>
-                                            <p class="text-muted m-b-20">{{ trans('general.contracts_documentsTableDescription') }}</p>
-
-
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <a  href="{{route('client.contracts_documents.create').'?contracts_id='.$contracts['id'] }}"class="btn btn-primary form-control">
-                                                + {{trans('general.contracts_documentsCreate')}}
-                                            </a>
-                                        </div>
-
-
-                                        <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
-
-                                            <thead>
-                                            <tr>
-
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                                    {!! th_sort(trans('general.id'), 'id', $oContractsDocumentsResults) !!}
-                                                </th>
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.contracts'), 'contracts_id', $oContractsDocumentsResults) !!}
-                                                </th>
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.products'), 'products_id', $oContractsDocumentsResults) !!}
-                                                </th>
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                                    {!! th_sort(trans('general.name'), 'name', $oContractsDocumentsResults) !!}
-                                                </th>
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                                    {!! th_sort(trans('general.links'), 'links', $oContractsDocumentsResults) !!}
-                                                </th>
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
-                                                    {!! th_sort(trans('general.description'), 'description', $oContractsDocumentsResults) !!}
-                                                </th>
-
-                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                                    {!! th_sort(trans('general.type'), 'type', $oContractsDocumentsResults) !!}
-                                                </th>
-
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if (count($oContractsDocumentsResults))
-                                                {{-- */$i=0;/* --}}
-                                                {{-- */$class='';/* --}}
-                                                @foreach($oContractsDocumentsResults as $oResult)
-                                                    {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
-                                                    <tr class='{{ $class }}'>
-
-                                                        <td>{{ $oResult->id }}</td>
-
-                                                        <td>{{ $oResult->contracts_id }}</td>
-
-                                                        <td>{{ $oResult->products_id }}</td>
-
-                                                        <td>{{ $oResult->name }}</td>
-
-                                                        <td>{{ $oResult->links }}</td>
-
-                                                        <td>{{ $oResult->description }}</td>
-
-                                                        <td>{{ $oResult->type }}</td>
-
-
-                                                        <td>
-
-
-                                                            <div class="tableActionsMenuDiv">
-                                                                <div class="innerContainer">
-                                                                    <i class="fa fa-list menuIconList"></i>
-
-                                                                    <a href="/client/contracts_documents/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"> {{trans('general.details')}}</a>
-
-
-                                                                    {!! Form::open(['method' => 'DELETE',
-                                                                    'url' => ['/client/contracts_documents',$oResult->id]]) !!}
-                                                                    <button type="submit" name="Delete" class="deleteRow" >
-                                                                        <i class="fa fa-trash"></i>
-                                                                        {{trans('general.delete')}}
-                                                                    </button>
-                                                                    {!! Form::close() !!}
-
-                                                                    <a href="/client/contracts_documents/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> {{trans('general.edit')}}</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                            </tbody>
-                                        </table>
-                                        @if(count($oContractsDocumentsResults))
-                                            <div class="row">
-
-                                                <div class="col-xs-12 col-sm-6 ">
-                                                    <span class="text-xs">{{trans('general.showing')}} {{ $oContractsDocumentsResults->firstItem() }} {{trans('general.to')}} {{ $oContractsDocumentsResults->lastItem() }} {{trans('general.of')}} {{ $oContractsDocumentsResults->total() }} {{trans('general.entries')}}</span>
-                                                </div>
-
-
-                                                <div class="col-xs-12 col-sm-6 ">
-                                                    {!! str_replace('/?', '?', $oContractsDocumentsResults->appends(Input::except('page_documents'))->appends($request->all())->render()) !!}
-                                                </div>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
 
 
 

@@ -75,7 +75,8 @@
                                         {!! th_sort(trans('general.status'), 'status', $oResults) !!}
                                     </th>
 
-                                
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -87,7 +88,7 @@
                                     <tr class='{{ $class }}'>
 
                                         <td>{{ $oResult->id }}</td>
-                                        <td>{{ $oResult->name }}</td>
+                                        <td> <a href="/client/contacts/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
                                         <td>{{ $oResult->email }}</td>
 
                                                                                 <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>
@@ -108,20 +109,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/contacts/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
-
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/contacts',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
-                                            <a href="/client/contacts/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                            <a href="/client/contacts/{{ $oResult->id }}/edit" class="fa fa-edit"> </a>
 </div>
                                                 </div>
                                         </td>

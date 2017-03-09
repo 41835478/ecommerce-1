@@ -67,7 +67,8 @@
                                         {!! th_sort(trans('general.status'), 'status', $oResults) !!}
                                     </th>
 
-                                
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -78,11 +79,11 @@
                                     {{-- */$class=($i%2==0)? 'gradeA even':'gradeA odd';$i+=1;/* --}}
                                     <tr class='{{ $class }}'>
 
-                                                                                <td>{{ $oResult->id }}</td>
+                                                                                <td>  <a href="/client/licenses/{{ $oResult->id }}" >  {{ $oResult->id }}</a></td>
 
                                                                                 <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->license }}</td>
+                                                                                <td>  <a href="/client/licenses/{{ $oResult->id }}" >  {{ $oResult->license }}</a></td>
 
                                                                                 <td>{{ (array_key_exists($oResult->type,config('array.licenses_type')))?config('array.licenses_type')[$oResult->type]:'' }}</td>
 
@@ -97,20 +98,18 @@
                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                            <a href="/client/licenses/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/licenses',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/licenses/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"> {{trans('general.edit')}}</a>
+                                               class="fa fa-edit">  </a>
 </div>
                                                 </div>
                                         </td>

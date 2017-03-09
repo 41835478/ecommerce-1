@@ -69,7 +69,8 @@
                                         {!! th_sort(trans('general.type'), 'type', $oResults) !!}
                                     </th>
 
-                                    <th></th>
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
 
                                 
@@ -85,7 +86,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td> <a href="/client/documents/{{ $oResult->id }}" >{{ $oResult->name }}</a></td>
 
 
                                                                                 <td>{{ $oResult->version }}</td>
@@ -103,13 +104,14 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/documents/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/documents',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/documents/{{ $oResult->id }}/edit"

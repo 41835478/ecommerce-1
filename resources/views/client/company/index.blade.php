@@ -103,7 +103,7 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td> <a href="/client/company/{{ $oResult->id }}" ><i class="fa fa-file-text"></i> {{ $oResult->name }} </a></td>
+                                                                                <td> <a href="/client/company/{{ $oResult->id }}" >{{ $oResult->name }} </a></td>
 
                                                                                 <td>{{ $oResult->email }}</td>
 

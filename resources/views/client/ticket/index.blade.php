@@ -91,6 +91,7 @@
                                         {!! th_sort(trans('general.close_time'), 'close_time', $oResults) !!}
                                     </th>
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -108,7 +109,7 @@
 
                                                                                 {{--<td>{{ $oResult->contract_id }}</td>--}}
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td> <a href="/client/ticket/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
 
                                                                                 <td>
                                                                                     {{(array_key_exists($oResult->type ,config('array.ticket_type')))? config('array.ticket_type')[$oResult->type ]:'' }}
@@ -133,13 +134,15 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/ticket/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/ticket',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow " >
+                                                        <i class="fa fa-trash"></i>
+
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/ticket/{{ $oResult->id }}/edit"

@@ -69,6 +69,7 @@
                                         {!! th_sort(trans('general.publish_date'), 'publish_date', $oResults) !!}
                                     </th>
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -84,7 +85,7 @@
 
                                                                                 <td>{{ isset($oResult->products->name)? $oResult->products->name:'' }}</td>
 
-                                                                                <td>{{ $oResult->version }}</td>
+                                                                                <td>  <a href="/client/versions/{{ $oResult->id }}" >{{ $oResult->version }}</a></td>
 
 
                                                                                 <td>
@@ -102,20 +103,17 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/versions/{{ $oResult->id }}"
-                                               class="fa fa-file-text">  {{trans('general.details')}}</a>
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/versions',$oResult->id]]) !!}
                                             <button type="submit" name="Delete" class="deleteRow" >
                                                 <i class="fa fa-trash"></i>
-                                                {{trans('general.delete')}}
                                             </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/versions/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit">{{trans('general.edit')}}</a>
+                                               class="fa fa-edit"></a>
 </div>
                                                 </div>
                                         </td>
