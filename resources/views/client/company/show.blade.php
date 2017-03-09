@@ -328,10 +328,12 @@
 
 
 
+
+
                             <div class="row">
                                 <div class="col-lg-12">
+                                    @include('client.partials.messages')
                                     <div class="white-box">
-
 
 
                                         <div class=" col-xs-9">
@@ -345,7 +347,8 @@
                                                 + {{trans('general.contractsCreate')}}
                                             </a>
                                         </div>
-                                        @include('client.partials.messages')
+
+
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                                             <thead>
@@ -356,15 +359,38 @@
                                                     {!! th_sort(trans('general.id'), 'id', $oContractsResults) !!}
                                                 </th>
 
+
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.company'), 'company_id', $oContractsResults) !!}
+                                                    {!! th_sort(trans('general.name'), 'name', $oContractsResults) !!}
                                                 </th>
+
 
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.products'), 'products_id', $oContractsResults) !!}
+                                                    {!! th_sort(trans('general.price'), 'price', $oContractsResults) !!}
                                                 </th>
 
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                                    {!! th_sort(trans('general.company_id'), 'company_id', $oContractsResults) !!}
+                                                </th>
 
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                                                    {!! th_sort(trans('general.type'), 'type', $oContractsResults) !!}
+                                                </th>
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                                    {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oContractsResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                                    {!! th_sort(trans('general.status'), 'status', $oContractsResults) !!}
+                                                </th>
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
+                                                    {{ trans('general.lastRenealFromDate')}}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
+                                                    {{ trans('general.lastRenealToDate')}}
+                                                </th>
+<th></th>
 
                                             </tr>
                                             </thead>
@@ -377,10 +403,36 @@
                                                     <tr class='{{ $class }}'>
 
                                                         <td>{{ $oResult->id }}</td>
+                                                        <td>{{ $oResult->name }}</td>
+                                                        <td>{{ $oResult->price }}</td>
 
                                                         <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
+                                                        <td>
+                                                            @if( $oResult->type == config('array.productsTypeIndex'))
+                                                                {{trans('general.products')}}
+                                                                @if(isset($oResult->products->name))
+                                                                    ( {{(isset($oResult->products->productsList->name))? $oResult->products->productsList->name:'' }} - {{$oResult->products->name  }})
+                                                                @endif
 
-                                                        <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
+                                                            @elseif( $oResult->type == config('array.domainsTypeIndex'))
+                                                                {{trans('general.domains')}} ( {{(isset($oResult->domains->name))? $oResult->domains->name:'' }} )
+
+                                                            @elseif( $oResult->type == config('array.webHostingPlansTypeIndex'))
+                                                                {{trans('general.web_hosting_plans')}} ( {{(isset($oResult->webHostingPlans->name))? $oResult->webHostingPlans->name:'' }} )
+
+                                                            @elseif( $oResult->type == config('array.serverTypeIndex'))
+                                                                {{trans('general.server_detail')}} ( {{(isset($oResult->server_detail->name))? $oResult->server_detail->name:'' }} )
+
+                                                            @elseif( $oResult->type == config('array.supportTypeIndex'))
+                                                                {{trans('general.support')}} ( {{(isset($oResult->support->name))? $oResult->support->name:'' }} )
+
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ $oResult->purchasing_date }}</td>
+                                                        <td>{{ (array_key_exists($oResult->status,config('array.contracts_status')))?config('array.contracts_status')[$oResult->status]:'' }}</td>
+
+                                                        <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
+                                                        <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>
 
 
 
@@ -391,9 +443,6 @@
                                                                 <div class="innerContainer">
                                                                     <i class="fa fa-list menuIconList"></i>
 
-
-                                                                    <a href="/client/contracts/{{ $oResult->id }}"
-                                                                       class="fa fa-file-text"> {{trans('general.details')}}</a>
 
 
                                                                     {!! Form::open(['method' => 'DELETE',
@@ -408,21 +457,6 @@
                                                                        class="fa fa-edit"> {{trans('general.edit')}}</a>
 
 
-
-                                                                    <a href="{{ route('client.contracts_renewal.index') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">renewal list</a>
-
-
-                                                                    <a href="{{ route('client.contracts_renewal.create') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">add renewal</a>
-
-
-                                                                    <a href="{{ route('client.contracts_documents.index') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">documents list</a>
-
-
-                                                                    <a href="{{ route('client.contracts_documents.create') }}?contracts_id={{ $oResult->id }}"
-                                                                       class="fa fa-edit">add document</a>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -447,6 +481,12 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
+
 
 
 

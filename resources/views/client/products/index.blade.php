@@ -97,9 +97,6 @@
                                                     <i class="fa fa-list menuIconList"></i>
 
 
-                                            <a href="/client/products/{{ $oResult->id }}"
-                                               class="fa fa-file-text"> {{trans('general.details')}}</a>
-
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/products',$oResult->id]]) !!}
@@ -113,10 +110,6 @@
                                                class="fa fa-edit"> {{trans('general.edit')}}</a>
 
 
-                                            <a href="{{ route('client.versions.create') }}?products_id={{ $oResult->id }}"
-                                               class="fa fa-edit">add version</a>
-                                            <a href="{{ route('client.versions.index') }}?products_id={{ $oResult->id }}"
-                                               class="fa fa-edit"> versions</a>
 </div>
                                                 </div>
                                         </td>
