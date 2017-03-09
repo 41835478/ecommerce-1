@@ -1,3 +1,30 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 09, 2017 at 01:47 PM
+-- Server version: 5.6.34
+-- PHP Version: 5.4.16
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `mycp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activations`
+--
 
 CREATE TABLE IF NOT EXISTS `activations` (
   `id` int(10) unsigned NOT NULL,
@@ -9,8 +36,9 @@ CREATE TABLE IF NOT EXISTS `activations` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
---|||
+--
+-- Dumping data for table `activations`
+--
 
 INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`, `created_at`, `updated_at`) VALUES
 (1, 1, 'tPf97iNBjpypHyyhFSHE0TmgdzdcYEIw', 1, '2016-03-13 15:05:12', '2016-03-13 15:05:12', '2016-03-13 15:05:12'),
@@ -121,9 +149,11 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (170, 10, 'aDP0FPIzWiMJh3irKXNNJ2ttDIQKhihz', 1, '2017-02-27 09:56:45', '2017-02-27 09:56:45', '2017-02-27 09:56:45'),
 (171, 11, 'pM6Zc663nrFLBaWsZSqCuMKoUUFKi4sW', 1, '2017-03-02 10:14:57', '2017-03-02 10:14:57', '2017-03-02 10:14:57');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `company`
+--
 
 CREATE TABLE IF NOT EXISTS `company` (
   `id` int(11) NOT NULL,
@@ -138,18 +168,20 @@ CREATE TABLE IF NOT EXISTS `company` (
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `company`
+--
 
 INSERT INTO `company` (`id`, `name`, `email`, `phone`, `website`, `address`, `country`, `city`, `zipcode`, `status`) VALUES
 (1, 'mqplanet', 'admin@mqplanet.com', '0797777777', 'www.mqplanet.com', 'algeardinz', 'jordan', 'amman', '11821', '0'),
 (2, 'MQ Planet', 'galya@mqplanet.com', '799959779', 'mqplanet.com', 'Amman', 'Jordan', 'Amman', '11953', '0'),
 (3, 'A Company', 'galya@mqplanet.com', '799959779', 'acompany', 'Amman', 'Jordan', 'Amman', '11953', '0');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `contacts`
+--
 
 CREATE TABLE IF NOT EXISTS `contacts` (
   `id` int(11) NOT NULL,
@@ -163,17 +195,20 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `contacts`
+--
 
 INSERT INTO `contacts` (`id`, `company_id`, `users_id`, `name`, `email`, `phone`, `section`, `description`, `status`) VALUES
 (1, 1, 1, 'admin', 'admin@mqplanet.com', '0785181656', 'ffffff', 'fsdf', 1),
 (2, 1, 10, 'taylor', 'taylor@gmail.com', '0790800242', '', 'fsdf', 0),
 (3, 2, 11, 'Mohammad Galya', 'galya@mqplanet.com', '799959779', '', '', 0);
 
+-- --------------------------------------------------------
 
---|||
+--
+-- Table structure for table `contracts`
+--
 
 CREATE TABLE IF NOT EXISTS `contracts` (
   `id` int(11) NOT NULL,
@@ -187,9 +222,9 @@ CREATE TABLE IF NOT EXISTS `contracts` (
   `description` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `contracts`
+--
 
 INSERT INTO `contracts` (`id`, `name`, `company_id`, `products_id`, `type`, `price`, `purchasing_date`, `status`, `description`) VALUES
 (1, '', 1, 1, 0, 0, '2017-02-27', 0, '<p>Description</p>\r\n'),
@@ -213,9 +248,11 @@ INSERT INTO `contracts` (`id`, `name`, `company_id`, `products_id`, `type`, `pri
 (19, 'hhhhhhhhhh', 3, 1, 1, 55, '2017-03-09', 0, '<p>adfasdf</p>\r\n'),
 (20, 'bbbbbbbb', 3, 1, 2, 45, '2017-03-09', 0, '<p>sdfgsdfg</p>\r\n');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `contracts_documents`
+--
 
 CREATE TABLE IF NOT EXISTS `contracts_documents` (
   `id` int(11) NOT NULL,
@@ -227,18 +264,22 @@ CREATE TABLE IF NOT EXISTS `contracts_documents` (
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `contracts_licenses`
+--
 
 CREATE TABLE IF NOT EXISTS `contracts_licenses` (
   `contracts_id` int(11) NOT NULL,
   `licenses_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `contracts_renewal`
+--
 
 CREATE TABLE IF NOT EXISTS `contracts_renewal` (
   `id` int(11) NOT NULL,
@@ -249,9 +290,9 @@ CREATE TABLE IF NOT EXISTS `contracts_renewal` (
   `price` double NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `contracts_renewal`
+--
 
 INSERT INTO `contracts_renewal` (`id`, `contracts_id`, `from_date`, `to_date`, `description`, `price`) VALUES
 (1, 1, '2016-02-27', '2017-03-10', 'Description', 22),
@@ -260,8 +301,11 @@ INSERT INTO `contracts_renewal` (`id`, `contracts_id`, `from_date`, `to_date`, `
 (4, 12, '2017-03-06', '2018-03-06', '5dfgsdfg', 55),
 (5, 15, '2017-03-09', '2018-03-09', '', 2000);
 
+-- --------------------------------------------------------
 
---|||
+--
+-- Table structure for table `contracts_renewal_invoice`
+--
 
 CREATE TABLE IF NOT EXISTS `contracts_renewal_invoice` (
   `id` int(11) NOT NULL,
@@ -271,9 +315,9 @@ CREATE TABLE IF NOT EXISTS `contracts_renewal_invoice` (
   `description` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `contracts_renewal_invoice`
+--
 
 INSERT INTO `contracts_renewal_invoice` (`id`, `contracts_id`, `contracts_renewal_id`, `invoice_id`, `description`) VALUES
 (1, 1, 1, 1, 'sfdsdfsdf'),
@@ -297,9 +341,11 @@ INSERT INTO `contracts_renewal_invoice` (`id`, `contracts_id`, `contracts_renewa
 (19, 0, 3, 7, 'fffffffff'),
 (20, 15, 0, 7, 'dfgdfg');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `documents`
+--
 
 CREATE TABLE IF NOT EXISTS `documents` (
   `id` int(11) NOT NULL,
@@ -310,8 +356,9 @@ CREATE TABLE IF NOT EXISTS `documents` (
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
-
---|||
+--
+-- Dumping data for table `documents`
+--
 
 INSERT INTO `documents` (`id`, `name`, `body`, `version`, `parent`, `type`) VALUES
 (2, 'gjghj', '<p>thtrg dfg</p>\r\n\r\n<p>gsfdgs</p>\r\n', 'fgh', 2, 2),
@@ -334,9 +381,11 @@ INSERT INTO `documents` (`id`, `name`, `body`, `version`, `parent`, `type`) VALU
 (19, 'sdfasdf', '<p>sdfgsdfg</p>\r\n', 'dsgsdfg', 0, 1),
 (20, 'bbbb', '<p>ggggggggggggg</p>\r\n', 'sdfgdsfg', 15, 0);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `domains`
+--
 
 CREATE TABLE IF NOT EXISTS `domains` (
   `id` int(11) NOT NULL,
@@ -345,16 +394,18 @@ CREATE TABLE IF NOT EXISTS `domains` (
   `cost` double NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `domains`
+--
 
 INSERT INTO `domains` (`id`, `name`, `provider`, `cost`) VALUES
 (1, 'asdf', '1', 0);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `emails`
+--
 
 CREATE TABLE IF NOT EXISTS `emails` (
   `id` int(11) NOT NULL,
@@ -365,9 +416,11 @@ CREATE TABLE IF NOT EXISTS `emails` (
   `optout` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `files`
+--
 
 CREATE TABLE IF NOT EXISTS `files` (
   `id` int(11) NOT NULL,
@@ -378,9 +431,9 @@ CREATE TABLE IF NOT EXISTS `files` (
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `files`
+--
 
 INSERT INTO `files` (`id`, `name`, `link`, `version`, `parent`, `type`) VALUES
 (2, 'gggggggg', 'ggg', 'gggg', 2, 0),
@@ -398,9 +451,11 @@ INSERT INTO `files` (`id`, `name`, `link`, `version`, `parent`, `type`) VALUES
 (16, 'fffff', 'files/10028_17909donains.png', 'asdfas', 13, 1),
 (17, 'fffffffffffff', 'files/8074_10747donains.png', 'fffffffffffffffffff', 13, 1);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `invoice`
+--
 
 CREATE TABLE IF NOT EXISTS `invoice` (
   `id` int(11) NOT NULL,
@@ -411,9 +466,9 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `description` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `invoice`
+--
 
 INSERT INTO `invoice` (`id`, `company_id`, `name`, `create_date`, `due_date`, `description`) VALUES
 (2, 2, 'bbbbbbbbbbbbb', '0000-00-00', '0000-00-00', 'asd'),
@@ -423,9 +478,11 @@ INSERT INTO `invoice` (`id`, `company_id`, `name`, `create_date`, `due_date`, `d
 (6, 1, 'fffffffffff', '2017-03-07', '2017-03-24', 'gsdfg'),
 (7, 3, 'ABC-123123', '2017-03-09', '2017-03-09', 'A');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `licenses`
+--
 
 CREATE TABLE IF NOT EXISTS `licenses` (
   `id` int(11) NOT NULL,
@@ -435,18 +492,20 @@ CREATE TABLE IF NOT EXISTS `licenses` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `licenses`
+--
 
 INSERT INTO `licenses` (`id`, `company_id`, `license`, `type`, `status`) VALUES
 (1, 1, 'mt4', 'mt4 type', 0),
 (2, 2, 'MQPLanet License', 'MT4', 0),
 (3, 2, 'hfghfgh', '1', 1);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `logtime`
+--
 
 CREATE TABLE IF NOT EXISTS `logtime` (
   `id` int(11) NOT NULL,
@@ -458,17 +517,19 @@ CREATE TABLE IF NOT EXISTS `logtime` (
   `expenses` varchar(10) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `logtime`
+--
 
 INSERT INTO `logtime` (`id`, `support_id`, `ticket_id`, `hours`, `summary`, `create_date`, `expenses`) VALUES
 (1, 0, 0, '14:10', 'fasdf', '2018-02-27', 'fsdfasdfas'),
 (2, 0, 0, '13:05', 'fasdf', '2018-02-27', '34');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `payment`
+--
 
 CREATE TABLE IF NOT EXISTS `payment` (
   `id` int(11) NOT NULL,
@@ -481,19 +542,21 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `description` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `payment`
+--
 
 INSERT INTO `payment` (`id`, `invoice_id`, `amount`, `status`, `payment_condition`, `create_date`, `due_date`, `description`) VALUES
 (1, 4, 44, 2, 'safd', '0000-00-00', '0000-00-00', 'dsgdsfgdsfg'),
 (2, 2, 66, 1, 'fgdfg', '0000-00-00', '0000-00-00', 'hhhhhhhhh'),
-(3, 3, 55, 2, 'بسيب', '0000-00-00', '0000-00-00', '�?�?�?�?�?'),
+(3, 3, 55, 2, 'بسيب', '0000-00-00', '0000-00-00', 'ففففف'),
 (4, 2, 0, 0, 'rrrrrrrrrrr', '2017-03-16', '2017-03-29', 'uuuuuuuuuuu');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `persistences`
+--
 
 CREATE TABLE IF NOT EXISTS `persistences` (
   `id` int(10) unsigned NOT NULL,
@@ -503,9 +566,9 @@ CREATE TABLE IF NOT EXISTS `persistences` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
---|||
-
+--
+-- Dumping data for table `persistences`
+--
 
 INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`) VALUES
 (1, 0, 'NoSnJ6T9JBBROclYnisT3oio32HOidJo', '2017-02-13 10:42:17', '2017-02-13 10:42:17'),
@@ -547,9 +610,11 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (59, 1, '2MmOiBeOlBQygBzG4cd4o2EQYQW410AS', '2017-03-09 08:43:25', '2017-03-09 08:43:25'),
 (60, 1, 'KPTUbcKuongJ7DQNKUQUsXYp2SU3LP8j', '2017-03-09 09:21:53', '2017-03-09 09:21:53');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `products`
+--
 
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL,
@@ -561,9 +626,9 @@ CREATE TABLE IF NOT EXISTS `products` (
   `files_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `products`
+--
 
 INSERT INTO `products` (`id`, `products_list_id`, `name`, `description`, `article`, `manual`, `files_id`) VALUES
 (1, 1, 'fxwebkit', 'Description', 0, 3, 0),
@@ -573,9 +638,11 @@ INSERT INTO `products` (`id`, `products_list_id`, `name`, `description`, `articl
 (6, 1, 'files product', 'fsdfasd', 7, 15, 5),
 (7, 2, 'Agents Handler', '', 17, 15, 11);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `products_list`
+--
 
 CREATE TABLE IF NOT EXISTS `products_list` (
   `id` int(11) NOT NULL,
@@ -584,17 +651,20 @@ CREATE TABLE IF NOT EXISTS `products_list` (
   `description` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `products_list`
+--
 
 INSERT INTO `products_list` (`id`, `name`, `type`, `description`) VALUES
 (1, 'mt4 setup', '1', 'mt4 setup description'),
 (2, 'Agents Handler', 'MT4 Plugin', ''),
 (3, 'dsfgsdfg', '3', 'fsdf');
 
+-- --------------------------------------------------------
 
---|||
+--
+-- Table structure for table `roles`
+--
 
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL,
@@ -605,17 +675,19 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
---|||
-
+--
+-- Dumping data for table `roles`
+--
 
 INSERT INTO `roles` (`id`, `slug`, `name`, `permissions`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Admin', '{"admin":true}', '2016-03-28 13:25:48', '2016-03-28 13:25:48'),
 (2, 'client', 'Client', NULL, '2016-03-28 13:25:48', '2016-03-28 13:25:48');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `role_users`
+--
 
 CREATE TABLE IF NOT EXISTS `role_users` (
   `user_id` int(10) unsigned NOT NULL,
@@ -624,9 +696,9 @@ CREATE TABLE IF NOT EXISTS `role_users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
---|||
-
+--
+-- Dumping data for table `role_users`
+--
 
 INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALUES
 (1, 1, '2016-03-28 13:25:48', '2016-03-28 13:25:48'),
@@ -703,9 +775,11 @@ INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALU
 (76, 2, '2016-07-04 12:40:10', '2016-07-04 12:40:10'),
 (78, 2, '2017-01-19 11:53:48', '2017-01-19 11:53:48');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_access`
+--
 
 CREATE TABLE IF NOT EXISTS `server_access` (
   `id` int(11) NOT NULL,
@@ -715,32 +789,36 @@ CREATE TABLE IF NOT EXISTS `server_access` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `server_access`
+--
 
 INSERT INTO `server_access` (`id`, `server_ip_id`, `type`, `user_name`, `password`) VALUES
 (1, 1, 0, 'administrator', 'abc123');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_company`
+--
 
 CREATE TABLE IF NOT EXISTS `server_company` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `server_company`
+--
 
 INSERT INTO `server_company` (`id`, `name`) VALUES
 (1, 'godaddy');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_company_server_spec`
+--
 
 CREATE TABLE IF NOT EXISTS `server_company_server_spec` (
   `id` int(11) NOT NULL,
@@ -750,18 +828,20 @@ CREATE TABLE IF NOT EXISTS `server_company_server_spec` (
   `period` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `server_company_server_spec`
+--
 
 INSERT INTO `server_company_server_spec` (`id`, `server_company_id`, `server_spec_id`, `cost`, `period`) VALUES
 (1, 1, 1, 44, 12),
 (2, 1, 1, 34, 3),
 (3, 1, 1, 1000, 1);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_detail`
+--
 
 CREATE TABLE IF NOT EXISTS `server_detail` (
   `id` int(11) NOT NULL,
@@ -776,9 +856,9 @@ CREATE TABLE IF NOT EXISTS `server_detail` (
   `period` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `server_detail`
+--
 
 INSERT INTO `server_detail` (`id`, `server_spec_id`, `name`, `company_id`, `location`, `cost`, `unique_name`, `operating_system`, `control_panel`, `period`) VALUES
 (2, 1, 'wwwwwwwww', 0, 1, '66', 'rtrt', 2, 2, 0),
@@ -786,9 +866,11 @@ INSERT INTO `server_detail` (`id`, `server_spec_id`, `name`, `company_id`, `loca
 (4, 1, 'Aserver', 0, 0, '50', 'fd1-asddd', 0, 0, 0),
 (5, 1, 'hdfg', 0, 0, 'dfghgfh', 'hdfgh', 0, 0, 5);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_ip`
+--
 
 CREATE TABLE IF NOT EXISTS `server_ip` (
   `id` int(11) NOT NULL,
@@ -802,16 +884,18 @@ CREATE TABLE IF NOT EXISTS `server_ip` (
   `display` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `server_ip`
+--
 
 INSERT INTO `server_ip` (`id`, `server_detail_id`, `ip`, `default_getway`, `mask`, `name_server_1`, `name_server_2`, `type`, `display`) VALUES
 (1, 4, '127.0.0.1', '0.0.0.0', '255.255.255.255', '2.2.2.2', '4.4.4.4', 0, 0);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_locations`
+--
 
 CREATE TABLE IF NOT EXISTS `server_locations` (
   `id` int(11) NOT NULL,
@@ -819,18 +903,20 @@ CREATE TABLE IF NOT EXISTS `server_locations` (
   `location_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `server_locations`
+--
 
 INSERT INTO `server_locations` (`id`, `server_company_id`, `location_id`) VALUES
 (1, 1, 0),
 (2, 1, 1),
 (3, 1, 1);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `server_spec`
+--
 
 CREATE TABLE IF NOT EXISTS `server_spec` (
   `id` int(11) NOT NULL,
@@ -842,16 +928,18 @@ CREATE TABLE IF NOT EXISTS `server_spec` (
   `raid` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `server_spec`
+--
 
 INSERT INTO `server_spec` (`id`, `name`, `hard_disk`, `cpu`, `port`, `ram`, `raid`) VALUES
 (1, 'gold server', '2GB', '7core', '5', '8GB', 0);
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `support`
+--
 
 CREATE TABLE IF NOT EXISTS `support` (
   `id` int(11) NOT NULL,
@@ -860,17 +948,19 @@ CREATE TABLE IF NOT EXISTS `support` (
   `description` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `support`
+--
 
 INSERT INTO `support` (`id`, `name`, `type`, `description`) VALUES
 (1, 'supporttttt', 1, 'supporttttt asdfasdf'),
 (2, 'fffffffff', 2, 'fasdfsadf');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `throttle`
+--
 
 CREATE TABLE IF NOT EXISTS `throttle` (
   `id` int(10) unsigned NOT NULL,
@@ -881,8 +971,9 @@ CREATE TABLE IF NOT EXISTS `throttle` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
---|||
+--
+-- Dumping data for table `throttle`
+--
 
 INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'global', NULL, '2016-03-14 14:50:05', '2016-03-14 14:50:05'),
@@ -1148,9 +1239,11 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (261, NULL, 'ip', '127.0.0.1', '2017-03-02 10:01:33', '2017-03-02 10:01:33'),
 (262, 1, 'user', NULL, '2017-03-02 10:01:33', '2017-03-02 10:01:33');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `ticket`
+--
 
 CREATE TABLE IF NOT EXISTS `ticket` (
   `id` int(11) NOT NULL,
@@ -1165,9 +1258,9 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `close_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `ticket`
+--
 
 INSERT INTO `ticket` (`id`, `contact_id`, `contract_id`, `name`, `type`, `status`, `description`, `create_time`, `open_time`, `close_time`) VALUES
 (1, 1, 1, 'error', 1, 2, 'sdfgdsfg', '2017-03-07 14:23:49', '2012-01-01 00:00:00', '2012-01-10 00:00:00'),
@@ -1177,9 +1270,11 @@ INSERT INTO `ticket` (`id`, `contact_id`, `contract_id`, `name`, `type`, `status
 (5, 1, 0, 'fsdfsdf', 0, 0, 'sdfsdf', '2017-02-27 15:12:25', '2017-02-27 00:00:00', '2017-02-27 00:00:00'),
 (6, 1, 0, 'sdfsdf', 0, 0, 'sdfgdsfg', '2017-03-08 09:26:02', '2017-03-08 00:00:00', '2017-03-08 00:00:00');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `ticket_reply`
+--
 
 CREATE TABLE IF NOT EXISTS `ticket_reply` (
   `id` int(11) NOT NULL,
@@ -1189,9 +1284,9 @@ CREATE TABLE IF NOT EXISTS `ticket_reply` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
-
---|||
-
+--
+-- Dumping data for table `ticket_reply`
+--
 
 INSERT INTO `ticket_reply` (`id`, `ticket_id`, `contact_id`, `description`, `create_time`) VALUES
 (1, 1, 1, 'sdfasdf', '0000-00-00 00:00:00'),
@@ -1202,9 +1297,11 @@ INSERT INTO `ticket_reply` (`id`, `ticket_id`, `contact_id`, `description`, `cre
 (9, 1, 1, 'uuuuuuuuuuuuuu', '2017-02-27 12:52:53'),
 (10, 1, 1, 'sssssssss', '2017-03-06 08:18:12');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `users`
+--
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL,
@@ -1219,9 +1316,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
---|||
-
+--
+-- Dumping data for table `users`
+--
 
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `avatar`, `created_at`, `updated_at`) VALUES
 (1, 'admin@mqplanet.com', '$2y$10$CZfuylk2ar63d/QHTH7uweb75ujoi7GfB9rSS9/xLaEwfVOZKOnHS', NULL, '2017-03-09 09:21:53', 'admin', NULL, NULL, '0000-00-00 00:00:00', '2017-03-09 09:21:53'),
@@ -1233,9 +1330,11 @@ INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `last_login`, `fi
 (10, 'taylor@gmail.com', '$2y$10$37nQpwz6JKLDhufCwiTqYeNMKqcjNXq2J5FaR9ebLWT1E2vCNMIYa', NULL, NULL, 'taylor', '', NULL, '2017-02-27 09:56:45', '2017-02-27 09:56:45'),
 (11, 'galya@mqplanet.com', '$2y$10$WYlhQV0Qt4BkeUHNthTlFuPx.WnSZT6NyBkabv9x0L4PKlTrEKl0u', NULL, NULL, 'Mohammad Galya', '', NULL, '2017-03-02 10:14:57', '2017-03-02 10:14:57');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `versions`
+--
 
 CREATE TABLE IF NOT EXISTS `versions` (
   `id` int(11) NOT NULL,
@@ -1248,9 +1347,9 @@ CREATE TABLE IF NOT EXISTS `versions` (
   `publish_date` date NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `versions`
+--
 
 INSERT INTO `versions` (`id`, `products_id`, `version`, `manual`, `article`, `links`, `release_notes`, `publish_date`) VALUES
 (1, 2, '1', '<p>A</p>\r\n', '<p>A</p>\r\n', 'A', '<p>A</p>\r\n', '2017-03-02'),
@@ -1259,9 +1358,11 @@ INSERT INTO `versions` (`id`, `products_id`, `version`, `manual`, `article`, `li
 (4, 8, 'ggdfs', '19', '16', '14', '0', '2017-03-08'),
 (5, 2, '2', '0', '0', '3', '0', '2017-03-08');
 
+-- --------------------------------------------------------
 
---|||
-
+--
+-- Table structure for table `web_hosting_plans`
+--
 
 CREATE TABLE IF NOT EXISTS `web_hosting_plans` (
   `id` int(11) NOT NULL,
@@ -1272,360 +1373,394 @@ CREATE TABLE IF NOT EXISTS `web_hosting_plans` (
   `traffic` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
---|||
-
+--
+-- Dumping data for table `web_hosting_plans`
+--
 
 INSERT INTO `web_hosting_plans` (`id`, `name`, `web_space`, `domains_number`, `emails`, `traffic`) VALUES
 (1, 'bbaba', 'asdf', 44, 3, 4);
 
+--
+-- Indexes for dumped tables
+--
 
---|||
-
+--
+-- Indexes for table `activations`
+--
 ALTER TABLE `activations`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `company`
+--
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `contacts`
+--
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `contracts`
+--
 ALTER TABLE `contracts`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `contracts_documents`
+--
 ALTER TABLE `contracts_documents`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `contracts_renewal`
+--
 ALTER TABLE `contracts_renewal`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `contracts_renewal_invoice`
+--
 ALTER TABLE `contracts_renewal_invoice`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `documents`
+--
 ALTER TABLE `documents`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `domains`
+--
 ALTER TABLE `domains`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `emails`
+--
 ALTER TABLE `emails`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `files`
+--
 ALTER TABLE `files`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `invoice`
+--
 ALTER TABLE `invoice`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `licenses`
+--
 ALTER TABLE `licenses`
   ADD PRIMARY KEY (`id`);
 
-
---|||
-
+--
+-- Indexes for table `logtime`
+--
 ALTER TABLE `logtime`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `payment`
+--
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `persistences`
+--
 ALTER TABLE `persistences`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `persistences_code_unique` (`code`);
 
-
---|||
-
+--
+-- Indexes for table `products`
+--
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `products_list`
+--
 ALTER TABLE `products_list`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `roles`
+--
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_slug_unique` (`slug`);
 
---|||
-
+--
+-- Indexes for table `role_users`
+--
 ALTER TABLE `role_users`
   ADD PRIMARY KEY (`user_id`,`role_id`);
 
---|||
-
+--
+-- Indexes for table `server_access`
+--
 ALTER TABLE `server_access`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `server_company`
+--
 ALTER TABLE `server_company`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `server_company_server_spec`
+--
 ALTER TABLE `server_company_server_spec`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `server_detail`
+--
 ALTER TABLE `server_detail`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `server_ip`
+--
 ALTER TABLE `server_ip`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `server_locations`
+--
 ALTER TABLE `server_locations`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `server_spec`
+--
 ALTER TABLE `server_spec`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `support`
+--
 ALTER TABLE `support`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `throttle`
+--
 ALTER TABLE `throttle`
   ADD PRIMARY KEY (`id`),
   ADD KEY `throttle_user_id_index` (`user_id`);
 
---|||
-
+--
+-- Indexes for table `ticket`
+--
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `ticket_reply`
+--
 ALTER TABLE `ticket_reply`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `users`
+--
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
---|||
-
+--
+-- Indexes for table `versions`
+--
 ALTER TABLE `versions`
   ADD PRIMARY KEY (`id`);
 
---|||
-
+--
+-- Indexes for table `web_hosting_plans`
+--
 ALTER TABLE `web_hosting_plans`
   ADD PRIMARY KEY (`id`);
 
---|||
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
+--
+-- AUTO_INCREMENT for table `activations`
+--
 ALTER TABLE `activations`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=172;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `company`
+--
 ALTER TABLE `company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `contacts`
+--
 ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `contracts`
+--
 ALTER TABLE `contracts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `contracts_documents`
+--
 ALTER TABLE `contracts_documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `contracts_renewal`
+--
 ALTER TABLE `contracts_renewal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `contracts_renewal_invoice`
+--
 ALTER TABLE `contracts_renewal_invoice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `documents`
+--
 ALTER TABLE `documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `domains`
+--
 ALTER TABLE `domains`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `emails`
+--
 ALTER TABLE `emails`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `files`
+--
 ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `invoice`
+--
 ALTER TABLE `invoice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `licenses`
+--
 ALTER TABLE `licenses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `logtime`
+--
 ALTER TABLE `logtime`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `payment`
+--
 ALTER TABLE `payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `persistences`
+--
 ALTER TABLE `persistences`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `products`
+--
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `products_list`
+--
 ALTER TABLE `products_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `roles`
+--
 ALTER TABLE `roles`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_access`
+--
 ALTER TABLE `server_access`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_company`
+--
 ALTER TABLE `server_company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_company_server_spec`
+--
 ALTER TABLE `server_company_server_spec`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_detail`
+--
 ALTER TABLE `server_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_ip`
+--
 ALTER TABLE `server_ip`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_locations`
+--
 ALTER TABLE `server_locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `server_spec`
+--
 ALTER TABLE `server_spec`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `support`
+--
 ALTER TABLE `support`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `throttle`
+--
 ALTER TABLE `throttle`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=263;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `ticket`
+--
 ALTER TABLE `ticket`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `ticket_reply`
+--
 ALTER TABLE `ticket_reply`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `users`
+--
 ALTER TABLE `users`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `versions`
+--
 ALTER TABLE `versions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
-
---|||
-
+--
+-- AUTO_INCREMENT for table `web_hosting_plans`
+--
 ALTER TABLE `web_hosting_plans`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
