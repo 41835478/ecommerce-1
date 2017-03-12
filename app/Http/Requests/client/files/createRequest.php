@@ -24,7 +24,7 @@ class createRequest extends Request
     {
         return [
     "name"=>'required',
-    "link"=>'required',
+
     "version"=>'required',
     "type"=>'required',
 

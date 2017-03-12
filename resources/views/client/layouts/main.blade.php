@@ -219,7 +219,7 @@ $('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer'
 
 
     $('.deleteRow').click(function(){
-        if(!confirm('Are you sure that you are want to delete this?')){
+        if(!confirm('{{trans('general.deleteConfirmMessage')}}')){
             event.preventDefault();
         }
 

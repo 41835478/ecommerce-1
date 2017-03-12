@@ -24,7 +24,7 @@ return [
     'selectOne'=>'Select One',
     'total'=>'Total',
     'addToInvoice'=>'Add To Invoice',
-
+'deleteConfirmMessage'=>'Are you sure that you are want to delete this?',
     'company'=>'Company',
     'addcompany'=>'Add Company',
     'companyList'=>'Company List',

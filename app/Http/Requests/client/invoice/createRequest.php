@@ -25,7 +25,6 @@ class createRequest extends Request
         return [
     "name"=>'required',
     "due_date"=>'required',
-    "description"=>'required',
 
 
 

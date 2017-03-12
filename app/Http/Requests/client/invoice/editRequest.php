@@ -25,7 +25,6 @@ public function rules()
 return [
     "name"=>'required',
     "due_date"=>'required',
-    "description"=>'required',
 
 
 
