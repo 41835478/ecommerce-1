@@ -1,5 +1,5 @@
 <?php
-/*
+
 namespace App\Http\Controllers\common;
 
 use App\Http\Requests;
@@ -13,7 +13,8 @@ use Session;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
-*/
+
+
 
 class PermissionController // extends Controller
 {
@@ -22,24 +23,27 @@ class PermissionController // extends Controller
     private $totalSectionsNumber=0;
 
     public function __construct(){
-       $this->setTotalSections();
+        $this->setTotalSections();
         $this->setTotalSectionsNumber();
-}
+    }
 
 
     public function getTotalSections(){
 
         return $this->permissionsSections;
     }
+
     public function setTotalSections(){
 
         $this->permissionsSections=config('permission.permissionsSections');
     }
 
+
     public function setTotalSectionsNumber(){
 
         $this->totalSectionsNumber=count($this->getTotalSections());
     }
+
 
     public function getTotalSectionsNumber(){
 
@@ -50,21 +54,21 @@ class PermissionController // extends Controller
 
     public function getCustomMissingSection($index){
         $section='*';
-        if($index==3){$section='get';//\Illuminate\Http\Request::method();
+        if($index==3){$section=\Illuminate\Http\Request::method();
         }
         return $section;
     }
 
     public function getPermissionSections($permission){
 
-     $aPermission=explode('.',$permission);
+        $aPermission=explode('.',$permission);
 
         $aPermissionSections=[];
         for($i=0;$i<$this->getTotalSectionsNumber();$i++){
             $section='*';
             if(array_key_exists($i,$aPermission)){
                 $section=$aPermission[$i];
-               $this->addPermissionToConfig($i,$permission);
+                $this->addPermissionToConfig($i,$permission);
             }else{
                 $section=$this->getCustomMissingSection($i);
             }
@@ -79,64 +83,90 @@ class PermissionController // extends Controller
     public function getUserDenyPermissions(){
 
         return '
-  |admin.*.create.*|
-  |admin.*.*.*|
-  |admin.product.create.*|
-  |*.product.*.*|
-  |*.product.*.post|
-
+  |admin.*.create.*
+  |admin.*.*.*
+  |admin.product.create.*
+  |*.join.create.*
+  |*.*.*.get
+  |*.*.*.*
         ';
-/*
-*.product.create
-admin.prduct.create
-client.*.edit
 
-        support.create
-*/
     }
 
-    public function checkIfPermissionDeny($permission,$denyPermissions){
+    public function getUserAllowPermissions(){
+
+        return '
+  |admin.*.create.*
+  |admin.*.*.*
+  |admin.product.create.*
+  |*.join.create.*
+  |*.*.*.get
+  |*.*.*.*
+        ';
+
+    }
+
+    public function checkIfPermissionMatch($permission,$denyPermissions){
 
         $currentPermissionSections=$this->getPermissionSections($permission);
-$possibleMatchPermissions=$this->getPossibleMatchPermissions($currentPermissionSections);
-        for($i=0;$i<$this->getTotalSectionsNumber();$i++){
+        $possibleMatchPermissions=$this->getPossibleMatchPermissions($currentPermissionSections);
+
+        foreach($possibleMatchPermissions as $possibleMatch){
+
+            if(preg_match('/'.preg_quote($possibleMatch, '/').'/',$denyPermissions)){
+                return true;
+
+            }
 
         }
+        return false;
     }
     public function getPossibleMatchPermissions($sections){
-        $possibleMatchPermissions=[];
 
+        $sectionsNumber=count($sections);
+        $totalOptionsNumber=pow(2,$sectionsNumber);
 
-        for($i=0;$i < $this->getTotalSectionsNumber();$i++){
-
-
-        }
-
-
-
-        return $possibleMatchPermissions;
-    }
-public function getPaddingPermission($sections){
-    $final_array=[];
-    for($i = 0; $i<count($sections); $i++)
-    {
-        $oneSectionPosible=['*',$sections[$i]];
-        for($j = 0; $j<count($oneSectionPosible); $j++)
+        $final_array=[];
+        $newSections=[];
+        $index=[];
+        for($i = 0; $i<$sectionsNumber; $i++)
         {
+            $newSections[$i]=[$sections[$i],'*'];
+            $index[$i]=1;
+        }
 
-                $one_final_array = [$oneSectionPosible[$j] , $s_nb["$b"] , $t_nb["$c"],''];
-            []
+        for($i=0;$i<$totalOptionsNumber;$i++){
+
+            for($j = 0; $j<$sectionsNumber; $j++)
+            {
+                $index[$j]=($i%($totalOptionsNumber/pow(2,$j+1)) ==0)? (($index[$j] ==0)? 1:0):$index[$j];
+            }
+
+
+            $one_final_array=[];
+            for($j = 0; $j<$sectionsNumber; $j++)
+            {
+                $one_final_array[]=$newSections[$j][$index[$j]];
+            }
+
+
+
+            $one_final_text=join('.', $one_final_array);
+            $final_array[$one_final_text] =$one_final_text ;
 
         }
-    }
-    return $final_array;
 
-}
+
+
+        return $final_array;
+
+    }
+
 
     public function addPermissionToConfig($index,$permission){
-if(in_array($permission,$this->getTotalSections()[$index])){
-    return true;
-}
+        if(in_array($permission,$this->getTotalSections()[$index])){
+            return true;
+        }
         $newPermissionsSections=  $this->permissionsSections[$index][]=$permission;
 
 
@@ -144,9 +174,19 @@ if(in_array($permission,$this->getTotalSections()[$index])){
 
     public function deny($permission){
 
-        return  $this->checkIfPermissionDeny($permission,$this->getUserDenyPermissions());
+
+
+        return  $this->checkIfPermissionMatch($permission,$this->getUserDenyPermissions());
     }
 
+    public function allow($permission){
+
+        return  $this->checkIfPermissionMatch($permission,$this->getUserAllowPermissions());
+    }
+
+    public function access($permission){
+        return($this->allow)? true:(($this->deny)? false:true);
+    }
 
 
 
@@ -154,4 +194,6 @@ if(in_array($permission,$this->getTotalSections()[$index])){
 
 $Permissions= new PermissionController();
 
-die(var_dump($Permissions->deny('admin.product.create')));
+var_dump($Permissions->access('client.product.create'));
+var_dump($Permissions->access('admin.product.create'));
+die(var_dump($Permissions->access('client.product.create')));
