@@ -3,10 +3,18 @@
 use Closure, Redirect,App,Session;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 
+
 class Authenticate
 {
 	public function handle($oRequest, Closure $fNext)
 	{
+
+		if(!canAccess(\Request::route()->getName())){
+
+			return Redirect::back()->withErrors([trans('general.invalidRole')]);
+		}
+		return $fNext($oRequest);
+
 		// Check if the user is logged in
 		if ($oUser = Sentinel::check()  ) {
 			// User is logged in and assigned to the $oUser variable.

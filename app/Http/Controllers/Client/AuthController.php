@@ -51,6 +51,14 @@ class AuthController extends Controller
             if($contact){
                 \Session::set('company_id',$contact->company_id);
                 \Session::set('contacts_id',$contact->id);
+
+                $role=$contact->roles();
+                if($role){
+
+                    \Session::set('permissions',$role->first()->permissions);
+                }else{
+                    return Redirect::route('client.auth.login')->withErrors([trans('general.invalidRole')]);
+                }
                 return Redirect::intended('/client');
             }else{
                 return Redirect::route('client.auth.login')->withErrors([trans('user.InvalidLogin')]);

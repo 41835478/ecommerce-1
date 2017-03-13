@@ -54,7 +54,8 @@ class PermissionController // extends Controller
 
     public function getCustomMissingSection($index){
         $section='*';
-        if($index==3){$section=\Illuminate\Http\Request::method();
+        /* todo get current request method */
+        if($index==3){$section='get';//\Illuminate\Http\Request::method();
         }
         return $section;
     }
@@ -68,7 +69,9 @@ class PermissionController // extends Controller
             $section='*';
             if(array_key_exists($i,$aPermission)){
                 $section=$aPermission[$i];
-                $this->addPermissionToConfig($i,$permission);
+
+                /* todo this function take time you can delete it after adding all sections in config file */
+                $this->addPermissionToConfig($i,$section);
             }else{
                 $section=$this->getCustomMissingSection($i);
             }
@@ -82,6 +85,8 @@ class PermissionController // extends Controller
 
     public function getUserDenyPermissions(){
 
+     $contactPermissions=   \Session::get('permissions');
+        return ($contactPermissions != '')? $contactPermissions:'|*.*.*.*.*.*';
         return '
   |admin.*.create.*
   |admin.*.*.*
@@ -95,14 +100,7 @@ class PermissionController // extends Controller
 
     public function getUserAllowPermissions(){
 
-        return '
-  |admin.*.create.*
-  |admin.*.*.*
-  |admin.product.create.*
-  |*.join.create.*
-  |*.*.*.get
-  |*.*.*.*
-        ';
+        return '';
 
     }
 
@@ -164,13 +162,38 @@ class PermissionController // extends Controller
 
 
     public function addPermissionToConfig($index,$permission){
+        /* todo this function take time you can delete it after adding all sections in config file */
         if(in_array($permission,$this->getTotalSections()[$index])){
             return true;
         }
-        $newPermissionsSections=  $this->permissionsSections[$index][]=$permission;
+        $newPermissionFile=config('permission');
+        $newPermissionFile['permissionsSections'][$index][]=$permission;
 
+        file_put_contents(app_path() . "/../config/permission.php", $this->arrayToString($newPermissionFile));
 
     }
+
+
+    public function arrayToString($array,$sub='')
+    {
+        if(!is_array($array)){return "<?php  return []; ?>";}
+
+        $sArray =($sub=='')? "<?php return [\n":"[\n";
+
+        foreach ($array as $key => $value) {
+
+            $sArray.="'" . $key . "'=>" ;
+            if(is_array($value)){
+                $sArray.= $this->arrayToString($value,1);
+            }else{
+                $sArray .= "'".$value . "',\n";
+            }
+        }
+        $sArray .= ($sub=='')? ']; ?>':"],\n";
+        return $sArray;
+    }
+
+
 
     public function deny($permission){
 
@@ -185,15 +208,12 @@ class PermissionController // extends Controller
     }
 
     public function access($permission){
-        return($this->allow)? true:(($this->deny)? false:true);
+
+        return (($this->deny($permission))? false:true);
+       // return($this->allow($permission))? true:(($this->deny($permission))? false:true);
     }
 
 
 
 }
 
-$Permissions= new PermissionController();
-
-var_dump($Permissions->access('client.product.create'));
-var_dump($Permissions->access('admin.product.create'));
-die(var_dump($Permissions->access('client.product.create')));

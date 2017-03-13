@@ -66,19 +66,10 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.permissions') }}  </label>
-                        </div>
-                    </div>
+                <div class="row">
 
-                    <div class="col-sm-4 text-left">
-                        <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$roles['permissions'] }}</label>
-                        </div>
-                    </div>
 
-                    
+
                                     <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.created_at') }}  </label>
@@ -91,8 +82,12 @@
                         </div>
                     </div>
 
-                    </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
+
+
+
+
+
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('general.updated_at') }}  </label>
                         </div>
@@ -103,6 +98,45 @@
                             <label class="control-label">{{$roles['updated_at'] }}</label>
                         </div>
                     </div>
+
+
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('general.denyPermissions') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 text-left">
+                        <div class="form-group no-margin-hr">
+
+
+                            @if(is_array($roles['permissionOneText']) )
+
+                                @foreach($roles['permissionOneText'] as   $permission)
+                                    @if($permission !='')
+                                        <div class="onePermissionDiv col-xs-3">
+                                            {{$permission}}
+
+                                        </div>
+                                    @endif
+                                @endforeach
+
+                            @endif
+
+                        </div>
+                    </div>
+                    <style type="text/css">
+
+                       .onePermissionDiv{
+                            margin:5px 5px;
+                            padding:5px 5px;
+                            border:1px solid #475f91;
+                        }
+
+                    </style>
 
                     
 

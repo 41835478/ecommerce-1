@@ -24,6 +24,12 @@ return [
     'selectOne'=>'Select One',
     'total'=>'Total',
     'addToInvoice'=>'Add To Invoice',
+    'all'=>'All',
+    'section'=>'Section',
+    'group'=>'Group',
+'addDenyPermission'=>'Add Deny Permission',
+'invalidRole'=>'Group Error, please check user group or role.',
+
 'deleteConfirmMessage'=>'Are you sure that you are want to delete this?',
     'company'=>'Company',
     'addcompany'=>'Add Company',
@@ -933,5 +939,35 @@ return [
 
     'description'=>'Description',
 
+
+    'roles'=>'Roles',
+    'addroles'=>'Add Roles',
+    'rolesList'=>'Roles List',
+    'rolesCreate'=>'Create Roles ',
+    'editroles'=>'Edit Roles',
+    'rolesInfo'=>'Roles Info',
+
+    'rolesTableHead'=>'Roles Table Header',
+    'rolesTableDescription'=>'Roles Description',
+
+    'rolesMenuBottomHeader'=>'RolesMenu Bottom Header',
+    'rolesMenuBottomDescription'=>'Roles Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'slug'=>'Slug',
+
+'role'=>'Role ',
+    'name'=>'Name',
+
+
+    'permissions'=>'Permissions',
+'denyPermissions'=>'Deny Permissions',
+
+    'created_at'=>'Created At',
+
+
+    'updated_at'=>'Updated At',
 
 ];

@@ -78,6 +78,7 @@ class Roles extends Controller
 
         $roles=$this->rRoles->show($id);
 
+        $roles['permissionOneText']=explode('|',$roles->permissions);
 
         return view('client.roles.show', compact('roles','request'));
     }
@@ -89,13 +90,14 @@ class Roles extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,Request $request)
     {
 
 
         $roles=$this->rRoles->show($id);
+        $roles['permissionOneText']=explode('|',$roles->permissions);
 
-        return view('client.roles.edit', compact('roles'));
+        return view('client.roles.edit', compact('roles','request'));
     }
 
     /**

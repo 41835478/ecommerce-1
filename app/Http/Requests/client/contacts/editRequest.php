@@ -25,6 +25,7 @@ class editRequest extends Request
     {
         return [
             "company_id"=>'required|numeric',
+            "roles_id"=>'required|numeric',
             "users_id"=>'',
             "name"=>'required|min:1|max:100',
             "email"=>'required|email',

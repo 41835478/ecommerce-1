@@ -91,4 +91,8 @@ Route::group(['middleware' => ['authenticate.client']], function () {
 
 
     Route::resource('payment', 'Payment');
+
+
+    Route::resource('roles', 'Roles');
+
 });

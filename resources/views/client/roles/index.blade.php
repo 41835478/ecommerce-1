@@ -63,9 +63,6 @@
                                         {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                     </th>
 
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.permissions'), 'permissions', $oResults) !!}
-                                    </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                         {!! th_sort(trans('general.created_at'), 'created_at', $oResults) !!}
@@ -75,7 +72,8 @@
                                         {!! th_sort(trans('general.updated_at'), 'updated_at', $oResults) !!}
                                     </th>
 
-                                
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -90,9 +88,8 @@
 
                                                                                 <td>{{ $oResult->slug }}</td>
 
-                                                                                <td>{{ $oResult->name }}</td>
+                                                                                <td><a href="/client/roles/{{ $oResult->id }}">{{ $oResult->name }}</a></td>
 
-                                                                                <td>{{ $oResult->permissions }}</td>
 
                                                                                 <td>{{ $oResult->created_at }}</td>
 
@@ -105,13 +102,13 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/roles/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
 
 
                                             {!! Form::open(['method' => 'DELETE',
                                             'url' => ['/client/roles',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                             {!! Form::close() !!}
 
                                             <a href="/client/roles/{{ $oResult->id }}/edit"

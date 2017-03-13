@@ -811,6 +811,26 @@ return [
            ]
        ],
 
+       [
+           'route' => 'client.roles.index',
+           'title' => 'roles',
+           'icon' => 'fa fa-gears',
+           'subMenus' => [
+
+               [
+                   'route' => 'client.roles.index',
+                   'title' => 'rolesList',
+                   'icon' => 'fa fa-gears',
+               ],
+               [
+                   'route' => 'client.roles.create',
+                   'title' => 'rolesCreate',
+                   'icon' => 'fa fa-gears',
+               ]
+           ]
+       ],
+
+
 //       [
 //           'route' => 'client.contracts_renewal_invoice.index',
 //           'title' => 'contracts_renewal_invoice',

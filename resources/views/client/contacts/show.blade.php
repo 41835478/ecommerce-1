@@ -96,17 +96,19 @@
                     </div>
 
                     </div>
-                <div class="row">                    <div class="col-sm-2 text-right">
+                <div class="row">
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{ trans('general.description') }}  </label>
+                            <label class="control-label">{{ trans('general.group') }}  </label>
                         </div>
                     </div>
 
                     <div class="col-sm-4 text-left">
                         <div class="form-group no-margin-hr">
-                            <label class="control-label">{{$contacts['description'] }}</label>
+                            <label class="control-label">{{(isset($contacts->roles()->first()->name))? $contacts->roles()->first()->name:'' }}</label>
                         </div>
                     </div>
+
 
                     
                                     <div class="col-sm-2 text-right">
@@ -122,10 +124,24 @@
                     </div>
 
                     </div>
+<div class="row">
+
+    <div class="col-sm-2 text-right">
+        <div class="form-group no-margin-hr">
+            <label class="control-label">{{ trans('general.description') }}  </label>
+        </div>
+    </div>
+
+    <div class="col-sm-4 text-left">
+        <div class="form-group no-margin-hr">
+            <label class="control-label">{{$contacts['description'] }}</label>
+        </div>
+    </div>
+
+    </div>
 
 
-
-                <div class="row">
+    <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
 

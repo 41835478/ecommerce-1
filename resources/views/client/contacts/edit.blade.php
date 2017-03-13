@@ -118,7 +118,19 @@
 
 
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}} col-xs-6">
+        <div class="row">
+
+
+            <div class="form-group {{ $errors->has('roles_id') ? 'has-error' : ''}}  col-xs-6">
+                {!! Form::label('roles_id', trans('general.group'), ['class' => 'col-sm-4 control-label']) !!}
+                <div class="col-sm-8">
+                    {!! Form::select('roles_id',$rolesList, null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('roles_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+
+            <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}} col-xs-6">
             {!! Form::label('description', trans('general.description'), ['class' => 'col-sm-4 control-label']) !!}
             <div class="col-sm-8">
                 {!! Form::text('description', null, ['class' => 'form-control']) !!}

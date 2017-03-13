@@ -1,31 +1,42 @@
-<?php
-
-
-return [
-    'permissionsSections'=>[
-    0=>[
-        'admin',
-        'client',
-        'public',
-    ],
-    1=>[
-        'products',
-        'company',
-        'server',
-        'ticket',
-    ],
-    2=>[
-        'create',
-        'show',
-        'edit',
-        'delete',
-    ],
-    3=>[
-        'get',
-        'post',
-        'delete',
-        'patch'
-    ],
-]
-
-];
+<?php return [
+'permissionsSections'=>[
+'0'=>[
+'0'=>'admin',
+'1'=>'client',
+],
+'1'=>[
+'0'=>'roles',
+'1'=>'payment',
+'2'=>'invoice',
+'3'=>'files',
+'4'=>'documents',
+'5'=>'logtime',
+'6'=>'ticket',
+'7'=>'support',
+'8'=>'server_access',
+'9'=>'server_ip',
+'10'=>'company',
+'11'=>'server_detail',
+'12'=>'server_spec',
+'13'=>'server_company',
+'14'=>'contracts',
+'15'=>'web_hosting_plans',
+'16'=>'domains',
+'17'=>'versions',
+'18'=>'products',
+'19'=>'products_list',
+'20'=>'index',
+],
+'2'=>[
+'0'=>'create',
+'1'=>'index',
+'2'=>'expired',
+],
+'3'=>[
+'0'=>'get',
+'1'=>'post',
+'2'=>'delete',
+'3'=>'patch',
+],
+],
+]; ?>

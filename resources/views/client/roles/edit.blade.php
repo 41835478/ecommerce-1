@@ -54,45 +54,122 @@
 
 
             
-        <div class="row">        <div class="form-group {{ $errors->has('slug') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('slug', trans('slug'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('slug', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('slug', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+        <div class="row">
+
                 
-                <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('name', trans('name'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
+                <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}} col-xs-12">
+            {!! Form::label('name', trans('name'), ['class' => 'col-sm-2 control-label']) !!}
+            <div class="col-sm-10">
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
                 {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('permissions') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('permissions', trans('permissions'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('permissions', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('permissions', '<p class="help-block">:message</p>') !!}
+        <div class="row">
+
+
+
+
+            <div class="addPermissionAllForm">
+                <div class="newPermission">
+
+                        @if(is_array($request->old('permissionOneText')))
+
+                            @foreach($request->old('permissionOneText') as   $permission)
+
+                                @if($permission !='')
+                                <div class=" col-xs-3">
+                                    <div class="onePermissionDiv">
+                                        <input type="hidden" value="{{$permission}}" name="permissionOneText['{{$permission}}']" >
+                                        {{$permission}}
+                                        <i class="fa fa-trash" onclick="$(this).parent().remove();"></i>
+                                    </div>
+                                </div>
+                                @endif
+                            @endforeach
+
+
+                    @elseif(is_array($roles['permissionOneText']) )
+
+                        @foreach($roles['permissionOneText'] as   $permission)
+                            @if($permission !='')
+                                <div class="col-xs-3">
+                                    <div class="onePermissionDiv">
+                                    <input type="hidden" value="{{$permission}}" name="permissionOneText['{{$permission}}']" >
+                                    {{$permission}}
+                                    <i class="fa fa-trash" onclick="$(this).parent().remove();"></i>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+
+                    @endif
+                </div>
+
+                <div class="addPermissionForm col-sm-12">
+                    @foreach(config('permission.permissionsSections') as $sectionIndex=>$aSection)
+                        <div class="form-group {{ $errors->has('permissionOneText') ? 'has-error' : ''}}  col-xs-2">
+                            <div class="col-sm-12">
+                                {!! Form::select('addSection_'.$sectionIndex,['*'=>trans('general.all')]+$aSection, null, ['class' => 'form-control']) !!}
+                                {!! $errors->first('permissionOneText', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="  col-xs-4">
+                        {!! Form::button(trans('general.addDenyPermission'), ['class' => ' btn btn-primary  form-control','onclick'=>'addPermission();']) !!}
+
+                    </div>
+
+                    <script >
+
+                        function addPermission(){
+
+                            var selectedSections=[];
+                            $('.addPermissionForm select option:selected').each(function(){
+                                var currentSection=$(this).text();
+                                var currentSection=(currentSection =='All')? '*':currentSection;
+                                selectedSections.push(currentSection);
+                            });
+
+                            var permissionText=selectedSections.join('.') ;
+                            $('.newPermission').append('<div class=" col-xs-3"><div class="onePermissionDiv"><input type="hidden" value="'+permissionText+'" name="permissionOneText[\''+permissionText+'\']" >'+ permissionText + '<i class="fa fa-trash" onclick="$(this).parent().remove();"></i> </div> </div> ');
+                        }
+
+
+                    </script>
+                    <style type="text/css">
+                        .addPermissionAllForm{
+
+                        }
+                        .newPermission{
+
+                        }
+                        .addPermissionForm{
+
+                        }
+                        .addPermissionForm button{
+                            float:left;
+
+                        }
+                        .onePermissionDiv{
+                            margin:5px 5px;
+                            padding:5px 5px;
+                            border:1px solid #475f91;
+                        }
+                        .newPermission .onePermissionDiv i{
+                            float:right;
+                            color:#ff5500;
+                            cursor: pointer;
+                        }
+                    </style>
+
+                </div>
             </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('created_at') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('created_at', trans('created_at'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('created_at', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('created_at', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
+
+
         </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('updated_at') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('updated_at', trans('updated_at'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('updated_at', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('updated_at', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+        <div class="row">
                 
 
 

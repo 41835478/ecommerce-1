@@ -158,3 +158,12 @@ if (!function_exists('company_id')) {
 		return \Session::get('company_id');
 	}
 }
+
+if (!function_exists('canAccess')) {
+	function canAccess($permission)
+	{
+		/* todo make class static*/
+ $cPermission= new \App\Http\Controllers\common\PermissionController();
+		return $cPermission->access($permission);
+	}
+}

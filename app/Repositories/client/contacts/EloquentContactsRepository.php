@@ -22,6 +22,9 @@ class EloquentContactsRepository implements ContactsContract
         if (isset($data->users_id) && !empty($data->users_id)) {
             $oResults = $oResults->where('users_id', '=', $data['users_id'] );
         }
+        if (isset($data->roles_id) && !empty($data->roles_id)) {
+            $oResults = $oResults->where('roles_id', '=', $data['roles_id'] );
+        }
         if (isset($data->phone) && !empty($data->phone)) {
             $oResults = $oResults->where('phone', 'like', '%' . $data['phone'] . '%');
         }

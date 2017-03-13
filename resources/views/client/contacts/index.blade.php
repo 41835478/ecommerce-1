@@ -54,6 +54,9 @@
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
                                     {!! th_sort(trans('general.name'), 'name', $oResults) !!}
                                 </th>
+                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                    {!! th_sort(trans('general.group'), 'roles_id', $oResults) !!}
+                                </th>
                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
                                     {!! th_sort(trans('general.email'), 'email', $oResults) !!}
                                 </th>
@@ -89,6 +92,8 @@
 
                                         <td>{{ $oResult->id }}</td>
                                         <td> <a href="/client/contacts/{{ $oResult->id }}" > {{ $oResult->name }}</a></td>
+                                        <td>{{ (isset($oResult->roles->name))? $oResult->roles->name:'' }}</td>
+
                                         <td>{{ $oResult->email }}</td>
 
                                                                                 <td>{{ (isset($oResult->company->name))? $oResult->company->name:'' }}</td>

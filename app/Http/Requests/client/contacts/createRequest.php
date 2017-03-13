@@ -25,6 +25,7 @@ class createRequest extends Request
     {
         return [
             "company_id"=>'required|numeric',
+            "roles_id"=>'required|numeric',
             "users_id"=>'',
             "name"=>'required|min:1|max:100',
             "password"=>'required|min:7|max:100',

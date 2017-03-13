@@ -191,5 +191,10 @@ class AppServiceProvider extends ServiceProvider
         );
 
 
+        $this->app->bind(
+            'App\Repositories\client\roles\RolesContract',
+            'App\Repositories\client\roles\EloquentRolesRepository'
+        );
+
     }
 }

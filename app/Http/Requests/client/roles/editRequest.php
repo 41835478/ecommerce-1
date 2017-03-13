@@ -22,15 +22,20 @@ return true;
 */
 public function rules()
 {
-return [
-    "slug"=>'required',
-    "name"=>'required',
-    "permissions"=>'required',
-    "created_at"=>'required',
-    "updated_at"=>'required',
+    $aPermissions = $this->permissionOneText;
+    $aPermissions=(is_array($aPermissions))? $aPermissions:[$aPermissions];
 
+    $permissions='';
+    foreach($aPermissions as $permission){
+        $permissions.='|'.$permission;
+    }
+    $slug=strtolower(preg_replace(array('/[^a-zA-Z0-9 -]/','/[ -]+/','/^-|-$/'),array('','-',''), $this->name));
 
+    $this->merge(['slug'=>$slug,'permissions'=>$permissions]);
+    return [
 
-];
+        "name"=>'required',
+        "permissionOneText"=>'required',
+    ];
 }
 }

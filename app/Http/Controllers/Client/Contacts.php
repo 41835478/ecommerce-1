@@ -18,6 +18,7 @@ use App\Models\Contacts as mContacts;
 use App\Repositories\client\contacts\ContactsContract as rContacts;
 use App\Repositories\client\company\CompanyContract as rCompany;
 use App\Repositories\client\users\UsersContract as rUsers;
+use App\Repositories\client\roles\RolesContract as rRoles;
 class Contacts extends Controller
 {
     private $rContacts;
@@ -48,11 +49,12 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function create(Request $request)
+    public function create(Request $request,rRoles $rRoles)
     {
 
         $companiesList=$this->rCompany->getAllList();
-        return view('client.contacts.create',compact('request','companiesList'));
+        $rolesList=$rRoles->getAllList();
+        return view('client.contacts.create',compact('request','companiesList','rolesList'));
     }
 
     /**
@@ -97,14 +99,15 @@ class Contacts extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,rRoles $rRoles)
     {
 
 
         $contacts=$this->rContacts->show($id);
         $companiesList=$this->rCompany->getAllList();
+        $rolesList=$rRoles->getAllList();
 
-        return view('client.contacts.edit', compact('contacts','companiesList'));
+        return view('client.contacts.edit', compact('contacts','companiesList','rolesList'));
     }
 
     /**

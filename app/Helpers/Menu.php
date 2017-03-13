@@ -20,8 +20,12 @@ class Menu {
 
         $mainClientMenus = Config::get('mycp.client_menu', []);
         foreach ($mainClientMenus as $mainClientMenu) {
+            if(!canAccess($mainClientMenu['route'])){  continue;}
 
-            foreach ($mainClientMenu['subMenus'] as &$subMenu) {
+            foreach ($mainClientMenu['subMenus'] as $key=>&$subMenu) {
+
+              if(!canAccess($subMenu['route'])){unset($subMenu); unset($mainClientMenu['subMenus'][$key]); continue;}
+
                 $subMenu['title'] = trans('general.' . $subMenu['title']);
                 if (empty($subMenu['route'])) {
                     $subMenu['route'] = '#';
