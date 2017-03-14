@@ -11,7 +11,7 @@ class Authenticate
 
 		if(!canAccess(\Request::route()->getName())){
 
-			return Redirect::back()->withErrors([trans('general.invalidRole')]);
+			return Redirect::route('client.auth.login')->withErrors([trans('general.invalidRole')]);
 		}
 		return $fNext($oRequest);
 

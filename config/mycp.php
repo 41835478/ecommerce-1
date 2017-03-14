@@ -477,7 +477,7 @@ return [
 
 
        [
-           'route' => 'client.server_company.index',
+           'route' => 'client.server.index',
            'title' => 'server_company',
            'icon' => 'fa fa-building-o',
            'subMenus' => [

@@ -35,7 +35,6 @@ class createRequest extends Request
         return [
 
     "name"=>'required|unique:roles',
-    "permissionOneText"=>'required',
         ];
     }
 }

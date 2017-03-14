@@ -35,7 +35,6 @@ public function rules()
     return [
 
         "name"=>'required',
-        "permissionOneText"=>'required',
     ];
 }
 }

@@ -39,7 +39,6 @@ class Company extends Controller
      */
     public function index(Request $request)
     {
-dd(canAccess('adminsdf.server.indsdfex'));
         $aFilterParams=$request;
         $oResults=$this->rCompany->getByFilter($aFilterParams);
 

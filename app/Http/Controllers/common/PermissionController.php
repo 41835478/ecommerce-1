@@ -55,7 +55,7 @@ class PermissionController // extends Controller
     public function getCustomMissingSection($index){
         $section='*';
         /* todo get current request method */
-        if($index==3){$section='get';//\Illuminate\Http\Request::method();
+        if($index==3){$section=\Request::method();
         }
         return $section;
     }

@@ -3,6 +3,11 @@
 
 @section('content')
 
+    {{--*/
+    $canAction=canAccess('admin.company.action');
+
+
+    /*--}}
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -37,11 +42,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.company.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.companyCreate')}}
                             </a>
                         </div>
+                        @endif
 
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -88,8 +95,10 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="10">
                                         {!! th_sort(trans('general.status'), 'status', $oResults) !!}
                                     </th>
-                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 
+                                @if($canAction)
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
+@endif
 
                             </tr>
                             </thead>
@@ -121,7 +130,7 @@
                                         <td>{{(array_key_exists($oResult->status,config('array.company_status')) )? config('array.company_status')[$oResult->status]:'' }}</td>
 
 
-
+                                        @if($canAction)
                                         <td>
                                             <div class="tableActionsMenuDiv">
                                                 <div class="innerContainer">
@@ -146,6 +155,7 @@
 
 
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif

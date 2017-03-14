@@ -3,6 +3,14 @@
 @section('content')
 
 
+    {{--*/
+    $canAction=canAccess('admin.company.action');
+$canContactsAction=canAccess('admin.contacts.action');
+$canContractsAction=canAccess('admin.contracts.action');
+$canLicensesAction=canAccess('admin.licenses.action');
+$canInvoiceAction=canAccess('admin.invoice.action');
+
+    /*--}}
 
 
 
@@ -174,6 +182,7 @@
 
                     </div>
 
+                @if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -193,6 +202,9 @@
                     </div>
 
                 </div>
+@endif
+
+
 
                 </div>
                 <!-- row -->
@@ -216,11 +228,14 @@
 
 
                                         </div>
+
+                                        @if($canContactsAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.contacts.create').'?company_id='.$company['id'] }}"class="btn btn-primary form-control">
                                                 + {{trans('general.contactsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -252,7 +267,9 @@
                                                 </th>
 
 
+                                                @if($canContactsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
+                                                    @endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -279,6 +296,7 @@
                                                         <td>{{ $oResult->permissions }}</td>
 
 
+                                                        @if($canContactsAction)
                                                         <td>
 
                                                             <div class="tableActionsMenuDiv">
@@ -300,6 +318,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -341,11 +360,15 @@
 
 
                                         </div>
+
+
+                                        @if($canContractsAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.contracts.create').'?company_id='.$company['id'] }}"class="btn btn-primary form-control">
                                                 + {{trans('general.contractsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
@@ -386,7 +409,9 @@
                                                     {{ trans('general.lastRenealToDate')}}
                                                 </th>
 
+                                                @if($canContractsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
+                                                    @endif
 
                                             </tr>
                                             </thead>
@@ -431,6 +456,7 @@
 
 
 
+                                                        @if($canContractsAction)
                                                         <td>
 
 
@@ -455,6 +481,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -502,11 +529,14 @@
 
 
                                         </div>
+
+                                        @if($canLicensesAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.licenses.create').'?company_id='.$company['id'] }}"class="btn btn-primary form-control">
                                                 + {{trans('general.licensesCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
 
 
@@ -533,8 +563,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                                     {!! th_sort(trans('general.status'), 'status', $oLicensesResults) !!}
                                                 </th>
+                                                @if($canLicensesAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
 
                                             </tr>
                                             </thead>
@@ -554,6 +585,7 @@
 
                                                         <td>{{(array_key_exists($oResult->status,config('array.licenses_status')) )? config('array.licenses_status')[$oResult->status]:'' }}</td>
 
+                                                        @if($canLicensesAction)
 
                                                         <td>
 
@@ -577,6 +609,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -618,11 +651,14 @@
 
 
                                         </div>
+
+                                        @if($canInvoiceAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.invoice.create')}}?company_id={{$company['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.invoiceCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -649,8 +685,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                                     {!! th_sort(trans('general.description'), 'description', $oInvoiceResults) !!}
                                                 </th>
+                                                @if($canInvoiceAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
 
 
                                             </tr>
@@ -672,6 +709,8 @@
                                                         <td>{{ $oResult->due_date }}</td>
 
                                                         <td>{{ $oResult->description }}</td>
+
+                                                        @if($canInvoiceAction)
 <td>
 
 
@@ -696,6 +735,8 @@
         </div>
     </div>
 </td>
+
+                                                            @endif
 
 
                                                     </tr>
