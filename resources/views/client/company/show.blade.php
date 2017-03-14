@@ -282,7 +282,7 @@ $canInvoiceAction=canAccess('admin.invoice.action');
 
                                                         <td>{{ $oResult->id }}</td>
 
-                                                        <td><a href="/admin/contacts/{{ $oResult->id }}" >{{   $oResult->name }}</a></td>
+                                                        <td><a href="/client/contacts/{{ $oResult->id }}" >{{   $oResult->name }}</a></td>
 
 
 
@@ -306,14 +306,14 @@ $canInvoiceAction=canAccess('admin.invoice.action');
 
 
                                                             {!! Form::open(['method' => 'DELETE',
-                                                            'url' => ['/admin/contacts',$oResult->id]]) !!}
+                                                            'url' => ['/client/contacts',$oResult->id]]) !!}
                                                                     <button type="submit" name="Delete" class="deleteRow" >
                                                                         <i class="fa fa-trash"></i>
 
                                                                     </button>
                                                             {!! Form::close() !!}
 
-                                                            <a href="/admin/contacts/{{ $oResult->id }}/edit"
+                                                            <a href="/client/contacts/{{ $oResult->id }}/edit"
                                                                class="fa fa-edit"></a>
                                                                 </div>
                                                             </div>
