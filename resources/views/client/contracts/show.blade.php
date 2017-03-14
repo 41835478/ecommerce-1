@@ -3,7 +3,10 @@
 @section('content')
 
 
-
+    {{--*/
+    $canAction=canAccess('admin.contracts.action');
+    $canContractsRenewalAction=canAccess('admin.contracts_renewal.action');
+    /*--}}
 
 
         <div id="page-wrapper">
@@ -197,6 +200,8 @@
     </div>
 
 </div>
+
+                @if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -216,7 +221,7 @@
                     </div>
 
                 </div>
-
+@endif
 
             </div>
                 <!-- row -->
@@ -239,11 +244,13 @@
 
 
                                         </div>
+                                        @if($canContractsRenewalAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.contracts_renewal.create').'?contracts_id='.$contracts['id'] }}"class="btn btn-primary form-control">
                                                 + {{trans('general.contracts_renewalCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -268,9 +275,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                                     {!! th_sort(trans('general.description'), 'description', $oContractsRenewalResults) !!}
                                                 </th>
-
+                                                @if($canContractsRenewalAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -290,6 +297,7 @@
 
                                                         <td>{{ $oResult->description }}</td>
 
+                                                        @if($canContractsRenewalAction)
                                                         <td>
 
 
@@ -312,6 +320,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

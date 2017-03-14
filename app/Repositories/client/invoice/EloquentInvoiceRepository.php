@@ -13,6 +13,11 @@ class EloquentInvoiceRepository implements InvoiceContract
 
         $oResults =Invoice::with('company');
 
+
+        if(!canAccess('client.invoice.otherData')){
+            $oResults = $oResults->where('company_id', '=' , company_id());
+        }
+
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
         }

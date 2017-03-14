@@ -196,9 +196,6 @@ class PermissionController // extends Controller
 
 
     public function deny($permission){
-
-
-
         return  $this->checkIfPermissionMatch($permission,$this->getUserDenyPermissions());
     }
 
@@ -210,7 +207,7 @@ class PermissionController // extends Controller
     public function access($permission){
 
         return (($this->deny($permission))? false:true);
-       // return($this->allow($permission))? true:(($this->deny($permission))? false:true);
+        // return($this->allow($permission))? true:(($this->deny($permission))? false:true);
     }
 
 

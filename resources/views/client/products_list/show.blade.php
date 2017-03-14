@@ -2,7 +2,10 @@
 @section('title', trans('general.products_list'))
 @section('content')
 
-
+    {{--*/
+    $canAction=canAccess('admin.products_list.action');
+    $canProductsAction=canAccess('admin.products.action');
+    /*--}}
 
 
 
@@ -89,7 +92,7 @@
                     </div>
 
 
-
+@if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -109,7 +112,7 @@
                     </div>
 
                 </div>
-
+@endif
                 </div>
                 <!-- row -->
             </div>
@@ -128,11 +131,14 @@
                                             <h3 class="box-title m-b-0">{{ trans('general.productsTableHead') }}</h3>
                                             <p class="text-muted m-b-20">{{ trans('general.productsTableDescription') }}</p>
                                         </div>
+
+                                        @if($canProductsAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.products.create').'?products_list_id='.$products_list['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.productsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
 
 
@@ -153,8 +159,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                                     {!! th_sort(trans('general.description'), 'description', $oProductsResults) !!}
                                                 </th>
+                                                @if($canProductsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -172,6 +179,7 @@
                                                         <td>{{ $oResult->description }}</td>
 
 
+                                                        @if($canProductsAction)
                                                         <td>
 
 
@@ -194,6 +202,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

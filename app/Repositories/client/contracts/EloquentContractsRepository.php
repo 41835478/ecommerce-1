@@ -14,6 +14,9 @@ class EloquentContractsRepository implements ContractsContract
 
         $oResults =Contracts::with(['company','products','domains','webHostingPlans','server_detail','support','renewal'=>function($query){$query->orderBy('to_date','desc');}]);
 
+        if(!canAccess('client.contracts.otherData')){
+            $oResults = $oResults->where('company_id', '=',company_id());
+        }
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }
@@ -62,9 +65,13 @@ class EloquentContractsRepository implements ContractsContract
     public function getAllList($company_id=0){
 
         $oResults =Contracts::with('company','products');
-if($company_id > 0){
-    $oResults =$oResults->where('company_id','=',$company_id);
-}
+
+        if(!canAccess('client.contracts.otherData')){
+            $oResults = $oResults->where('company_id', '=',company_id());
+        }
+        if($company_id > 0){
+            $oResults =$oResults->where('company_id','=',$company_id);
+        }
         $oResults =$oResults->orderBy('name')->get();
         $aResults = [];
         foreach($oResults as $oResult){
@@ -81,9 +88,12 @@ if($company_id > 0){
         $oResults =Contracts::with('company','products')->leftJoin('contracts_renewal',function($query){
             $query->on('contracts.id','=','contracts_renewal.contracts_id');
         })->select(['contracts.*',\DB::raw('max(contracts_renewal.to_date) as expired_date')])
-          ->groupBy('contracts_renewal.contracts_id');
+            ->groupBy('contracts_renewal.contracts_id');
 
 
+        if(!canAccess('client.contracts.otherData')){
+            $oResults = $oResults->where('company_id', '=',company_id());
+        }
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }
@@ -131,6 +141,9 @@ if($company_id > 0){
     public function create($data)
     {
 
+        if(!canAccess('client.contracts.otherData') && $data['company_id'] !=company_id()){
+            return false;
+        }
         $result = Contracts::create($data);
 
         if ($result) {
@@ -144,13 +157,26 @@ if($company_id > 0){
     public function show($id)
     {
 
-$contracts = Contracts::with('company','products')->findOrFail($id);
+
+        $contracts = Contracts::with('company','products')->findOrFail($id);
+
+        if(!canAccess('client.contracts.otherData') && $contracts['company_id'] !=company_id()){
+            return false;
+        }
 
         return $contracts;
     }
 
     public function destroy($id)
     {
+
+
+        $contracts = Contracts::findOrFail($id);
+
+        if(!canAccess('client.contracts.otherData') && $contracts['company_id'] !=company_id()){
+            return false;
+        }
+
 
         $result =  Contracts::destroy($id);
 
@@ -164,8 +190,13 @@ $contracts = Contracts::with('company','products')->findOrFail($id);
 
     public function update($id,$data)
     {
-$contracts = Contracts::findOrFail($id);
-       $result= $contracts->update($data->all());
+        $contracts = Contracts::findOrFail($id);
+        if(!canAccess('client.contracts.otherData') && $contracts['company_id'] !=company_id()){
+            return false;
+        }
+
+
+        $result= $contracts->update($data->all());
         if ($result) {
             Session::flash('flash_message', 'contracts updated!');
             return true;

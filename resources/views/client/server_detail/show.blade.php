@@ -4,9 +4,15 @@
 
 
 
+    {{--*/
+    $canAction=canAccess('admin.server_detail.action');
+    $canServerIpAction=canAccess('admin.server_ip.action');
+    /*--}}
 
 
-        <div id="page-wrapper">
+
+
+    <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- .row -->
                 <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
@@ -209,7 +215,7 @@
 
 
 
-
+@if($canAction)
                 <div class="row">
 
                         <div class="col-xs-offset-6 col-xs-3">
@@ -229,7 +235,7 @@
                         </div>
 
                     </div>
-
+@endif
 
                 </div>
                 <!-- row -->
@@ -256,12 +262,13 @@
 
 
                                         </div>
+                                        @if($canServerIpAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.server_ip.create')}}?server_detail_id={{$server_detail['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.server_ipCreate')}}
                                             </a>
                                         </div>
-
+@endif
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                                             <thead>
@@ -301,8 +308,9 @@
                                                     {!! th_sort(trans('general.display'), 'display', $oServerIpResults) !!}
                                                 </th>
 
+                                                @if($canServerIpAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -331,6 +339,7 @@
 
 
 
+                                                        @if($canServerIpAction)
                                                         <td>
 
                                                             <div class="tableActionsMenuDiv">
@@ -350,6 +359,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

@@ -13,9 +13,20 @@ class EloquentProductsRepository implements ProductsContract
 
         $oResults = Products::with(['productsList','versions'=>function($query){$query->orderBy('publish_date','desc');}]);
 
+        if(!canAccess('client.products.otherData')){
+
+            $oResults =$oResults->join('contracts',function($query){
+                $query->on('contracts.products_id','=','products.id');
+                $query->where('contracts.type','=',config('array.productsTypeIndex'));
+                $query->where('contracts.company_id','=',company_id());
+            })->select(['products.*']);
+
+        }
+
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }
+
         if (isset($data->products_list_id) && !empty($data->products_list_id)) {
             $oResults = $oResults->where('products_list_id', '=', $data['products_list_id']);
         }

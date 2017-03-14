@@ -2,7 +2,9 @@
 @section('title', trans('general.licenses'))
 
 @section('content')
-
+{{--*/
+$canAction=canAccess('admin.licenses.action');
+/*--}}
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -36,11 +38,13 @@
                             <p class="text-muted m-b-20">{{ trans('general.licensesTableDescription') }}</p>
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.licenses.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.licensesCreate')}}
                             </a>
                         </div>
+                        @endif
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>
@@ -66,9 +70,9 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                         {!! th_sort(trans('general.status'), 'status', $oResults) !!}
                                     </th>
-
+@if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                             </tr>
                             </thead>
                             <tbody>
@@ -89,7 +93,7 @@
 
                                         <td>{{(array_key_exists($oResult->status,config('array.licenses_status')) )? config('array.licenses_status')[$oResult->status]:'' }}</td>
 
-
+@if($canAction)
                                         <td>
 
 
@@ -113,6 +117,7 @@
 </div>
                                                 </div>
                                         </td>
+    @endif
                                     </tr>
                                 @endforeach
                             @endif

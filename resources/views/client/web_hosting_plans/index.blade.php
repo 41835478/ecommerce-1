@@ -3,6 +3,10 @@
 
 @section('content')
 
+    {{--*/
+    $canAction=canAccess('admin.web_hosting_plans.action');
+    /*--}}
+
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -37,11 +41,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.web_hosting_plans.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.web_hosting_plansCreate')}}
                             </a>
                         </div>
+                        @endif
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>
@@ -69,8 +75,9 @@
                                     {!! th_sort(trans('general.traffic'), 'traffic', $oResults) !!}
                                 </th>
 
+                                @if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                 
                             </tr>
                             </thead>
@@ -91,7 +98,8 @@
                                         <td>{{ $oResult->emails }}</td>
                                         <td>{{ $oResult->traffic }}</td>
 
-                                        
+
+                                        @if($canAction)
                                         <td>
 
 
@@ -118,6 +126,7 @@
 </div>
                                                 </div>
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif

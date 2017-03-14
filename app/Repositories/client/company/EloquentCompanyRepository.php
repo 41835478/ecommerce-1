@@ -13,6 +13,10 @@ class EloquentCompanyRepository implements CompanyContract
 
         $oResults = new Company();
 
+        if(!canAccess('client.company.otherData')){
+            $oResults = $oResults->where('id','=', company_id() );
+        }
+
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id','=', $data['id'] );
         }
@@ -64,6 +68,10 @@ class EloquentCompanyRepository implements CompanyContract
 
         $oResults = new Company();
 
+        if(!canAccess('client.company.otherData')){
+
+            $oResults = $oResults->where('id','=', company_id() );
+        }
         $oResults = $oResults->orderBy('name')->lists('name','id');
         return $oResults;
     }
@@ -84,6 +92,10 @@ class EloquentCompanyRepository implements CompanyContract
     public function show($id)
     {
 
+        if(!canAccess('client.company.otherData') && $id !=company_id() ){
+
+            return false;
+        }
         $company = Company::findOrFail($id);
 
         return $company;
@@ -92,6 +104,10 @@ class EloquentCompanyRepository implements CompanyContract
     public function destroy($id)
     {
 
+        if(!canAccess('client.company.otherData') && $id !=company_id() ){
+
+            return false;
+        }
         $result =  Company::destroy($id);
 
         if ($result) {
@@ -104,6 +120,11 @@ class EloquentCompanyRepository implements CompanyContract
 
     public function update($id,$data)
     {
+
+        if(!canAccess('client.company.otherData') && $id !=company_id() ){
+
+            return false;
+        }
         $company = Company::findOrFail($id);
         $result= $company->update($data->all());
         if ($result) {

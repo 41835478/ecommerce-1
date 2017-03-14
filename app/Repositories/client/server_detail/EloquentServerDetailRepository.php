@@ -13,6 +13,17 @@ class EloquentServerDetailRepository implements ServerDetailContract
 
         $oResults =ServerDetail::with('server_spec');
 
+
+        if(!canAccess('client.server_detail.otherData')){
+
+            $oResults =$oResults->join('contracts',function($query){
+                $query->on('contracts.products_id','=','server_detail.id');
+                $query->where('contracts.type','=',config('array.serverTypeIndex'));
+                $query->where('contracts.company_id','=',company_id());
+            })->select(['server_detail.*']);
+
+        }
+
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }

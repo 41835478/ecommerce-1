@@ -2,6 +2,10 @@
 @section('title', trans('general.contacts'))
 @section('content')
 
+    {{--*/
+
+
+    /*--}}
 
 
 
@@ -141,6 +145,7 @@
     </div>
 
 
+@if(canAccess('admin.contacts.action'))
     <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -160,6 +165,7 @@
                     </div>
 
                 </div>
+                @endif
 
 
                 <!-- row -->

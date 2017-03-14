@@ -13,6 +13,15 @@ class EloquentWebHostingPlansRepository implements WebHostingPlansContract
 
         $oResults =new WebHostingPlans();
 
+        if(!canAccess('client.web_hosting_plans.otherData')){
+
+            $oResults =$oResults->join('contracts',function($query){
+                $query->on('contracts.products_id','=','web_hosting_plans.id');
+                $query->where('contracts.type','=',config('array.webHostingPlansTypeIndex'));
+                $query->where('contracts.company_id','=',company_id());
+            })->select(['web_hosting_plans.*']);
+
+        }
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }

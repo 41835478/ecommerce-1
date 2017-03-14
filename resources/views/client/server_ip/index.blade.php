@@ -3,6 +3,11 @@
 
 @section('content')
 
+
+    {{--*/
+    $canAction=canAccess('admin.server_ip.action');
+    /*--}}
+
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -39,11 +44,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.server_ip.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.server_ipCreate')}}
                             </a>
                         </div>
+                        @endif
 
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -87,8 +94,9 @@
                                         {!! th_sort(trans('general.display'), 'display', $oResults) !!}
                                     </th>
 
+                                @if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-                                
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -118,6 +126,7 @@
                                         <td>{{ (array_key_exists($oResult->display,config('array.server_ip_display')))? config('array.server_ip_display')[$oResult->display]:'' }}</td>
 
 
+                                        @if($canAction)
 
                                         <td>
 
@@ -141,6 +150,7 @@
 </div>
                                                 </div>
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif

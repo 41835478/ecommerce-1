@@ -4,6 +4,10 @@
 
 
 
+    {{--*/
+    $canAction=canAccess('admin.contracts_renewal.action');
+    /*--}}
+
 
 
         <div id="page-wrapper">
@@ -94,6 +98,7 @@
                     </div>
 
 
+                @if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -113,7 +118,7 @@
                     </div>
 
                 </div>
-
+@endif
 
             </div>
                 <!-- row -->

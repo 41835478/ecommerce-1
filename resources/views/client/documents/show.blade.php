@@ -3,6 +3,9 @@
 @section('content')
 
 
+    {{--*/
+    $canAction=canAccess('admin.documents.action');
+    /*--}}
 
 
 
@@ -113,7 +116,7 @@
 
 
 
-
+@if($canAction)
                     <div class="row">
 
                         <div class="col-xs-offset-6 col-xs-3">
@@ -133,7 +136,7 @@
                         </div>
 
                     </div>
-
+@endif
 
                 </div>
                 <!-- row -->
@@ -158,11 +161,13 @@
 
 
                                         </div>
+                                        @if($canAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.documents.create')}}?parent={{$documents['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.documentsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -192,8 +197,9 @@
                                                 </th>
 
 
+                                                @if($canAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
 
 
 
@@ -220,6 +226,7 @@
 
 
 
+                                                        @if($canAction)
 
                                                         <td>
 
@@ -242,6 +249,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

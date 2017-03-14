@@ -2,7 +2,13 @@
 @section('title', trans('general.products'))
 @section('content')
 
+{{--*/
+$canAction=canAccess('admin.products.action');
+$canVersionsAction=canAccess('admin.versions.action');
+$canContractsAction=canAccess('admin.contracts.action');
 
+
+/*--}}
 
 
 
@@ -154,7 +160,7 @@
 
 
 
-
+@if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -174,7 +180,7 @@
                     </div>
 
                 </div>
-
+@endif
 
             </div>
                 <!-- row -->
@@ -195,11 +201,13 @@
                                             <h3 class="box-title m-b-0">{{ trans('general.versionsTableHead') }}</h3>
                                             <p class="text-muted m-b-20">{{ trans('general.versionsTableDescription') }}</p>
                                         </div>
+                                        @if($canVersionsAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.versions.create').'?products_id='.$products['id']}}"class="btn btn-primary form-control">
                                                + {{trans('general.versionsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
@@ -226,8 +234,9 @@
                                                     {!! th_sort(trans('general.publish_date'), 'publish_date', $oVersionsResults) !!}
                                                 </th>
 
+                                                @if($canVersionsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -250,6 +259,7 @@
 
 
 
+                                                        @if($canVersionsAction)
                                                         <td>
 
                                                             <div class="tableActionsMenuDiv">
@@ -271,6 +281,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -308,11 +319,14 @@
                                             <h3 class="box-title m-b-0">{{ trans('general.contractsTableHead') }}</h3>
                                             <p class="text-muted m-b-20">{{ trans('general.contractsTableDescription') }}</p>
                                         </div>
+
+                                        @if($canContractsAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.contracts.create').'?type='.config('array.productsTypeIndex').'&products_id='.$products['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.contractsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
@@ -333,8 +347,9 @@
                                                     {!! th_sort(trans('general.products'), 'products_id', $oContractsResults) !!}
                                                 </th>
 
-
+                                                @if($canContractsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
+                                                    @endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -351,7 +366,7 @@
 
                                                         <td>{{(isset($oResult->products->name))? $oResult->products->name:'' }}</td>
 
-
+                                                        @if($canContractsAction)
 
                                                         <td>
 
@@ -378,6 +393,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

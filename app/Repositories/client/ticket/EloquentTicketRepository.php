@@ -13,6 +13,11 @@ class EloquentTicketRepository implements TicketContract
 
         $oResults = Ticket::with('contact');
 
+        if(!canAccess('client.ticket.otherData')){
+
+            $oResults = $oResults->where('contact_id', '=' ,contacts_id());
+
+        }
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
         }

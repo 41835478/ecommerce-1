@@ -4,6 +4,10 @@
 
 
 
+    {{--*/
+    $canAction=canAccess('admin.server_ip.action');
+    $canServerAccessAction=canAccess('admin.server_access.action');
+    /*--}}
 
 
         <div id="page-wrapper">
@@ -154,7 +158,7 @@
 
 
 
-
+@if($canAction)
                     <div class="row">
 
                         <div class="col-xs-offset-6 col-xs-3">
@@ -174,7 +178,7 @@
                         </div>
 
                     </div>
-
+@endif
 
                 </div>
                 <!-- row -->
@@ -198,11 +202,13 @@
 
 
                                         </div>
+                                        @if($canServerAccessAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.server_access.create')}}?server_ip_id={{$server_ip['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.server_accessCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -227,9 +233,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
                                                     {!! th_sort(trans('general.password'), 'password', $oServerAccessResults) !!}
                                                 </th>
-
+@if($canServerAccessAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -250,6 +256,7 @@
                                                         <td>{{ $oResult->password }}</td>
 
 
+                                                        @if($canServerAccessAction)
                                                         <td>
 
                                                             <div class="tableActionsMenuDiv">
@@ -272,6 +279,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

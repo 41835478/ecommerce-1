@@ -3,7 +3,10 @@
 @section('content')
 
 
-
+{{--*/
+$canAction=canAccess('admin.web_hosting_plans.action');
+$canContractsAction=canAccess('admin.contracts.action');
+/*--}}
 
 
         <div id="page-wrapper">
@@ -120,7 +123,7 @@
 
 
 
-
+@if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -140,7 +143,7 @@
                     </div>
 
                 </div>
-
+@endif
 
             </div>
                 <!-- row -->
@@ -165,11 +168,13 @@
                                             <h3 class="box-title m-b-0">{{ trans('general.contractsTableHead') }}</h3>
                                             <p class="text-muted m-b-20">{{ trans('general.contractsTableDescription') }}</p>
                                         </div>
+                                        @if($canContractsAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.contracts.create').'?type='.config('array.webHostingPlansTypeIndex').'&products_id='.$webHostingPlans['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.contractsCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
@@ -189,9 +194,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                                                     {!! th_sort(trans('general.web_hosting_plans'), 'products_id', $oContractsResults) !!}
                                                 </th>
-
+@if($canContractsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -208,7 +213,7 @@
 
                                                         <td>{{(isset($oResult->webHostingPlans()->first()->name))? $oResult->webHostingPlans()->first()->name:'' }}</td>
 
-
+@if($canContractsAction)
 
                                                         <td>
 
@@ -235,6 +240,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                       @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

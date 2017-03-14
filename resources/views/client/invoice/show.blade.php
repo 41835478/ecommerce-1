@@ -5,8 +5,14 @@
 
 
 
+    {{--*/
+       $canAction=canAccess('admin.invoice.action');
+       /*--}}
 
-        <div id="page-wrapper">
+
+
+
+    <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- .row -->
                 <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
@@ -37,6 +43,7 @@
 
 
 
+                @if($canAction)
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -56,6 +63,7 @@
                     </div>
 
                 </div>
+                @endif
                 <span class="panel-title">{{ trans('general.invoiceInfo') }}</span>
             </div>
 
@@ -183,8 +191,11 @@
                                     <div class="clearfix"></div>
                                     <hr>
                                     <div class="text-right">
+
+                                        @if($canAction)
                                        <a href="{{route('client.payment.create')}}?invoice_id={{$invoice['id']}}"><button class="btn btn-danger" type="submit"> Proceed to payment </button></a>
                                         <a href="{{route('client.contracts_renewal_invoice.create')}}?invoice_id={{$invoice['id']}}&company_id={{$invoice['company_id']}}"> <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-file"></i> {{trans('general.addToInvoice')}}</span> </button></a>
+                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -243,11 +254,13 @@
 
 
                                         </div>
+                                        @if($canAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.payment.create')}}?invoice_id={{$invoice['id']}}"class="btn btn-primary form-control">
                                                 + {{trans('general.paymentCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -283,8 +296,9 @@
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
                                                     {!! th_sort(trans('general.description'), 'description', $oPaymentResults) !!}
                                                 </th>
+                                                @if($canAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
 
                                             </tr>
                                             </thead>
@@ -310,6 +324,7 @@
 
                                                         <td>{{ $oResult->description }}</td>
 
+                                                        @if($canAction)
                                                         <td>
 
                                                             <div class="tableActionsMenuDiv">
@@ -331,6 +346,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
 
                                                     </tr>
                                                 @endforeach

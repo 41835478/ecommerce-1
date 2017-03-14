@@ -3,6 +3,11 @@
 
 @section('content')
 
+    {{--*/
+    $canAction=canAccess('admin.server_detail.action');
+    /*--}}
+
+
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -39,11 +44,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.server_detail.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.server_detailCreate')}}
                             </a>
                         </div>
+                        @endif
 
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -92,8 +99,9 @@
                                 </th>
 
 
+                                @if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-                                
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -127,6 +135,7 @@
 
 
 
+                                        @if($canAction)
                                         
                                         <td>
 
@@ -150,6 +159,7 @@
 </div>
                                                 </div>
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif

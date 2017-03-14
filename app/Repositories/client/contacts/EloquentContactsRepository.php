@@ -13,6 +13,10 @@ class EloquentContactsRepository implements ContactsContract
 
         $oResults =Contacts::with('company');
 
+        if(!canAccess('client.contacts.otherData')){
+            $oResults = $oResults->where('id','=', contacts_id() );
+        }
+
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id'] );
         }
@@ -69,7 +73,10 @@ class EloquentContactsRepository implements ContactsContract
 
     public function show($id)
     {
+        if(!canAccess('client.contacts.otherData') && $id !=contacts_id() ){
 
+            return false;
+        }
 $contacts = Contacts::findOrFail($id);
 
         return $contacts;
@@ -77,7 +84,10 @@ $contacts = Contacts::findOrFail($id);
 
     public function destroy($id)
     {
+        if(!canAccess('client.contacts.otherData') && $id !=contacts_id() ){
 
+            return false;
+        }
         $result =  Contacts::destroy($id);
 
         if ($result) {
@@ -90,6 +100,10 @@ $contacts = Contacts::findOrFail($id);
 
     public function update($id,$data)
     {
+        if(!canAccess('client.contacts.otherData') && $id !=contacts_id() ){
+
+            return false;
+        }
        $contacts = Contacts::findOrFail($id);
        $result= $contacts->update($data->all());
 

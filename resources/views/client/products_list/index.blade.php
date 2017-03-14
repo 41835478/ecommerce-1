@@ -2,7 +2,9 @@
 @section('title', trans('general.products_list'))
 
 @section('content')
-
+{{--*/
+$canAction=canAccess('admin.products_list.action');
+/*--}}
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -37,11 +39,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.products_list.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.products_listCreate')}}
                             </a>
                         </div>
+                        @endif
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>
@@ -63,8 +67,9 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.description'), 'description', $oResults) !!}
                                     </th>
+                                @if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-                                
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -83,7 +88,7 @@
 
                                                                                 <td>{{ $oResult->description }}</td>
 
-                                        
+                                        @if($canAction)
                                         <td>
 
 
@@ -105,6 +110,7 @@
                                                     </div>
                                                 </div>
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif

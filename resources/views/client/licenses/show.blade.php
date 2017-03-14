@@ -111,7 +111,7 @@
                 </div>
 
 
-
+@if(canAccess('admin.licenses.action'))
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -131,6 +131,7 @@
                     </div>
 
                 </div>
+                @endif
 
                 <!-- row -->
             </div>

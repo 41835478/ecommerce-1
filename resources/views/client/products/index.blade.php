@@ -2,7 +2,9 @@
 @section('title', trans('general.products'))
 
 @section('content')
-
+{{--*/
+$canAction=canAccess('admin.products.action');
+/*--}}
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -37,11 +39,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.products.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.productsCreate')}}
                             </a>
                         </div>
+                        @endif
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
                             <thead>
@@ -67,8 +71,9 @@
                                     {{trans('general.publish_date')}}
                                 </th>
 
+                                @if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-                                
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -89,6 +94,7 @@
                                         <td>{{  (isset($oResult->versions)&& count($oResult->versions->first()) )? $oResult->versions->first()->publish_date:'' }}</td>
 
 
+                                        @if($canAction)
 
                                         <td>
 
@@ -113,6 +119,7 @@
 </div>
                                                 </div>
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif

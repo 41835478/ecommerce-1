@@ -13,6 +13,11 @@ class EloquentLicensesRepository implements LicensesContract
 
         $oResults = Licenses::with('company');
 
+        if(!canAccess('client.licenses.otherData')){
+
+            $oResults = $oResults->where('company_id', '=' ,company_id());
+
+        }
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }

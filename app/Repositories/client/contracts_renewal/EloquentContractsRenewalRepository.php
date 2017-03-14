@@ -16,6 +16,14 @@ class EloquentContractsRenewalRepository implements ContractsRenewalContract
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id'] );
         }
+        if(!canAccess('client.contracts_renewal.otherData')){
+
+            $oResults =$oResults->join('contracts',function($query){
+                $query->on('contracts.id','=','contracts_renewal.contracts_id');
+                $query->where('contracts.company_id','=',company_id());
+            })->select(['contracts_renewal.*']);
+
+        }
         if (isset($data->contracts_id) && !empty($data->contracts_id)) {
             $oResults = $oResults->where('contracts_id', '=',$data['contracts_id'] );
         }

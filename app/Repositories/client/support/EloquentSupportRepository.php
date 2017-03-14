@@ -13,6 +13,15 @@ class EloquentSupportRepository implements SupportContract
 
         $oResults = new Support();
 
+        if(!canAccess('client.support.otherData')){
+
+            $oResults =$oResults->join('contracts',function($query){
+                $query->on('contracts.products_id','=','support.id');
+                $query->where('contracts.type','=',config('array.supportTypeIndex'));
+                $query->where('contracts.company_id','=',company_id());
+            })->select(['support.*']);
+
+        }
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
         }

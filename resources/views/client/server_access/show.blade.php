@@ -4,6 +4,9 @@
 
 
 
+    {{--*/
+    $canAction=canAccess('admin.server_access.action');
+    /*--}}
 
 
         <div id="page-wrapper">
@@ -94,7 +97,7 @@
                     </div>
 
 
-
+@if($canAction)
 
                     <div class="row">
 
@@ -115,7 +118,7 @@
                         </div>
 
                     </div>
-
+@endif
 
                 </div>
                 <!-- row -->

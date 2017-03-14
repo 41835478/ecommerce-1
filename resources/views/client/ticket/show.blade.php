@@ -4,6 +4,11 @@
 
 
 
+    {{--*/
+
+        $canAction=canAccess('client.ticket.create');
+    /*--}}
+
 
 
         <div id="page-wrapper">
@@ -146,10 +151,11 @@
                         </div>
                     </div>
 
-                    
 
 
 
+
+                    @if($canAction)
 
                     <div class="row">
 
@@ -170,6 +176,7 @@
                         </div>
 
                     </div>
+                        @endif
 
 
                 </div>

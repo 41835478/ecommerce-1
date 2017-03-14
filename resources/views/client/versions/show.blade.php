@@ -169,7 +169,7 @@
                     </div>
 
                 </div>
-
+@if(canAccess('admin.versions.action'))
                 <div class="row">
 
                     <div class="col-xs-offset-6 col-xs-3">
@@ -190,6 +190,7 @@
 
                 </div>
                 <!-- row -->
+    @endif
             </div>
             <div class="panel-footer text-right">
                 {{--<a href="{{ route('/client/product_list') }}">--}}

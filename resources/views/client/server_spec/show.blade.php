@@ -3,6 +3,10 @@
 @section('content')
 
 
+    {{--*/
+    $canAction=canAccess('admin.server_spec.action');
+    $canServerDetailAction=canAccess('admin.server_detail.action');
+    /*--}}
 
 
 
@@ -123,7 +127,7 @@
 
 
 
-
+@if($canAction)
                     <div class="row">
 
                         <div class="col-xs-offset-6 col-xs-3">
@@ -143,7 +147,7 @@
                         </div>
 
                     </div>
-
+@endif
 
                 </div>
                 <!-- row -->
@@ -169,11 +173,13 @@
 
 
                                         </div>
+                                        @if($canServerDetailAction)
                                         <div class="col-xs-3">
                                             <a  href="{{route('client.server_detail.create')}}?server_company_spec_id={{ (isset($server_spec->server_company()->first()->id))?$server_spec->server_company()->first()->id:'' }}"class="btn btn-primary form-control">
                                                 + {{trans('general.server_detailCreate')}}
                                             </a>
                                         </div>
+                                        @endif
 
                                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -213,8 +219,9 @@
                                                     {!! th_sort(trans('general.additional_cost'), 'additional_cost', $oServerDetailResults) !!}
                                                 </th>
 
+                                                @if($canServerDetailAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -249,6 +256,7 @@
                                                         <td>{{ $oResult->additional_cost }}</td>
 
 
+                                                        @if($canServerDetailAction)
                                                         <td>
 
                                                             <div class="tableActionsMenuDiv">
@@ -271,6 +279,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                            @endif
                                                     </tr>
                                                 @endforeach
                                             @endif

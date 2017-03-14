@@ -2,7 +2,10 @@
 @section('title', trans('general.support'))
 @section('content')
 
+{{--*/
 
+    $canAction=canAccess('admin.support.action');
+/*--}}
 
 
 
@@ -78,10 +81,11 @@
                         </div>
                     </div>
 
-                    
 
 
 
+
+                    @if($canAction)
 
                     <div class="row">
 
@@ -102,7 +106,7 @@
                         </div>
 
                     </div>
-
+@endif
 
                 </div>
                 <!-- row -->

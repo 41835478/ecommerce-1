@@ -16,6 +16,16 @@ class EloquentDomainsRepository implements DomainsContract
         if (isset($data->id) && !empty($data->id)) {
             $oResults = $oResults->where('id', '=', $data['id']);
         }
+
+        if(!canAccess('client.domains.otherData')){
+
+            $oResults =$oResults->join('contracts',function($query){
+                $query->on('contracts.products_id','=','domains.id');
+                $query->where('contracts.type','=',config('array.domainsTypeIndex'));
+                $query->where('contracts.company_id','=',company_id());
+            })->select(['domains.*']);
+
+        }
         if (isset($data->name) && !empty($data->name)) {
             $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
         }

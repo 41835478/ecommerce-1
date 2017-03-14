@@ -3,6 +3,10 @@
 
 @section('content')
 
+    {{--*/
+    $canAction=canAccess('admin.server_spec.action');
+    /*--}}
+
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
@@ -39,11 +43,13 @@
 
 
                         </div>
+                        @if($canAction)
                         <div class="col-xs-3">
                             <a  href="{{route('client.server_spec.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.server_specCreate')}}
                             </a>
                         </div>
+                        @endif
 
                         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
 
@@ -78,8 +84,9 @@
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
                                         {!! th_sort(trans('general.raid'), 'raid', $oResults) !!}
                                     </th>
+                                @if($canAction)
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
-
+@endif
                                 
                             </tr>
                             </thead>
@@ -107,7 +114,8 @@
                                                                                     {{(array_key_exists($oResult->raid ,config('array.server_spec_raid')))? config('array.server_spec_raid')[$oResult->raid ]:'' }}
 </td>
 
-                                        
+
+                                        @if($canAction)
                                         <td>
 
                                             <div class="tableActionsMenuDiv">
@@ -130,6 +138,7 @@
 </div>
                                                 </div>
                                         </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             @endif
