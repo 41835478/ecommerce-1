@@ -20,7 +20,7 @@ class EloquentServerDetailRepository implements ServerDetailContract
                 $query->on('contracts.products_id','=','server_detail.id');
                 $query->where('contracts.type','=',config('array.serverTypeIndex'));
                 $query->where('contracts.company_id','=',company_id());
-            })->select(['server_detail.*']);
+            })->select(['server_detail.*'])->distinct('id');
 
         }
 

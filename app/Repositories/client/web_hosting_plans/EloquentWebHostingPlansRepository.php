@@ -19,7 +19,7 @@ class EloquentWebHostingPlansRepository implements WebHostingPlansContract
                 $query->on('contracts.products_id','=','web_hosting_plans.id');
                 $query->where('contracts.type','=',config('array.webHostingPlansTypeIndex'));
                 $query->where('contracts.company_id','=',company_id());
-            })->select(['web_hosting_plans.*']);
+            })->select(['web_hosting_plans.*'])->distinct('id');
 
         }
         if (isset($data->id) && !empty($data->id)) {

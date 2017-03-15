@@ -20,7 +20,7 @@ class EloquentContractsRenewalInvoiceRepository implements ContractsRenewalInvoi
         if(!canAccess('client.contracts_renewal_invoice.otherData')){
 
             $oResults =$oResults->join('contracts',function($query){
-                $query->on('contracts.id','=','contracts_renewal_invoice.invoice_id');
+                $query->on('contracts.id','=','contracts_renewal_invoice.contracts_id');
                 $query->where('contracts.company_id','=',company_id());
             })->select(['contracts_renewal_invoice.*']);
 

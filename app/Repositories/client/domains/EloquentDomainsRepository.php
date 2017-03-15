@@ -23,7 +23,7 @@ class EloquentDomainsRepository implements DomainsContract
                 $query->on('contracts.products_id','=','domains.id');
                 $query->where('contracts.type','=',config('array.domainsTypeIndex'));
                 $query->where('contracts.company_id','=',company_id());
-            })->select(['domains.*']);
+            })->select(['domains.*'])->distinct('id');
 
         }
         if (isset($data->name) && !empty($data->name)) {

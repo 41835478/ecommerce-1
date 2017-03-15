@@ -19,7 +19,7 @@ class EloquentProductsRepository implements ProductsContract
                 $query->on('contracts.products_id','=','products.id');
                 $query->where('contracts.type','=',config('array.productsTypeIndex'));
                 $query->where('contracts.company_id','=',company_id());
-            })->select(['products.*']);
+            })->select(['products.*'])->distinct('id');
 
         }
 

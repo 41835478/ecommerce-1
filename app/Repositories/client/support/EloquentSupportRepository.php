@@ -19,7 +19,7 @@ class EloquentSupportRepository implements SupportContract
                 $query->on('contracts.products_id','=','support.id');
                 $query->where('contracts.type','=',config('array.supportTypeIndex'));
                 $query->where('contracts.company_id','=',company_id());
-            })->select(['support.*']);
+            })->select(['support.*'])->distinct('id');
 
         }
         if (isset($data->id) && !empty($data->id)) {

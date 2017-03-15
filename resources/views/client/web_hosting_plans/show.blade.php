@@ -182,18 +182,39 @@ $canContractsAction=canAccess('admin.contracts.action');
                                             <thead>
                                             <tr>
 
-
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
                                                     {!! th_sort(trans('general.id'), 'id', $oContractsResults) !!}
                                                 </th>
 
+
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                                    {!! th_sort(trans('general.company'), 'company_id', $oContractsResults) !!}
+                                                    {!! th_sort(trans('general.name'), 'name', $oContractsResults) !!}
                                                 </th>
 
+
                                                 <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                                    {!! th_sort(trans('general.web_hosting_plans'), 'products_id', $oContractsResults) !!}
+                                                    {!! th_sort(trans('general.price'), 'price', $oContractsResults) !!}
                                                 </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
+                                                    {!! th_sort(trans('general.company_id'), 'company_id', $oContractsResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
+                                                    {!! th_sort(trans('general.purchasing_date'), 'purchasing_date', $oContractsResults) !!}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
+                                                    {!! th_sort(trans('general.status'), 'status', $oContractsResults) !!}
+                                                </th>
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
+                                                    {{ trans('general.lastRenealFromDate')}}
+                                                </th>
+
+                                                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
+                                                    {{ trans('general.lastRenealToDate')}}
+                                                </th>
+
 @if($canContractsAction)
                                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
 @endif
@@ -208,39 +229,44 @@ $canContractsAction=canAccess('admin.contracts.action');
                                                     <tr class='{{ $class }}'>
 
                                                         <td>{{ $oResult->id }}</td>
+                                                        <td><a href="/client/contracts/{{ $oResult->id }}" >{{ $oResult->name }}</a></td>
+                                                        <td>{{ $oResult->price }}</td>
 
-                                                        <td> <a href="/client/contracts/{{ $oResult->id }}" > {{(isset($oResult->company->name))? $oResult->company->name:'' }}</a></td>
+                                                        <td>{{(isset($oResult->company->name))? $oResult->company->name:'' }}</td>
 
-                                                        <td>{{(isset($oResult->webHostingPlans()->first()->name))? $oResult->webHostingPlans()->first()->name:'' }}</td>
+                                                        <td>{{ $oResult->purchasing_date }}</td>
+                                                        <td>{{ (array_key_exists($oResult->status,config('array.contracts_status')))?config('array.contracts_status')[$oResult->status]:'' }}</td>
 
-@if($canContractsAction)
+                                                        <td>{{ (isset($oResult->renewal) && count($oResult->renewal->first()) )?$oResult->renewal->first()->from_date:'' }}</td>
+                                                        <td>{{  (isset($oResult->renewal)&& count($oResult->renewal->first()) )? $oResult->renewal->first()->to_date:'' }}</td>
 
-                                                        <td>
-
-
-                                                            <div class="tableActionsMenuDiv">
-                                                                <div class="innerContainer">
-                                                                    <i class="fa fa-list menuIconList"></i>
-
+                                                        @if($canAction)
 
 
+                                                            <td>
 
 
-                                                                    {!! Form::open(['method' => 'DELETE',
-                                                                    'url' => ['/client/contracts',$oResult->id]]) !!}
-                                                                    <button type="submit" name="Delete" class="deleteRow" >
-                                                                        <i class="fa fa-trash"></i>
-                                                                    </button>
-                                                                    {!! Form::close() !!}
-
-                                                                    <a href="/client/contracts/{{ $oResult->id }}/edit"
-                                                                       class="fa fa-edit"> </a>
+                                                                <div class="tableActionsMenuDiv">
+                                                                    <div class="innerContainer">
+                                                                        <i class="fa fa-list menuIconList"></i>
 
 
+
+                                                                        {!! Form::open(['method' => 'DELETE',
+                                                                        'url' => ['/client/contracts',$oResult->id]]) !!}
+                                                                        <button type="submit" name="Delete" class="deleteRow" >
+                                                                            <i class="fa fa-trash"></i>
+                                                                        </button>
+                                                                        {!! Form::close() !!}
+
+                                                                        <a href="/client/contracts/{{ $oResult->id }}/edit"
+                                                                           class="fa fa-edit"> </a>
+
+
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                       @endif
+                                                            </td>
+                                                        @endif
                                                     </tr>
                                                 @endforeach
                                             @endif
