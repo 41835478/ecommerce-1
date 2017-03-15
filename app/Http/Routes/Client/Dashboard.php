@@ -1,5 +1,9 @@
 <?php
 
+//Route::get('/', function () {
+//    return view('client.public.dashboard');
+//});
+
 Route::group(['middleware' => ['authenticate.client']], function () {
     Route::get('/', ['as' => 'client.index', 'uses' => 'DashboardController@index']);
 

@@ -24,8 +24,8 @@ class EmailController extends Controller
 
     public function __construct()
     {
-        $this->fromEmail = env('FromEmail');
-        $this->fromName = env('FromName');
+        $this->fromEmail = config('mail.fromEmail');
+        $this->fromName = config('mail.fromName');
     }
 
 
@@ -40,7 +40,8 @@ class EmailController extends Controller
                 continue;
             }
 
-            $emailBody = preg_replace('/\{\{[\s]*\$' . $key . '[\s]*\}\}/i',
+            $emailBody = preg_replace
+            ('/\{\{[\s]*\$' . $key . '[\s]*\}\}/i',
                 $value,
                 $emailBody);
         }

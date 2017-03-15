@@ -4,6 +4,7 @@
 '0'=>'admin',
 '1'=>'client',
 '2'=>'',
+'3'=>'common',
 ],
 '1'=>[
 '0'=>'roles',
@@ -32,6 +33,11 @@
 '23'=>'contacts',
 '25'=>'contracts_renewal',
 '26'=>'contracts_renewal_invoice',
+'27'=>'email_group_users',
+'28'=>'email_template',
+'29'=>'email_group',
+'30'=>'email_mass_queue',
+'31'=>'email_mass_template',
 ],
 '2'=>[
 '0'=>'create',

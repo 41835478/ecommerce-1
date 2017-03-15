@@ -120,5 +120,17 @@ return [
     */
 
     'pretend' => env('MAIL_PRETEND', false),
+    /*
+    |--------------------------------------------------------------------------
+    | mail custom config
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    |
+    */
+
+    'FromEmail' => env('fromEmail','taylorsuccessor@gmail.com'),
+    'FromName' => env('fromName','Taylor Successor'),
 
 ];
