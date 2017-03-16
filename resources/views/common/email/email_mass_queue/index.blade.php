@@ -40,7 +40,7 @@
 
                         </div>
                         <div class="col-xs-3">
-                            <a  href="{{route('client.email_mass_queue.create')}}"class="btn btn-primary form-control">
+                            <a  href="{{route('common.email_mass_queue.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.email_mass_queueCreate')}}
                             </a>
                         </div>
@@ -87,6 +87,7 @@
                                         {!! th_sort(trans('general.updated_at'), 'updated_at', $oResults) !!}
                                     </th>
 
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                                 
                             </tr>
                             </thead>
@@ -123,17 +124,20 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/email_mass_queue/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+                                                    {!! Form::open(['method' => 'DELETE',
+                                                    'url' => ['/common/email_mass_queue',$oResult->id]]) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    {!! Form::close() !!}
 
 
-                                            {!! Form::open(['method' => 'DELETE',
-                                            'url' => ['/client/email_mass_queue',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
 
-                                            <a href="/client/email_mass_queue/{{ $oResult->id }}/edit"
+                                            <a href="/common/email_mass_queue/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"></a>
+
+                                                    <a href="/common/email_mass_queue/{{ $oResult->id }}"
+                                                       class="fa fa-file-text"></a>
 </div>
                                                 </div>
                                         </td>

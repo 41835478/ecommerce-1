@@ -32,8 +32,6 @@ class createRequest extends Request
     "to_email"=>'required',
     "language"=>'required',
     "status"=>'required',
-    "created_at"=>'required',
-    "updated_at"=>'required',
 
 
 

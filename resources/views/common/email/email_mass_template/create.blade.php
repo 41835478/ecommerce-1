@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::model($request,['url' => '/client/email_mass_template', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/common/email_mass_template', 'class' => 'form-horizontal']) !!}
 
 
 
@@ -90,23 +90,10 @@
             </div>
         </div>
                 
-        
-        <div class="form-group {{ $errors->has('created_at') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('created_at', trans('general.created_at'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('created_at', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('created_at', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
         </div>        
         <div class="row">
-        <div class="form-group {{ $errors->has('updated_at') ? 'has-error' : ''}}  col-xs-6">
-            {!! Form::label('updated_at', trans('general.updated_at'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('updated_at', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('updated_at', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
                 
 
 

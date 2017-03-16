@@ -32,7 +32,7 @@
 
     {!! Form::model($email_template, [
         'method' => 'PATCH',
-        'url' => ['/client/email_template', $email_template->id],
+        'url' => ['/common/email_template', $email_template->id],
         'class' => 'form-horizontal'
     ]) !!}
 
@@ -53,94 +53,85 @@
 
 
 
-            
-        <div class="row">        <div class="form-group {{ $errors->has('email_group_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('email_group_id', trans('email_group_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('email_group_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('email_group_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('name', trans('name'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('subject') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('subject', trans('subject'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('subject', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('subject', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('body', trans('body'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('body', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('type', trans('type'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('type', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('to_field') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('to_field', trans('to_field'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('to_field', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('to_field', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('to_email') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('to_email', trans('to_email'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('to_email', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('to_email', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('language') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('language', trans('language'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('language', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('status', trans('status'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('status', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('created_at') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('created_at', trans('created_at'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('created_at', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('created_at', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('updated_at') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('updated_at', trans('updated_at'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('updated_at', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('updated_at', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
+
+
+                <div class="row">
+
+
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('name', trans('general.name'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('name',$templateNameList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group {{ $errors->has('subject') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('subject', trans('general.subject'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('subject', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('subject', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('body', trans('general.body'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('body', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('type', trans('general.type'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::status('type',config('mail.email_template_type'), null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('to_field') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('to_field', trans('general.to_field'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('to_field', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('to_field', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group {{ $errors->has('to_email') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('to_email', trans('general.to_email'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('to_email', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('to_email', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group {{ $errors->has('language') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('language', trans('general.language'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('language',config('mail.email_template_language'), null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('status', trans('general.status'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('status',$templateStatusList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
                 
 
 

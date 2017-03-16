@@ -32,7 +32,7 @@
 
     {!! Form::model($email_group_users, [
         'method' => 'PATCH',
-        'url' => ['/client/email_group_users', $email_group_users->id],
+        'url' => ['/common/email_group_users', $email_group_users->id],
         'class' => 'form-horizontal'
     ]) !!}
 

@@ -49,12 +49,39 @@ class EmailTemplate extends Controller
      *
      * @return view
      */
-    public function create(Request $request,rEmailGroup $rEmailGroup)
+    public function create(Request $request)
     {
+        $emailTemplateWithStatus=config('mail.email_template');
 
-        $emailGroupList=$rEmailGroup->getAllList();
+        $templateNameList=[];
+        $firstTemplateName='';
+        foreach($emailTemplateWithStatus as $name=>$template){
+            $templateNameList[$name]=$template['name'];
+            $firstTemplateName=($firstTemplateName=='')? $name:$firstTemplateName;
+        }
 
-        return view('common.email.email_template.create',compact('request','emailGroupList'));
+        if(!isset($request->name)){
+            $request->merge(
+                [
+                    'name'=>$request->name,
+                    'type'=>config('mail.email_template_type')[0] ,
+                    'status'=>0 ,
+                    'language'=>'en' ,
+                ]
+
+            );
+
+        }
+
+        $templateStatusList=$emailTemplateWithStatus[$request->name]['status'];
+
+
+        $oResults=$this->rEmailTemplate->getByFilter($request)->first();
+        if(!count($oResults)){
+            $oResults->merge($request->all());
+        }
+
+        return view('common.email.email_template.create',compact('request','oResults','templateNameList','templateStatusList'));
     }
 
     /**
@@ -68,7 +95,7 @@ class EmailTemplate extends Controller
 
         $oResults=$this->rEmailTemplate->create($request->all());
 
-        return redirect('client/email_template');
+        return redirect('common/email_template');
     }
 
     /**
@@ -122,7 +149,7 @@ class EmailTemplate extends Controller
 
         $result=$this->rEmailTemplate->update($id,$request);
 
-        return redirect('client/email_template');
+        return redirect('common/email_template');
     }
 
     /**
@@ -135,7 +162,7 @@ class EmailTemplate extends Controller
     public function destroy($id)
     {
         $email_template=$this->rEmailTemplate->destroy($id);
-        return redirect('client/email_template');
+        return redirect('common/email_template');
     }
 
 

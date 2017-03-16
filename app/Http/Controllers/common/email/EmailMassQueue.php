@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\View;
 use App\Models\EmailMassQueue as mEmailMassQueue;
 use App\Repositories\common\email\email_mass_queue\EmailMassQueueContract as rEmailMassQueue;
 
- use App\Repositories\common\email\last_users\LastUsersContract as rLastUsers;
  use App\Repositories\common\email\email_group\EmailGroupContract as rEmailGroup;
 
 class EmailMassQueue extends Controller
@@ -50,13 +49,12 @@ class EmailMassQueue extends Controller
      *
      * @return view
      */
-    public function create(Request $request,rLastUsers $rLastUsers,rEmailGroup $rEmailGroup)
+    public function create(Request $request,rEmailGroup $rEmailGroup)
     {
 
-$lastUsersList=$rLastUsers->getAllList();
 $emailGroupList=$rEmailGroup->getAllList();
 
-        return view('common.email.email_mass_queue.create',compact('request','lastUsersList','emailGroupList'));
+        return view('common.email.email_mass_queue.create',compact('request','emailGroupList'));
     }
 
     /**
@@ -70,7 +68,7 @@ $emailGroupList=$rEmailGroup->getAllList();
 
         $oResults=$this->rEmailMassQueue->create($request->all());
 
-        return redirect('client/email_mass_queue');
+        return redirect('common/email_mass_queue');
     }
 
     /**
@@ -88,12 +86,10 @@ $emailGroupList=$rEmailGroup->getAllList();
       $request->merge(['email_mass_queue_id'=>$id,'page_name'=>'page']);
 
 
-    $request->page_name='page_last_users';
-    $oLastUsersResults=$rLastUsers->getByFilter($request);
     $request->page_name='page_email_group';
     $oEmailGroupResults=$rEmailGroup->getByFilter($request);
 
-        return view('common.email.email_mass_queue.show', compact('email_mass_queue','request','oLastUsersResults','oEmailGroupResults'));
+        return view('common.email.email_mass_queue.show', compact('email_mass_queue','request','oEmailGroupResults'));
     }
 
     /**
@@ -103,16 +99,14 @@ $emailGroupList=$rEmailGroup->getAllList();
      *
      * @return view
      */
-    public function edit($id,rLastUsers $rLastUsers,rEmailGroup $rEmailGroup)
+    public function edit($id,rEmailGroup $rEmailGroup)
     {
-
 
         $email_mass_queue=$this->rEmailMassQueue->show($id);
 
 
- $lastUsersList=$rLastUsers->getAllList();
  $emailGroupList=$rEmailGroup->getAllList();
-        return view('common.email.email_mass_queue.edit', compact('email_mass_queue','lastUsersList','emailGroupList'));
+        return view('common.email.email_mass_queue.edit', compact('email_mass_queue','emailGroupList'));
     }
 
     /**
@@ -127,7 +121,7 @@ $emailGroupList=$rEmailGroup->getAllList();
 
         $result=$this->rEmailMassQueue->update($id,$request);
 
-        return redirect('client/email_mass_queue');
+        return redirect('common/email_mass_queue');
     }
 
     /**
@@ -140,7 +134,7 @@ $emailGroupList=$rEmailGroup->getAllList();
     public function destroy($id)
     {
         $email_mass_queue=$this->rEmailMassQueue->destroy($id);
-        return redirect('client/email_mass_queue');
+        return redirect('common/email_mass_queue');
     }
 
 

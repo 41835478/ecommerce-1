@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\View;
 use App\Models\EmailGroupUsers as mEmailGroupUsers;
 use App\Repositories\common\email\email_group_users\EmailGroupUsersContract as rEmailGroupUsers;
 
- use App\Repositories\common\email\group\GroupContract as rGroup;
- use App\Repositories\common\email\users\UsersContract as rUsers;
+ use App\Repositories\common\email\email_group\EmailGroupContract as rEmailGroup;
+ use App\Repositories\client\users\UsersContract as rUsers;
 
 class EmailGroupUsers extends Controller
 {
@@ -50,7 +50,7 @@ class EmailGroupUsers extends Controller
      *
      * @return view
      */
-    public function create(Request $request,rGroup $rGroup,rUsers $rUsers)
+    public function create(Request $request,rEmailGroup $rGroup,rUsers $rUsers)
     {
 
 $groupList=$rGroup->getAllList();
@@ -70,7 +70,7 @@ $usersList=$rUsers->getAllList();
 
         $oResults=$this->rEmailGroupUsers->create($request->all());
 
-        return redirect('client/email_group_users');
+        return redirect('common/email_group_users');
     }
 
     /**
@@ -80,7 +80,7 @@ $usersList=$rUsers->getAllList();
      *
      * @return view
      */
-    public function show($id,Request $request,rGroup $rGroup,rUsers $rUsers)
+    public function show($id,Request $request,rEmailGroup $rGroup,rUsers $rUsers)
     {
 
 
@@ -103,7 +103,7 @@ $usersList=$rUsers->getAllList();
      *
      * @return view
      */
-    public function edit($id,rGroup $rGroup,rUsers $rUsers)
+    public function edit($id,rEmailGroup $rGroup,rUsers $rUsers)
     {
 
 
@@ -127,7 +127,7 @@ $usersList=$rUsers->getAllList();
 
         $result=$this->rEmailGroupUsers->update($id,$request);
 
-        return redirect('client/email_group_users');
+        return redirect('common/email_group_users');
     }
 
     /**
@@ -140,7 +140,7 @@ $usersList=$rUsers->getAllList();
     public function destroy($id)
     {
         $email_group_users=$this->rEmailGroupUsers->destroy($id);
-        return redirect('client/email_group_users');
+        return redirect('common/email_group_users');
     }
 
 

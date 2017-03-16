@@ -952,66 +952,42 @@ return [
        [
            'route' => 'common.email_template.index',
            'title' => 'email_template',
-           'icon' => 'fa fa-gears',
+           'icon' => 'fa  fa-envelope-o',
            'subMenus' => [
 
                [
                    'route' => 'common.email_template.index',
-                   'title' => 'email_templateList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'common.email_template.create',
-                   'title' => 'email_templateCreate',
+                   'title' => 'email_template',
                    'icon' => 'fa fa-gears',
                ],
 
+
                [
                    'route' => 'common.email_mass_template.index',
-                   'title' => 'email_mass_templateList',
-                   'icon' => 'fa fa-gears',
-               ],
-               [
-                   'route' => 'common.email_mass_template.create',
-                   'title' => 'email_mass_templateCreate',
+                   'title' => 'email_mass_template',
                    'icon' => 'fa fa-gears',
                ],
 
                [
                    'route' => 'common.email_mass_queue.index',
-                   'title' => 'email_mass_queueList',
+                   'title' => 'email_mass_queue',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'common.email_mass_queue.create',
-                   'title' => 'email_mass_queueCreate',
-                   'icon' => 'fa fa-gears',
-               ],
+
 
                [
                    'route' => 'common.email_group.index',
-                   'title' => 'email_groupList',
+                   'title' => 'email_group',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'common.email_group.create',
-                   'title' => 'email_groupCreate',
-                   'icon' => 'fa fa-gears',
-               ],
-
 
 
 
                [
                    'route' => 'common.email_group_users.index',
-                   'title' => 'email_group_usersList',
+                   'title' => 'email_group_users',
                    'icon' => 'fa fa-gears',
                ],
-               [
-                   'route' => 'common.email_group_users.create',
-                   'title' => 'email_group_usersCreate',
-                   'icon' => 'fa fa-gears',
-               ]
 
 
            ]

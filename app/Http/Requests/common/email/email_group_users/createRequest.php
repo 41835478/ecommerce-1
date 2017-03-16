@@ -25,7 +25,6 @@ class createRequest extends Request
         return [
     "group_id"=>'required',
     "users_id"=>'required',
-    "type"=>'required',
 
 
 

@@ -28,8 +28,6 @@ class createRequest extends Request
     "subject"=>'required',
     "body"=>'required',
     "language"=>'required',
-    "created_at"=>'required',
-    "updated_at"=>'required',
 
 
 

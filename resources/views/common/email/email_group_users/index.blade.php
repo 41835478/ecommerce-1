@@ -40,7 +40,7 @@
 
                         </div>
                         <div class="col-xs-3">
-                            <a  href="{{route('client.email_group_users.create')}}"class="btn btn-primary form-control">
+                            <a  href="{{route('common.email_group_users.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.email_group_usersCreate')}}
                             </a>
                         </div>
@@ -67,7 +67,8 @@
                                         {!! th_sort(trans('general.type'), 'type', $oResults) !!}
                                     </th>
 
-                                
+
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -93,18 +94,22 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/email_group_users/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+                                                    {!! Form::open(['method' => 'DELETE',
+                                                    'url' => ['/common/email_group_users',$oResult->id]]) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    {!! Form::close() !!}
 
 
-                                            {!! Form::open(['method' => 'DELETE',
-                                            'url' => ['/client/email_group_users',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
 
-                                            <a href="/client/email_group_users/{{ $oResult->id }}/edit"
+                                            <a href="/common/email_group_users/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"></a>
-</div>
+
+                                                    <a href="/common/email_group_users/{{ $oResult->id }}"
+                                                       class="fa fa-file-text"></a>
+
+                                                </div>
                                                 </div>
                                         </td>
                                     </tr>

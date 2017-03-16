@@ -153,12 +153,12 @@
                         <div class="col-xs-offset-6 col-xs-3">
 
 
-                            <a href="/client/email_mass_queue/{{ $email_mass_queue['id'] }}/edit"
+                            <a href="/common/email_mass_queue/{{ $email_mass_queue['id'] }}/edit"
                                class="fa fa-edit btn btn-primary form-control"> {{trans('general.edit')}}</a>
                         </div>
                         <div class=" col-xs-3">
                             {!! Form::open(['method' => 'DELETE',
-                    'url' => ['/client/email_mass_queue',$email_mass_queue['id']]]) !!}
+                    'url' => ['/common/email_mass_queue',$email_mass_queue['id']]]) !!}
                             <button type="submit" name="Delete" class="deleteRow  btn btn-danger form-control" >
                                 <i class="fa fa-trash"></i>
                                 {{trans('general.delete')}}
@@ -177,7 +177,7 @@
 
 
             <div class="panel-footer text-right">
-                {{--<a href="{{ route('/client/product_list') }}">--}}
+                {{--<a href="{{ route('/common/product_list') }}">--}}
                     {{--<button type="submit" class="btn btn-primary"--}}
                             {{--name="edit_id">{{ trans('accounts::accounts.edit') }}</button>--}}
                 {{--</a>--}}

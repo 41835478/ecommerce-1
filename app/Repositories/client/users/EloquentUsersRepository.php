@@ -43,7 +43,17 @@ class EloquentUsersRepository implements UsersContract
         $oResults = $oResults->paginate(15);
         return $oResults;
     }
+    public function getAllList(){
 
+        $oResults = new Users();
+
+        $oResults = $oResults->get();
+        $aResults=[];
+        foreach($oResults as $oResult){
+            $aResults[$oResult->id]=$oResult->first_name .' '.$oResult->last_name;
+        }
+        return $aResults;
+    }
     public function create($data)
     {
 

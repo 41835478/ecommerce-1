@@ -68,7 +68,7 @@ $emailGroupList=$rEmailGroup->getAllList();
 
         $oResults=$this->rEmailMassTemplate->create($request->all());
 
-        return redirect('client/email_mass_template');
+        return redirect('common/email_mass_template');
     }
 
     /**
@@ -122,7 +122,7 @@ $emailGroupList=$rEmailGroup->getAllList();
 
         $result=$this->rEmailMassTemplate->update($id,$request);
 
-        return redirect('client/email_mass_template');
+        return redirect('common/email_mass_template');
     }
 
     /**
@@ -135,7 +135,7 @@ $emailGroupList=$rEmailGroup->getAllList();
     public function destroy($id)
     {
         $email_mass_template=$this->rEmailMassTemplate->destroy($id);
-        return redirect('client/email_mass_template');
+        return redirect('common/email_mass_template');
     }
 
 

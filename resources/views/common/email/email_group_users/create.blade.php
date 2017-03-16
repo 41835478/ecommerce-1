@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
 
-    {!! Form::model($request,['url' => '/client/email_group_users', 'class' => 'form-horizontal']) !!}
+    {!! Form::model($request,['url' => '/common/email_group_users', 'class' => 'form-horizontal']) !!}
 
 
 

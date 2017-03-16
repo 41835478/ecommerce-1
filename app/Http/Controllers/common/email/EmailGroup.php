@@ -20,7 +20,6 @@ use App\Repositories\common\email\email_group\EmailGroupContract as rEmailGroup;
 
  use App\Repositories\common\email\email_template\EmailTemplateContract as rEmailTemplate;
  use App\Repositories\common\email\email_mass_template\EmailMassTemplateContract as rEmailMassTemplate;
- use App\Repositories\common\email\email_mass_queue\EmailMassQueueContract as rEmailMassQueue;
 
 class EmailGroup extends Controller
 {
@@ -51,14 +50,13 @@ class EmailGroup extends Controller
      *
      * @return view
      */
-    public function create(Request $request,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate,rEmailMassQueue $rEmailMassQueue)
+    public function create(Request $request,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate)
     {
 
 $emailTemplateList=$rEmailTemplate->getAllList();
 $emailMassTemplateList=$rEmailMassTemplate->getAllList();
-$emailMassQueueList=$rEmailMassQueue->getAllList();
 
-        return view('common.email.email_group.create',compact('request','emailTemplateList','emailMassTemplateList','emailMassQueueList'));
+        return view('common.email.email_group.create',compact('request','emailTemplateList','emailMassTemplateList'));
     }
 
     /**
@@ -72,7 +70,7 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
 
         $oResults=$this->rEmailGroup->create($request->all());
 
-        return redirect('client/email_group');
+        return redirect('common/email_group');
     }
 
     /**
@@ -82,7 +80,7 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
      *
      * @return view
      */
-    public function show($id,Request $request,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate,rEmailMassQueue $rEmailMassQueue)
+    public function show($id,Request $request,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate)
     {
 
 
@@ -94,10 +92,9 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
     $oEmailTemplateResults=$rEmailTemplate->getByFilter($request);
     $request->page_name='page_email_mass_template';
     $oEmailMassTemplateResults=$rEmailMassTemplate->getByFilter($request);
-    $request->page_name='page_email_mass_queue';
-    $oEmailMassQueueResults=$rEmailMassQueue->getByFilter($request);
 
-        return view('common.email.email_group.show', compact('email_group','request','oEmailTemplateResults','oEmailMassTemplateResults','oEmailMassQueueResults'));
+
+        return view('common.email.email_group.show', compact('email_group','request','oEmailTemplateResults','oEmailMassTemplateResults'));
     }
 
     /**
@@ -107,7 +104,7 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
      *
      * @return view
      */
-    public function edit($id,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate,rEmailMassQueue $rEmailMassQueue)
+    public function edit($id,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate)
     {
 
 
@@ -116,8 +113,7 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
 
  $emailTemplateList=$rEmailTemplate->getAllList();
  $emailMassTemplateList=$rEmailMassTemplate->getAllList();
- $emailMassQueueList=$rEmailMassQueue->getAllList();
-        return view('common.email.email_group.edit', compact('email_group','emailTemplateList','emailMassTemplateList','emailMassQueueList'));
+        return view('common.email.email_group.edit', compact('email_group','emailTemplateList','emailMassTemplateList'));
     }
 
     /**
@@ -132,7 +128,7 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
 
         $result=$this->rEmailGroup->update($id,$request);
 
-        return redirect('client/email_group');
+        return redirect('common/email_group');
     }
 
     /**
@@ -145,7 +141,7 @@ $emailMassQueueList=$rEmailMassQueue->getAllList();
     public function destroy($id)
     {
         $email_group=$this->rEmailGroup->destroy($id);
-        return redirect('client/email_group');
+        return redirect('common/email_group');
     }
 
 

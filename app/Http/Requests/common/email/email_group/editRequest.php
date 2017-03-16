@@ -24,8 +24,6 @@ public function rules()
 {
 return [
     "name"=>'required',
-    "created_at"=>'required',
-    "updated_at"=>'required',
 
 
 

@@ -970,4 +970,180 @@ return [
 
     'updated_at'=>'Updated At',
 
+    'email_template'=>'Email Template',
+    'addemail_template'=>'Add Email Template',
+    'email_templateList'=>'Email Template List',
+    'email_templateCreate'=>'Create Email Template ',
+    'editemail_template'=>'Edit Email Template',
+    'email_templateInfo'=>'Email Template Info',
+
+    'email_templateTableHead'=>'Email Template Table Header',
+    'email_templateTableDescription'=>'Email Template Description',
+
+    'email_templateMenuBottomHeader'=>'Email TemplateMenu Bottom Header',
+    'email_templateMenuBottomDescription'=>'Email Template Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'email_group_id'=>'Email Group Id',
+
+
+    'name'=>'Name',
+
+
+    'subject'=>'Subject',
+
+
+    'body'=>'Body',
+
+
+    'type'=>'Type',
+
+
+    'to_field'=>'To Field',
+
+
+    'to_email'=>'To Email',
+
+
+    'language'=>'Language',
+
+
+    'status'=>'Status',
+
+
+    'created_at'=>'Created At',
+
+
+    'updated_at'=>'Updated At',
+
+
+    'email_mass_template'=>'Email Mass Template',
+    'addemail_mass_template'=>'Add Email Mass Template',
+    'email_mass_templateList'=>'Email Mass Template List',
+    'email_mass_templateCreate'=>'Create Email Mass Template ',
+    'editemail_mass_template'=>'Edit Email Mass Template',
+    'email_mass_templateInfo'=>'Email Mass Template Info',
+
+    'email_mass_templateTableHead'=>'Email Mass Template Table Header',
+    'email_mass_templateTableDescription'=>'Email Mass Template Description',
+
+    'email_mass_templateMenuBottomHeader'=>'Email Mass TemplateMenu Bottom Header',
+    'email_mass_templateMenuBottomDescription'=>'Email Mass Template Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'email_group_id'=>'Email Group Id',
+
+
+    'name'=>'Name',
+
+
+    'subject'=>'Subject',
+
+
+    'body'=>'Body',
+
+
+    'language'=>'Language',
+
+
+    'created_at'=>'Created At',
+
+
+    'updated_at'=>'Updated At',
+
+
+    'email_mass_queue'=>'Email Mass Queue',
+    'addemail_mass_queue'=>'Add Email Mass Queue',
+    'email_mass_queueList'=>'Email Mass Queue List',
+    'email_mass_queueCreate'=>'Create Email Mass Queue ',
+    'editemail_mass_queue'=>'Edit Email Mass Queue',
+    'email_mass_queueInfo'=>'Email Mass Queue Info',
+
+    'email_mass_queueTableHead'=>'Email Mass Queue Table Header',
+    'email_mass_queueTableDescription'=>'Email Mass Queue Description',
+
+    'email_mass_queueMenuBottomHeader'=>'Email Mass QueueMenu Bottom Header',
+    'email_mass_queueMenuBottomDescription'=>'Email Mass Queue Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'subject'=>'Subject',
+
+
+    'body'=>'Body',
+
+
+    'language'=>'Language',
+
+
+    'last_users_id'=>'Last Users Id',
+
+
+    'status'=>'Status',
+
+
+    'email_group_id'=>'Email Group Id',
+
+
+    'created_at'=>'Created At',
+
+
+    'updated_at'=>'Updated At',
+
+
+    'email_group'=>'Email Group',
+    'addemail_group'=>'Add Email Group',
+    'email_groupList'=>'Email Group List',
+    'email_groupCreate'=>'Create Email Group ',
+    'editemail_group'=>'Edit Email Group',
+    'email_groupInfo'=>'Email Group Info',
+
+    'email_groupTableHead'=>'Email Group Table Header',
+    'email_groupTableDescription'=>'Email Group Description',
+
+    'email_groupMenuBottomHeader'=>'Email GroupMenu Bottom Header',
+    'email_groupMenuBottomDescription'=>'Email Group Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'name'=>'Name',
+
+
+    'created_at'=>'Created At',
+
+
+    'updated_at'=>'Updated At',
+
+
+    'email_group_users'=>'Email Group Users',
+    'addemail_group_users'=>'Add Email Group Users',
+    'email_group_usersList'=>'Email Group Users List',
+    'email_group_usersCreate'=>'Create Email Group Users ',
+    'editemail_group_users'=>'Edit Email Group Users',
+    'email_group_usersInfo'=>'Email Group Users Info',
+
+    'email_group_usersTableHead'=>'Email Group Users Table Header',
+    'email_group_usersTableDescription'=>'Email Group Users Description',
+
+    'email_group_usersMenuBottomHeader'=>'Email Group UsersMenu Bottom Header',
+    'email_group_usersMenuBottomDescription'=>'Email Group Users Menu Bottom Description',
+
+    'id'=>'Id',
+
+
+    'group_id'=>'Group Id',
+
+
+    'users_id'=>'Users Id',
+
+
+    'type'=>'Type',
+
+
 ];

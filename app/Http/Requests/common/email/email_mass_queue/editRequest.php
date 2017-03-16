@@ -29,8 +29,6 @@ return [
     "last_users_id"=>'required',
     "status"=>'required',
     "email_group_id"=>'required',
-    "created_at"=>'required',
-    "updated_at"=>'required',
 
 
 

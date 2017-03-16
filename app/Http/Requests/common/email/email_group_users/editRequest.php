@@ -25,7 +25,6 @@ public function rules()
 return [
     "group_id"=>'required',
     "users_id"=>'required',
-    "type"=>'required',
 
 
 

@@ -7,7 +7,7 @@ class EmailGroup extends Model
     protected $fillable = ["name","created_at","updated_at"    ];
     protected $table='email_group';
 
-    public $timestamps =false ;
+    public $timestamps =true ;
 
     protected $guarded = [];
 

@@ -24,8 +24,6 @@ class createRequest extends Request
     {
         return [
     "name"=>'required',
-    "created_at"=>'required',
-    "updated_at"=>'required',
 
 
 

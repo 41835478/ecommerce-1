@@ -133,4 +133,43 @@ return [
     'FromEmail' => env('fromEmail','taylorsuccessor@gmail.com'),
     'FromName' => env('fromName','Taylor Successor'),
 
+
+
+
+    'email_template'=>[
+        'signUp'=>[
+            'name'=>'Sign Up',
+            'status'=>[
+                0=>'pending',
+                1=>'complete',
+                2=>'active email'
+            ]
+        ],
+        'forgetPassword'=>[
+            'name'=>'Forget Password',
+            'status'=>[
+                0=>'Reset Code',
+                1=>'Success Reset'
+            ]
+        ],
+        'contract'=>[
+            'name'=>'Contract',
+            'status'=>[
+                0=>'new contract',
+                1=>'expired'
+            ]
+        ],
+    ],
+
+
+    'email_template_type'=>[
+        'admin'=>'admin',
+        'client'=>'client',
+        'pdf admin'=>'pdf admin',
+        'pdf client'=>'pdf client'
+    ],
+    'email_template_language'=>[
+        'en'=>'English',
+        'ar'=>'Arabic'
+    ]
 ];

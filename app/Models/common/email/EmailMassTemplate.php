@@ -7,7 +7,7 @@ class EmailMassTemplate extends Model
     protected $fillable = [ "email_group_id","name","subject","body","language","created_at","updated_at"    ];
     protected $table='email_mass_template';
 
-    public $timestamps =false ;
+    public $timestamps =true ;
 
     protected $guarded = [];
 

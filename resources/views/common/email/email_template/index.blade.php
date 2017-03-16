@@ -40,7 +40,7 @@
 
                         </div>
                         <div class="col-xs-3">
-                            <a  href="{{route('client.email_template.create')}}"class="btn btn-primary form-control">
+                            <a  href="{{route('common.email_template.create')}}"class="btn btn-primary form-control">
                                 + {{trans('general.email_templateCreate')}}
                             </a>
                         </div>
@@ -65,10 +65,6 @@
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                                         {!! th_sort(trans('general.subject'), 'subject', $oResults) !!}
-                                    </th>
-
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                        {!! th_sort(trans('general.body'), 'body', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
@@ -99,7 +95,7 @@
                                         {!! th_sort(trans('general.updated_at'), 'updated_at', $oResults) !!}
                                     </th>
 
-                                
+                                <th class="actionHeader"><i class="fa fa-cog"></i> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -118,7 +114,6 @@
 
                                                                                 <td>{{ $oResult->subject }}</td>
 
-                                                                                <td>{{ $oResult->body }}</td>
 
                                                                                 <td>{{ $oResult->type }}</td>
 
@@ -141,17 +136,22 @@
                                                 <div class="innerContainer">
                                                     <i class="fa fa-list menuIconList"></i>
 
-                                            <a href="/client/email_template/{{ $oResult->id }}"
+
+
+
+                                                    {!! Form::open(['method' => 'DELETE',
+                                                    'url' => ['/common/email_template',$oResult->id]]) !!}
+                                                    <button type="submit" name="Delete" class="deleteRow" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    {!! Form::close() !!}
+                                                    <a href="/common/email_template/{{ $oResult->id }}/edit"
+                                                       class="fa fa-edit"></a>
+
+                                            <a href="/common/email_template/{{ $oResult->id }}"
                                                class="fa fa-file-text"></a>
 
 
-                                            {!! Form::open(['method' => 'DELETE',
-                                            'url' => ['/client/email_template',$oResult->id]]) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
-
-                                            <a href="/client/email_template/{{ $oResult->id }}/edit"
-                                               class="fa fa-edit"></a>
 </div>
                                                 </div>
                                         </td>
