@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\EmailMassTemplate as mEmailMassTemplate;
 use App\Repositories\common\email\email_mass_template\EmailMassTemplateContract as rEmailMassTemplate;
+use App\Repositories\common\email\email_mass_queue\EmailMassQueueContract as rEmailMassQueue;
 
  use App\Repositories\common\email\email_group\EmailGroupContract as rEmailGroup;
 
@@ -62,11 +63,15 @@ $emailGroupList=$rEmailGroup->getAllList();
      *
      * @return redirect
      */
-    public function store(createRequest $request)
+    public function store(createRequest $request,rEmailMassQueue $rEmailMassQueue)
     {
 
 
-        $oResults=$this->rEmailMassTemplate->create($request->all());
+        $oEmailMassTemplateResults=$this->rEmailMassTemplate->create($request->all());
+        if(isset($request->send)){
+
+            $oEmailMassQueueResults=$rEmailMassQueue->create($request->all());
+        }
 
         return redirect('common/email_mass_template');
     }
@@ -117,11 +122,15 @@ $emailGroupList=$rEmailGroup->getAllList();
      *
      * @return redirect
      */
-    public function update($id, editRequest $request)
+    public function update($id, editRequest $request,rEmailMassQueue $rEmailMassQueue)
     {
 
         $result=$this->rEmailMassTemplate->update($id,$request);
 
+        if(isset($request->send)){
+
+            $oEmailMassQueueResults=$rEmailMassQueue->create($request->all());
+        }
         return redirect('common/email_mass_template');
     }
 

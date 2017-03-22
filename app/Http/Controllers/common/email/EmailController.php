@@ -193,7 +193,7 @@ public function arrayToString($array){
         $pdfTemplate = SettingsEmailTemplates::where([
             'template_name' => $templateName,
             'language' => Session::get('locale'),
-            'type'=>'pdf '.$type,
+            'type'=>($type*1 +2),
             'status'=>$data['status']
 
         ])->first();
@@ -208,61 +208,19 @@ public function arrayToString($array){
     }
 
 
+public function sendExpiredContract($templateInfo){
+    $emailData=new EmailData();
+    $data=$emailData->expiredContractEmailInfo($templateInfo);
 
-
-
-    public function sendAdditionalAccountEmail($request_id,$type='admin')
-    {
-        if(!$request_id > 0){return false;}
-        $emailData=new EmailData();
-        $data=$emailData->additionalAccountEmailInfo($request_id);
-        $this->renderEmailDataAndSend('additionalAccount', $data,'client');
-        $this->renderEmailDataAndSend('additionalAccount', $data,'admin');
-
+    $status_array=(is_array($templateInfo['status']))? $templateInfo['status']:[$templateInfo['status']];
+    foreach($status_array as $status){
+        $data['status']=$status;
+        $this->renderEmailDataAndSend('contract', $data,'client');
+        $this->renderEmailDataAndSend('contract', $data,'admin');
     }
+}
 
 
-    public function sendInternalTransfer($request_id,$type='admin')
-    {
-        if(!$request_id > 0){return false;}
-        $emailData=new EmailData();
-        $data=$emailData->internalTransferEmailInfo($request_id);
-
-        $this->renderEmailDataAndSend('internalTransfer', $data,'client');
-        $this->renderEmailDataAndSend('internalTransfer', $data,'admin');
-
-    }
-
-
-    public function sendWithdrawal($request_id,$type='admin')
-    {
-        if(!$request_id > 0){return false;}
-        $emailData=new EmailData();
-        $data=$emailData->withdrawalEmailInfo($request_id);
-        $this->renderEmailDataAndSend('withdrawal', $data,'client');
-        $this->renderEmailDataAndSend('withdrawal', $data,'admin');
-    }
-
-    public function sendChangeLeverage($request_id,$type='admin')
-    {
-        if(!$request_id > 0){return false;}
-        $emailData=new EmailData();
-        $data=$emailData->changeLeverageEmailInfo($request_id);
-        $this->renderEmailDataAndSend('changeLeverage', $data,'client');
-        $this->renderEmailDataAndSend('changeLeverage', $data,'admin');
-    }
-
-    public function sendChangePassword($request_id,$type='admin')
-    {
-        if(!$request_id > 0){return false;}
-        $emailData=new EmailData();
-        $data=$emailData->changePasswordEmailInfo($request_id);
-
-
-        $this->renderEmailDataAndSend('changePassword', $data,'client');
-        $this->renderEmailDataAndSend('changePassword', $data,'admin');
-
-    }
 
     public function sendSignUp($templateInfo){
         $emailData=new EmailData();

@@ -163,10 +163,10 @@ return [
 
 
     'email_template_type'=>[
-        'admin'=>'admin',
-        'client'=>'client',
-        'pdf admin'=>'pdf admin',
-        'pdf client'=>'pdf client'
+        '0'=>'admin',
+        '1'=>'client',
+        '2'=>'pdf admin',
+        '3'=>'pdf client'
     ],
     'email_template_language'=>[
         'en'=>'English',

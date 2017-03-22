@@ -23,7 +23,6 @@ class createRequest extends Request
     public function rules()
     {
         return [
-    "email_group_id"=>'required',
     "name"=>'required',
     "subject"=>'required',
     "body"=>'required',

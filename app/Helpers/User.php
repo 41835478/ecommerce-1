@@ -19,7 +19,7 @@ class User {
 
     public function getAvatar() {
         if (is_null($this->oUser->avatar)) {
-            return File::get(public_path() . '/assets/'.config('mycp.layoutAssetsFolder').'/img/avatar');
+            return File::get(public_path() . '/assets/'.config('project.layoutAssetsFolder').'/img/avatar');
         }
         return $this->oUser->avatar;
     }

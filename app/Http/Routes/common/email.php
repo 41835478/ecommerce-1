@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['middleware' => ['authenticate.client']], function () {
+Route::group(['middleware' => ['authorization'],'prefix' => 'common','namespace'=>'common\email'], function () {
 
     
 

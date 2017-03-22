@@ -14,13 +14,13 @@ class EloquentEmailTemplateRepository implements EmailTemplateContract
         $oResults = new EmailTemplate();
 
         if (isset($data->id) && !empty($data->id)) {
-            $oResults = $oResults->where('id', 'like', '%' . $data['id'] . '%');
+            $oResults = $oResults->where('id', '=',$data['id'] );
         }
         if (isset($data->email_group_id) && !empty($data->email_group_id)) {
-            $oResults = $oResults->where('email_group_id', 'like', '%' . $data['email_group_id'] . '%');
+            $oResults = $oResults->where('email_group_id', '=' , $data['email_group_id'] );
         }
         if (isset($data->name) && !empty($data->name)) {
-            $oResults = $oResults->where('name', 'like', '%' . $data['name'] . '%');
+            $oResults = $oResults->where('name', '=' ,$data['name']);
         }
         if (isset($data->subject) && !empty($data->subject)) {
             $oResults = $oResults->where('subject', 'like', '%' . $data['subject'] . '%');
@@ -29,7 +29,7 @@ class EloquentEmailTemplateRepository implements EmailTemplateContract
             $oResults = $oResults->where('body', 'like', '%' . $data['body'] . '%');
         }
         if (isset($data->type) && !empty($data->type)) {
-            $oResults = $oResults->where('type', 'like', '%' . $data['type'] . '%');
+            $oResults = $oResults->where('type', '=' , $data['type']);
         }
         if (isset($data->to_field) && !empty($data->to_field)) {
             $oResults = $oResults->where('to_field', 'like', '%' . $data['to_field'] . '%');
@@ -38,10 +38,10 @@ class EloquentEmailTemplateRepository implements EmailTemplateContract
             $oResults = $oResults->where('to_email', 'like', '%' . $data['to_email'] . '%');
         }
         if (isset($data->language) && !empty($data->language)) {
-            $oResults = $oResults->where('language', 'like', '%' . $data['language'] . '%');
+            $oResults = $oResults->where('language', '=' , $data['language'] );
         }
         if (isset($data->status) && !empty($data->status)) {
-            $oResults = $oResults->where('status', 'like', '%' . $data['status'] . '%');
+            $oResults = $oResults->where('status', '=' , $data['status'] );
         }
         if (isset($data->created_at) && !empty($data->created_at)) {
             $oResults = $oResults->where('created_at', 'like', '%' . $data['created_at'] . '%');

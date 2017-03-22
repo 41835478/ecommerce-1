@@ -1,4 +1,4 @@
-@extends('client.layouts.main')
+@extends('common.layouts.main')
 @section('title', trans('general.email_mass_template'))
 
 @section('content')
@@ -6,7 +6,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
-            <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+            <div class="row bg-title" style="background:url({{'/assets/'.config('project.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
                     <h4 class="page-title">{{ trans('general.email_mass_template') }}</h4>
                 </div>
@@ -30,18 +30,18 @@
 
 
 
-                        @include('client.partials.messages')
+                        @include('common.partials.messages')
 
                         <div class=" col-xs-9">
-                            <h3 class="box-title m-b-0">{{ trans('general.email_mass_templateTableHead') }}</h3>
-                            <p class="text-muted m-b-20">{{ trans('general.email_mass_templateTableDescription') }}</p>
+                            <h3 class="box-title m-b-0">{{ trans('email_mass_template.email_mass_templateTableHead') }}</h3>
+                            <p class="text-muted m-b-20">{{ trans('email_mass_template.email_mass_templateTableDescription') }}</p>
 
 
 
                         </div>
                         <div class="col-xs-3">
                             <a  href="{{route('common.email_mass_template.create')}}"class="btn btn-primary form-control">
-                                + {{trans('general.email_mass_templateCreate')}}
+                                + {{trans('email_mass_template.email_mass_templateCreate')}}
                             </a>
                         </div>
 
@@ -52,35 +52,31 @@
 
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.id'), 'id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.email_group_id'), 'email_group_id', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.email_group_id'), 'email_group_id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.name'), 'name', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.subject'), 'subject', $oResults) !!}
-                                    </th>
-
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="5">
-                                        {!! th_sort(trans('general.body'), 'body', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.subject'), 'subject', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
-                                        {!! th_sort(trans('general.language'), 'language', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.language'), 'language', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                        {!! th_sort(trans('general.created_at'), 'created_at', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.created_at'), 'created_at', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
-                                        {!! th_sort(trans('general.updated_at'), 'updated_at', $oResults) !!}
+                                        {!! th_sort(trans('email_mass_template.updated_at'), 'updated_at', $oResults) !!}
                                     </th>
 
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
@@ -97,17 +93,15 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->email_group_id }}</td>
+                                                                                <td>{{ isset($oResult->email_group->name)? $oResult->email_group->name:"" }}</td>
 
                                                                                 <td>{{ $oResult->name }}</td>
 
                                                                                 <td>{{ $oResult->subject }}</td>
 
-                                                                                <td>{{ $oResult->body }}</td>
+                                        <td>{{ (array_key_exists($oResult->language,config('mail.email_template_language')))?config('mail.email_template_language')[$oResult->language]:'' }}</td>
 
-                                                                                <td>{{ $oResult->language }}</td>
-
-                                                                                <td>{{ $oResult->created_at }}</td>
+                                        <td>{{ $oResult->created_at }}</td>
 
                                                                                 <td>{{ $oResult->updated_at }}</td>
 
@@ -128,8 +122,8 @@
 
                                             <a href="/common/email_mass_template/{{ $oResult->id }}/edit"
                                                class="fa fa-edit"></a>
-                                                    <a href="/common/email_mass_template/{{ $oResult->id }}"
-                                                       class="fa fa-file-text"></a>
+                                                    {{--<a href="/common/email_mass_template/{{ $oResult->id }}"--}}
+                                                       {{--class="fa fa-file-text"></a>--}}
 
                                                 </div>
                                                 </div>

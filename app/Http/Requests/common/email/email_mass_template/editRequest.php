@@ -26,7 +26,6 @@ return [
     "email_group_id"=>'required',
     "name"=>'required',
     "subject"=>'required',
-    "body"=>'required',
     "language"=>'required',
 
 

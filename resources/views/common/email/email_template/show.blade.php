@@ -1,4 +1,4 @@
-@extends('client.layouts.main')
+@extends('common.layouts.main')
 @section('title', trans('general.email_template'))
 @section('content')
 
@@ -9,7 +9,7 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- .row -->
-                <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+                <div class="row bg-title" style="background:url({{'/assets/'.config('project.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                     <div class="col-lg-12">
                         <h4 class="page-title">{{ trans('general.email_template') }}</h4>
                     </div>

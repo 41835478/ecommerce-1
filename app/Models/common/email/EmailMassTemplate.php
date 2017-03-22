@@ -11,4 +11,7 @@ class EmailMassTemplate extends Model
 
     protected $guarded = [];
 
+    public function email_group(){
+        return $this->belongsTo('\App\Models\common\email\EmailGroup');
+    }
 }

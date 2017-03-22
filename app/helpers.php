@@ -163,7 +163,9 @@ if (!function_exists('canAccess')) {
 	function canAccess($permission)
 	{
 		/* todo make class static*/
- $cPermission= new \App\Http\Controllers\common\PermissionController();
+ $cPermission= new \App\Http\Controllers\common\authorization\PermissionController();
 		return $cPermission->access($permission);
 	}
 }
+
+

@@ -1,4 +1,4 @@
-@extends('client.layouts.main')
+@extends('common.layouts.main')
 @section('title', trans('general.email_group'))
 
 @section('content')
@@ -6,7 +6,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
-            <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+            <div class="row bg-title" style="background:url({{'/assets/'.config('project.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
                     <h4 class="page-title">{{ trans('general.email_group') }}</h4>
                 </div>
@@ -30,18 +30,18 @@
 
 
 
-                        @include('client.partials.messages')
+                        @include('common.partials.messages')
 
                         <div class=" col-xs-9">
-                            <h3 class="box-title m-b-0">{{ trans('general.email_groupTableHead') }}</h3>
-                            <p class="text-muted m-b-20">{{ trans('general.email_groupTableDescription') }}</p>
+                            <h3 class="box-title m-b-0">{{ trans('email_group.email_groupTableHead') }}</h3>
+                            <p class="text-muted m-b-20">{{ trans('email_group.email_groupTableDescription') }}</p>
 
 
 
                         </div>
                         <div class="col-xs-3">
                             <a  href="{{route('common.email_group.create')}}"class="btn btn-primary form-control">
-                                + {{trans('general.email_groupCreate')}}
+                                + {{trans('email_group.email_groupCreate')}}
                             </a>
                         </div>
 
@@ -52,19 +52,19 @@
 
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
+                                        {!! th_sort(trans('email_group.id'), 'id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                        {!! th_sort(trans('email_group.name'), 'name', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.created_at'), 'created_at', $oResults) !!}
+                                        {!! th_sort(trans('email_group.created_at'), 'created_at', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.updated_at'), 'updated_at', $oResults) !!}
+                                        {!! th_sort(trans('email_group.updated_at'), 'updated_at', $oResults) !!}
                                     </th>
 
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
@@ -104,8 +104,8 @@
 
                                                     <a href="/common/email_group/{{ $oResult->id }}/edit"
                                                        class="fa fa-edit"></a>
-                                            <a href="/common/email_group/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+                                            {{--<a href="/common/email_group/{{ $oResult->id }}"--}}
+                                               {{--class="fa fa-file-text"></a>--}}
 
 </div>
                                                 </div>

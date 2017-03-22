@@ -22,178 +22,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->app->bind(
-            'App\Repositories\admin\company\CompanyContract',
-            'App\Repositories\admin\company\EloquentCompanyRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\contacts\ContactsContract',
-            'App\Repositories\admin\contacts\EloquentContactsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\contracts\ContractsContract',
-            'App\Repositories\admin\contracts\EloquentContractsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\contracts_documents\ContractsDocumentsContract',
-            'App\Repositories\admin\contracts_documents\EloquentContractsDocumentsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\contracts_renewal\ContractsRenewalContract',
-            'App\Repositories\admin\contracts_renewal\EloquentContractsRenewalRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\emails\EmailsContract',
-            'App\Repositories\admin\emails\EloquentEmailsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\licenses\LicensesContract',
-            'App\Repositories\admin\licenses\EloquentLicensesRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\products\ProductsContract',
-            'App\Repositories\admin\products\EloquentProductsRepository'
+            'App\Repositories\common\users\UsersContract',
+            'App\Repositories\common\users\EloquentUsersRepository'
         );
 
         $this->app->bind(
-            'App\Repositories\admin\products_list\ProductsListContract',
-            'App\Repositories\admin\products_list\EloquentProductsListRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\users\UsersContract',
-            'App\Repositories\admin\users\EloquentUsersRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\admin\versions\VersionsContract',
-            'App\Repositories\admin\versions\EloquentVersionsRepository'
-        );
-
-
-        $this->app->bind(
-            'App\Repositories\client\company\CompanyContract',
-            'App\Repositories\client\company\EloquentCompanyRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\contacts\ContactsContract',
-            'App\Repositories\client\contacts\EloquentContactsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\contracts\ContractsContract',
-            'App\Repositories\client\contracts\EloquentContractsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\contracts_documents\ContractsDocumentsContract',
-            'App\Repositories\client\contracts_documents\EloquentContractsDocumentsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\contracts_renewal\ContractsRenewalContract',
-            'App\Repositories\client\contracts_renewal\EloquentContractsRenewalRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\emails\EmailsContract',
-            'App\Repositories\client\emails\EloquentEmailsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\licenses\LicensesContract',
-            'App\Repositories\client\licenses\EloquentLicensesRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\products\ProductsContract',
-            'App\Repositories\client\products\EloquentProductsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\domains\DomainsContract',
-            'App\Repositories\client\domains\EloquentDomainsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\web_hosting_plans\WebHostingPlansContract',
-            'App\Repositories\client\web_hosting_plans\EloquentWebHostingPlansRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\products_list\ProductsListContract',
-            'App\Repositories\client\products_list\EloquentProductsListRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\users\UsersContract',
-            'App\Repositories\client\users\EloquentUsersRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\versions\VersionsContract',
-            'App\Repositories\client\versions\EloquentVersionsRepository'
-        );
-
-
-        $this->app->bind(
-            'App\Repositories\client\server_company\ServerCompanyContract',
-            'App\Repositories\client\server_company\EloquentServerCompanyRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\server_spec\ServerSpecContract',
-            'App\Repositories\client\server_spec\EloquentServerSpecRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\server_company_server_spec\ServerCompanyServerSpecContract',
-            'App\Repositories\client\server_company_server_spec\EloquentServerCompanyServerSpecRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\server_access\ServerAccessContract',
-            'App\Repositories\client\server_access\EloquentServerAccessRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\server_detail\ServerDetailContract',
-            'App\Repositories\client\server_detail\EloquentServerDetailRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\server_ip\ServerIpContract',
-            'App\Repositories\client\server_ip\EloquentServerIpRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\server_locations\ServerLocationsContract',
-            'App\Repositories\client\server_locations\EloquentServerLocationsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\support\SupportContract',
-            'App\Repositories\client\support\EloquentSupportRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\ticket\TicketContract',
-            'App\Repositories\client\ticket\EloquentTicketRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\ticket_reply\TicketReplyContract',
-            'App\Repositories\client\ticket_reply\EloquentTicketReplyRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\logtime\LogtimeContract',
-            'App\Repositories\client\logtime\EloquentLogtimeRepository'
-        );
-
-        $this->app->bind(
-            'App\Repositories\client\documents\DocumentsContract',
-            'App\Repositories\client\documents\EloquentDocumentsRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\files\FilesContract',
-            'App\Repositories\client\files\EloquentFilesRepository'
-        );
-
-        $this->app->bind(
-            'App\Repositories\client\invoice\InvoiceContract',
-            'App\Repositories\client\invoice\EloquentInvoiceRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\contracts_renewal_invoice\ContractsRenewalInvoiceContract',
-            'App\Repositories\client\contracts_renewal_invoice\EloquentContractsRenewalInvoiceRepository'
-        );
-        $this->app->bind(
-            'App\Repositories\client\payment\PaymentContract',
-            'App\Repositories\client\payment\EloquentPaymentRepository'
-        );
-
-
-        $this->app->bind(
-            'App\Repositories\client\roles\RolesContract',
-            'App\Repositories\client\roles\EloquentRolesRepository'
+            'App\Repositories\common\authorization\roles\RolesContract',
+            'App\Repositories\common\authorization\roles\EloquentRolesRepository'
         );
 
 
@@ -217,6 +54,7 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\common\email\email_group_users\EmailGroupUsersContract',
             'App\Repositories\common\email\email_group_users\EloquentEmailGroupUsersRepository'
         );
+
 
     }
 }

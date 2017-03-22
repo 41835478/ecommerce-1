@@ -24,7 +24,6 @@ public function rules()
 {
 return [
     "subject"=>'required',
-    "body"=>'required',
     "language"=>'required',
     "last_users_id"=>'required',
     "status"=>'required',

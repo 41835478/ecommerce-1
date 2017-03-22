@@ -1,19 +1,17 @@
 <?php
 
 
-require_once __DIR__ . "/Routes/Client/files.php";
+require_once __DIR__ . "/Routes/common/files.php";
 
+require_once __DIR__ . "/Routes/common/authentication.php";
 
-Route::group(['prefix' => 'client', 'namespace' => 'Client'], function () {
-    require_once __DIR__ . "/Routes/Client/Dashboard.php";
-    require_once __DIR__ . "/Routes/Client/language.php";
-    require_once __DIR__ . "/Routes/Client/Auth.php";
-});
+require_once __DIR__ . "/Routes/common/Dashboard.php";
+require_once __DIR__ . "/Routes/common/email.php";
+require_once __DIR__ . "/Routes/common/authorization.php";
+require_once __DIR__ . "/Routes/common/language.php";
 
+require_once __DIR__ . "/Routes/common/users.php";
 
-Route::group(['prefix' => 'common', 'namespace' => 'common\email'], function () {
-    require_once __DIR__ . "/Routes/common/email.php";
-});
 
 
 //Event::listen('illuminate.query', function($query)

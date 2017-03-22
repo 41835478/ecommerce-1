@@ -42,18 +42,29 @@ class EloquentEmailGroupUsersRepository implements EmailGroupUsersContract
         return $oResults;
     }
 
-    public function getAllList(){
+    public function getAllList($group_id=0){
 
-          $oResults = new EmailGroupUsers();
+          $oResults = EmailGroupUsers::where('group_id','=',$group_id)->lists('users_id','users_id');
 
-          $oResults = $oResults::lists('name','id');
           return $oResults;
     }
 
     public function create($data)
     {
+        EmailGroupUsers::where(['group_id'=>$data['group_id']])->delete();
+        if(!array_key_exists('users_id',$data)){return false;}
+        $users_id=(is_array($data['users_id']))? $data['users_id']:[$data['users_id']];
+        $rows=[];
+        $result=false;
+        foreach($users_id as $oneUsers_id){
 
-        $result = EmailGroupUsers::create($data);
+            $rows[]=['group_id'=>$data['group_id'],'users_id'=>$oneUsers_id];
+        }
+        if(count($rows)){
+
+            $result = EmailGroupUsers::insert($rows);
+        }
+
 
         if ($result) {
             Session::flash('flash_message', 'email_group_users added!');

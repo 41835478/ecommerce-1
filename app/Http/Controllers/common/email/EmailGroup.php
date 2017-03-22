@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\View;
 use App\Models\EmailGroup as mEmailGroup;
 use App\Repositories\common\email\email_group\EmailGroupContract as rEmailGroup;
 
- use App\Repositories\common\email\email_template\EmailTemplateContract as rEmailTemplate;
- use App\Repositories\common\email\email_mass_template\EmailMassTemplateContract as rEmailMassTemplate;
+use App\Repositories\common\email\email_template\EmailTemplateContract as rEmailTemplate;
+use App\Repositories\common\email\email_mass_template\EmailMassTemplateContract as rEmailMassTemplate;
+use App\Repositories\common\users\UsersContract as rUsers;
+use App\Repositories\common\email\email_group_users\EmailGroupUsersContract as rEmailGroupUsers;
+
 
 class EmailGroup extends Controller
 {
@@ -50,13 +53,12 @@ class EmailGroup extends Controller
      *
      * @return view
      */
-    public function create(Request $request,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate)
+    public function create(Request $request,rUsers $rUsers)
     {
 
-$emailTemplateList=$rEmailTemplate->getAllList();
-$emailMassTemplateList=$rEmailMassTemplate->getAllList();
+        $usersList=$rUsers->getAllList();
 
-        return view('common.email.email_group.create',compact('request','emailTemplateList','emailMassTemplateList'));
+        return view('common.email.email_group.create',compact('request','usersList'));
     }
 
     /**
@@ -64,11 +66,14 @@ $emailMassTemplateList=$rEmailMassTemplate->getAllList();
      *
      * @return redirect
      */
-    public function store(createRequest $request)
+    public function store(createRequest $request,rEmailGroupUsers $rEmailGroupUsers)
     {
 
+        $group_id=$this->rEmailGroup->create($request->all());
+        if($group_id > 0 ){
+            $rEmailGroupUsers->create($request->all()+['group_id'=>$group_id]);
 
-        $oResults=$this->rEmailGroup->create($request->all());
+        }
 
         return redirect('common/email_group');
     }
@@ -85,13 +90,13 @@ $emailMassTemplateList=$rEmailMassTemplate->getAllList();
 
 
         $email_group=$this->rEmailGroup->show($id);
-      $request->merge(['email_group_id'=>$id,'page_name'=>'page']);
+        $request->merge(['email_group_id'=>$id,'page_name'=>'page']);
 
 
-    $request->page_name='page_email_template';
-    $oEmailTemplateResults=$rEmailTemplate->getByFilter($request);
-    $request->page_name='page_email_mass_template';
-    $oEmailMassTemplateResults=$rEmailMassTemplate->getByFilter($request);
+        $request->page_name='page_email_template';
+        $oEmailTemplateResults=$rEmailTemplate->getByFilter($request);
+        $request->page_name='page_email_mass_template';
+        $oEmailMassTemplateResults=$rEmailMassTemplate->getByFilter($request);
 
 
         return view('common.email.email_group.show', compact('email_group','request','oEmailTemplateResults','oEmailMassTemplateResults'));
@@ -104,16 +109,16 @@ $emailMassTemplateList=$rEmailMassTemplate->getAllList();
      *
      * @return view
      */
-    public function edit($id,rEmailTemplate $rEmailTemplate,rEmailMassTemplate $rEmailMassTemplate)
+    public function edit($id,rUsers $rUsers,rEmailGroupUsers $rEmailGroupUsers)
     {
 
+        $usersList=$rUsers->getAllList();
+        $groupUsersList=$rEmailGroupUsers->getAllList($id)->all();
 
         $email_group=$this->rEmailGroup->show($id);
 
 
- $emailTemplateList=$rEmailTemplate->getAllList();
- $emailMassTemplateList=$rEmailMassTemplate->getAllList();
-        return view('common.email.email_group.edit', compact('email_group','emailTemplateList','emailMassTemplateList'));
+        return view('common.email.email_group.edit', compact('email_group','usersList','groupUsersList'));
     }
 
     /**
@@ -123,11 +128,14 @@ $emailMassTemplateList=$rEmailMassTemplate->getAllList();
      *
      * @return redirect
      */
-    public function update($id, editRequest $request)
+    public function update($id, editRequest $request,rEmailGroupUsers $rEmailGroupUsers)
     {
 
         $result=$this->rEmailGroup->update($id,$request);
+        if($id > 0 ){
+            $rEmailGroupUsers->create($request->all()+['group_id'=>$id]);
 
+        }
         return redirect('common/email_group');
     }
 

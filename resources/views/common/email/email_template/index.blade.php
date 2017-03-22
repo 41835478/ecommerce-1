@@ -1,4 +1,4 @@
-@extends('client.layouts.main')
+@extends('common.layouts.main')
 @section('title', trans('general.email_template'))
 
 @section('content')
@@ -6,7 +6,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
-            <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+            <div class="row bg-title" style="background:url({{'/assets/'.config('project.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
                     <h4 class="page-title">{{ trans('general.email_template') }}</h4>
                 </div>
@@ -30,18 +30,18 @@
 
 
 
-                        @include('client.partials.messages')
+                        @include('common.partials.messages')
 
                         <div class=" col-xs-9">
-                            <h3 class="box-title m-b-0">{{ trans('general.email_templateTableHead') }}</h3>
-                            <p class="text-muted m-b-20">{{ trans('general.email_templateTableDescription') }}</p>
+                            <h3 class="box-title m-b-0">{{ trans('email_template.email_templateTableHead') }}</h3>
+                            <p class="text-muted m-b-20">{{ trans('email_template.email_templateTableDescription') }}</p>
 
 
 
                         </div>
                         <div class="col-xs-3">
                             <a  href="{{route('common.email_template.create')}}"class="btn btn-primary form-control">
-                                + {{trans('general.email_templateCreate')}}
+                                + {{trans('email_template.email_templateCreate')}}
                             </a>
                         </div>
 
@@ -52,47 +52,43 @@
 
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">
-                                        {!! th_sort(trans('general.id'), 'id', $oResults) !!}
-                                    </th>
-
-                                                                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">
-                                        {!! th_sort(trans('general.email_group_id'), 'email_group_id', $oResults) !!}
+                                        {!! th_sort(trans('email_template.id'), 'id', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                                        {!! th_sort(trans('general.name'), 'name', $oResults) !!}
+                                        {!! th_sort(trans('email_template.name'), 'name', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
-                                        {!! th_sort(trans('general.subject'), 'subject', $oResults) !!}
+                                        {!! th_sort(trans('email_template.subject'), 'subject', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="6">
-                                        {!! th_sort(trans('general.type'), 'type', $oResults) !!}
+                                        {!! th_sort(trans('email_template.type'), 'type', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="7">
-                                        {!! th_sort(trans('general.to_field'), 'to_field', $oResults) !!}
+                                        {!! th_sort(trans('email_template.to_field'), 'to_field', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="8">
-                                        {!! th_sort(trans('general.to_email'), 'to_email', $oResults) !!}
+                                        {!! th_sort(trans('email_template.to_email'), 'to_email', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="9">
-                                        {!! th_sort(trans('general.language'), 'language', $oResults) !!}
+                                        {!! th_sort(trans('email_template.language'), 'language', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="10">
-                                        {!! th_sort(trans('general.status'), 'status', $oResults) !!}
+                                        {!! th_sort(trans('email_template.status'), 'status', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="11">
-                                        {!! th_sort(trans('general.created_at'), 'created_at', $oResults) !!}
+                                        {!! th_sort(trans('email_template.created_at'), 'created_at', $oResults) !!}
                                     </th>
 
                                                                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="12">
-                                        {!! th_sort(trans('general.updated_at'), 'updated_at', $oResults) !!}
+                                        {!! th_sort(trans('email_template.updated_at'), 'updated_at', $oResults) !!}
                                     </th>
 
                                 <th class="actionHeader"><i class="fa fa-cog"></i> </th>
@@ -108,22 +104,28 @@
 
                                                                                 <td>{{ $oResult->id }}</td>
 
-                                                                                <td>{{ $oResult->email_group_id }}</td>
 
                                                                                 <td>{{ $oResult->name }}</td>
 
                                                                                 <td>{{ $oResult->subject }}</td>
 
 
-                                                                                <td>{{ $oResult->type }}</td>
+                                        <td>{{ (array_key_exists($oResult->type,config('mail.email_template_type')))?config('mail.email_template_type')[$oResult->type]:'' }}</td>
 
                                                                                 <td>{{ $oResult->to_field }}</td>
 
                                                                                 <td>{{ $oResult->to_email }}</td>
 
-                                                                                <td>{{ $oResult->language }}</td>
+                                                                                <td>{{ (array_key_exists($oResult->language,config('mail.email_template_language')))?config('mail.email_template_language')[$oResult->language]:'' }}</td>
 
-                                                                                <td>{{ $oResult->status }}</td>
+                                                                                <td>
+                                                                                    @if(array_key_exists($oResult->name,config('mail.email_template')))
+                                                                                        @if(array_key_exists($oResult->status,config('mail.email_template')[$oResult->name]['status']))
+
+                                                                                    {{ config('mail.email_template')[$oResult->name]['status'][$oResult->status] }}
+                                                                                            @endif
+                                                                                        @endif
+                                                                                </td>
 
                                                                                 <td>{{ $oResult->created_at }}</td>
 
@@ -145,11 +147,14 @@
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                     {!! Form::close() !!}
-                                                    <a href="/common/email_template/{{ $oResult->id }}/edit"
-                                                       class="fa fa-edit"></a>
 
-                                            <a href="/common/email_template/{{ $oResult->id }}"
-                                               class="fa fa-file-text"></a>
+                                                    <a href="/common/email_template/create?language={{$oResult->language}}&status={{$oResult->status}}&type={{$oResult->type}}&name={{$oResult->name}}"
+                                                       class="fa fa-edit"></a>
+                                                    {{--<a href="/common/email_template/{{ $oResult->id }}/edit"--}}
+                                                       {{--class="fa fa-edit"></a>--}}
+
+                                            {{--<a href="/common/email_template/{{ $oResult->id }}"--}}
+                                               {{--class="fa fa-file-text"></a>--}}
 
 
 </div>
@@ -195,7 +200,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('general.id'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('id', $aFilterParams['id'], ['placeholder'=>trans('email_template.id'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -206,7 +211,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('email_group_id', $aFilterParams['email_group_id'], ['placeholder'=>trans('general.email_group_id'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('email_group_id', $aFilterParams['email_group_id'], ['placeholder'=>trans('email_template.email_group_id'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -217,7 +222,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('general.name'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('name', $aFilterParams['name'], ['placeholder'=>trans('email_template.name'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -228,7 +233,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('subject', $aFilterParams['subject'], ['placeholder'=>trans('general.subject'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('subject', $aFilterParams['subject'], ['placeholder'=>trans('email_template.subject'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -239,7 +244,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('body', $aFilterParams['body'], ['placeholder'=>trans('general.body'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('body', $aFilterParams['body'], ['placeholder'=>trans('email_template.body'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -250,7 +255,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('type', $aFilterParams['type'], ['placeholder'=>trans('general.type'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('type', $aFilterParams['type'], ['placeholder'=>trans('email_template.type'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -261,7 +266,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('to_field', $aFilterParams['to_field'], ['placeholder'=>trans('general.to_field'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('to_field', $aFilterParams['to_field'], ['placeholder'=>trans('email_template.to_field'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -272,7 +277,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('to_email', $aFilterParams['to_email'], ['placeholder'=>trans('general.to_email'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('to_email', $aFilterParams['to_email'], ['placeholder'=>trans('email_template.to_email'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -283,7 +288,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('language', $aFilterParams['language'], ['placeholder'=>trans('general.language'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('language', $aFilterParams['language'], ['placeholder'=>trans('email_template.language'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -294,7 +299,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('status', $aFilterParams['status'], ['placeholder'=>trans('general.status'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('status', $aFilterParams['status'], ['placeholder'=>trans('email_template.status'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -305,7 +310,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('created_at', $aFilterParams['created_at'], ['placeholder'=>trans('general.created_at'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('created_at', $aFilterParams['created_at'], ['placeholder'=>trans('email_template.created_at'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -316,7 +321,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        {!! Form::text('updated_at', $aFilterParams['updated_at'], ['placeholder'=>trans('general.updated_at'),'class'=>'form-control input-sm ']) !!}
+                        {!! Form::text('updated_at', $aFilterParams['updated_at'], ['placeholder'=>trans('email_template.updated_at'),'class'=>'form-control input-sm ']) !!}
                         <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>

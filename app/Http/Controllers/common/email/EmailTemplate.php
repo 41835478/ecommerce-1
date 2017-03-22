@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 
-use App\Models\EmailTemplate as mEmailTemplate;
+use App\Models\common\email\EmailTemplate as mEmailTemplate;
 use App\Repositories\common\email\email_template\EmailTemplateContract as rEmailTemplate;
 
 use App\Repositories\common\email\email_group\EmailGroupContract as rEmailGroup;
@@ -63,8 +63,8 @@ class EmailTemplate extends Controller
         if(!isset($request->name)){
             $request->merge(
                 [
-                    'name'=>$request->name,
-                    'type'=>config('mail.email_template_type')[0] ,
+                    'name'=>'signUp',
+                    'type'=>0,
                     'status'=>0 ,
                     'language'=>'en' ,
                 ]
@@ -76,9 +76,13 @@ class EmailTemplate extends Controller
         $templateStatusList=$emailTemplateWithStatus[$request->name]['status'];
 
 
-        $oResults=$this->rEmailTemplate->getByFilter($request)->first();
+        $oResults=$this->rEmailTemplate->getByFilter($request)->first();//dd($request);
         if(!count($oResults)){
-            $oResults->merge($request->all());
+            $oResults=new mEmailTemplate();
+            $oResults->name=$request->name;
+            $oResults->type=$request->type;
+            $oResults->status=$request->status;
+            $oResults->language=$request->language;
         }
 
         return view('common.email.email_template.create',compact('request','oResults','templateNameList','templateStatusList'));
@@ -92,8 +96,13 @@ class EmailTemplate extends Controller
     public function store(createRequest $request)
     {
 
+if(isset($request->id) && $request->id > 0){
 
-        $oResults=$this->rEmailTemplate->create($request->all());
+    $updateResult=$this->rEmailTemplate->update($request->id ,$request);
+}else{
+
+    $createResult=$this->rEmailTemplate->create($request->all());
+}
 
         return redirect('common/email_template');
     }

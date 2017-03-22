@@ -57,7 +57,7 @@ class EloquentEmailGroupRepository implements EmailGroupContract
 
         if ($result) {
             Session::flash('flash_message', 'email_group added!');
-            return true;
+            return $result->id;
         } else {
             return false;
         }

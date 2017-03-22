@@ -1,4 +1,4 @@
-@extends('client.layouts.main')
+@extends('common.layouts.main')
 
 @section('title', trans('general.email_mass_template'))
 @section('content')
@@ -7,14 +7,14 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <!-- .row -->
-            <div class="row bg-title" style="background:url({{'/assets/'.config('mycp.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
+            <div class="row bg-title" style="background:url({{'/assets/'.config('project.layoutAssetsFolder')}}/plugins/images/heading-title-bg.jpg) no-repeat center center /cover;">
                 <div class="col-lg-12">
-                    <h4 class="page-title">{{ trans('general.email_mass_template') }}</h4>
+                    <h4 class="page-title">{{ trans('email_mass_template.email_mass_template') }}</h4>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
                     <ol class="breadcrumb pull-left">
-                        <li><a href="#">{{ trans('general.email_mass_template') }}</a></li>
-                        <li class="active">{{ trans('general.editemail_mass_template') }}</li>
+                        <li><a href="#">{{ trans('email_mass_template.email_mass_template') }}</a></li>
+                        <li class="active">{{ trans('email_mass_template.editemail_mass_template') }}</li>
                     </ol>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
@@ -44,7 +44,7 @@
 
         <div class="panel">
             <div class="panel-heading">
-                <span class="panel-title">{{ trans('general.editemail_mass_template') }}</span>
+                <span class="panel-title">{{ trans('email_mass_template.editemail_mass_template') }}</span>
             </div>
 
             <div class="panel-body">
@@ -53,55 +53,71 @@
 
 
 
-            
-        <div class="row">        <div class="form-group {{ $errors->has('email_group_id') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('email_group_id', trans('email_group_id'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('email_group_id', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('email_group_id', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('name', trans('name'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('subject') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('subject', trans('subject'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('subject', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('subject', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
-                <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('body', trans('body'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('body', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-        </div>        
-        <div class="row">        <div class="form-group {{ $errors->has('language') ? 'has-error' : ''}} col-xs-6">
-            {!! Form::label('language', trans('language'), ['class' => 'col-sm-4 control-label']) !!}
-            <div class="col-sm-8">
-                {!! Form::text('language', null, ['class' => 'form-control']) !!}
-                {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-                
 
-        </div>        
-        <div class="row">
+
+                <div class="row">
+                    <div class="form-group {{ $errors->has('email_group_id') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('email_group_id', trans('email_mass_template.email_group'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('email_group_id',$emailGroupList, null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('email_group_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group {{ $errors->has('language') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('language', trans('email_mass_template.language'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('language',config('mail.email_template_language'), null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('name', trans('email_mass_template.name'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('subject') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('subject', trans('email_mass_template.subject'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('subject', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('subject', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}}  col-xs-12">
+                        {!! Form::label('body', trans('email_mass_template.body'), ['class' => 'col-sm-12  ']) !!}
+                        <div class="col-sm-12">
+                            {!! Form::textarea('body', null, ['class' => 'form-control','id'=>'editor1']) !!}
+                            {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
                 
 
 
         <div class="form-group">
-        <div class="col-sm-offset-9 col-sm-3">
+            <div class="col-sm-offset-6 col-sm-3">
+                {!! Form::submit('Send', ['class' => 'btn btn-primary form-control','name'=>'send']) !!}
+            </div>
+        <div class=" col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>

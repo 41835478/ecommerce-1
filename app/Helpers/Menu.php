@@ -18,7 +18,7 @@ class Menu {
 
         $aModules = [];
 
-        $mainClientMenus = Config::get('mycp.client_menu', []);
+        $mainClientMenus = Config::get('project.client_menu', []);
         foreach ($mainClientMenus as $mainClientMenu) {
             if(!canAccess($mainClientMenu['route'])){  continue;}
 
