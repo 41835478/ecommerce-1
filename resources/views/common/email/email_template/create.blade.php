@@ -137,7 +137,7 @@
                                     <div class="form-group {{ $errors->has('body') ? 'has-error' : ''}}  col-xs-12">
                                         {!! Form::label('body', trans('email_template.body'), ['class' => 'col-sm-12 ']) !!}
                                         <div class="col-sm-12">
-                                            {!! Form::textarea('body', null, ['class' => 'form-control','id'=>'editor12']) !!}
+                                            {!! Form::textarea('body', null, ['class' => 'form-control','id'=>'editor1']) !!}
                                             {!! $errors->first('body', '<p class="help-block">:message</p>') !!}
                                         </div>
                                     </div>

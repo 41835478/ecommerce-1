@@ -229,19 +229,26 @@ $('.longHtmlContainer').click(function(){$(this).removeClass('longHtmlContainer'
 <script src="{{ asset('/assets/'.config('project.layoutAssetsFolder').'/ckeditor/ckeditor.js') }}"></script>
 <script>
     //CKEDITOR.replace( textarea );
+    if($('#editor1').length){
     CKEDITOR.replace('editor1', {
         filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
         filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
     });
-    CKEDITOR.replace('editor2', {
-        filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
-        filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
-    });
-    CKEDITOR.replace('editor3', {
-        filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
-        filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
-    });
+    }
 
+    if($('#editor2').length) {
+        CKEDITOR.replace('editor2', {
+            filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
+            filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
+        });
+    }
+
+    if($('#editor3').length) {
+        CKEDITOR.replace('editor3', {
+            filebrowserBrowseUrl: " {{ route('common.files.browser') }}",
+            filebrowserUploadUrl: "{{ route('common.files.upload' ).'?_token='. csrf_token() }}"
+        });
+    }
 </script>
 @show
 
