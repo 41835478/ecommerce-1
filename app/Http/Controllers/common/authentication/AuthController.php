@@ -38,21 +38,26 @@ class AuthController extends Controller
                 'email' => $oRequest->email,
                 'password' => $oRequest->password,
             ]);
+            if($oUser && count($oUser->roles)){
+                $permissions='';
+                $deny_permissions='';
 
-            $permissions='';
-            $deny_permissions='';
-            foreach($oUser->roles as $role){
-                $permissions.=$role['attributes']['permissions'];
-                $deny_permissions.=$role['attributes']['deny_permissions'];
+                foreach($oUser->roles as $role){
+                    $permissions.=$role['attributes']['permissions'];
+                    $deny_permissions.=$role['attributes']['deny_permissions'];
+                }
+                \Session::set('permissions',$permissions);
+                \Session::set('deny_permissions',$deny_permissions);
+            }else{
+
+                return Redirect::route('client.auth.login')->withErrors([trans('general.invalidRole')]);
             }
-            \Session::set('permissions',$permissions);
-            \Session::set('deny_permissions',$deny_permissions);
         } catch (ThrottlingException $e) {
 
         } catch (NotActivatedException $e) {
 
         } catch (Exception $e) {
-            return Redirect::route('common.authentication.login')->withErrors([trans('user.InvalidLogin')]);
+            return Redirect::route('client.auth.login')->withErrors([trans('user.InvalidLogin')]);
         }
 
 

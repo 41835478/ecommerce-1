@@ -169,3 +169,9 @@ if (!function_exists('canAccess')) {
 }
 
 
+if(!function_exists('language_code')){
+	function language_code(){
+		return \Session::get('locale');
+
+	}
+}

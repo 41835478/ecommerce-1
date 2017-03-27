@@ -13,7 +13,12 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+        $this->visit('/login')
+            ->see('login');
+    }
+    public function testMyExample()
+    { var_dump(7878789);
+        $this->visit('/login')
+            ->see('login');
     }
 }
