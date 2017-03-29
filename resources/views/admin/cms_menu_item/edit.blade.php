@@ -52,109 +52,163 @@
 
 
 
-                
 
-        <div class="form-group {{ $errors->has("parent_item_id") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("parent_item_id", trans("cms_menu_item.parent_item_id"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("parent_item_id", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.parent_item_id")]) !!}
-    {!! $errors->first("parent_item_id", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
 
-        <div class="form-group {{ $errors->has("cms_menu_id") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("cms_menu_id", trans("cms_menu_item.cms_menu_id"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("cms_menu_id", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.cms_menu_id")]) !!}
-    {!! $errors->first("cms_menu_id", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
 
-        <div class="form-group {{ $errors->has("name") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("name", trans("cms_menu_item.name"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("name", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.name")]) !!}
-    {!! $errors->first("name", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
+                <div class="row">
 
-    
 
-        <div class="form-group {{ $errors->has("disable") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("disable", trans("cms_menu_item.disable"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::select("disable",config('array.cms_menu_item_disable'), null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.disable")]) !!}
-    {!! $errors->first("disable", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
+                    <div class="form-group {{ $errors->has('module_type') ? 'has-error' : ''}}  col-xs-6">
+                        {!! Form::label('module_type', trans('cms_menu_item.module_type'), ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('module_type',config('array.cms_menu_item_module_type'), null, ['class' => 'form-control','onChange'=>'changeSelectedView("module_type","moduleId_","module_id");','id'=>'module_type']) !!}
+                            {!! $errors->first('module_type', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
 
-    
 
-        <div class="form-group {{ $errors->has("hide") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("hide", trans("cms_menu_item.hide"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::select("hide",config('array.cms_menu_item_hide'), null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.hide")]) !!}
-    {!! $errors->first("hide", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
+                    <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6 moduleId_"  id="moduleId_{{config('array.pageTypeIndex')}}"@if( config('array.pageTypeIndex')!=$cms_menu_item['module_type'] || $cms_menu_item['module_type'] !='' ) style="display: none" @endif>
+                        {!! Form::label("module_id", trans("cms_menu_item.page"), ["class" => "col-sm-4 control-label"]) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.pageTypeIndex')==$cms_menu_item['module_type'] || $cms_menu_item['module_type']  =='')? 'module_id':''),$cmsPageList, null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
+                            {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
+                        </div>
+                    </div>
 
-        <div class="form-group {{ $errors->has("module_type") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("module_type", trans("cms_menu_item.module_type"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::select("module_type",config('array.cms_menu_item_module_type'), null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_type")]) !!}
-    {!! $errors->first("module_type", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
 
-        <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("module_id", trans("cms_menu_item.module_id"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("module_id", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
-    {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
+                    <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6 moduleId_"  id="moduleId_{{config('array.articleTypeIndex')}}"@if( config('array.articleTypeIndex')!=$cms_menu_item['module_type']  ) style="display: none" @endif>
+                        {!! Form::label("module_id", trans("cms_menu_item.article"), ["class" => "col-sm-4 control-label"]) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.articleTypeIndex')==$cms_menu_item['module_type']  )? 'module_id':''),$cmsArticleList, null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
+                            {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
+                        </div>
+                    </div>
 
-    
 
-        <div class="form-group {{ $errors->has("order") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("order", trans("cms_menu_item.order"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("order", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.order")]) !!}
-    {!! $errors->first("order", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
+                    <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6 moduleId_"  id="moduleId_{{config('array.formTypeIndex')}}"@if( config('array.formTypeIndex')!=$cms_menu_item['module_type']  ) style="display: none" @endif>
+                        {!! Form::label("module_id", trans("cms_menu_item.form"), ["class" => "col-sm-4 control-label"]) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.formTypeIndex')==$cms_menu_item['module_type']  )? 'module_id':''),$cmsFormList, null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
+                            {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
+                        </div>
+                    </div>
 
-        <div class="form-group {{ $errors->has("created_at") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("created_at", trans("cms_menu_item.created_at"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("created_at", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.created_at")]) !!}
-    {!! $errors->first("created_at", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
+                    <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6 moduleId_"  id="moduleId_{{config('array.categoryTypeIndex')}}"@if( config('array.categoryTypeIndex')!=$cms_menu_item['module_type']  ) style="display: none" @endif>
+                        {!! Form::label("module_id", trans("cms_menu_item.category"), ["class" => "col-sm-4 control-label"]) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.categoryTypeIndex')==$cms_menu_item['module_type']  )? 'module_id':''),$cmsCategoryList, null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
+                            {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
+                        </div>
+                    </div>
 
-        <div class="form-group {{ $errors->has("updated_at") ? "has-error" : ""}}  col-xs-6">
-{!! Form::label("updated_at", trans("cms_menu_item.updated_at"), ["class" => "col-sm-4 control-label"]) !!}
-<div class="col-sm-8">
-    {!! Form::text("updated_at", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.updated_at")]) !!}
-    {!! $errors->first("updated_at", "<p class='help-block'>:message</p>") !!}
-</div>
-</div>
 
-    
+                    <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6 moduleId_"  id="moduleId_{{config('array.productTypeIndex')}}"@if( config('array.productTypeIndex')!=$cms_menu_item['module_type']  ) style="display: none" @endif>
+                        {!! Form::label("module_id", trans("cms_menu_item.product"), ["class" => "col-sm-4 control-label"]) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select(((config('array.productTypeIndex')==$cms_menu_item['module_type']  )? 'module_id':''),$cmsProductList, null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
+                            {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
+                        </div>
+                    </div>
 
-        <div class="form-group">
+                    <div class="form-group {{ $errors->has("module_id") ? "has-error" : ""}}  col-xs-6 moduleId_"  id="moduleId_{{config('array.urlTypeIndex')}}"@if( config('array.urlTypeIndex')!=$request->module_type ) style="display: none" @endif>
+                        {!! Form::label("module_id", trans("cms_menu_item.url"), ["class" => "col-sm-4 control-label"]) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text(((config('array.urlTypeIndex')==$request->module_type )? 'module_id':''), '', ["class" => "form-control","placeholder"=> trans("cms_menu_item.module_id")]) !!}
+                            {!! $errors->first("module_id", "<p class='help-block'>:message</p>") !!}
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="form-group {{ $errors->has("name") ? "has-error" : ""}}  col-xs-6">
+                    {!! Form::label("name", trans("cms_menu_item.name"), ["class" => "col-sm-4 control-label"]) !!}
+                    <div class="col-sm-8">
+                        {!! Form::text("name", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.name")]) !!}
+                        {!! $errors->first("name", "<p class='help-block'>:message</p>") !!}
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group {{ $errors->has("cms_menu_id") ? "has-error" : ""}}  col-xs-6">
+                    {!! Form::label("cms_menu_id", trans("cms_menu.cms_menu"), ["class" => "col-sm-4 control-label"]) !!}
+                    <div class="col-sm-8">
+                        {!! Form::select("cms_menu_id",$cmsMenuList, null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.cms_menu_id")]) !!}
+                        {!! $errors->first("cms_menu_id", "<p class='help-block'>:message</p>") !!}
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group {{ $errors->has("parent_item_id") ? "has-error" : ""}}  col-xs-6">
+                    {!! Form::label("parent_item_id", trans("cms_menu_item.parent_item_id"), ["class" => "col-sm-4 control-label"]) !!}
+                    <div class="col-sm-8">
+                        {!! Form::select("parent_item_id",[0=>trans('general.selectOne')]+$cmsMenuItemList->all(), null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.parent_item_id")]) !!}
+                        {!! $errors->first("parent_item_id", "<p class='help-block'>:message</p>") !!}
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group {{ $errors->has("order") ? "has-error" : ""}}  col-xs-6">
+                    {!! Form::label("order", trans("cms_menu_item.order"), ["class" => "col-sm-4 control-label"]) !!}
+                    <div class="col-sm-8">
+                        {!! Form::text("order", null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.order")]) !!}
+                        {!! $errors->first("order", "<p class='help-block'>:message</p>") !!}
+                    </div>
+                </div>
+
+
+                <div class="form-group {{ $errors->has("disable") ? "has-error" : ""}}  col-xs-6">
+                    {!! Form::label("disable", trans("cms_menu_item.disable"), ["class" => "col-sm-4 control-label"]) !!}
+                    <div class="col-sm-8">
+                        {!! Form::select("disable",config('array.cms_menu_item_disable'), null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.disable")]) !!}
+                        {!! $errors->first("disable", "<p class='help-block'>:message</p>") !!}
+                    </div>
+                </div>
+
+
+
+                <div class="form-group {{ $errors->has("hide") ? "has-error" : ""}}  col-xs-6">
+                    {!! Form::label("hide", trans("cms_menu_item.hide"), ["class" => "col-sm-4 control-label"]) !!}
+                    <div class="col-sm-8">
+                        {!! Form::select("hide",config('array.cms_menu_item_hide'), null, ["class" => "form-control","placeholder"=> trans("cms_menu_item.hide")]) !!}
+                        {!! $errors->first("hide", "<p class='help-block'>:message</p>") !!}
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
         </div>

@@ -21,6 +21,13 @@ use App\Repositories\admin\cms_menu_item\CmsMenuItemContract as rCmsMenuItem;
  use App\Repositories\admin\cms_menu\CmsMenuContract as rCmsMenu;
  use App\Repositories\admin\cms_menu_item_language\CmsMenuItemLanguageContract as rCmsMenuItemLanguage;
 
+use App\Repositories\admin\cms_page\CmsPageContract as rCmsPage;
+use App\Repositories\admin\cms_article\CmsArticleContract as rCmsArticle;
+
+use App\Repositories\admin\cms_form\CmsFormContract as rCmsForm;
+use App\Repositories\admin\cms_category\CmsCategoryContract as rCmsCategory;
+use App\Repositories\admin\cms_product\CmsProductContract as rCmsProduct;
+
 class CmsMenuItem extends Controller
 {
     private $rCmsMenuItem;
@@ -48,13 +55,22 @@ class CmsMenuItem extends Controller
      *
      * @return view
      */
-    public function create(Request $request,rCmsMenu $rCmsMenu,rCmsMenuItem $rCmsMenuItem)
+    public function create(Request $request,rCmsMenu $rCmsMenu,rCmsMenuItem $rCmsMenuItem,rCmsForm $rCmsForm,rCmsCategory $rCmsCategory,rCmsProduct $rCmsProduct,rCmsPage $rCmsPage,rCmsArticle $rCmsArticle)
     {
 
         $cmsMenuList=$rCmsMenu->getAllList();
         $cmsMenuItemList=$rCmsMenuItem->getAllList();
 
-        return view('admin.cms_menu_item.create',compact('request','cmsMenuList','cmsMenuItemList'));
+
+        $cmsPageList=$rCmsPage->getAllList();
+        $cmsArticleList=$rCmsArticle->getAllList();
+
+
+        $cmsFormList=$rCmsForm->getAllList();
+        $cmsCategoryList=$rCmsCategory->getAllList();
+        $cmsProductList=$rCmsProduct->getAllList();
+
+        return view('admin.cms_menu_item.create',compact('request','cmsMenuList','cmsMenuItemList','cmsProductList','cmsCategoryList','cmsFormList','cmsPageList','cmsArticleList'));
     }
 
     /**

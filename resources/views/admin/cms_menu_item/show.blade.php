@@ -93,8 +93,38 @@
                         </div>
                     </div>
 
-                    
-                                    <div class="col-sm-2 text-right">
+
+
+                    <div class="col-sm-2 text-right">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">{{ trans('cms_menu_item.module_type') }}  </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-left">
+                        <div class="form-group no-margin-hr">
+                            <label class="control-label">
+                    @if(config('array.pageTypeIndex') == $cms_menu_item['module_type'])
+                       {{trans('cms_menu_item.page')}}( {{isset($cms_menu_item->cms_page->first()->name)?$cms_menu_item->cms_page->first()->name:'' }} )
+                    @elseif(config('array.articleTypeIndex') ==$cms_menu_item['module_type'])
+                                    {{trans('cms_menu_item.article')}}(  {{isset($cms_menu_item->cms_article->name)?$cms_menu_item->cms_article->name:'' }} )
+                    @elseif(config('array.formTypeIndex') == $cms_menu_item['module_type'])
+                                    {{trans('cms_menu_item.form')}}( {{isset($oResult->cms_form->name)?$cms_menu_item->cms_form->name:'' }} )
+                    @elseif(config('array.categoryTypeIndex') == $cms_menu_item['module_type'])
+                                    {{trans('cms_menu_item.category')}}(  {{isset($oResult->cms_category->name)?$oResult->cms_category->name:'' }} )
+                    @elseif(config('array.productTypeIndex') == $cms_menu_item['module_type'])
+                                    {{trans('cms_menu_item.product')}}( {{isset($oResult->cms_product->name)?$oResult->cms_product->name:'' }})
+                    @elseif(config('array.urlTypeIndex') == $cms_menu_item['module_type'])
+                                    {{trans('cms_menu_item.url')}}(  {{ $oResult->module_id }} )
+                    @endif
+                            </label>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-sm-2 text-right">
                         <div class="form-group no-margin-hr">
                             <label class="control-label">{{ trans('cms_menu_item.created_at') }}  </label>
                         </div>

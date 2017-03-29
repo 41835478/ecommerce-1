@@ -30,6 +30,23 @@ return $this->hasMany('App\Models\CmsMenuItemLanguage');
 
 
 
+    public function cms_page(){
+        return $this->belongsTo('App\Models\CmsPage','module_id');
+    }
+    public function cms_article(){
+        return $this->belongsTo('App\Models\CmsArticle','module_id');
+    }
+    public function cms_form(){
+        return $this->belongsTo('App\Models\CmsForm','module_id');
+    }
+    public function cms_category(){
+        return $this->belongsTo('App\Models\CmsCategory','module_id');
+    }
+    public function cms_product(){
+        return $this->belongsTo('App\Models\CmsProduct','module_id');
+    }
+
+
 
 
 

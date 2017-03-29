@@ -87,7 +87,7 @@ class EloquentCmsMenuItemRepository implements CmsMenuItemContract
     public function show($id)
     {
 
-$cms_menu_item = CmsMenuItem::findOrFail($id);
+$cms_menu_item = CmsMenuItem::with(['cms_page','cms_article','cms_form','cms_category','cms_product'])->find($id);
 
         return $cms_menu_item;
     }

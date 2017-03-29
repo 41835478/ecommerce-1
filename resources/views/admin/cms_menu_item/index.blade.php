@@ -132,14 +132,32 @@
 
   <td>{{(array_key_exists($oResult->disable,config('array.cms_menu_item_disable')))? config('array.cms_menu_item_disable')[$oResult->disable]:''  }}</td>
                                         <td>{{(array_key_exists($oResult->hide,config('array.cms_menu_item_hide')))?config('array.cms_menu_item_hide')[$oResult->hide]:''  }}</td>
+
+
                                         <td>{{(array_key_exists($oResult->module_type,config('array.cms_menu_item_module_type')))?config('array.cms_menu_item_module_type')[$oResult->module_type]:''  }}</td>
 
 
-                                                                                <td>{{ $oResult->module_id }}</td>
+                                        <td>
+                                            @if(config('array.pageTypeIndex') == $oResult->module_type)
+                                                {{isset($oResult->cms_page->name)?$oResult->cms_page->name:'' }}
+                                            @elseif(config('array.articleTypeIndex') == $oResult->module_type)
+                                                {{isset($oResult->cms_article->name)?$oResult->cms_article->name:'' }}
+                                            @elseif(config('array.formTypeIndex') == $oResult->module_type)
+                                                {{isset($oResult->cms_form->name)?$oResult->cms_form->name:'' }}
+                                            @elseif(config('array.categoryTypeIndex') == $oResult->module_type)
+                                                {{isset($oResult->cms_category->name)?$oResult->cms_category->name:'' }}
+                                            @elseif(config('array.productTypeIndex') == $oResult->module_type)
+                                                {{isset($oResult->cms_product->name)?$oResult->cms_product->name:'' }}
+                                            @elseif(config('array.urlTypeIndex') == $oResult->module_type)
+                                                {{ $oResult->module_id }}
+                                            @endif
 
-                                                                                <td>{{ $oResult->order }}</td>
 
-                                                                                <td>{{ $oResult->created_at }}</td>
+                                        </td>
+
+                                        <td>{{ $oResult->order }}</td>
+
+                                        <td>{{ $oResult->created_at }}</td>
 
                                                                                 <td>{{ $oResult->updated_at }}</td>
 

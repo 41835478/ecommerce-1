@@ -36,6 +36,12 @@ return [
         3=>'category',
         4=>'product',
         5=>'url'],
+    'pageTypeIndex'=>0,
+    'articleTypeIndex'=>1,
+    'formTypeIndex'=>2,
+    'categoryTypeIndex'=>3,
+    'productTypeIndex'=>4,
+    'urlTypeIndex'=>5,
 
     'cms_category_status'=>[
         0=>'Online',
